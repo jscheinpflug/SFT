@@ -1,0 +1,459 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\emergencystretch=2em
+
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+
+\title{Internal Guidance Note for the Heterotic SFT Project}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Purpose}
+
+This note is an internal planning document written in project language rather than paper language. Its purpose is to record what the current draft \texttt{heterotic\_SFT.tex} actually establishes, what it does not establish, what we can safely claim to collaborators, and how we should answer the current ``what is the direction?'' question.
+
+\section{Executive summary}
+
+The shortest accurate summary of the project at its current stage is:
+\begin{enumerate}
+\item Sections 3.1--3.3 contain a genuine exact result at the strict standard-embedding point: a complete classification of supersymmetric marginal sectors within the stated ansatz, together with a detailed master list of allowed three-point families and principal vanishing channels.
+\item Sections 3.4--5 give a substantive large-volume translation of that structure: the gauge-neutral block is identified with $(Z,Y,\wt\Lambda)$, pure bundle obstructions are matched to the bundle Maurer--Cartan bracket, and the first nonzero mixed lifting is represented by an explicit large-volume four-point quantity whose OPE yields the linearized Atiyah class.
+\item There is already one safe all-orders unobstructed sector in the present story, namely the abelian current-current block singled out by the Chaudhuri--Schwartz criterion.
+\item The main missing piece is not a vague lack of examples. It is the absence of a theorem-level exact-worldsheet control statement for the mixed lifting observable beyond the strict $(2,2)$ point.
+\item Accordingly, the next step should be: theorem first, then calibrated examples, then any broader search for additional unobstructed classes.
+\end{enumerate}
+
+\section{Scope and assumptions}
+
+\subsection*{Exact standard-embedding setup}
+
+Sections 3.1--3.3 of the draft work at an exact standard-embedding point. The matter theory is assumed to factorize into:
+\begin{enumerate}
+\item a $c=9$ internal $(2,2)$ SCFT;
+\item a free left-moving gauge-fermion system $\lambda^{A'}$;
+\item the usual spacetime, ghost, and superghost sectors.
+\end{enumerate}
+
+The analysis is restricted to supersymmetric marginal operators that are 4D Lorentz scalars. In particular, the classification excludes insertions such as $\partial X^\mu$ and $\wt\psi^\mu$.
+
+\subsection*{Large-volume setup}
+
+Sections 3.4--5 add a geometric interpretation. There one assumes:
+\begin{enumerate}
+\item a smooth Calabi--Yau threefold $X$;
+\item vanishing tree-level flux $H=0$;
+\item the standard embedding $E=T_X$ at the reference point;
+\item free-field representatives for the relevant operators.
+\end{enumerate}
+
+Statements in sections 3.4--5 should therefore be read as \emph{large-volume identifications} unless the note explicitly says otherwise.
+
+\section{What the current manuscript actually establishes}
+
+\subsection*{1. Complete classification within the standard-embedding ansatz}
+
+Section 3.1 proves a completeness statement for the left-moving gauge factor. If $\Lambda$ is the left-moving gauge-sector part of a supersymmetric marginal operator, then $h(\Lambda)\le 1$. Since a state created by $F$ free gauge fermions has weight at least $F/2$, only $F=0,1,2$ are possible. Therefore
+\[
+\Lambda\in\{\mathbf 1,\lambda^{A'},J^{A'B'}\sim :\lambda^{A'}\lambda^{B'}:\}.
+\]
+
+Combining this with the right-chiral condition $(\wt h,\wt q)=(1/2,1)$, the GSO rule, and the left-moving ${\cal N}=2$ unitarity bound gives exactly five operator sectors:
+\begin{enumerate}
+\item $q=0$ descendant moduli, which preserve the $(2,2)$ structure;
+\item current-type directions with left factor $J^{A'B'}$;
+\item single-$\lambda$ matter/Higgs directions;
+\item spectral-flow BPS directions with $q=\pm 2$;
+\item possible extra neutral $q=0$ primaries.
+\end{enumerate}
+
+This is a complete classification \emph{within the exact standard-embedding ansatz of section 3.1}. It is not a classification of all marginal operators in arbitrary $(0,2)$ SCFTs.
+
+\subsection*{2. Exact three-point allowed families at the standard-embedding point}
+
+Sections 3.2--3.3 determine the allowed three-point families before any model-specific OPE computation. The inputs are:
+\begin{enumerate}
+\item free gauge-fermion contractions;
+\item holomorphic $U(1)_R$ charge conservation;
+\item the right-moving charge rule for NS--NS--NS correlators;
+\item the vanishing of descendant-neutral couplings proved by the Ward-identity argument.
+\end{enumerate}
+
+The resulting three-point families are:
+\begin{enumerate}
+\item two matter insertions and one $F=0$ insertion, with charge patterns
+\[
+(+1,+1,-2),\qquad (-1,-1,+2),\qquad (+1,-1,0);
+\]
+\item purely $F=0$ insertions, with charge patterns
+\[
+(0,0,0),\qquad (0,+2,-2);
+\]
+\item one current-type insertion together with two matter insertions of opposite charges;
+\item three current-type insertions.
+\end{enumerate}
+
+The note also proves two important vanishings:
+\begin{enumerate}
+\item the two-current three-point channel vanishes because its internal factor is a one-point function of a nontrivial marginal operator;
+\item the $(+1,-1,0)$ and $(0,+2,-2)$ channels vanish when the neutral insertion is a descendant modulus, but are not ruled out when it is a genuine $q=0$ primary.
+\end{enumerate}
+
+So the draft does not merely give ``selection rules.'' It gives a nearly complete master list of three-point families at the standard-embedding point, together with two nontrivial vanishing mechanisms.
+
+\subsection*{3. Large-volume identification of the gauge-neutral block}
+
+Sections 3.4 and 4.1 identify the gauge-neutral first-order deformations with the large-volume variables
+\[
+Z\in H^1(X,T_X),\qquad
+Y\in H^1(X,T_X^\vee),\qquad
+\wt\Lambda\in H^1(X,\mathrm{End}\,T_X),
+\]
+where the shifted bundle variable is
+\[
+\wt\Lambda=\Lambda-\nabla Z.
+\]
+
+The identification is:
+\begin{enumerate}
+\item $Z$ is the complex-structure block;
+\item $Y$ is the K\"ahler/$B$-field block;
+\item $\wt\Lambda$ is the bundle-deformation block that leaves the standard embedding.
+\end{enumerate}
+
+This part of the note is a large-volume dictionary. It tells us how to read the gauge-neutral operator sectors geometrically. It is not yet an intrinsic statement about arbitrary exact SCFTs away from large volume.
+
+\subsection*{4. Pure bundle obstruction and the protected abelian block}
+
+At large volume, the current-type block is identified with
+\[
+H^1(X,\mathrm{End}\,T_X).
+\]
+Its quadratic obstruction is the bundle Maurer--Cartan equation
+\[
+\bar\partial\wt\Lambda+\frac12[\wt\Lambda,\wt\Lambda]=0,
+\]
+so the obstruction class lies in
+\[
+H^2(X,\mathrm{End}\,T_X).
+\]
+
+In worldsheet terms, the corresponding quadratic data are the NS--NS--NS quantities with three current-type insertions. The note does \emph{not} prove that every such current-type direction is obstructed or unobstructed. What it does show is:
+\begin{enumerate}
+\item generic current-type directions can carry a nontrivial obstruction class;
+\item if one restricts to commuting left and right currents, the Chaudhuri--Schwartz criterion gives an all-orders exactly marginal subsector.
+\end{enumerate}
+
+So the current state of the manuscript is: one explicit obstruction mechanism, one explicit protected subsector, and no general theorem yet describing the full gap between them.
+
+\subsection*{5. Mixed Atiyah lifting: what is exact and what is large-volume}
+
+This is the central point of the project.
+
+\paragraph*{Exact statement at the standard-embedding point.}
+Section 4.3 identifies the mixed quantity
+\[
+C^a{}_{Ib}
+\]
+between one descendant modulus and two current-type directions. At the strict standard-embedding point, this mixed coefficient vanishes by the three-point selection rules. So the Atiyah lifting is \emph{not} seen as a nonzero cubic obstruction at the undeformed $(2,2)$ point.
+
+\paragraph*{Large-volume statement away from the strict point.}
+Section 4.2 identifies the linearized geometric condition
+\[
+[\iota_Z\,\delta{\cal F}]=0
+\qquad\text{in } H^2(X,\mathrm{End}\,T_X).
+\]
+Section 5.4 then writes an explicit integrated four-point representative for the first correction to the mixed coefficient after turning on a small current-type background $\delta A_\varepsilon$. In the large-volume free-field/OPE computation, the short-distance singularity produces precisely
+\[
+[\iota_Z\,\delta{\cal F}].
+\]
+
+This is the strongest worldsheet statement presently in the note about the Atiyah mechanism: the first nonzero mixed lifting is represented, at large volume, by a four-point quantity whose OPE gives the linearized Atiyah class.
+
+\section{References for the Atiyah mechanism}
+
+\textbf{Atiyah (1957).} M.~F.~Atiyah, \emph{Complex analytic connections in fibre bundles}, Trans. Amer. Math. Soc. \textbf{85} (1957) 181--207.
+
+What we use from Atiyah is the extension
+\[
+0\to \mathrm{End}(E)\to Q\to T_X\to 0
+\]
+and the associated map from complex-structure deformations to bundle-valued obstruction classes.
+
+\textbf{Anderson--Gray--Lukas--Ovrut (2011).} \emph{The Atiyah class and complex structure stabilization in heterotic Calabi--Yau compactifications}, JHEP \textbf{10} (2011) 032, arXiv:1107.5076.
+
+What we use here is the heterotic interpretation of
+\[
+\alpha_E:H^1(X,T_X)\to H^2(X,\mathrm{End}\,E)
+\]
+as the map that lifts complex-structure moduli away from the standard embedding.
+
+\textbf{Anderson--Gray--Lukas--Ovrut (2011).} \emph{Stabilizing the Complex Structure in Heterotic Calabi--Yau Vacua}, JHEP \textbf{02} (2011) 088, arXiv:1010.0255.
+
+This is the precursor emphasizing the same lifting mechanism in explicit heterotic stabilization examples.
+
+\textbf{Melnikov--Sharpe (2011).} \emph{On marginal deformations of (0,2) non-linear sigma models}, Phys. Lett. B \textbf{705} (2011) 529--534, arXiv:1110.1886.
+
+What we use from Melnikov--Sharpe is the chirality condition
+\[
+\bar\partial_E\Lambda=\iota_Z{\cal F},
+\]
+which is the large-volume starting point for the bundle/complex-structure compatibility analysis.
+
+\section{Current status of the worldsheet characterization}
+
+\subsection*{What has been established}
+
+The present manuscript establishes the following.
+\begin{enumerate}
+\item The relevant gauge-neutral worldsheet sector for bundle deformations near the standard embedding is the current-type sector.
+\item The mixed descendant/current cubic coefficient vanishes at the strict standard-embedding point.
+\item After switching on a small current-type background, the first nonzero mixed lifting is represented at large volume by an integrated four-point quantity.
+\item In the large-volume OPE computation, that four-point quantity reproduces the linearized Atiyah class
+\[
+[\iota_Z\,\delta{\cal F}].
+\]
+\item The abelian current-current block gives a clean all-orders exactly marginal protected subsector.
+\end{enumerate}
+
+\subsection*{What has not been established}
+
+The note does \emph{not} yet provide a fully intrinsic exact-SCFT characterization of the Atiyah mechanism. In particular, it does not yet provide:
+\begin{enumerate}
+\item a background-independent exact-CFT definition of the mixed lifting datum;
+\item a proof that the four-point representative used in section 5.4 is canonical rather than a large-volume avatar of a more complicated exact object;
+\item a proof that contact terms, picture-changing ambiguities, and integrated-collision subtleties do not modify the final projected obstruction class.
+\item a general criterion for unobstructed directions beyond the protected abelian current-current block.
+\end{enumerate}
+
+\subsection*{Conceptual gaps}
+
+\begin{enumerate}
+\item We do not yet know the exact worldsheet meaning of the projection onto the marginal operator space away from the large-volume description.
+\item We do not yet know whether the Atiyah lifting admits a natural formulation directly in terms of exact SCFT data, rather than as the large-volume limit of a four-point computation.
+\item We do not yet know how much of the present story survives unchanged once one leaves the standard-embedding frame and works in a genuinely generic $(0,2)$ background.
+\end{enumerate}
+
+\subsection*{Technical gaps}
+
+\begin{enumerate}
+\item The integrated four-point computation is presently controlled only in the large-volume free-field/OPE approximation.
+\item The role of contact terms from integrated collisions and picture changing has not been fully analyzed.
+\item There is no explicit worked model showing the mechanism in a compact example from start to finish.
+\end{enumerate}
+
+\section{Working glossary of the main jargon}
+
+This is not a general glossary. It only records the project-specific words that are easy to conflate when switching between the worldsheet and large-volume descriptions.
+
+\subsection*{Operator-sector terms}
+
+\textbf{Current-type direction.} A supersymmetric marginal operator whose left-moving gauge factor is
+\[
+J^{A'B'}\sim :\lambda^{A'}\lambda^{B'}:.
+\]
+Near the standard embedding, this is the worldsheet sector that is interpreted as a bundle deformation.
+
+\textbf{Single-$\lambda$ matter direction.} A supersymmetric marginal operator whose left-moving gauge factor is a single $\lambda^{A'}$. These are charged matter/Higgs directions, not gauge-neutral bundle directions.
+
+\textbf{$q=0$ descendant modulus.} A neutral operator obtained as a descendant of a chiral or anti-chiral primary. These are the $(2,2)$-preserving neutral moduli in the standard-embedding frame.
+
+\textbf{$q=0$ primary.} A neutral primary that is not of descendant type. The note treats these separately because the vanishing arguments for descendant moduli do not apply to them.
+
+\textbf{Spectral-flow BPS direction.} A supersymmetric marginal direction in the $q=\pm 2$ sector obtained from chiral/anti-chiral primaries by spectral flow.
+
+\subsection*{Geometric obstruction terms}
+
+\textbf{Gauge-neutral block.} The large-volume block
+\[
+Z\in H^1(X,T_X),\qquad
+Y\in H^1(X,T_X^\vee),\qquad
+\wt\Lambda\in H^1(X,\mathrm{End}\,T_X),
+\]
+with $Z$ the complex-structure piece, $Y$ the K\"ahler/$B$-field piece, and $\wt\Lambda$ the bundle piece.
+
+\textbf{Kodaira--Spencer bracket.} The quadratic bracket controlling the pure complex-structure obstruction.
+
+\textbf{Bundle Maurer--Cartan bracket.} The quadratic bracket
+\[
+[\wt\Lambda,\wt\Lambda]
+\]
+appearing in the bundle holomorphy equation. This is the pure bundle obstruction class.
+
+\textbf{Linearized Atiyah class.} The mixed obstruction
+\[
+[\iota_Z\,\delta{\cal F}]\in H^2(X,\mathrm{End}\,T_X)
+\]
+that appears after turning on a small current-type background.
+
+\textbf{Atiyah mechanism.} The lifting of a complex-structure deformation by the bundle background through the map
+\[
+\alpha_E([Z])=[\iota_Z{\cal F}].
+\]
+
+\subsection*{Protected-sector terms}
+
+\textbf{Abelian current-current block.} The subsector in which the left and right currents used in the deformation commute. This is the block to which the Chaudhuri--Schwartz exact marginality criterion applies directly.
+
+\section{Claims we can make now}
+
+The present note supports the following claims.
+\begin{enumerate}
+\item Within the exact standard-embedding ansatz, section 3.1 gives a complete classification of the supersymmetric marginal sectors.
+\item Sections 3.2--3.3 determine the allowed three-point families and the principal vanishing channels at the standard-embedding point.
+\item Sections 3.4--4 identify the gauge-neutral large-volume variables $(Z,Y,\wt\Lambda)$ and match the current-type sector to bundle deformations.
+\item Section 5 identifies the pure bundle obstruction with the bundle bracket at large volume.
+\item There is a concrete all-orders protected subsector, namely the abelian current-current block.
+\item Section 5.4 provides an explicit large-volume four-point representative for the first nonzero mixed Atiyah lifting.
+\end{enumerate}
+
+\section{Claims we should not make yet}
+
+We should \emph{not} presently claim the following.
+\begin{enumerate}
+\item We do not yet have a full exact-SCFT characterization of the Atiyah mechanism.
+\item We do not yet have a proof that the mixed four-point quantity of section 5.4 is the unique or canonical exact worldsheet representative of the Atiyah lifting.
+\item We do not yet have a proof that all contact-term and picture-changing subtleties are under control.
+\item We do not yet have a worldsheet derivation of the final abstract $(0,2)$ block-collapse statements without extra assumptions.
+\item We do not yet have a classification of unobstructed deformations beyond the protected abelian block.
+\end{enumerate}
+
+\section{Answer to the direction question}
+
+Short answer: the next move should be to sharpen the mixed Atiyah statement into a theorem-level worldsheet claim, while using examples as targeted tests rather than as a substitute for the theorem.
+
+The direction question should be split into two separate problems.
+\begin{enumerate}
+\item Find deformation sectors that are unobstructed for structural reasons.
+\item Understand the first genuinely model-dependent lifting mechanism beyond those protected sectors.
+\end{enumerate}
+
+The guidance note already points to a definite answer: the next move should \emph{not} be a broad search over all possible $(0,2)$ vacua. The next move should be to make the mixed Atiyah statement technically sharp, while using examples only where they illuminate that statement.
+
+\subsection*{1. What is already known to be a promising unobstructed class}
+
+There is already one clean all-orders unobstructed sector in the present story: the abelian current-current block. In worldsheet language, the integrated current-type deformations take current-current form, and the Chaudhuri--Schwartz criterion gives exact marginality when the left and right currents commute.
+
+This means that the first answer to ``are there unobstructed directions?'' is yes, but only in a protected subclass that is visible already at the level of current algebra. So the problem is not to prove the existence of \emph{some} unobstructed directions. The real problem is to understand whether there are additional unobstructed classes beyond this protected abelian block, and if so how to characterize them.
+
+\subsection*{2. How the Anderson et al.\ lower bound should be used}
+
+The Anderson--Gray--Lukas--Ovrut lower-bound result is best viewed as geometric encouragement, not as a substitute for the worldsheet problem. It says that after imposing bundle holomorphy, the combined complex-structure-plus-bundle deformation space can still retain at least the dimension of the pure complex-structure sector. This strongly suggests that mixed lifting is constrained rather than arbitrary.
+
+Equivalently, equation (8.12) of \texttt{1107.5076} should be used here as a lower-bound heuristic on surviving geometric moduli, not as a direct exact-worldsheet marginality theorem.
+
+However, at the strict standard-embedding point our exact worldsheet analysis shows that the mixed descendant/current cubic coefficient vanishes. So the Atiyah mechanism is not captured there by a nonzero three-point coupling. The first nonzero mixed datum appears only after turning on a current-type background, and in the present manuscript it is represented by a large-volume four-point quantity. Therefore the real unresolved issue is not whether some deformations survive geometrically, but how to formulate and control the \emph{first nonzero mixed worldsheet obstruction} beyond the undeformed $(2,2)$ point.
+
+\subsection*{3. What should be done first}
+
+The first priority should be a theorem-level treatment of the mixed lifting statement. Concretely, we should aim to prove the following chain of statements with all technical assumptions made explicit:
+\begin{enumerate}
+\item at the strict standard-embedding point, the mixed descendant/current cubic coefficient vanishes;
+\item after turning on a small current-type background, the first nonzero mixed lifting is represented by an integrated four-point quantity;
+\item in the large-volume limit, that quantity reduces to the linearized Atiyah class $[\iota_Z\,\delta{\cal F}]$.
+\end{enumerate}
+
+This is the place where the project currently has the most leverage. It addresses the main conceptual gap, it tells us what quantity an explicit example should compute, and it separates what is exact from what is presently only large-volume.
+
+\subsection*{4. What role examples should play}
+
+Examples are important, but they should be chosen to test the above theorem rather than to replace it.
+
+The most useful examples are:
+\begin{enumerate}
+\item a protected abelian current-current example, to exhibit a genuinely unobstructed all-orders block in a completely explicit way;
+\item a large-volume bundle example with a nontrivial obstruction class in $H^2(X,\mathrm{End}\,T_X)$, to show that generic current-type directions really can be obstructed;
+\item a mixed example in which one can compute the first background-dependent four-point lifting and see the emergence of $[\iota_Z\,\delta{\cal F}]$ directly.
+\end{enumerate}
+
+These three examples answer different parts of the direction question: existence of protected loci, existence of genuine obstruction, and the mechanism interpolating between the strict $(2,2)$ point and the deformed bundle background.
+
+\subsection*{5. Which examples are the right first targets}
+
+If one wants exact-CFT examples, the most promising first targets are ones with explicit current algebra and computable marginal operators, such as orbifolds, free-fermion points, or closely related Gepner-model corners where the current-current structure is concrete. These are the settings in which one can hope to identify protected commuting-current blocks and possibly test non-abelian lifting patterns.
+
+Conifold-type singular points may eventually be interesting, but they are not the best first target for this program. The immediate project is not to maximize novelty of background; it is to maximize control over the worldsheet data entering the obstruction problem.
+
+If one wants geometric examples, the best first targets are large-volume standard-embedding vacua with enough explicit bundle cohomology control to compute the Atiyah map and, ideally, a nontrivial obstruction class in $H^2(X,\mathrm{End}\,T_X)$.
+
+\subsection*{6. General arguments versus NLO calculations}
+
+The right strategy is not ``general arguments instead of calculations'' or ``calculations instead of general arguments.'' We need both, but in the correct order.
+
+General arguments should come first wherever possible:
+\begin{enumerate}
+\item they isolate the protected abelian block;
+\item they show that the mixed cubic vanishes at the strict standard-embedding point;
+\item they identify the first place where genuinely new data can appear, namely the integrated four-point function in a current-type background.
+\end{enumerate}
+
+Once this structure is clean, one should do a small number of carefully chosen next-to-leading-order calculations. A blind scan of many models at NLO would be low-yield before the mixed-lifting quantity itself is conceptually under control. By contrast, one explicit four-point computation in the right example would be extremely valuable, because it would test the central claim of the project rather than merely accumulate more model-dependent data.
+
+\subsection*{7. Practical research program}
+
+Putting everything together, the most coherent program is:
+\begin{enumerate}
+\item make the mixed Atiyah statement theorem-level, with integrated-collision, picture-changing, and projection issues treated cleanly;
+\item work out one explicit protected example and one explicit obstructed example;
+\item work out one mixed four-point example that reproduces $[\iota_Z\,\delta{\cal F}]$;
+\item only after that, broaden to a systematic search for further exact-CFT classes of unobstructed $(0,2)$ deformations beyond the abelian block.
+\end{enumerate}
+
+So the answer to ``how do we continue?'' is: first sharpen the mixed worldsheet theorem, then use examples as discriminating tests, and only then widen the search space. The answer to ``should we do NLO calculations or general arguments first?'' is: general arguments first to identify the correct observable, then a strategically chosen NLO calculation to validate it.
+
+\section{Immediate next tasks}
+
+\subsection*{1. Prove the mixed-lifting theorem cleanly}
+
+The first target should be the following statement.
+
+\medskip
+\noindent
+\emph{At the strict standard-embedding point, the mixed coefficient between one descendant modulus and two current-type directions vanishes. After turning on a small current-type background, the first nonzero mixed lifting is represented by an integrated four-point quantity whose large-volume limit is the linearized Atiyah class.}
+\medskip
+
+To make this into a theorem, we need a clean treatment of:
+\begin{enumerate}
+\item integrated collisions;
+\item picture-changing contact terms;
+\item projection onto the marginal operator space.
+\end{enumerate}
+
+The deliverable here should be a precise statement with hypotheses and a clear separation between the exact part of the argument and the part that is presently justified only at large volume.
+
+\subsection*{2. Build a minimal example package}
+
+The first round of examples should be chosen to test the structure above, not to maximize breadth. The most useful package would be:
+\begin{enumerate}
+\item an abelian current-current example showing the protected block explicitly;
+\item a large-volume bundle example with a nontrivial obstruction class in $H^2(X,\mathrm{End}\,T_X)$;
+\item a worked mixed four-point computation showing the appearance of $[\iota_Z\,\delta{\cal F}]$ step by step.
+\end{enumerate}
+
+If only one example can be completed quickly, the highest-value first target is the worked mixed four-point example, because it directly tests the central claim of the project.
+
+\subsection*{3. Demote the abstract $(0,2)$ section unless its assumptions are proved}
+
+The final abstract $(0,2)$ section is useful as a framework, but its current logical status is weaker than sections 3--5. Unless we prove the missing assumptions, it should remain clearly marked as conditional.
+
+\section{Bottom line}
+
+For our own guidance, the manuscript should presently be viewed as follows.
+
+\begin{enumerate}
+\item The exact standard-embedding analysis in sections 3.1--3.3 is a real result: complete operator classification within the stated ansatz, plus a detailed three-point master list.
+\item The large-volume translation in sections 3.4--5 is also substantive: it identifies the gauge-neutral block with $(Z,Y,\wt\Lambda)$, identifies the pure bundle obstruction with the Maurer--Cartan bracket, and writes an explicit large-volume four-point representative for the linearized Atiyah lifting.
+\item The project already contains one safe all-orders unobstructed sector, namely the abelian current-current block.
+\item The main gap is not conceptual vagueness about the geometry; the main gap is the lack of an exact-SCFT theorem controlling the mixed four-point quantity beyond the large-volume approximation.
+\end{enumerate}
+
+So the correct next move is not to broaden the project immediately. It is to make the mixed Atiyah statement technically sharp, then validate it on a small set of calibrated examples.
+
+\end{document}
