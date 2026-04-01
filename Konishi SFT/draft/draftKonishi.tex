@@ -1,0 +1,1417 @@
+\documentclass[12pt]{article}
+%\usepackage{amssymb,epsf,graphicx}
+\usepackage{amsmath,amssymb,bm,epsf,epsfig,graphicx,hyperref,physics, cleveref, subfig, slashed, stmaryrd, tensor}
+\usepackage[backend=bibtex,natbib,style=numeric-comp,sorting=none, doi=false, isbn=false,url=false]{biblatex}
+\addbibresource{refs}
+\input epsf.sty
+\topmargin -.5cm \textheight 21cm \oddsidemargin -.125cm
+\textwidth 17cm
+
+\usepackage[]{todonotes}
+
+\usepackage[weather, alpine]{ifsym}
+
+\definecolor{bisque}{rgb}{1.0, 0.89, 0.77}
+\definecolor{forestgreen(web)}{rgb}{0.13, 0.55, 0.13}
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\ie{\begin{equation}\begin{aligned}}
+\def\fe{\end{aligned}\end{equation}}
+\numberwithin{equation}{section}
+\def\mt{\bar}
+
+\renewcommand{\title}[1]{\vbox{\center\LARGE{#1}}\vspace{5mm}}
+\renewcommand{\author}[1]{\vbox{\center#1}\vspace{5mm}}
+\newcommand{\address}[1]{\vbox{\center\em#1}}
+\newcommand{\email}[1]{\vbox{\center\tt#1}\vspace{5mm}}
+\newcommand{\WT}[1]{\widetilde{#1}}
+
+
+\newcommand{\fixme}[1]{{\bf {\color{red}[#1]}}}
+\newcommand{\A}{{\alpha}}
+
+
+\newcommand{\B}[1]{\overline{#1}}
+\newcommand{\jg}[1]{\todo[color=forestgreen(web)!30, size=\scriptsize, bordercolor=forestgreen(web)!30]{JG: #1}}
+
+\newcommand{\mc}[1]{\todo[color=lightgray!50, size=\scriptsize, bordercolor=lightgray]{MC: #1}}
+
+\newcommand{\xy}[1]{\todo[color=lightgray!50, size=\scriptsize, bordercolor=lightgray]{XY: #1}}
+
+
+\newcommand{\js}[1]{\todo[color=bisque!30, size=\scriptsize, bordercolor=bisque!30]{JS: #1}}
+
+\begin{document}
+
+\unitlength = .8mm
+
+
+\eject
+
+\begingroup
+\hypersetup{linkcolor=black}
+
+\tableofcontents
+
+\endgroup
+
+\section{Setup}
+We want to compute the mass of the bottom component of the Konishi multiplet to the first few orders in the large radius expansion. The strategy is first to identify the Hamiltonian $H$, so that the generators $S_\alpha$ of the special supersymmetry transformations can be identified. Then, we search for a state annihilated by all the $S_\alpha$ among the states at mass level 1. There should be a unique state, so that there is no mixing problem to solve. Once we have this state, we simply compute its eigenvalue under $H$. We should find a correction already at the first order in the large radius expansion.
+
+We will use that the $AdS_5 \cross S^5$ IIB SFT solution is captured by the massless string field $\psi$ (the solution is found within the massless effective SFT)
+\ie\label{masslessansatzint}
+    \psi = F_{\alpha \beta}(X) V^{\alpha\beta}_{RR}+ h_{\mu\nu}(X) V^{\mu \nu}_{NSNS} + \phi(X) D + A_{\mu}(X) V^\mu_{aux.},
+\fe
+with $F_{\alpha \beta}$ self-dual 5-form flux, $h_{\mu \nu}$ the metric fluctuation, $\phi$ the ghost dilaton and $A_\mu$ an auxiliary field,
+where the vertex operators $V^{\alpha\beta}_{RR},V^{\mu \nu}_{NSNS},D, V^\mu_{aux.}$ are defined as
+\ie\label{vertdefint}
+    V^{\alpha \beta}_{RR} &\equiv c\bar{c} e^{-\frac{1}{2}\phi} S^\alpha e^{-\frac{1}{2}\bar{\phi}}\bar{S}^\beta ,
+    \\
+    V^{\mu \nu}_{NSNS} &\equiv 4c \bar{c} e^{-\phi} \psi^\mu e^{-\bar{\phi}}\bar{\psi}^\nu ,
+    \\
+    D & \equiv c\bar{c}\big(\eta e^{-2\bar{\phi}} \bar{\partial} \bar{\xi} - e^{-2\phi}\partial \xi \bar{\eta}\big) ,
+    \\
+    V^\mu_{aux.} &\equiv c_0^+\big(c \bar{c} e^{-\phi} \psi^\mu e^{-2\bar{\phi}}\bar{\partial}\bar{\xi} + c \bar{c} e^{-2\phi} \partial \xi e^{-\bar{\phi}} \bar{\psi}^\mu\big),
+\fe
+and the profiles are given by
+\ie\label{covsol}
+    F_{\alpha \beta}(X) &= {i\over R} \left( 1- {X^2\over 4R^2} \right) (\gamma^{01234})_{\alpha \beta} + {\cal O}(R^{-5}) ,
+    \\
+    h_{\mu \nu}(X) &=  -\frac{1}{R^2} \left(\delta^a_\mu \delta^b_\nu X_a X_b - \delta^i_\mu \delta^j_\nu X_i X_j \right) + {\cal O}(R^{-4}),
+    \\
+    \phi(X) &=  -\frac{X^2}{R^2} + {\cal O}(R^{-4}),
+    \\
+    A_\mu(X) &= \frac{10}{R^2} \partial_\mu X^2 + {\cal O}(R^{-4}),
+\fe
+where $\mu,\nu=0,\cdots,9$ are the 10-dimensional Minkowski indices which we divide into $a,b=0,\cdots,4$ for $AdS_5$ and $i,j=5,\cdots,9$ for $S^5$, and $X^2\equiv X_a X^a-X_i X^i$. Note that the Siegel gauge condition has not been imposed in this solution, which allows for spacetime diffeomorphism to be represented as residual gauge transformations on $\psi$. %$\mu N_\text{R} = \frac{i}{R}$ and $\mu^2 N_{\text{NS}} = -\frac{4}{R^2}$.
+Nonetheless, it can be further transformed into the Siegel gauge $b_0^+\psi=0$, where $A_{\mu}(X)=0$ and the remaining components are
+\ie\label{siegelsolution}
+    F_{\alpha \beta}(X) &= {i\over R} \left( 1 + {X^2\over 4R^2} \right) (\gamma^{01234})_{\alpha \beta} + {\cal O}(R^{-5}),
+    \\
+   h_{\mu \nu}(X) &= {1\over R^2} \left[ \frac{3}{7} \big(\delta^a_\mu \delta^b_\nu X_a X_b - \delta^i_\mu \delta^j_\nu X_i X_j\big) +\frac{5}{7}\big(\eta_{ab}\delta_{\mu}^a\delta_{\nu}^bX_cX^c-\delta_{ij}\delta_{\mu}^i\delta_{\nu}^jX_kX^k\big) \right] + {\cal O}(R^{-4}),
+   \\
+    \phi(X)&= {4 X^2\over R^2} + {\cal O}(R^{-4}) .
+\fe
+
+
+
+\section{Identifying the Hamiltonian}
+We identify the Hamiltonian $H$ as the global time translation generator. At zeroth order, it is thus given by the NSNS ghost number 1 on-shell string field
+\be
+H^{(0)} = R N_H\big(c\bar{c} e^{-\phi} \psi^0 e^{-2\bar{\phi}} \bar{\partial} \bar{\xi} + c \bar{c} e^{-2\phi}\partial\xi e^{-\bar{\phi}} \bar{\psi}^0\big).
+\ee
+The Hamiltonian does not get renormalized at first order in the large radius expansion. This is a consequence of the fact that say on the holomorphic side, we always have the picture-raising (\ref{PCO5}), which brings down a derivative that hits the constant flux and time translation generator, giving zero. Or more simply said, the flux profile is obviously time translation invariant.
+
+\subsection{Axion determination}
+Now, we determine the normalization constant $N_H$ by demanding that the RR axion carries the proper eigenvalue under $H$. The eigenvalue should be 4 to all orders since it is dual to $F \wedge F$ and is protected. The action of $H$ on the axion is obviously proportional to the axion but with its profile time differentiated, and so the axion profile has to be proportional to $e^{i \Delta \frac{t}{R}}$ as we would expect. The concrete calculation goes as follows. Take the zeroth order RR axion
+\be
+f_{\alpha\beta}^{(0)} c\bar{c} e^{-\frac{1}{2}\phi} S^\alpha e^{-\frac{1}{2} \bar{\phi}} \bar{S}^\beta,
+\ee
+where $f_{\alpha\beta}^{(0)} = (\gamma^\mu)_{\alpha \beta} \partial_\mu c^{(0)}$, $\Box c^{(0)} = 0$ and compute the 2-bracket with $H$, starting with the OPE
+\be
+\begin{aligned}
+&c\bar{c} e^{-\phi} \psi^0 e^{-2\bar{\phi}} \bar{\partial} \bar{\xi}(-z_0) f_{\alpha \beta}^{(0)} c\bar{c} e^{-\frac{1}{2}\phi} S^\alpha e^{-\frac{1}{2} \bar{\phi}} \bar{S}^\beta(z_0) \sim \\
+&-f_{\alpha \beta}^{(0)} c\bar{c}(-z_0)c\bar{c}(z_0) e^{-\phi} \psi^0(-z_0) e^{-\frac{1}{2}\phi} S^\alpha(z_0) e^{-2\bar{\phi}} \bar{\partial}\bar{\xi}(-z_0) e^{-\frac{1}{2}\bar{\phi}} \bar{S}^\beta(z_0) \sim \\
+&- f_{\alpha \beta}^{(0)} 2\partial c\bar{\partial} \bar{c} c\bar{c} z_0 \bar{z}_0 \frac{i}{2(-2z_0)} (\gamma^0)^{\alpha \gamma} e^{-\frac{3}{2}\phi} S_\gamma \frac{1}{-2\bar{z_0}} \bar{\partial}\bar{\xi} e^{-\frac{5}{2}\bar{\phi}} \bar{S}^\beta,
+\end{aligned}
+\ee
+so that before picture-raising, the bracket is
+\be
+-\frac{i}{2} N_H f_{\alpha \beta}^{(0)} (\gamma^0)^{\alpha \gamma} (\partial c + \bar{\partial} \bar{c}) c\bar{c}  e^{-\frac{3}{2}} \bar{S}_\gamma \bar{\partial} \bar{\xi} e^{-\frac{5}{2} \bar{\phi}} \bar{S}^\beta.
+\ee
+Picture-raising finally gives
+\be
+- N_H\frac{i}{2} \cdot\big(- \frac{1}{4}\big) \cdot \big(-\frac{i}{4}\big) \slashed{\partial}_{\gamma \delta} N_H f_{\alpha \beta}^{(0)} (\gamma^0)^{\alpha \gamma} c  e^{-\frac{1}{2}} \bar{S}^\delta \bar{c} e^{-\frac{1}{2} \bar{\phi}} \bar{S}^\beta,
+\ee
+so that effectively, the profile shifts to
+\be
+f_{\alpha \beta}^{(0)} \to \frac{N_H}{32} (\slashed{\partial} \gamma^0 f^{(0)})_{\alpha \beta}.
+\ee
+Writing $f_{\alpha\beta}^{(0)} = (\gamma^\mu)_{\alpha \beta} \partial_\mu c^{(0)}$ and using $\Box c^{(0)} = 0$, we get
+\be
+\frac{N_H}{32} (\slashed{\partial} \gamma^0 f^{(0)})_{\alpha \beta} = \frac{N_H}{32} (\gamma^\mu \gamma^0 \gamma^\nu)_{\alpha \beta} \partial_\mu \partial_\nu c^{(0)} = \frac{N_H}{16} \partial^0 f_{\alpha \beta}^{(0)}.
+\ee
+It is thus clear that we must have (remember that the Hamiltonian also has a conjugate part)
+\be
+2\frac{N_H}{16} i \Delta = \Delta
+\ee
+with $\Delta = 4$ so that $N_H = -8i$.
+
+\subsection{Picture-raising determination}
+We can check that this normalization is consistent by looking at the picture-zero Hamiltonian which takes the standard form
+\be
+	N_{0H}\big(c\partial X^{0}-\B{c}\B{\partial}X^{0}\big).
+\ee
+To determine the normalization $N_{0H}$, we consider the action of this generator on a general ghost number 2 string field $Vc\B{c}\Sigma\B{\Sigma}$ where each $\Sigma,\B{\Sigma}$ has conformal weight $+1$ and their ghost numbers sum to zero. The OPE between the generator and this string field amounts to
+\be
+	\frac{N_{0H}}{2}\partial^{0}Vc\partial c\B{c}\Sigma\B{\Sigma}+\frac{N_{0H}}{2}\partial^{0}Vc\B{c}\B{\partial}\B{c}\Sigma\B{\Sigma}
+\ee
+which, after the action of $b_{0}^{-}$, amounts to
+\be
+	[H^{(0)}_{0}\otimes Vc\B{c}\Sigma\B{\Sigma}]=-N_{H0}\partial^{0}Vc\B{c}\Sigma\B{\Sigma}.
+\ee
+In flat space, we have that $V\propto e^{i\omega t}$, and we conclude that $N_{0H}=i$ for us to get
+\be
+	[H^{(0)}_{0}\otimes Vc\B{c}\Sigma\B{\Sigma}]=\omega Vc\B{c}\Sigma\B{\Sigma}.
+\ee
+
+Now we determine the numerical factors involved in the picture raising of the -1 picture Hamiltonian. For that, we need
+\be
+	\mathcal{X}_{0}ce^{-\phi}\psi^{0}=-\frac{1}{2}c\partial X^{0}+\cdots
+\ee
+and
+\be
+	\mathcal{X}_{0}ce^{-2\phi}\partial\xi=+\frac{1}{4}
+\ee
+such that we conclude that the picture -1 Hamiltonian $H^{(0)}_{-1}$ is related to the picture 0 Hamiltonian $H^{(0)}_{0}$ via
+\be
+	\mathcal{X}_{0}\B{\mathcal{X}}_{0}H^{(0)}_{-1}=-\frac{1}{8}H^{(0)}_{0}+\cdots.
+\ee
+Here, the $\cdots$ stand for extra terms which will no give contributions to the computations we will consider in the next section. This means that the picture -1 Hamiltonian is given by
+\be
+	-8ic\B{c}\big(e^{-\phi}\psi^{0}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{0}\big)
+\ee
+which is consistent with $N_{H}$ determined above via the axion computation.
+
+\subsection{Second order Hamiltonian $H^{(2)}$}
+We will now consider the second-order correction to the Hamiltonian by computing the 2-bracket $[\psi^{(2)}\otimes H^{(0)}]$, starting with the contribution due to the metric component of the second order background solution. One starts by computing the OPE
+\ie
+    &h_{\mu\nu}^{(2)}(X)c\B{c}e^{-\phi}\psi^{\mu}e^{-\B{\phi}}\B{\psi^{\nu}}(-z)c\B{c}e^{-\phi}\psi^0e^{-2\B{\phi}}\B{\partial}\B{\xi}(z)\sim\\
+    &\sim\frac{1}{(-2z)^2}\times\frac{1}{(-2\B{z})^2}\times(-1)\times\frac{1}{2}h^{0}\,_{\nu}ce^{-\phi}(-z)ce^{-\phi}(z)\B{c}e^{-\B{\phi}}\B{\psi}^{\nu}(-\B{z})\B{c}e^{-2\B{\phi}}\B{\partial}\B{\xi}(\B{z})\\
+    &\quad+\frac{1}{(-2z)}\times\frac{1}{(-2\B{z})^2}\times(-1)h_{\mu'\nu}ce^{-\phi}\psi^{\mu'}(-z)ce^{-\phi}\psi^0(z)\B{c}e^{-\B{\phi}}\B{\psi}^{\nu}(-\B{z})\B{c}e^{-2\B{\phi}}\B{\partial}\B{\xi}(\B{z})
+\fe
+where $\mu'\neq0$. Now we have to Taylor expand these expressions around zero. For the first holomorphic expansion, we find a single contribution
+\be
+    h^{0}\,_{\nu}ce^{-\phi}(-z)ce^{-\phi}(z)=2z^2\partial_{\mu}h^{0}\,_{\nu}c\partial ce^{-2\phi}\partial X^{\mu}
+\ee
+while the second holomorphic expansion yields simply
+\be
+    -2z^2h_{\mu'\nu}c\partial ce^{-2\phi}\psi^{\mu'}\psi^{0}.
+\ee
+On the other hand, both anti-holomorphic expansions yield the same 4 terms
+\ie \label{antiholTaylor}
+    &-2\B{c}\B{\partial}\B{c}e^{-3\B{\phi}}\B{\partial}\B{\psi}^{\nu}\B{\partial}\B{\xi}+2\B{c}\B{\partial}\B{c}e^{-3\B{\phi}}\B{\psi}^{\nu}\B{\partial}^2\B{\xi}\\
+    &+2\B{c}\B{\partial}\B{c}\partial_{\mu}f(X)e^{-3\B{\psi}}\B{\psi}^{\nu}\B{\partial}\B{\xi}\B{\partial}X^{\mu}+\frac{2}{3}\B{c}\B{\partial}\B{c}\B{\partial}e^{-3\B{\phi}}\B{\psi}^{\nu}\B{\partial}\B{\xi}.
+\fe
+Now that we have all the terms that have to be picture-raised, we need two extra equations, namely
+\be
+    \mathcal{X}_0\cdot\partial_{\mu}h^{0}\,_{\nu}c\partial ce^{-2\phi}\partial X^{\mu}=\frac{1}{2}\partial_{\mu}h^0\,_{\nu}c\partial ce^{-\phi}\psi^{\mu}
+\ee
+and
+\be
+    \mathcal{X}_0\cdot h_{\mu'\nu}c\partial ce^{-2\phi}\psi^{\mu'}\psi^{0}=-\frac{1}{4}(\partial^{\mu'}h_{\mu'\nu}c\partial ce^{-\phi}\psi^0-\partial^0h_{\mu'\nu}c\partial ce^{-\phi}\psi^{\mu'}).
+\ee
+Now that we have all the necessary ingredients, we act with $b_0^-$ on the Taylor expanded expressions and picture-raise. We find the following types of terms
+\ie
+    &\alpha_1\partial_{\mu}\partial^{\nu}h^{(0)}\,_{\nu}c_0^+c\B{c}e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+\alpha_2\partial_{\mu}h^0\,_{\nu}c\B{c}e^{-\phi}\psi^{\mu}e^{-\B{\phi}}\B{\psi}^{\nu}\\
+    &\alpha_3(\partial^{\mu'}\partial^{\nu}h_{\mu'\nu}c_0^+c\B{c}e^{-\phi}\psi^0e^{-2\B{\phi}}\B{\partial}\B{\xi}-\partial^0\partial^{\nu}h_{\mu'\nu}c_0^+c\B{c}e^{-\phi}\psi^{\mu'}e^{-2\B{\phi}}\B{\partial}\B{\xi})\\
+    &\alpha_4(\partial^{\mu'}h_{\mu'\nu}c\B{c}e^{-\phi}\psi^0e^{-\B{\phi}}\B{\psi}^{\nu}-\partial^0h_{\mu'\nu}c\B{c}e^{-\phi}\psi^{\mu'}e^{-\B{\phi}}\B{\psi}^{\nu}).
+\fe
+
+Next, we consider the contribution due to the ghost-dilaton term in the second order solution. The first OPE one considers is
+\be
+    \phi(X)c\B{c}\eta e^{-2\B{\phi}}\B{\partial}\B{\xi}(-z)c\B{c}e^{-\phi}\psi^{0}e^{-2\B{\phi}}\B{\partial}\B{\xi}(z).
+\ee
+However, since there is no holomorphic contraction, this piece of the 2-bracket does not contribute. Next, we consider
+\ie
+    &\phi(X)c\B{c}\eta e^{-2\B{\phi}}\B{\partial}\B{\xi}(-z)c\B{c}e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^0(z)\\
+    &\sim(-1)\times\frac{1}{(-2z)^2}\times\frac{1}{(-2\B{z})^2}\phi(X)c(-z)ce^{-2\phi}(z)\B{c}e^{-2\B{\phi}}\B{\partial}\B{\xi}(-\B{z})\B{c}e^{-\B{\phi}}\B{\psi}^0(\B{z}).
+\fe
+Here, the holomorphic Taylor expansion yields two terms, namely
+\be
+    -2\partial\phi c\partial ce^{-2\phi}+2\phi c\partial c\partial e^{-2\B{\phi}},
+\ee
+whereas the anti-holomorphic expansion is analogous to that in (\ref{antiholTaylor}). After computing the $b_0^-$-action on the Taylor expanded result, we realize that we need the extra picture-changing equation
+\be
+    \mathcal{X}_0\cdot\phi(X)c\partial c\partial e^{-2\phi}=-\partial_{\mu}\phi(X)c\partial ce^{-\phi}\psi^{\mu}+\phi(X)c\eta.
+\ee
+Now that all the ingredients are ready, we carry out the complete computation and find three types of resulting terms. These are
+\be
+    \alpha_1\partial_{\mu}\partial^0\phi(X)c_0^+c\B{c}e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+\alpha_2\partial^0\phi(X)c\B{c}\eta e^{-2\B{\phi}}\B{\partial}\B{\xi}+\alpha_3\partial_{\mu}\phi(X)c\B{c}e^{-\phi}\psi^{\mu}e^{-\B{\phi}}\B{\psi}^0.
+\ee
+
+
+\section{Identifying the special supersymmetry generators $\mathcal{S}_\alpha$}
+In this section, we determine the linear combinations of super-isometry generators that correspond to the fermionic generators $\{\mathcal{Q}^I\,_{a},\B{\mathcal{Q}}_{I\dot{a}},\mathcal{S}_I\,^{a},\B{\mathcal{S}}^{I\dot{a}}\}$ of the boundary $\mathcal{N}=4,\ d=4$ super Yang-Mills theory. In order to do so, we look for linear combinations of our general super-isometry generators which are eigenvectors with respect to the 2-bracket with the Hamiltonian. Before we begin, we recall that the extended system equation that encodes the isometry algebra reads
+\be \label{algebra}
+	\sum_{n=0}^{\infty}\frac{1}{n!}[\psi^{\otimes n}\otimes\lambda^{A}\otimes\lambda^{B}]'=f^{AB}\,_{C}\lambda^{C}+Q_{\psi}\omega^{AB},
+\ee
+where in the present case $f^{AB}\,_{C}$ denotes the $\mathfrak
+{psu}(2,2|4)$ structure constants, $A,B,C$ label generators and $\omega^{AB}$ is a massless auxiliary string field. In particular, we note that the string bracket between the two isometry string fields of interest has background string field insertions.
+
+
+\subsection{Flat space}
+We start by considering the leading order contribution, which amounts to the flat space analysis. Since the supercharges are constant, the 2-bracket between them and any other translation generator yields zero. This is expected, as translations and supersymmetries are known to commute in flat space. Furthermore, it is consistent with the fact that the perturbative expansion of the super-isometry generators starts at order $1$ (recall that the expansion of the Hamiltonian starts at order $R$).
+
+Now we can look at the anti-commutators between two super-isometry generators. The 32 generators can be written in terms of two string fields, which are themselves linear combinations of string fields in the RNS and NSR sectors. These two string fields have opposite worldsheet parity and are given by
+\be \label{FlatSusy}
+    \lambda^{\pm}\equiv\epsilon^{(0)}_{\alpha}c\B{c}\big(e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}\pm e^{-2\phi}\partial\xi e^{-\frac{1}{2}\B{\phi}}\B{S}^{\alpha}\big)
+\ee
+where $\epsilon^{(0)}_{\alpha}$ is a constant spinor. As will be shown for general profiles in a later section, the 2-bracket between two $\lambda^+$ or two $\lambda^-$ yields the worldsheet parity even string field which corresponds to the translation generator
+\be
+    [\lambda_1^{\pm}\otimes\lambda_2^{\pm}]=\frac{i}{4}\big(\epsilon_1\gamma_{\mu}\epsilon_2\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big).
+\ee
+One can also consider the 2-bracket between one $\lambda^+$ and $\lambda^-$ which yields the worldsheet parity odd string field
+\be
+    [\lambda_1^{+}\otimes\lambda_2^{-}]=\frac{i}{4}\big(\epsilon_1\gamma_{\mu}\epsilon_2\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big).
+\ee
+Note, however, that this is $Q_{B}$-exact
+\be
+    Q_{B}\omega^{(0)}=\frac{i}{4}\big(\epsilon_1\gamma_{\mu}\epsilon_2\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)
+\ee
+where
+\ie
+    \omega^{(0)}\equiv-\frac{i}{2}\big(\epsilon_1\slashed{X}\epsilon_2\big)c\B{c}e^{-2\phi}\partial\xi e^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\fe
+
+\subsection{First order}
+We will now consider the 2-brackets which contribute at first order in the perturbative expansion. We will do so for the general super-isometry generators we considered in the $AdS_5\times S^5$ paper. The two cases are same worldsheet parity, meaning two $\lambda^+$'s or two $\lambda^-$'s, and mixed worldsheet parity i.e. one $\lambda^+$ and $\lambda^-$. We compute
+\ie
+    &[\lambda_1^{(0)\pm}\otimes\lambda_2^{(1)\pm}]+[\lambda_1^{(1)\pm}\otimes\lambda_2^{(0)\pm}]\equiv\WT{V}_{\mu}c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)\\
+    &=\frac{1}{16}\big(\epsilon_1^{(0)}\gamma_{\mu}F^{(1)}\slashed{X}\epsilon_2^{(0)}+\epsilon_1^{(0)}\slashed{X}F^{(1)}\gamma_{\mu}\epsilon_2^{(0)}\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)
+\fe
+which we can verify again to be $Q_B$-exact
+\be
+    [\lambda_1^{(0)\pm}\otimes\lambda_2^{(1)\pm}]+[\lambda_1^{(1)\pm}\otimes\lambda_2^{(0)\pm}]=Q_B\omega^{(1)}
+\ee
+where
+\be
+    \omega^{(1)}=-\frac{1}{8}\big(\epsilon^{(0)}\slashed{X}F^{(1)}\slashed{X}\epsilon^{(0)}\big).
+\ee
+Furthermore, we can also compute
+\ie \label{P1st}
+    &[\lambda_1^{(0)+}\otimes\lambda_2^{(1)-}]+[\lambda_1^{(1)+}\otimes\lambda_2^{(0)-}]\equiv V_{\mu}c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)\\
+    &=-\frac{1}{16}\big(\epsilon_1^{(0)}\gamma_{\mu}F^{(1)}\slashed{X}\epsilon_2^{(0)}-\epsilon_1^{(0)}\slashed{X}F^{(1)}\gamma_{\mu}\epsilon_2^{(0)}\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)
+\fe
+which is $Q_B$-closed
+\ie
+\partial^{\mu}{V}_{\mu}=0,\quad \partial_{(\mu}{V}_{\nu)}=0.
+\fe
+However, it seems that this profile is automatically zero. To see why, consider $\mu\in AdS_5$. Then, the expression reduces to
+\be
+\epsilon_1^{(0)}\big(\WT{F}\slashed{X}-\slashed{X}\WT{F}\big)\epsilon_2^{(0)}
+\ee
+where $\WT{F}$ denotes a 4-form with four $AdS_5$ indices. Then, in the $\gamma^{\nu}X_{\nu}$ sum, if the $\gamma$-matrix index is among those in $\WT{F}$, the expression vanishes due to the anti-symmetry of the 3-form. If the index is not among those in $\WT{F}$, then the two terms cancel out and we end up with zero. Considering now the case $\mu=i\in S^5$, we can have 3 possibilities for
+\be
+\epsilon_1^{(0)}\big(\gamma_i{F}^{(1)}\slashed{X}-\slashed{X}{F}^{(1)}\gamma_i\big)\epsilon_2^{(0)}.
+\ee
+If the $\gamma$-matrix index in the $\gamma^{\nu}X_{\nu}$ sum is not in $AdS_5$ and is not equal to $i$, then we get a 7-form and the profile vanishes due to its anti-symmetry. If the index is in $AdS_5$, then a cancellation occurs between the two terms, which is also what occurs if the index is equal to $i$. We conclude that the profile vanishes for all $\mu$.
+
+
+\subsection{Hamiltonian eigenvectors}
+Now that we have a better understanding about the general cases, we will move on to the determination of the Hamiltonian eigenvectors. We are led to consider the order $1$ contribution, starting with the bracket $[H^{(0)}\otimes\lambda^{(1)}]$. We start by focusing on the contributions coming from the 2-bracket between the components $c\B{c}e^{-\phi}\psi^{0}e^{-2\B{\phi}}\B{\partial}\B{\xi}$ and $\epsilon^{(1)}_{\alpha}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}$. First, the OPE between these components yields
+\be
+	\frac{N_{H}}{(-2z_{0})}\times\frac{1}{(-2\B{z}_{0})^{4}}c\B{c}(-z_{0})c\B{c}(z_{0})\frac{i}{2}(\gamma^{0})^{\alpha\beta}\epsilon_{\alpha}^{(1)}e^{-\frac{3}{2}\phi}S_{\beta}(0)e^{-2\B{\phi}}\B{\partial}\B{\xi}(-\B{z}_{0})e^{-2\B{\phi}}\B{\partial}\B{\xi}(\B{z}_{0}).
+\ee
+Now we need to perform a Taylor expansion around $0$ to the first order in $z_{0}$ and to fourth order in $\B{z}_{0}$. Using the Mathematica code, we find that there are five different contributions in total, but only three of them survive the upcoming picture-raising. These are
+\be
+	-\frac{iN_{H}}{48}(\gamma^{0})^{\alpha\beta}\epsilon_{\alpha}^{(1)}c\partial ce^{-\frac{3}{2}\phi}S_{\beta}\B{c}\B{\partial}\B{c}e^{-4\B{\phi}}\B{\partial}\B{\xi}\B{\partial}^{4}\B{\xi}-\frac{iN_{H}}{48}(\gamma^{0})^{\alpha\beta}\epsilon_{\alpha}^{(1)}c\partial ce^{-\frac{3}{2}\phi}S_{\beta}\B{c}\B{\partial}^{3}\B{c}e^{-4\B{\phi}}\B{\partial}\B{\xi}\B{\partial}^{2}\B{\xi}
+\ee
+as well as
+\be
+	+\frac{iN_{H}}{4}(\gamma^{0})^{\alpha\beta}\epsilon_{\alpha}^{(1)}c\partial ce^{-\frac{3}{2}\phi}S_{\beta}\B{c}\B{\partial}\B{c}\B{\partial}^{2}\B{\phi} e^{-4\B{\phi}}\B{\partial}\B{\xi}\B{\partial}^{2}\B{\xi}.
+\ee
+After acting on these terms with $b_{0}^{-}$ and picture-raising, we find
+\be
+	\frac{i}{4}\slashed{\partial}(\gamma^{0})\epsilon^{(1)}c\B{c}e^{-\frac{1}{2}\phi}Se^{-2\B{\phi}}\B{\partial}\B{\xi},
+\ee
+where we have already set $N_{H}=8i$. Finally, we substitute the expression for $\epsilon^{(1)}$ in terms of $\B{\epsilon}^{(0)}$ to conclude that this contribution to the 2-bracket $[H^{(0)}\otimes\lambda^{(1)}]$ amounts to
+\be
+	-\frac{i}{4}\gamma^{1234}\B{\epsilon}^{(0)}c\B{c}e^{-\frac{1}{2}\phi}Se^{-2\B{\phi}}\B{\partial}\B{\xi},
+\ee
+where we have also used $\gamma^{\mu}\gamma^{0}\gamma^{01234}\gamma_{\mu}=2\gamma^{1234}$.
+
+Now we consider the contribution coming from the 2-bracket between the components $c\B{c}e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{0}$ and $\epsilon^{(1)}_{\alpha}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}$. The OPE is
+\be
+	\frac{N_{H}}{-2z_{0}}\frac{1}{(-2\B{z}_{0})^{2}}c\B{c}(-z_{0})c\B{c}(z_{0})\epsilon^{(1)}_{\alpha}(z_{0})e^{-\frac{5}{2}\phi}S^{\alpha}\partial\xi e^{-\B{\phi}}\B{\psi}^{0}{-\B{z}_{0}}e^{-2\B{\phi}}\B{\partial}\B{\xi}(\B{z}_{0}).
+\ee
+Taylor expanding around $0$ produces 4 terms in total. One of them does not survive picture-raising. The surviving terms are
+\be
+\begin{split}
+	&-\frac{N_{H}}{2}\epsilon^{(1)}_{\alpha}c\partial ce^{-\frac{5}{2}\phi}S^{\alpha}\partial\xi \B{c}\B{\partial}\B{c}e^{-3\B{\phi}}\B{\partial}\B{\psi}^{0}\B{\partial}\B{\xi}\\
+	&+\frac{N_{H}}{6}\epsilon^{(1)}_{\alpha}c\partial ce^{-\frac{5}{2}\phi}S^{\alpha}\partial\xi \B{c}\B{\partial}\B{c}\B{\partial}e^{-3\B{\phi}}\B{\psi}^{0}\B{\partial}\B{\xi}\\
+	&+\frac{N_{H}}{2}\partial_{\mu}\epsilon^{(1)}_{\alpha}c\partial ce^{-\frac{5}{2}\phi}S^{\alpha}\partial\xi \B{c}\B{\partial}\B{c}e^{-3\B{\phi}}\B{\partial}X^{\mu}\B{\psi}^{0}\B{\partial}\B{\xi}.
+\end{split}
+\ee
+Only the terms coming from contraction with $-\oint\B{z}\B{b}$ in the $b_{0}^{-}$ action survive picture-raising, such that one ends ups with
+\be
+	\frac{N_{H}}{32}\partial^{0}\epsilon^{(1)}_{\alpha}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\ee
+Substituting $N_{H}=8i$, as well as $\partial^{0}\epsilon^{(1)}=\frac{1}{2}\gamma^{1234}\B{\epsilon}^{(0)}$, we finally conclude that this contribution to the 2-bracket amounts to
+\be
+	\frac{i}{8}\gamma^{1234}\B{\epsilon}^{(0)}_{\alpha}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\ee
+In total, the RNS component of the super-isometry generator gets mapped to
+\be \label{H0RNS1}
+	[H^{(0)}\otimes\lambda^{(1)}_{RNS}]=-\frac{i}{8}\gamma^{1234}\B{\epsilon}_{\alpha}^{(0)}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\ee
+
+Looking now at the contribution coming from the 2-bracket between the zeroth-order Hamiltonian and the NSR component of the super-isometry generator, we find
+\be \label{H0NSR1}
+	[H^{(0)}\otimes\lambda^{(1)}_{NSR}]=+\frac{i}{8}\gamma^{1234}{\epsilon}^{(0)}c\B{c}e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{S}.
+\ee
+The computation is almost identical to the one we just described (the sign coming from the OPE computation is the same as the one above, but there is one sign less from expressing $\B{\epsilon}^{(1)}$ in terms of $\epsilon^{(0)}$).
+
+In principle, one should also consider computing the 3-bracket $[\psi^{(1)}\otimes H^{(0)}\otimes\lambda^{(0)}]$ since, as advertised at the beginning of this section, the bracket between the isometry generators involves background string field insertions. This means that at zeroth order, we should also consider the 3-bracket $[\psi^{(1)}\otimes H^{(0)}\otimes\lambda^{(0)}]$. Luckily, as in previous encounters with the 3-bracket when determining the $AdS_{5}\times S^{5}$ background string field, this one also vanishes. To see why, we refer to the definition
+\be
+	[\Psi^{\otimes 3}] = {\cal G^\#}{ b_0^-\mathbb{P}^- r_0^{-L_0^+} \over -2\pi i} \int_{{\cal D}_{0,4}} dt\wedge d\bar t \, {\cal B}_{\bar t} {\cal B}_t \prod_{i=1}^3 (|q_i|^{L_0^+} \Psi)(z_i) \, - 3 {\rm Vert} \big[[\Psi^{\otimes 2}]_b \otimes \Psi\big].
+\ee
+We see that the end result, before picture-raising with $\mathcal{G}^{\#}$, is proportional to
+\be
+	(c\ \mathrm{ghosts})\times e^{-2\phi}\times e^{-4\B{\phi}}\B{S}^{\alpha}\B{\partial}\B{\xi}\B{\partial}^{2}\B{\xi}.
+\ee
+The action of the $e^{\phi}G_{m}$ and $c\partial\xi$ terms in the PCO is zero because the profiles are constant and there is no $\psi$ or $b$-ghost dependence in this expression. Furthermore, one expects there is no dependence on $\partial^{n}c$ with large enough $n$ for the $\eta$-dependent terms of the PCO to contribute. We conclude that this 3-bracket gives zero. An alternative explanation for why there is no contribution proportional to the super-isometry generators is to compute the correlator
+\be
+	\langle V_{T}(z_{1})\mathcal{X}_{0}(y)\B{\mathcal{X}}_{0}(\B{y})H^{(0)}(z_{2})\lambda^{(0)}(z_{3})\int d^{2}w\psi^{(1)}(w) \rangle
+\ee
+with the test state $V_{T}$ chosen to be the dual to the NSR component of the super-isometry string field, which has a factor of $c\eta$. One concludes that the correlator
+\be
+	\langle c\eta(z_{1})\mathcal{X}_{0}(y)ce^{-\phi}\psi^{0}(z_{2})ce^{-\frac{1}{2}\phi}S^{\alpha}(z_{3})\int d^{2}we^{-\frac{1}{2}\phi}S^{\beta}(w) \rangle
+\ee
+vanishes for all components in the PCO, such that there is no contribution proportional to the super-isometry generators coming from the 3-bracket. Furthermore, it can be explicitly checked that the contributions due to vertical integration are zero.
+
+In any case, we are now ready to find the eigenvectors with respect to the Hamiltonian. First, we start by considering the following linear combinations of super-isometry generators
+\ie
+    \lambda^+\equiv\epsilon^{(0)}_{\alpha}c\B{c}\big(e^{-\frac{1}{2}\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\frac{1}{2}\B{\phi}}\B{S}^{\alpha}\big)+\cdots,\\
+    \lambda^-\equiv\epsilon^{(0)}_{\alpha}c\B{c}\big(e^{-\frac{1}{2}\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\frac{1}{2}\B{\phi}}\B{S}^{\alpha}\big)+\cdots,
+\fe
+whose zeroth order components are worldsheet parity even and odd string fields of (\ref{FlatSusy}) respectively. Looking at the 2-brackets between $H^{(0)}$ and the first order components of $\lambda^{\pm}$, we see that we may identify $\lambda^+$ with the grading 1 generators and $\lambda^-$ with the grading 3 generators of the $\mathfrak{psu}(2,2|4)$ algebra. Indeed, the structure constant between the time-translation generator and these super-isometries is $\mp2i\gamma^{0}F^{(1)}=\pm \gamma^{1234}$, with the sign depending on the grading.
+
+Using (\ref{H0RNS1}) and (\ref{H0NSR1}), we conclude that
+\ie
+    [H^{(0)}\otimes(1+\gamma^{1234})\lambda^{(1)+}]=-\frac{i}{8}(1+\gamma^{1234})\lambda^{(0)-},\\
+    [H^{(0)}\otimes(1-\gamma^{1234})\lambda^{(1)+}]=+\frac{i}{8}(1-\gamma^{1234})\lambda^{(0)-},\\
+    [H^{(0)}\otimes(1+\gamma^{1234})\lambda^{(1)-}]=+\frac{i}{8}(1+\gamma^{1234})\lambda^{(0)+},\\
+    [H^{(0)}\otimes(1-\gamma^{1234})\lambda^{(1)-}]=-\frac{i}{8}(1-\gamma^{1234})\lambda^{(0)+}.
+\fe
+With this in mind, we can find the linear combinations of $\lambda^+,\lambda^-$ which are eigenvectors with respect to $H$. These are
+\ie
+    \mathcal{Q}^{(0)}:\quad[H^{(0)}\otimes(1+\gamma^{1234})(\lambda^+-i\lambda^-)^{(1)}]=+\frac{1}{8}(1+\gamma^{1234})(\lambda^+-i\lambda^-)^{(0)},\\
+    \B{\mathcal{Q}}^{(0)}:\quad [H^{(0)}\otimes(1-\gamma^{1234})(\lambda^++i\lambda^-)^{(1)}]=+\frac{1}{8}(1-\gamma^{1234})(\lambda^++i\lambda^-)^{(0)},\\
+    \mathcal{S}^{(0)}:\quad [H^{(0)}\otimes(1+\gamma^{1234})(\lambda^++i\lambda^-)^{(1)}]=-\frac{1}{8}(1+\gamma^{1234})(\lambda^++i\lambda^-)^{(0)},\\
+    \B{\mathcal{S}}^{(0)}:\quad [H^{(0)}\otimes(1-\gamma^{1234})(\lambda^+-i\lambda^-)^{(1)}]=-\frac{1}{8}(1-\gamma^{1234})(\lambda^+-i\lambda^-)^{(0)}.
+\fe
+Since we expect the $\mathfrak{psu}(2,2|4)$ algebra equation (\ref{algebra}) to hold at higher orders, we also expect the identification above to hold at higher orders, so that the $\mathcal{Q}$'s and $\mathcal{S}$'s can be summed into the proper super-isometry string field expansion.
+
+
+\subsection{Commutator with picture 0 Hamiltonian}
+We start by computing the OPE between the picture 0 Hamiltonian and the RNS component of the super-isometry generators. The result is
+\be
+	H^{(0)}_{0}(-z_{0})\epsilon^{(1)}_{\alpha}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}(z_{0})=i\partial^{0}\epsilon^{(1)}_{\alpha}c_{0}^{+}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}
+\ee
+which after $b_{0}^{-}$-action gets taken to
+\be
+	-i\partial^{0}\epsilon^{(1)}_{\alpha}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\ee
+Now using the expression for $\epsilon^{(1)}_{\alpha}$ in terms of $\B{\epsilon}^{(0)}_{\alpha}$ as above, we conclude that
+\be
+	[H^{(0)}_{0}\otimes\epsilon^{(1)}_{\alpha}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}]=-\frac{i}{2}(\gamma^{1234}\B{\epsilon}^{(0)})c\B{c}e^{-\frac{1}{2}\phi}Se^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\ee
+We have the correct eigenvalue by working with the picture 0 Hamiltonian. How to understand the tension between the results?
+
+The extra term proportional to $\eta e^{\phi}\psi^{0}$ that is obtained from picture-raising the picture -1 Hamiltonian does not contribute to the 2-bracket computation. To see this, note that the OPE between this term and both $c e^{-\frac{1}{2}\phi}S^{\alpha}$ and $ce^{-2\phi}\partial\xi$ is regular, and is also killed after $b_{0}^{-}$-action.
+
+In principle, to perform the comparison, one should also compute the 2-bracket between the -1 picture Hamiltonian with the picture-raised version of the super-isometry generators. However, one can check that the result is zero, since the OPE's are not singular and the resulting string fields are always killed by $b_{0}^{-}$-action.
+
+Finally, one should also consider the ``mixed'' brackets
+\be
+	[\mathcal{X}_{0}H^{(0)}_{-1}\otimes\B{\mathcal{X}}_{0}\lambda^{(1)}_{RNS}]+[\B{\mathcal{X}}_{0}H^{(0)}_{-1}\otimes{\mathcal{X}}_{0}\lambda^{(1)}_{RNS}]
+\ee
+which also seem to yield a non-zero contribution. Indeed, take the bracket
+\be
+	[c\partial X^{0}\B{c}e^{-2\B{\phi}}\B{\partial}\B{\xi}\otimes \epsilon_{\alpha}^{(1)}ce^{-\frac{1}{2}\phi}S^{\alpha}]\propto (\gamma^{1234}\B{\epsilon}_{0})c\B{c}e^{-\frac{1}{2}\phi}Se^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\ee
+Likewise, the bracket
+\be
+	[ce^{-2\phi}\partial\xi\B{c}\B{\partial}X^{0}\otimes\epsilon^{(1)}_{\alpha}(\partial\eta+\eta bc+\eta\partial\phi)e^{\frac{3}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}]\propto (\gamma^{1234}\B{\epsilon}_{0})c\B{c}e^{-\frac{1}{2}\phi}Se^{-2\B{\phi}}\B{\partial}\B{\xi}
+\ee
+also contributes.
+
+\subsection{$\{\mathcal{Q},\mathcal{Q}\}$ and $\{\mathcal{Q},\mathcal{S}\}$}
+The most important ingredient to the computation of the $\{\mathcal{Q},\mathcal{Q}\}$ and $\{\mathcal{Q},\mathcal{S}\}$ anti-commutators are the 2-brackets between RNS and NSR sector ghost number 1 string fields. We will now compute them in generality, that is, not assuming anything about the super-isometry profiles $\epsilon_\alpha(X)$.
+
+Starting with the 2-bracket between two RNS sector string fields $\epsilon_{\alpha}^{1,2}(X)c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}$, it is straightforward to check that the end result is
+\be \label{QQcomm}
+    [\lambda^{RNS}_1\otimes\lambda^{RNS}_2]=\frac{i}{8}(\epsilon_1\gamma_{\mu}\epsilon_2)c\B{c}e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\ee
+In principle, one could expect terms with $X^{\mu}$-derivatives acting on the super-isometry profiles coming from the Taylor expansion of the OPE around the midpoint. However, such terms do not survive subsequent picture-raising. A completely analogous computation for the NSR sector yields
+\be
+    [\lambda_1^{NSR}\otimes\lambda_2^{NSR}]=\frac{i}{8}(\B{\epsilon}_1\gamma_{\mu}\B{\epsilon}_2)c\B{c}e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}.
+\ee
+Considering now the 2-bracket between one RNS sector and one NSR sector string fields, it is also straightforward to check that the result is zero because $\mathcal{X}_0c\partial\xi e^{-\frac{5}{2}\phi}S^\alpha=0$. Consequently, for two general super-isometry generator $\lambda^{1,2}=\epsilon^{1,2}_{\alpha}(X)c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}+\B{\epsilon}^{1,2}_{\alpha}(X)c\B{c}e^{-2\phi}\partial\xi e^{-\frac{1}{2}\B{\phi}}\B{S}^{\alpha}$
+\be
+    [\lambda^1\otimes\lambda^2]=\frac{i}{8}(\epsilon_1\gamma_{\mu}\epsilon_2)c\B{c}e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+\frac{i}{8}(\B{\epsilon}_1\gamma_{\mu}\B{\epsilon}_2)c\B{c}e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}.
+\ee
+
+These building blocks allow us to quickly compute the anti-commutators between the $\big(\mathcal{Q},\B{\mathcal{Q}},\mathcal{S},\B{\mathcal{S}}\big)$ string fields at zeroth order. We start with
+\ie
+    [\mathcal{Q}^{(0)}_1\otimes\B{\mathcal{Q}}^{(0)}_2]&=\frac{i}{8}\big(\epsilon^{(0)}_1(1+\gamma^{1234})\gamma_{\mu}(1-\gamma^{1234})\epsilon_2^{(0)}\big)c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu})\\
+    &=\frac{i}{4}(\epsilon_1^{(0)}\gamma_m\epsilon_2^{(0)})c\B{c}(e^{-\phi}\psi^{m}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{m}),
+\fe
+which is only non-zero for $m=1,2,3,4$. This is consistent with the boundary algebra relation $\{\mathcal{Q},\B{\mathcal{Q}}\}\propto P_m$.
+
+Then,
+\ie
+    [\mathcal{Q}^{(0)}_1\otimes\mathcal{S}^{(0)}_2]&=\frac{i}{8}\big(\epsilon^{(0)}_1(1+\gamma^{1234})\gamma_{\mu}(1+\gamma^{1234})\epsilon_2^{(0)}\big)c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu})\\
+    &=\frac{i}{4}(\epsilon_1^{(0)}\gamma_I\epsilon_2^{(0)}+\epsilon_1^{(0)}\gamma_I\,^{1234}\epsilon_2^{(0)})c\B{c}(e^{-\phi}\psi^{I}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{I}),
+\fe
+which is only non-zero for $I\neq1,2,3,4$. This is consistent with the boundary algebra relation $\{\mathcal{Q},\mathcal{S}\}\propto J_{\mu\nu}+D+R_{IJ}$, although we are missing the 4d rotations.
+
+Next,
+\ie
+    [\mathcal{Q}^{(0)}_1\otimes\mathcal{Q}^{(0)}_2]&=\frac{1}{8}\big(\epsilon^{(0)}_1(1+\gamma^{1234})\gamma_{\mu}(1+\gamma^{1234})\epsilon_2^{(0)}\big)c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu})\\
+    &=\frac{1}{8}Q_B\Big(\big(\epsilon^{(0)}_1(1+\gamma^{1234})\slashed{X}(1+\gamma^{1234})\epsilon_2^{(0)}\big)c\B{c}e^{-2\phi}\partial\xi e^{-2\B{\phi}}\B{\partial}\B{\xi}\Big),
+\fe
+which is $Q_B$-exact. This is consistent with the boundary algebra relation $\{\mathcal{Q},\mathcal{Q}\}=0$.
+
+Finally
+\ie
+    [\mathcal{Q}^{(0)}_1\otimes\B{\mathcal{S}}^{(0)}_2]&=\frac{1}{8}\big(\epsilon^{(0)}_1(1+\gamma^{1234})\gamma_{\mu}(1-\gamma^{1234})\epsilon_2^{(0)}\big)c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu})\\
+    &=\frac{1}{8}Q_B\Big(\big(\epsilon^{(0)}_1(1+\gamma^{1234})\slashed{X}(1-\gamma^{1234})\epsilon_2^{(0)}\big)c\B{c}e^{-2\phi}\partial\xi e^{-2\B{\phi}}\B{\partial}\B{\xi}\Big),
+\fe
+which is also $Q_B$-exact. This is consistent with the boundary algebra relation $\{\mathcal{Q},\B{\mathcal{S}}\}=0$.
+
+\subsection{First order}
+We can now start to analyze the first order contributions to the algebra commutation relations. We start with the first order contribution to the $\{\mathcal{Q},\mathcal{S}\}$. The first step is computing the 2-bracket
+\ie
+    [\mathcal{Q}^{(0)}_1\otimes\mathcal{S}^{(1)}_2]&=\frac{i}{8}\big(\epsilon^{(0)}_1(1+\gamma^{1234})\gamma_{\mu}(1+\gamma^{1234})F\slashed{X}\epsilon_2^{(0)}\big)c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu})\\
+    &=\frac{i}{4}(\delta_{\mu}^i\epsilon_1^{(0)}\gamma_i\gamma^0\slashed{X}\epsilon_2+\delta_{\mu}^0\epsilon_1^{(0)}\slashed{X}\epsilon_2^{(0)})c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu})\\
+    &\quad+\frac{i}{4}(\delta_{\mu}^i\epsilon_1^{(0)}\gamma^{1234}\gamma_i\gamma^0\slashed{X}\epsilon_2+\delta_{\mu}^0\epsilon_1^{(0)}\gamma^{1234}\slashed{X}\epsilon_2^{(0)})c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}),
+\fe
+where we note that we have $X$-dependence along all directions. This profile can be made more explicit by recalling anti-symmetry of 3 and 7-forms. In doing so, we arrive at
+\ie
+    [\mathcal{Q}^{(0)}_1\otimes\mathcal{S}^{(1)}_2]&=\frac{i}{4}\Big(\delta_{\mu}^i\epsilon_{1}\WT{F}_a\gamma_i\epsilon_2X^a-\delta_{\mu}^iX_i\epsilon_1\gamma^{01234}\epsilon_2+\delta_{\mu}^0\epsilon_1\gamma^{01234}\epsilon_2X_0+\delta_{\mu}^0\epsilon_1\gamma^{i1234}\epsilon_2X_i\\
+    &\quad+\delta_{\mu}^i\epsilon_1\gamma_i\epsilon_2 X^0-\delta_{\mu}^i\epsilon_1\gamma^0\epsilon_2X_i+\delta_{\mu}^0\epsilon_1\slashed{X}\epsilon_2\Big)c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu})
+\fe
+where $\WT{F}_a$ denotes the 4-form $\gamma_a\gamma^{01234}$.
+
+Next, we have to consider $[\mathcal{Q}_1^{(1)}\otimes\mathcal{S}_2^{(0)}]$.
+In order to do so, we must know the transpose of the first order spinor
+\be
+    \epsilon_{\alpha}^{(1)}=-\frac{i}{2}(F^{(1)}\slashed{X}\epsilon^{(0)})_{\alpha}.
+\ee
+Due to the different indices in the sum $\slashed{X}$, the expression above may contain a 4-form or a 6-form, which dictates the sign one gets when taking the transpose. More precisely, we find
+\be
+    (X^{\mu}\gamma^{01234}\gamma_{\mu}\epsilon^{(0)})_{\alpha}^T=X^{\mu}\delta_{\mu}^a(\epsilon^{(0)}\gamma_a\gamma^{01234})_{\alpha}-X^{\mu}\delta_{\mu}^i(\epsilon^{(0)}\gamma_i\gamma^{01234})_{\alpha}.
+\ee
+Plugging this into the general expression for the 2-brackets we have derived previously, we find
+\ie
+ [\mathcal{Q}_1^{(1)}\otimes\mathcal{S}_2^{(0)}]&=\frac{i}{4}\Big(\delta_{\mu}^0X_0\epsilon_1\gamma^{01234}\epsilon_2+\delta_{\mu}^0X^a\epsilon_1\gamma_a\epsilon_2-\delta_{\mu}^0X_i\epsilon_1\gamma^{i1234}\epsilon_2-\delta_{\mu}^0X^i\epsilon_1\gamma_i\epsilon_2\\
+ &\quad+\delta_{\mu}^iX^a\epsilon_1\WT{F}_a\gamma_i\epsilon_2+\delta_{\mu}^iX^0\epsilon_1\gamma_i\epsilon_2+\delta_{\mu}^iX_i\epsilon_1\gamma^{01234}\epsilon_2+\delta_{\mu}^iX_i\epsilon_1\gamma^0\epsilon_2\Big)\\
+ &\quad\times c\B{c}(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}).
+\fe
+Note that even though there is $X$-dependence in the $AdS_5$ directions, one never gets the $\mu=a$ index.
+
+\subsubsection{$\{\mathcal{Q},\B{\mathcal{Q}}\}$:}
+We will now compute the 2-brackets $[\mathcal{Q}_1^{(1)}\otimes\B{\mathcal{Q}}_2^{(0)}]$ and $[\mathcal{Q}_1^{(0)}\otimes\B{\mathcal{Q}}_2^{(1)}]$. After considering the transposition property described above and performing the simplifications using Diracology, one finds that
+\ie
+  [\mathcal{Q}_1^{(1)}\otimes\B{\mathcal{Q}}_2^{(0)}]+[\mathcal{Q}_1^{(0)}\otimes\B{\mathcal{Q}}_2^{(1)}]=\frac{i}{2}X_m\big(\epsilon_{1}^{(0)}\gamma^{01234}\epsilon_{2}^{(0)}\big)c\B{c}(e^{-\phi}\psi^{m}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{m}).
+\fe
+Unfortunately, this is different from the $Q_B$-closed first order generator that is obtained following a supergravity reasoning, as we will review shortly. Indeed, it is not even $Q_B$-closed.
+
+In principle, one should also consider the 3-bracket $[\mathcal{Q}^{(0)}\otimes\B{\mathcal{Q}}^{(0)}\otimes\psi^{(1)}]$. However, it can be checked that the picture-raising associated with the resulting NSNS sector contribution necessarily involves taking $X^{\mu}$-derivatives on the profiles. Since these are all constant, we conclude that this 3-bracket evaluates to zero.
+
+
+
+\subsection{$\mathcal{Q}$ on the axion}
+We start by considering the 2-bracket between the RNS sector super-isometry generator and the axion, both at zeroth order. It is a straightforward computation that yields
+\begin{equation}
+    [\lambda^{(0)}_{RNS}\otimes\phi_{axion}^{(0)}]=-\frac{1}{4}(\epsilon^{(0)}\gamma_{\mu}f^{(0)})_{\beta}c\B{c}e^{-\phi}\psi^{\mu}e^{-\frac{1}{2}\B{\phi}}\B{S}^\beta.
+\end{equation}
+Here, we note that this is true for any super-isometry profile $\epsilon_{\alpha}(X)$, that is, the fact that the zeroth-order $\epsilon_{\alpha}^{(0)}$ is constant does not play a role in deriving the equation above. However, we will keep the discussion specialized for this case to simplify the further considerations.
+
+Next, we consider some NSR sector string field $\phi_{NSR}^{(0)}\equiv\zeta_{\mu\alpha}c\B{c}e^{-\phi}\psi^{\mu}e^{-\frac{1}{2}\B{\phi}}\B{S}^{\alpha}$ that is assumed to be related to the axion via $\mathcal{Q}$-action. Computing the zeroth-order 2-bracket, we find
+\begin{equation}
+    [\lambda_{RNS}^{(0)}\otimes\phi_{NSR}^{(0)}]=-\frac{1}{32}(\epsilon^{(0)}\gamma^{\mu}\slashed{\partial})_\alpha\zeta_{\mu\beta}c\B{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-\frac{1}{2}\B{\phi}}\B{S}^{\beta}
+\end{equation}
+such that we identify $-\frac{1}{32}(\epsilon^{(0)}\gamma^{\mu}\slashed{\partial})_\alpha\zeta_{\mu\beta}=f_{\alpha\beta}$. Substituting this into the $\mathcal{Q}$-action on the axion, we find
+\begin{equation}
+    \frac{1}{128}(\epsilon_1^{(0)}\gamma^{\mu\rho\nu}\epsilon_2^{(0)})\partial_{\rho}\zeta_{\mu\beta}^{(0)}+\frac{1}{128}(\epsilon_1^{(0)}\gamma^{\mu}\epsilon_2^{(0)})\partial^{\nu}\zeta_{\mu\beta}^{(0)}-\frac{1}{128}(\epsilon_1^{(0)}\gamma^{\mu}\epsilon_2^{(0)})\partial_{\mu}\zeta^{(0)\nu}_{\beta}
+\end{equation}
+where we have used $\partial^{\mu}\zeta_{\mu\alpha}^{(0)}=0$ since $Q\phi_{NSR}^{(0)}=0$. We identify the last two terms as being consistent with $P_{\mu}$ action on the NSR string field, or more generally, to the action of a NSNS isometry generator $a_{\mu}c\B{c}e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}$ with $a_{\mu}\propto(\epsilon_1^{(0)}\gamma_{\mu}\epsilon_2^{(0)})$ on the NSR string field. However, the first term seems weird.
+
+\subsection{$[H,P_{\mu}]$}
+As pointed out by Minjae and Xi, the translation generator gets corrected by a linear profile in $X$ at order $R^{0}$. From the point of view of SFT, this is just a $Q$-closed term that can be added to the isometry string field at order $R^{0}$.
+
+The next to leading order component of the spatial translation generator is given by the BRST-closed string field
+\be
+\begin{split}
+    P_{\mu}^{(1)}=&N_PX^0c\B{c}\big(e^{-\phi}\psi_{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}_{\mu}\big)\\
+    &-N_PX_{\mu}c\B{c}\big(e^{-\phi}\psi^0e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^0\big),
+\end{split}
+\ee
+where the normalization constant $N_P$ is determined in such a way as to recover the commutation relation $[H,P_{\mu}]=iP_{\mu}$. Note that since this is a relative numerical factor between the 0th order and 1st order components of the string field, it is meaningful. As it can be checked, we compute the 2-bracket
+\be
+    [H^{(0)}\otimes P_{\mu}^{(1)}]=-\frac{i}{2}N_PP^{(0)}_{\mu}
+\ee
+such that $N_P=-2$ and we recover the leading order term in the expansion of the commutator. In principle, one should also worry about the 3-bracket $[H^{(0)}\otimes P_{\mu}^{(0)}\otimes \psi^{(1)}]$. However, since all of the profiles involved are constant, the OPE's between the different string fields is zero and this contribution vanishes.
+
+\section{Isometries in $AdS_5\times S^5$}
+We start by considering the coordinate transformation that takes us from Poincaré coordinates to global $AdS_5\times S^5$. The new coordinate system $(\tau,\rho,\vec{\Omega})$ is defined in terms of the old coordinates $(x_i,z)$ via
+\ie
+    e^{\tau}&\equiv\sqrt{x^2+z^2},\quad
+    \tanh{\rho}&\equiv\frac{|x|}{\sqrt{x^2+z^2}},\quad
+    \vec{\Omega}&\equiv\frac{\vec{x}}{|x|}
+\fe
+such that the translation generator in the old coordinates is re-expressed as
+\be \label{poincglob}
+    \frac{\partial}{\partial x_i}=e^{-\tau}\tanh{\rho}\Omega_i\frac{\partial}{\partial\tau}+e^{-\tau}\Omega_i\frac{\partial}{\partial\rho}+e^{-\tau}\coth{\rho}\sum_{j\neq i}\Omega_j^2\frac{\partial}{\partial \Omega_i}-e^{-\tau}\coth{\rho}\Omega_i\Omega_j\frac{\partial}{\partial\Omega_j}.
+\ee
+
+
+Next, we consider the map relating the global coordinates and the projective coordinates we use to parametrize our string field solution
+\be
+    (X^{-1},X^{0},X^{r})=(R\sin{\tau}\cosh{\rho},R\cos{\tau}\cosh{\rho},R\Omega^r\sinh{\rho}).
+\ee
+We will consider the mapping of $\frac{\partial}{\partial\tau}, \frac{\partial}{\partial\rho}$ and $\frac{\partial}{\partial\Omega_i}$ to the embedding coordinate derivatives.
+\be
+\begin{split}
+    \frac{\partial}{\partial\tau}&=-X^0\partial_{-1}+X^{-1}\partial_0=-X^0\partial_{-1}+\sqrt{R^2+X_aX^a}\partial_0\\
+    &=-X^0\partial_{-1}+R\Big(1+\frac{X_aX^a}{2R^2}+\cdots\Big)\partial_0
+\end{split}
+\ee
+which is the expected result. It will be convenient, however, to write this expression in terms of global coordinates, that is
+\be \label{dtau}
+\begin{split}
+    \frac{\partial}{\partial\tau}=-R\cos{\tau}\cosh{\rho}\partial_{-1}+R\sin{\tau}\cosh{\rho}\partial_0.
+\end{split}
+\ee
+Next, we consider
+\be \label{drho}
+    \frac{\partial}{\partial\rho}=R\sin{\tau}\sinh{\rho}\partial_{-1}+R\cos{\tau}\sinh{\rho}\partial_0+R\Omega^r\cosh{\rho}\partial_r
+\ee
+Finally, we consider $\frac{\partial}{\partial\Omega^i}$. We express it as
+\be \label{dOmega}
+    \frac{\partial}{\partial\Omega^i}=R\sinh{\rho}\partial_i.
+\ee
+Note that we can rewrite
+\be
+    R\sinh{\rho}=\pm\sqrt{R^2\cosh^2{\rho}-R^2}=\pm\sqrt{(X^{-1})^2+(X^0)^2-R^2}=\pm\sqrt{(X^i)^2}
+\ee
+such that
+\be
+    \frac{\partial}{\partial\Omega^r}=\pm\sqrt{(X^{i})^{2}}\partial_r.
+\ee
+
+Now we can write the Poincaré coordinate translation generators in terms of the embedding coordinates we use to express our string field solution. Using Eqs. (\ref{poincglob}), (\ref{dtau}), (\ref{drho}) and (\ref{dOmega}), we find
+\begin{equation}
+\begin{split}
+    \frac{\partial}{\partial x^i}=&Re^{-\tau}(\sin{\tau}-\cos{\tau})\sinh{\rho}\Omega_i\frac{\partial}{\partial X^{-1}}\\
+    &+Re^{-\tau}(\sin{\tau}+\cos{\tau})\sinh{\rho}\Omega_i\frac{\partial}{\partial X^0}\\
+    &+Re^{-\tau}\cosh{\rho}(1-\Omega_i^2)\frac{\partial}{\partial X^i}.
+\end{split}
+\end{equation}
+Now we re-express the functions in terms of projective coordinates. We can start by rewriting
+\begin{equation}
+\begin{split}
+    \frac{\partial}{\partial x^i}=&e^{-\tau}(\sin{\tau}-\cos{\tau})X_{i}\frac{\partial}{\partial X^{-1}}\\
+    &+e^{-\tau}(\sin{\tau}+\cos{\tau})X_{i}\frac{\partial}{\partial X^0}\\
+    &+Re^{-\tau}\cosh{\rho}(1-\Omega_i^2)\frac{\partial}{\partial X^i}.
+\end{split}
+\end{equation}
+
+Alternatively, we can express the embedding coordinates in Poincaré patch directly
+\be
+(X^{-1}, X^0, X^i) = \big(\frac{1}{2z}(R^2+z^2 + x^\mu x_\mu), \frac{1}{2z}(R^2-z^2 - x^\mu x_\mu), \frac{R}{z} x^i\big)
+\ee
+so that $X^{-1} + X^0 = \frac{R^2}{z}$, giving for the translation and dilatation generators
+\be
+\begin{aligned}
+	\partial_{x^i} &= \frac{X^{-1} + X^{0}}{R} \partial_{X^i} - \frac{X^i}{R} \partial_{X^0} = \frac{X^{-1}}{R} \partial_{X^i} + \frac{X^0 \partial_{X^i}}{R} - \frac{X^i \partial_{X^0}}{R} \\
+		       &\sim \partial_{X^i} + \frac{1}{R} (X^0 \partial_{X^i} - X^i \partial_{X^0}) \\
+	z \partial_z &= - X^i \partial_{X^i} - \frac{R^2 - x^\mu x_\mu + z^2}{2z} \partial_{X^0} = - X^i \partial_{X^i} - \big(X^0 + \frac{R^2}{X^{-1} + X^0} \big) \partial_{X^0} \\
+		     &\sim -R \partial_{X^0} - X^\mu \partial_{X^\mu} + \frac{X^2}{2R} \partial_{X^0} \ldots,
+\end{aligned}
+\ee
+where in the last step, we performed the large radius expansion. Note that on the other hand
+\be
+\pdv{}{\tau} = X^{-1} \partial_{X^0} \sim R \partial_{X^0} + \frac{X^2}{2R} \partial_{X^0} + \ldots,
+\ee
+which should be consistent with $e^\tau = \sqrt{x^2 + z^2}$ so that global time translation rescales all coordinates at the same time. We see that at the level of Killing vectors
+\be
+\comm{\partial_\tau}{\partial_{x^i}} = \partial_{x^i},
+\ee
+as one would expect.
+
+One can also ask how does the inversion $x^\mu \to \frac{x^\mu}{x^2 + z^2}, z \to \frac{z}{x^2 + z^2}$ act on the embedding coordinates. It turns out that it essentially flips $X^0 \to - X^0$, as we now show. To verify this, we express
+\be
+\begin{aligned}
+	z &= \frac{R^2}{X^{-1} + X^0} \to \frac{R^2}{X^{-1} - X^0} = R^2 \frac{z}{x^2 + z^2} \\
+	x^i &= z \frac{X^i}{R} \to R^2 \frac{z}{x^2 + z^2} \frac{X^i}{R} = R^2 \frac{x^i}{x^2 + z^2},
+\end{aligned}
+\ee
+so that we have to also rescale the embedding coordinates.
+
+\section{Finding the maximally spinning level 4 component of the Konishi multiplet}
+The Konishi multiplet contains a single operator at level 4, such that it carries the maximal spin i.e. spin 4 in a single plane in the $AdS_5$ directions and is an $R$-charge singlet. In the bulk, at zeroth order, we identify this operator with the mass level 1 string field
+\be
+\phi^{(0)} = a^{(0)}(X^+) c\bar{c} e^{-\phi} \psi^+ \partial X^+ e^{-\bar{\phi}} \bar{\psi}^+ \bar{\partial} X^+.
+\ee
+The second order scaling dimension of the Konishi will be computed by acting on the second order Konishi with the second order Hamiltonian in the next section. To get the second order Konishi, we solve the linearized EOM.
+
+At zeroth order, we just get the conditions that
+\be
+    \big(1-\frac{1}{2}\Box\big)a^{(0)}=0,\quad\partial^+a^{(0)}=0,
+\ee
+since
+\be
+\begin{aligned}
+	Q \cdot \phi^{(0)} = &-\frac{1}{2} \Box a^{(0)} c_0^+ c e^{-\phi} \psi^+ \partial X^+ \bar{c} e^{-\bar{\phi}} \bar{\psi}^+ \bar{\partial} X^+ + a^{(0)} c_0^+ c e^{-\phi} \psi^+ \partial X^+ \bar{c} e^{-\bar{\phi}} \bar{\psi}^+ \bar{\partial} X^+ \\
+			     &- \frac{1}{4} \partial^+ a^{(0)} c \eta \partial X^+ \bar{c} e^{-\bar{\phi}} \bar{\psi}^+ \bar{\partial} X^+ + \frac{1}{4} \partial^+ a^{(0)} c e^{-\phi} \psi^+ \partial X^+ \bar{c} \bar{\eta} \bar{\partial} X^+
+\end{aligned}
+\ee
+
+At first order, we get
+\be
+Q\phi^{(1)} = - [\phi^{(0)} \otimes \psi^{(1)}]',
+\ee
+where the primed bracket is the effective bracket of the mass level 1 theory. The first order bracket is easily computed since for the OPE (recycling results for third order solution brackets from previous paper), we have before acting the PCO
+\be
+-2 a^{(0)}(X^+) (\gamma^+ F^{(1)} \gamma^+)^{\alpha \beta} c_0^+ c\bar{c} e^{-\frac{3}{2}\phi} S_\alpha \partial X^+ e^{-\frac{3}{2}\bar{\phi}} \bar{S}_\beta \bar{\partial} X^+,
+\ee
+where $\gamma^+ F^{(1)} \gamma^+ = 0$ since both $\gamma^0$ and $\gamma^1$ commute with $F^{(1)}$, and $(\gamma^+)^2 = 0$. The first order bracket is thus zero.
+
+At second order, we have
+\be
+Q \phi^{(2)} = -[\phi^{(0)} \otimes \psi^{(2)}]' - \frac{1}{2} [\phi^{(0)} \otimes (\psi^{(1)})^{\otimes 2}]',
+\ee
+and we start by computing the 2-bracket. To do that, we need to compute the OPE
+\be
+\begin{aligned}
+		&h_{\mu \nu}^{(2)}(X) c\bar{c} e^{-\phi} \psi^\mu e^{-\bar{\phi}} \bar{\psi}^\nu(-z_0) \,a^{(0)}(X^+) c\bar{c} e^{-\phi} \psi^+ \partial X^+ e^{-\bar{\phi}} \bar{\psi}^+ \bar{\partial} X^+(z_0) = \\
+		& c\bar{c}(-z_0) c\bar{c}(z_0) e^{-\phi} \psi^\mu(-z_0) e^{-\phi} \psi^+(z_0) e^{-\bar{\phi}} \bar{\psi}^\nu(-z_0) e^{-\bar{\phi}} \bar{\psi}^+(z_0) h_{\mu \nu}^{(2)}(X(-z_0)) a^{(0)}(X^+) \partial X^+ \bar{\partial}X^+(z_0).
+\end{aligned}
+\ee
+We can use that $h_{--} = -\frac{1}{4} (X^+)^2$, to see that once the fermions are contracted, the free bosons cannot contract anymore. Also, the free bosons can only contract with $h_{++} = - \frac{1}{4} (X^-)^2$, but then the fermion contribution without derivatives vanishes. This gives a contribution like $4 a^{(0)}(X^+) c\partial c \bar{c} \bar{\partial} \bar{c} \psi^+ \partial \psi^+ e^{-2\phi} \bar{\psi}^+ \bar{\partial} \bar{\psi}^+ e^{-2\bar{\phi}}$. The PCO acts via the supercurrent term, and we get a leftover $\partial X^+$, giving a "mass" term in the EOM, proportional to $ a^{(0)} c_0^+ c\bar{c} e^{-\phi} \psi^+ \partial X^+ e^{-\bar{\phi}} \bar{\psi}^+ \bar{\partial} X^+$. After taking into account this term, we can effectively forget about OPE with the free boson sector. From that sector, we get the OPE
+\be
+2c\partial c \bar{c} \bar{\partial} \bar{c} h_{\mu \nu}^{(2)} a^{(0)} \psi^\mu \psi^+ \partial X^+ e^{-2\phi} \bar{\psi}^\nu \bar{\psi}^+ \bar{\partial} X^+ e^{-2\bar{\phi}}.
+\ee
+From the action of supercurrent term of PCO, we need to pick out the second order pole. That can arise from contracting $\partial X^-$ with $\partial X^+$, but then we get $(\psi^+)^2 = 0$. Another way this can arise is from contractions with the metric (not with $a^{(0)}$ as that again gives zero because of fermions). The possible structures are essentially $\partial_\rho h_{\mu \nu} (\eta^{\mu \rho} \psi^+ - \eta^{+ \rho} \psi^\mu) = \partial^\mu h_{\mu \nu} \psi^+ - \partial^+ h_{\mu \nu} \psi^\mu$ from a single set of fermions. All in all, we get fermion structure like
+\be
+\partial^\mu \partial^\nu h_{\mu \nu} \psi^+ \bar{\psi}^+ + (\partial^+)^2 h_{\mu \nu} \psi^\mu \bar{\psi}^\nu - \partial^+ \partial^\mu h_{\mu \nu} \psi^+ \bar{\psi}^\nu - \partial^+ \partial^\mu h_{\mu \nu} \psi^\nu \bar{\psi}^+,
+\ee
+where the $(\partial^+)^2 h_{\mu \nu}$ term vanishes because of $(\psi^+)^2 = 0$. We can then use $\partial^\mu h_{\mu \nu} \sim \partial_\nu h$, so that $\partial^+ \partial^\mu h_{\mu \nu} \sim \partial_\nu \partial^+ h \sim \partial_\nu X^+$, which again makes the expression vanish. We are thus only left with a curvature term proportional to $\partial^\mu \partial^\nu h_{\mu \nu}$ ! This again gives a sort of mass. All the mixing terms have cancelled !
+
+\subsection{Second order correction to Konishi}
+Now we compute the 2-bracket $[\psi^{(2)}\otimes\phi_{\mathcal{K}}^{(0)}]$, starting with the contribution related to the metric component of the background string field. We begin by writing the string field in terms of $X^{\pm}\equiv X^1\pm iX^2$. Recalling that
+\be
+    \frac{1}{2}(X^+\psi^-+X^-\psi^+)=X^1\psi^1+X^2\psi^2,
+\ee
+we conclude that the terms which depend on the light-cone variables $(X^{\pm},\psi^{\pm},\B{\psi}^{\pm})$ in the background string field whose expression is
+\be
+h_{\mu\nu}^{(2)}=-\frac{1}{R^2}(\delta_{\mu}^a\delta_{\nu}^bX_aX_b-\delta_{\mu}^i\delta_{\nu}^jX_iX_j)
+\ee
+are (primed indices denote $a'=0,3,4$ and $\mu'=0,3,4,5,6,7,8,9$.)
+\be
+    \frac{1}{4}(X^+\psi^-+X^-\psi^+)(X^+\B{\psi}^-+X^-\B{\psi}^+)+\frac{1}{2}(X^+\psi^-+X^-\psi^+)X_{a'}\B{\psi}^{a'}+\frac{1}{2}X_{a'}\psi^{a'}(X^+\B{\psi}^-+X^-\B{\psi}^+).
+\ee
+We can now consider computing the relevant OPE's. The ones involving two contractions are
+\be \label{2psi}
+\frac{1}{2}ce^{-\phi}\psi^+X^-(-z)a^{(0)}ce^{-\phi}\psi^+\partial X^+(z)\sim -\frac{1}{2}a^{(0)}c\partial ce^{-2\phi}\psi^+\partial\psi^+
+\ee
+\ie
+    \frac{1}{2}ce^{-\phi}\psi^-X^+(-z)a^{(0)}ce^{-\phi}\psi^+\partial X^+(z)\sim &-\frac{1}{4}a^{(0)}c\partial ce^{-2\phi}\partial X^+\partial X^+\\
+    &+\frac{1}{4}\partial_{\mu}a^{(0)}c\partial ce^{-2\phi}X^+\partial X^+\partial X^{\mu}\\
+    &+\frac{1}{4}a^{(0)}c\partial ce^{-2\phi}X^+\partial^2 X^+,
+\fe
+where we have already performed the Taylor expansion around the midpoint. The OPE involving a single contraction is
+\be
+    f_{\mu'}ce^{-\phi}\psi^{\mu'}(-z)a^{(0)}ce^{-\phi}\psi^+\partial X^+(z)\sim f_{\mu'}a^{(0)}c\partial ce^{-2\phi}\psi^{\mu'}\psi^+\partial X^+
+\ee
+where again the Taylor expansion has already been performed.
+
+The next ingredient is picture-raising. In all cases, only the supercurrent piece of the PCO contributes. We find
+\ie
+    &\mathcal{X}_0\cdot a^{(0)}c\partial ce^{-2\phi}\psi^+\partial\psi^+=-\frac{1}{4}a^{(0)}c\partial ce^{-\phi}\psi^+\partial X^+,\\
+    &\mathcal{X}_0\cdot a^{(0)}c\partial ce^{-2\phi}\partial X^+\partial X^+=\frac{1}{2}a^{(0)}c\partial ce^{-\phi}\psi^+\partial X^+,\\
+    &\mathcal{X}_0\cdot \partial_{\mu}a^{(0)}c\partial ce^{-2\phi}X^+\partial X^+\partial X^{\mu}=\frac{1}{4}\partial_{\mu}a^{(0)}c\partial ce^{-\phi}\psi^+X^+\partial X^{\mu}+\frac{1}{4}\partial_+a^{(0)}c\partial ce^{-\phi}\psi^+X^+\partial X^+,\\
+    &\mathcal{X}_0\cdot a^{(0)}c\partial ce^{-2\phi}X^+\partial^2 X^+=-\frac{1}{2}a^{(0)}c\partial c\partial e^{-\phi}\psi^+X^++\frac{1}{2}a^{(0)}c\partial ce^{-\phi}\partial\psi^+X^+,\\
+    &\mathcal{X}_0\cdot f_{\mu'}a^{(0)}c\partial ce^{-2\phi}\psi^{\mu'}\psi^+\partial X^+=-\frac{1}{4}\partial^{\mu'}(f_{\mu'}a^{(0)})c\partial ce^{-\phi}\psi^+\partial X^+.
+\fe
+Analogous equations hold for the same string field factors without the $\partial c$. We conclude that
+we have seven resulting terms after picture-raising, and now we must take all the different
+combinations between them.
+
+One can now combine these building blocks to compute the final result. In total, there are 9 different splittings according to the holomorphic and anti-holomorphic OPE's that must be performed. In all, we find several contributions, which we list below
+\ie \label{2ndBox}
+    &-\frac{1}{128}\partial_{\mu'}\partial_{\nu'}a^{(0)}c_0^+c\B{c}e^{-\phi}\psi^+X^+\partial X^{\mu'}e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{\nu'}\\
+    &-\frac{1}{32}\partial_+\partial_+a^{(0)}c_0^+c\B{c}e^{-\phi}\psi^+X^+\partial X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^+\\
+    &-\frac{1}{8}\partial^{\mu'}\partial^{\nu'}(h^{(2)}_{\mu'\nu'}a^{(0)})c_0^+c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+\\
+    &-\frac{1}{32}a^{(0)}c_{0}^+c\B{c}\partial e^{-\phi}\psi^+X^+\B{\partial}e^{-\B{\phi}}\B{\psi}^+X^+\\
+    &-\frac{1}{32}a^{(0)}c_0^+c\B{c}e^{-\phi}\partial\psi^+X^+e^{-\B{\phi}}\B{\partial}\B{\psi}^+X^+\\
+    &-\frac{1}{64}\partial_{\mu'}\partial_+a^{(0)}c_0^+c\B{c}\big(e^{-\phi}\psi^+X^+\partial X^{\mu'}e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^++e^{-\phi}\psi^+X^+\partial X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{\mu'}\big)\\
+    &+\frac{1}{32}\partial^{\nu'}(X_{\nu'}\partial_{\mu'}a^{(0)})c_0^+c\B{c}\big(e^{-\phi}\psi^+X^+\partial X^{\mu'}e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{\mu'}\big)\\
+    &+\frac{1}{64}\partial_{\mu'}a^{(0)}c_0^+c\B{c}\big(e^{-\phi}\psi^+X^+\partial X^{\mu'}\B{\partial}e^{-\B{\phi}}\B{\psi}^+X^++\partial e^{-\phi}\psi^+X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{\mu'}\big)\\
+    &-\frac{1}{64}\partial_{\mu'}a^{(0)}c_0^+c\B{c}\big(e^{-\phi}\psi^+X^+\partial X^{\mu'}e^{-\B{\phi}}\B{\partial}\B{\psi}^+X^++ e^{-\phi}\partial\psi^+X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{\mu'}\big)\\
+    &+\frac{1}{16}\partial^{\nu'}(X_{\nu'}\partial_{+}a^{(0)})c_0^+c\B{c}\big(e^{-\phi}\psi^+X^+\partial X^{+}e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{+}\big)\\
+    &+\frac{1}{32}\partial_{+}a^{(0)}c_0^+c\B{c}\big(e^{-\phi}\psi^+X^+\partial X^{+}\B{\partial}e^{-\B{\phi}}\B{\psi}^+X^++\partial e^{-\phi}\psi^+X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{+}\big)\\
+    &-\frac{1}{32}\partial_{+}a^{(0)}c_0^+c\B{c}\big(e^{-\phi}\psi^+X^+\partial X^{+}e^{-\B{\phi}}\B{\partial}\B{\psi}^+X^++ e^{-\phi}\partial\psi^+X^+e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^{+}\big)\\
+    &-\frac{1}{16}\partial^{\nu'}(X_{\nu'}a^{(0)})c_0^+c\B{c}\big(e^{-\phi}\psi^+\partial X^+\B{\partial}e^{-\B{\phi}}\B{\psi}^+X^++\partial e^{-\phi}\psi^+X^+e^{-\B{\phi}}\B{\psi}\B{X}^+\big)\\
+    &-\frac{1}{16}\partial^{\nu'}(X_{\nu'}a^{(0)})c_0^+c\B{c}\big(e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\partial}\B{\psi}^+X^++e^{-\phi}\partial\psi^+X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}\B{X}^+\big)\\
+    &+\frac{1}{32}a^{(0)}c_0^+c\B{c}\big(\partial e^{-\phi}\psi^+X^+e^{-\B{\phi}}\B{\partial}\B{\psi}^+X^++e^{-\phi}\partial\psi^+X^+\B{\partial}e^{-\B{\phi}}\B{\psi}^+X^+\big).
+\fe
+Each of these terms corresponds to a second order correction to the Konishi string field, where the corresponding string fields are given by the expressions above with the $c_0^+$ factor deleted.
+
+Next, we should consider the contribution coming from the 2-bracket with the ghost-dilaton component of $\psi^{(2)}$. We start with the $\phi^{(2)}(X)c\B{c}\eta e^{-2\B{\phi}}\B{\partial}\B{\xi}$ component by computing the OPE
+\be
+    \phi^{(2)}(X)c\B{c}\eta e^{-2\B{\phi}}\B{\partial}\B{\xi}(-z)a^{(0)}c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+(z).
+\ee
+Here, the only way one can get a holomorphic pole (and consequently a non-zero result after projection onto the mass level 1 sector) is in the $-X^+X^-$ component of the profile $\phi^{(2)}(X)=-X^2$, i.e., OPE with the $\partial X^+$ of the Konishi string field. In this case, the OPE amounts to
+\be
+    \frac{1}{-2z}\times\frac{1}{(-2\B{z})^2}\times\frac{1}{2}c\eta(-z)ce^{-\phi}\psi^+(z)X^+\B{c}e^{-2\B{\phi}}\B{\partial}\B{\xi}(-\B{z})a^{(0)}\B{c}e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+(\B{z})
+\ee
+and the next step is to Taylor expand around zero. The single contribution coming from the holomorphic side is
+\be
+    -2c\partial c\eta e^{-\phi}\psi^+,
+\ee
+whereas the anti-holomorphic side contributes with several terms, among which only two survive picture-raising. These are
+\be
+    -2a^{(0)}\B{c}\B{\partial}\B{c}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}^2\B{\xi}X^+\B{\partial}X^+-\frac{2}{3}a^{(0)}\B{c}\B{\partial}\B{c}\B{\partial}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}\B{\xi}X^+\B{\partial}X^+.
+\ee
+The relevant picture-raising equations after $b_0^-$ action are
+\ie
+    &\mathcal{X}_0\cdot c\eta e^{-\phi}\psi^+=-\frac{1}{2}a^{(0)}c\eta\partial X^+-\frac{1}{2}\partial_{\mu'}a^{(0)}c\eta\psi^{\mu'}\psi^+\\
+    &\B{\mathcal{X}}_0\cdot a^{(0)}\B{c}\B{\partial}\B{c}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}^2\B{\xi}X^+\B{\partial}X^+=a^{(0)}\B{c}e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^+\\
+    &\B{\mathcal{X}}_0\cdot a^{(0)}\B{c}\B{\partial}\B{c}\B{\partial}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}\B{\xi}X^+\B{\partial}X^+=-\frac{3}{2}a^{(0)}\B{c}e^{-\B{\phi}}\B{\psi}^+X^+\B{\partial}X^+.
+\fe
+In all, we conclude that
+\be
+    [\phi^{(2)}(X)c\B{c}\eta e^{-2\B{\phi}}\B{\partial}\B{\xi}\otimes\phi_{\mathcal{K}}^{(0)}]=-\frac{1}{32}\Big(X^+a^{(0)}c\B{c}\eta\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++X^+\partial_{\mu'}a^{(0)}c\B{c}\eta\psi^{\mu'}\psi^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+\Big).
+\ee
+Including the contributions from the $\phi^{(2)}(X)e^{-2\phi}\partial\xi\B{\eta}$ component, we conclude that the 2-bracket with the whole ghost-dilaton component of the second order background string field is given by
+\ie
+    [\psi^{(2)}_{gh}\otimes\phi_{\mathcal{K}}^{(2)}]=&\frac{1}{32}\partial^+\phi^{(2)}(X)a^{(0)}(X)c\B{c}\big(\eta\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+\B{\eta}\B{\partial}X^+\big)\\
+    &+\frac{1}{32}\partial^+\phi^{(2)}(X)\partial_{\mu'}a^{(0)}(X)c\B{c}\big(\eta\psi^{\mu'}\psi^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+\B{\eta}\B{\psi}^{\mu'}\B{\psi}^+\big),
+\fe
+where we have rewritten $\partial^+\phi^{(2)}(X)=-X^+$. The first term suggests correction of the Konishi at second order by a $X^-$-dependent profile, whereas the second term suggests correction by a profile with charge $+1$ extended along the $\mu'$ directions. The associated string fields are
+\ie
+    &A^{(2)}(X^-)c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+\\
+    &B^{(2)+}_{\mu'}c\B{c}\big(e^{-\phi}\psi^+\partial X^{\mu'}e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^{\mu'}\big)
+\fe
+respectively. Note that these contributions are already suggested in (\ref{2ndBox}).
+
+Next, we compute the contribution due to the auxiliary field component of the background solution. We have to consider the OPE's
+\ie
+    &A_{\mu'}(X)c_0^+c\B{c}e^{-\phi}\psi^{\mu'}e^{-2\B{\phi}}\B{\partial}\B{\xi}(-z)a^{(0)}c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+(z)\\
+    &\sim\frac{1}{4}A_{\mu'}(X)a^{(0)}c\partial ce^{-2\phi}\psi^{\mu'}\psi^+\partial X^+\B{c}\B{\partial}\B{c}\B{\partial}^2\B{c}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}X^+\B{\partial}\B{\xi},
+\fe
+\ie
+    &A_{+}(X)c_0^+c\B{c}e^{-\phi}\psi^{+}e^{-2\B{\phi}}\B{\partial}\B{\xi}(-z)a^{(0)}c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+(z)\\
+    &\sim -\frac{10}{8}a^{(0)}c\partial ce^{-2\phi}\psi^+\partial\psi^+\B{c}\B{\partial}\B{c}\B{\partial}^2\B{c}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}X^+\B{\partial}\B{\xi},
+\fe
+\ie
+    &A_{-}(X)c_0^+c\B{c}e^{-\phi}\psi^{-}e^{-2\B{\phi}}\B{\partial}\B{\xi}(-z)a^{(0)}c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+(z)\\
+    &\sim\frac{10}{64}X^+a^{(0)}c\partial c\partial^2ce^{-2\phi}\partial X^+\Big(-2\B{c}\B{\partial}\B{c}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}X^+\B{\partial}^2\B{\xi}-\frac{2}{3}\B{c}\B{\partial}\B{c}\B{\partial}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}X^+\B{\partial}\B{\xi}\Big)\\
+    &-\frac{10}{64}\big(a^{(0)}c\partial ce^{-2\phi}X^+\partial^2X^2+\partial_{\mu}a^{(0)}c\partial ce^{-2\phi}X^+\partial X^+\partial X^{\mu}-a^{(0)}c\partial ce^{-2\phi}\partial X^+\partial X^+\big)\times\\
+    &\times-2\B{c}\B{\partial}\B{c}\B{\partial}^2\B{c}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}X^+\B{\partial}\B{\xi},
+\fe
+where we have already performed Taylor expansion around zero, and have used $A_+(X)=10X^-$ and $A_-(X)=10X^+$. Also, most of the necessary picture-raising equations have already been derived, but we also need to compute
+\ie
+    &\mathcal{X}_0\cdot c\partial^2ce^{-2\phi}\partial X^+=\frac{1}{2}c\partial^2c e^{-\phi}\psi^+-\frac{1}{2}c\eta\partial X^+,\\
+    &\B{\mathcal{X}}_0\cdot\B{c}\B{\partial}\B{c}\B{\partial}^2\B{c}e^{-3\B{\phi}}\B{\psi}^+\B{\partial}X^+\B{\partial}\B{\xi}=\frac{1}{2}\B{c}\B{\partial}\B{c}e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+.
+\fe
+Now that we have all the necessary ingredients, we compute the $b_0^-$-action on the expressions above and picture-raise. We find the following contributions
+\ie
+[\psi_{aux.}^{(2)}\otimes\phi_{\mathcal{K}}^{(0)}]=&\frac{1}{8}\partial^{\mu'}(A_{\mu'}a^{(0)})c_0^+c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+\\
+&-\frac{10}{32}a^{(0)}c_0^+c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+\\
+&+\frac{10}{64}a^{(0)}c_0^+c\B{c}e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+\\
+&-\frac{1}{128}A_-\partial_{\mu}a^{(0)}c_0^+c\B{c}\big(e^{-\phi}\psi^+\partial X^{\mu}e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\psi}^+\partial X^{\mu}\big)\\
+&-\frac{1}{32}A_-\partial_{+}a^{(0)}c_0^+c\B{c}e^{-\phi}\psi^+\partial X^{+}e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^+\\
+&+\frac{1}{16}A_{-}a^{(0)}c_0^+c\B{c}\big(\partial e^{-\phi}\psi^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+\B{\partial}e^{-\B{\phi}}\B{\psi}^+\big)\\
+&-\frac{1}{32}A_-a^{(0)}c_0^+c\B{c}\big(e^{-\phi}\partial\psi^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+e^{-\B{\phi}}\B{\partial}\B{\psi}^+\big)\\
+&+\frac{1}{128}A_-a^{(0)}c\B{c}\big(\eta\partial X^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+\B{\eta}\B{\partial}X^+\big)\\
+&-\frac{1}{128}A_-a^{(0)}c\B{c}\big(\partial^2ce^{-\phi}\psi^+e^{-\B{\phi}}\B{\psi}^+\B{\partial}X^++e^{-\phi}\psi^+\partial X^+\B{\partial}^2\B{c}e^{-\B{\phi}}\B{\psi}^+\big).
+\fe
+Here we have already included the terms one obtains from considering also the $A_{\mu}(X)c_0^+c\B{c}e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}$ piece of the auxiliary field string field. Note that we have encountered most of the terms above when computing the other contributions to the 2-bracket, but the last one is new.
+
+Finally, we should also compute the 3-bracket $[(\psi^{(1)})^{{\otimes 2}}\otimes\phi_{\mathcal{K}}^{(0)}]$. Even though 3-brackets are usually zero in previous computations, this was due to the fact that the profiles involved were constant, which is not the case here. Furthermore, a sketch of the computation where one takes the channel $\psi^{(1)}\to\psi^{(1)}\to\phi_{\mathcal{K}}^{(0)}$ suggests the result is non-zero, as it involves the OPE
+\be
+	R_{\mu\nu}c\B{c}e^{-\phi}\psi^{\mu}e^{-\B{\phi}}\B{\psi}^{\nu}(z_{1})a^{(0)}c\B{c}e^{-\phi}\psi^{+}\partial X^{+}e^{-\B{\phi}}\B{\psi}^{+}\B{\partial}X^{+}(z_{2})
+\ee
+that is non-vanishing even after picture-raising.
+
+
+
+\section{Computing the energy of the maximally spinning level 4 component of the Konishi multiplet}
+There is a clear puzzle in that the only first order correction to the scaling dimension of the Konishi could come from the three-bracket $[H^{(0)} \otimes \phi^{(0)} \otimes \psi^{(1)}]'$. This bracket is very likely zero because the chosen Konishi component doesn't mix. But, from the dual, we expect there to be a first order correction of the form (use $\lambda^{1/4} = \frac{R}{\sqrt{\alpha'}}$ from the SUGRA)
+\be
+\Delta = 2\lambda^\frac{1}{4} + (6-4) + \frac{2}{\lambda^{\frac{1}{4}}} + \ldots = 2 R + 2 + \frac{2}{R} + \ldots,
+\ee
+now imagine that we redefine $\lambda^\frac{1}{4} = \frac{R}{\sqrt{\alpha'}} + a_0 + a_1 \frac{\sqrt{\alpha'}}{R} + \ldots$, this clearly induces a first order term (with simple dependence on the zeroth order term)
+\be
+\Delta = 2\lambda^\frac{1}{4} + (6-4 + 2 a_0) + \ldots,
+\ee
+for consistency, we need $a_0 = -1$. Now suppose, you do the same exercise for the level 3 RR descendant of weight $\Delta_0 = 5$, which has same flat space dimension as the above NSNS Konishi. Then you will presumably again get zero at first order, because there is no mixing with NSNS at the same spin i.e. spin 3 (there's no NS operator of fractional spin). But this will then require $5 - 4 + 2 a_0 = 0$, giving a contradiction.
+
+
+\section{Some comments on string-code}
+Xi has proposed that writing $X_0 = \acomm{Q_B}{\xi_0}$ could speed up the computations since from experience, we know that action of BRST charge is often simpler than action of PCO and has nice algebraic properties such as $Q_B^2 = 0$. We tried this and are not sure whether this actually applies in our case, some of the practical problems being the following.
+\begin{itemize}
+	\item When acting on a local operator $\mathcal{O}(0)$ with $X_0$ in the two ways, we find that first doing OPE with $\xi$ and then acting with the BRST charge is much slower. We think this is simply because the BRST charge has more terms than the PCO (basically it has an extra stress-tensor term), and taking the OPE with $\xi$, one increases the length of the local operator in which acts on and at the moment, with our recursive algorithm, OPE scales really badly with increasing length of the local operator.
+\begin{itemize}
+	\item This might not be such an issue as we can just tabulate the actions of $Q_B$, its just that the tabulating process will take longer. So for now, we can suppose that we can tabulate either $Q_B$ or $X_0$, and they are almost equivalent as far as computation of their action goes.
+\end{itemize}
+\item Writing the PCO in the above way, we find that we need to compute the action of $Q_B \xi_0 \ldots Q_B \xi_0 + \xi_0 Q_B \ldots \xi_0 Q_B$ on a multi-local operator. Doing some simple algebra, using that $\xi_0$ commutes through everything (one can never get $\eta_0$ insertions from any local operator), one can basically show that one can commute these actions all the way to act at the origin, for example
+	\be
+	\begin{aligned}
+		X_0 \mathcal{O}(z_1) &= Q_B \big(\xi_0 \mathcal{O}(z_1) \big) + \xi_0 Q_B \mathcal{O}(z_1) \\ &=
+	(-1)^\abs{\mathcal{O}} Q_B \big(\mathcal{O}(z_1) \xi_0\big) - (-1)^\abs{\mathcal{O}} Q_B \mathcal{O}(z_1) \xi_0 = \mathcal{O}(z_1) Q_B \xi_0 = \mathcal{O}(z_1) X_0.
+\end{aligned}
+	\ee
+	Thus, somewhat counterintuitively, it seems that we can just pull the PCO all the way through to the origin, having the PCO written via $Q_B$ does not seem to help in any way in actually evaluating its action. Also, having the PCO at the origin is not the most optimal computationally if we want to use OPE later, as all the caching of PCO action will not amount to anything.
+\item It seems to us that a pragmatic way to proceed is to keep the action of PCOs abstract, and when computing correlation functions act the PCOs on the outgoing leg (the outgoing leg kept off-shell and then an integration by parts is to be performed because of boundary terms when assuming BPZ-self-conjugatedness of $X_0$). When computing some projection of the bracket, perhaps we can first do the OPE (in the free-field case), then Taylor and then act the PCO on a local operator, which will be tabulated.
+\end{itemize}
+Also, about the above mentioned performance of the recursive algorithm for free field OPE. We took some small steps towards reducing the amount of recursion, keeping the underlying algorithm the same, and we saw about 2x speed increase with very small tweaks. Nevertheless, the speed is still somewhat alarming. For example, the OPE of two PCOs involves about 60 Wick contractions and currently takes about 0.1 s = 100 ms. A single Wick contraction takes at most about 0.1 ms, in reality even less since when cached, it takes about a microsecond. This means that only about $1\%$ of the computation is spent on actually evaluating Wick contractions and the rest on finding all the contractions. Not sure if this is something expected - we tried looking at some CS literature and what we have is a \textit{partial bipartite b-matching problem} in graph theory i.e. not all fields are contracted [partial], some of them can be contracted at most once (others more times, like composites) [b-] and its biparitite as we do OPE of two fields at a time. As far as we know, there has been some nontrivial body of work on these bipartite matchings, so there is some hope for a faster algorithm. For correlators, the situation is both better and worse: it is better as the matching problem is no longer partial since $\langle :A:\rangle = 0$ i.e. the matching is \textit{perfect}, but it is worse in that the matching problem is now \textit{multipartite} for higher than 2pt. correlators.
+
+\subsection{Outlining a strategy for some upcoming computations}
+The Bracket function returns a MultiOp with possible actions of averaged PCO on it. We are to extract all of its components at a given mass level. There is no slow-varying $\alpha'$ expansion to perform yet. A way forward is the following.
+
+\begin{enumerate}
+
+\item One performs OPE on MultiOp
+	\begin{itemize}
+		\item
+	Experience shows that it is often crucial to keep a factorized structure of holomorphic x antiholomorphic when possible [e.g. flat space Virasoro-Shapiro amplitude is a super complicated object with hundreds of terms when expanded out, but is manageable when kept factorized into tens of terms involving the $t8$-tensors]
+	\begin{itemize}
+		\item This should also improve performance: for example OPE of 3 zero-momentum graviton vertex operators is about 10x slower when not factorized
+	\end{itemize}
+\item There are of course non-chiral operators that do not factorize such as Profiles, exponentials or generic operators of an interacting CFT - how to handle those?
+	\begin{itemize}
+	\item one solution is to realize that there is a sense in which Profiles and exponentials factorize, just do expHolo, ProfileHolo etc. and split exp, Profile into those
+	\item for a generic CFT, we can still perform the factorization partially i.e. do the OPE of factorizable operators first, and multiply by the non-factorized OPE of the interacting part [we assume that the factorizable and non-factorizable operators don't interact here]
+\end{itemize}
+	\item As far as OPE with Profile goes, I think that it will be best to keep the derivatives outside in some sense just as momenta: instead of a dX contraction giving k[mu] like for exponential, we get der[profile, mu] outside and Profile-Profile gives $z^{dot[der,der]}$ as in Polchinski 2.2.8. This is very important to keep the factorized form of the result transparent and it will allow us to seamlessly recombine Profiles at the end ! For example we will have $z^{dot...}$ (:ProfileHolo dX... : + der[h, mu] :ProfileHolo...:) x h.c
+\end{itemize}
+\item We perform the projection onto a given mass level by Tayloring the various normal-ordered products [each holo/antiholo part separately of course], with possibly truncating the OPE in interacting sectors at the same time to get abstract expressions like $OPE[OPE[O1, O2], O3]_{level}$ [assume a lower bound on weight such that $h \geq h_{lower}$ for all operators in the interacting theory to get a closed-form expression]
+\item We act with the zero modes of PCO [note that with other string vertices, we would have already taken OPEs with PCOs inserted at some points at this point].
+	\begin{itemize}
+		\item The action of PCO will be tabulated on the holomorphic/antiholomorphic sectors [its action on mixed-sector operators will simply be composed with factorization]
+		\item When doing this tabulation, one must realize that the Profile/exponential sector will often vary i.e. there might be say a product of 2 or 3 profiles etc., so appropriate normalization of the input must be performed
+		\item We act the PCO on each sector separately
+	\end{itemize}
+\item We now need to post-process the factorized expression
+	\begin{itemize}
+		\item For example, we do $z^{dot...}$ (:ProfileHolo dX... : + der[h, mu] :ProfileHolo...:) x h.c $\rightarrow$ \{:dX: + der[h, mu]), h.c.,. $z^{dot}$...:Profile:\}.
+		\item Then we take a basis of states [of the total CFT, no longer factorized] at our chosen mass level [the basis in each sector will be generated since they are needed to tabulate PCO, and we will also tabule their union to make local operators of the total CFT] and extract components
+			\begin{itemize}
+				\item Note that an important technical note is that the basis elements will not have ProfileHolo - the rule will be that PCOHolo acting will first replace Profile if present and then act on the expression with ProfileHolo, so we can avoid unnecessary doubling of basis elements i.e. the free boson ground states will be kept non-factorized.
+			\end{itemize}
+\item It is very important that the extracted expression will have the form (holo expr.)(h.c.) basisElement1 + ... for maximum clarity
+\end{itemize}
+\item We now have a sum over expressions like (some polynomial in momenta, derivatives) x (some other such polynomial) $z^{dot[k,k]} z^{dot[der, k]} z^{dot[der,der]}$ :dX....ProfileX....expX...: and we can finally $\alpha'$ expand if we want. The $\alpha'$ expansion will simply be taking all the various $z^{dot[der,k]}$ or $z^{dot[der,der]}$ and acting them on the profiles, that's it, that simple.
+
+\end{enumerate}
+
+
+\subsection{Algorithm for generating a basis of states [we're at step 4 above]}
+We want to find a basis of states up to a given weight, up to or perhaps at a given ghost number and in the superstring, picture number.
+
+
+In the bosonic theory, the algorithm for generating a basis of states should be straightforward, one can essentially just build strings like $\ldots c_{-2} c_{-1} \ket{0}$ and similarly for the $b$-ghosts, where the modding is decided by computing partitions of weight (non-repeating partition for fermions) for $c$-ghosts and $b$-ghosts separately, and then joining the results. This then gets joined by a similar partition computation from the matter sector (repeated partition for bosons). The joining is again done by partitioning of weight into tuples of $bc$ sector and matter sector. The computation of partitions is cached.
+
+In the superstring theory, the situtation is much more involved because of the notorious unboundedness of the spectrum of the $\beta \gamma$ system ($\gamma$ is a boson of weight $-1$). After fermionization, this manifests itself in that the spectrum of weights of $e^{q \phi}$, being $-\frac{1}{2} q(q+2)$ is unbounded from below as $q \to \pm \infty$. It thus seems crucial that we find some bound on $q$. Note that such a bound likely cannot come just by considering bounds on weight and picture. This is because say $e^{q\phi}$ can be effeciently picture-neutralized by stacking modes of $\eta$ or $\partial \xi$, giving weights
+\be
+\begin{aligned}
+	-\frac{1}{2} q(q+2) + \frac{1}{2} q(q+1) = -\frac{q}{2}, \quad &q \geq 0 \\
+	-\frac{1}{2} \abs{q}(\abs{q} - 2) + \frac{1}{2} \abs{q}(\abs{q} + 1) = \frac{3}{2} \abs{q}, \quad &q \leq 0,
+\end{aligned}
+\ee
+so we see that for $q > 0$, we can add a picture-neutral operator, while lowering the weight. Ghost number thus has to be taken into account.
+
+The strategy to place a bound on $q$ for fixed picture number and ghost number up to a given weight is the following. We compensate positive $q$ by $\partial \xi$ modes, which we then compensate by $b$-ghost modes. For negative $q$, we do the same with $\eta$ and $c$ ghosts. The idea is that the state configuration, which achieves a given picture and ghost number, with the least possible weight, is the above, and since the role of $e^{q\phi}$ is largely to decrease weight with increasing $\abs{q}$ (modulo some special behavior for $q \in [-2,0]$), we will obtain a bound on $q$. Any other combination will have higher weight, thus giving a weaker (sub)set of conditions on $q$. It is perhaps more intuitive to say that if someone gives us a $q$ and asks whether there is a corresponding state at a given picture and ghost number lighter than some weight, then we have a construction for the lightest possible state with a given picture and ghost number, so that if such a state does not exist, the $q$ is not allowed.
+
+Let's work this out for picture and ghost neutral states. We get the weights
+\be
+\begin{aligned}
+-\frac{1}{2} q(q+2) + \frac{1}{2} q(q+1) + \frac{1}{2} q(q+3) = \frac{1}{2} q(q+2), \quad &q \geq 0 \\
+	-\frac{1}{2} \abs{q}(\abs{q} - 2) + \frac{1}{2} \abs{q} (\abs{q} + 1) + \frac{1}{2} \abs{q}(\abs{q}-3) = \frac{1}{2} q^2, \quad & q \leq 0.
+\end{aligned}
+\ee
+Thus, adding an $e^{q\phi}$, while keeping picture and ghost number fixed, necessarily increases the weight. Now, suppose we want to place a bound on $q$, while looking at states at picture number $p$ and ghost number $q$, up to weight $w$. Then we get the condition (for integer $q$ i.e. NSNS sector)
+\be
+\begin{aligned}
+-\frac{1}{2} q(q+2) + \frac{1}{2} (q+p)(q + p +1) + \frac{1}{2} (q+p+g)(q+p+g+3) \leq w, \quad &q \geq 0 \\
+	-\frac{1}{2} \abs{q}(\abs{q} - 2) + \frac{1}{2} (\abs{q} + p) (\abs{q} + p + 1) + \frac{1}{2} (\abs{q} + p + g)(\abs{q}+p + g -3) \leq w, \quad & q \leq 0.
+\end{aligned}
+\ee
+Now, let's try to place a bound on possible $q$, working say at picture number $p = -1$, ghost number $g = 1$, up to weight $w \leq 0$. The above conditions then give the inequalities
+\be
+\begin{aligned}
+	\frac{1}{2} q^2 \leq 0, \quad &q \geq 0 \\
+	\frac{1}{2} \abs{q}(\abs{q}-2) \leq 0, \quad & q \leq 0,
+\end{aligned}
+\ee
+which is solved by $q \in [-2, 0]$. Note that only solutions with $\abs{q} + p \geq 0$ and $\abs{q} + p + g \geq 0$ are physical, which reduces the solution to $q \in [-2, -1]$. The two integer solutions correspond to
+\be
+c e^{-\phi}, \quad c\partial c e^{-2\phi} \partial \xi,
+\ee
+as one would expect (the latter is not in Siegel gauge, so often one does not consider it). Note that a priori, these are only the most efficient solutions, we could also consider less efficient solutions that stack say $bc$ or $\eta\xi$ pairs on top of $c e^{-\phi}$ since it does not saturate the weight bound, but since we are considering the massless states, that is not possible and we cannot find other suitable states in the ghost sector, and have to start adding operator from the matter sector (potentially taking GSO into account). Similarly, imposing $p = -1, g = 0$ and $w \leq 0$, we get
+\be
+\begin{aligned}
+\frac{1}{2} (q^2 - 2q - 2) \leq 0, \quad &q \geq 0 \\
+\frac{1}{2} (\abs{q}-2)^2 \leq 0, \quad & q \leq 0,
+\end{aligned}
+\ee
+giving the solutions $q \in [0, 1 + \sqrt{3}] \cup \{-2\}$, out of only which $q \in \{-2, 1, 2\}$ are physical. They correspond to
+\be
+c e^{-2\phi} \partial \xi, \quad e^{\phi}, \quad e^{2\phi} \eta b,
+\ee
+the first one having weight zero, the latter two having weights $-\frac{3}{2}$ and $-1$. They have the correct picture number, ghost number and have weight less than or equal to zero.
+
+For the R-sector, the above equations stay the same, so that for example for $p = - \frac{1}{2}, g = 1, w \leq 0$, we get $q \in [-2,0]$ with $\abs{q} \geq \frac{1}{2}$, giving $q \in [-2, -\frac{1}{2}]$, so that we get the optimal states to be
+\be
+c e^{-\frac{1}{2}\phi}, \quad c \partial c e^{-\frac{3}{2}\phi} \partial \xi.
+\ee
+
+Generally, we obtain the following set of turning points
+\be
+\begin{aligned}
+	q = -1 -g - 2p \pm \sqrt{2 w + 2p^2 + 2 g p - g + 1}, \quad &q > 0 \\
+	\abs{q} = - g - 2p \pm \sqrt{2 w + 2 p^2 + 2 p + 2 p h + 3 g}, \quad &q < 0,
+\end{aligned}
+\ee
+which correspond to the inequality solutions
+\be
+\begin{aligned}
+	q \in [-1 -g - 2p - \sqrt{2 w + 2p^2 + 2 g p - g + 1}, -1 -g - 2p + \sqrt{2 w + 2p^2 + 2 g p - g + 1}], &\quad q > 0 \\
+	\abs{q} \in [- g - 2p - \sqrt{2 w + 2 p^2 + 2 p + 2 p g + 3 g}, - g - 2p + \sqrt{2 w + 2 p^2 + 2 p + 2 p g + 3 g}], &\quad q < 0 \\
+\end{aligned}
+\ee
+from which, e.g. by taking a derivative, we see that the bounds for $q$ broaden as $w$ is increased.
+
+
+\section{Some comments on the $AdS_5 \cross S^5$ Virasoro-Shapiro amplitude}
+
+\subsection{Comments on deriving Alday's ansatz}
+The general idea is that correlators in free boson can only give integer powers or logarithms of separations. Integrals of these should be expressible in terms of polylogarithms (of various weights). Moreover, because of the GSO projection, these polylogarithms should be single-valued. A single-valued polylogarithm is a combination of polylogarithms of various weights.
+
+Thus, the general structure of the SFT integrands is that of a sum over single-valued polylogarithms. What is not clear a priori is what weights of these polylogarithms appear. The only thing that appears a priori clear is what is the maximum possible weight of a single-valued polylogarithm that appears. Note that the graviton insertions at $k$-th order in $\alpha'$ expansion introduce a power of $X^{2k}$, and each picture-raised graviton contributes two derivatives. It is then clear, that the largest possible power of a single logarithm is $2k$, and thanks to the partials in the picture-raised graviton, one gets terms that scale like
+\be
+\int \dd^2 w \frac{\ln^{2k}\abs{w}}{\abs{w}^{2k}},
+\ee
+which would suggest to me polylogs of maximum weight $2k + 1$, whereas Alday writes $3k$ (at leading order, this is the same).
+
+Note that THE nontrivial part of Alday's computation seems to be that it's only the maximal weight polylogs appear, and no other. This does not seem manifest at all from the SFT, and appears sensitive to relative coefficients and so on.
+
+
+\subsection{Comments about the SFT calculation}
+
+We want to compute the deformed four-point amplitude of RR axions. Its trivial to see that the $1/R$ corrections vanishes, so the next correction is at order $1/R^2$. This amplitude is to be extracted from the nonlinear equations of motion at this order. The relevant data can be captured by the 4-bracket of 3 on-shell axions and a single off-shell graviton, and by the 5-bracket of 3 on-shell axions and 2 on-shell fluxes, and also a 3-bracket of 2 on-shell axions and a single curvature-corrected axion.
+
+It would be highly motivating for the contribution of the 5-bracket to the amplitude vanish, which is what we wish to argue. Such a contribution will involve the 6-point correlators of on-shell RR fluxes with insertions of a single set of PCOs. The action of a PCO on the canonical picture vertex operator of the flux is
+\be
+{\cal X}_0 \cdot f(X) ce^{-\frac12\phi}S^\alpha =  -\frac{i}{2} f(X) ce^{\frac12\phi} (\slashed{\partial X} S)^\alpha - \frac{1}{4}f(X)(2 \partial \eta + \eta bc + 2 \eta \partial \phi)e^{\frac32\phi}S^\alpha.
+\ee
+It is clear that both because of chirality (or picture), only the first operator contributes. This operator carries an antichiral flux, and since its the only antichiral flux in the correlator, the correlator involves an $\delta^\alpha_\beta$ tensor structure for each of the chiral legs. This means that the Dirac operator $\slashed{\partial X}$ will get contracted with on-shell profiles when the free boson CFT correlator is carried out, which gives zero. Thus, the tensor structures involving $\delta^\alpha_\beta$ will likely give a vanishing contribution, but note that there are tensor structures involving $(\gamma^{mn})^\alpha_\beta$ that will likely contribute.
+
+We begin by writing down the nonlinear equations of motion for $\phi$ in the presence of a background $\psi$ and a source $J$
+\be
+\begin{aligned}
+	Q_\psi \phi = J - &\frac{1}{2!} [\phi^{\otimes 2}]'  - \frac{1}{2!} [\psi \otimes \phi^{\otimes 2}]'  - \frac{1}{2! 2!} [\psi^{\otimes 2} \otimes \phi^{\otimes 2}]' + \\
+	- &\frac{1}{3!} [\phi^{\otimes 3}]' - \frac{1}{3!} [\psi \otimes \phi^{\otimes 3}]' - \frac{1}{2!3!}[\psi^{\otimes 2} \otimes \phi^{\otimes 3}]' + \ldots
+\end{aligned}
+\ee
+In order to extract scattering amplitudes, these equations have to be solved order-by-order in $J$ - the source with $(n-1)$ insertions of $J$ is to give the $n$-point amplitude upon appropriate amputation ($n=1$ case drops out because of EOM for $\psi$ i.e. $\phi^{(0)} = 0$)
+\be
+\begin{aligned}
+	\phi^{(1)} &= G_\psi \Big J \\
+	\phi^{(2)} &= -G_\psi\Big[\frac{1}{2!} [(G_\psi J)^{\otimes 2}]' + \frac{1}{2!}[\psi \otimes (G_\psi J)^{\otimes 2}]' +  \frac{1}{2! 2!} [\psi^{\otimes 2} \otimes (G_\psi J)^{\otimes 2}]' + \ldots \Big] \\
+	\phi^{(3)} &= -G_\psi \Big[-\frac{1}{3!} [(G_\psi J)^{\otimes 3}]' + \frac{1}{2!} [G_\psi J \otimes G_\psi[(G_\psi J)^{\otimes 2}]']' + \\
+		   &\hspace{1.6cm}\frac{1}{2 !} [\psi \otimes G_\psi J \otimes G_\psi [(G_\psi J )^{\otimes 2}]']' - \frac{1}{2!}[G_\psi J \otimes G_\psi [\psi \otimes (G_\psi J)^{\otimes 2}]']' - \\
+		   &\hspace{1.6cm} \frac{1}{3!} [\psi \otimes (G_{\psi} J)^{\otimes 3}]'  - \frac{1}{2! 3!}[\psi^{\otimes 2} \otimes (G_\psi J)^{\otimes 3}]' + \\
+		   &\hspace{1.6cm}\frac{1}{2! 2!} [\psi^{\otimes 2} \otimes G_\psi J \otimes G_\psi [(G_\psi J)^{\otimes 2}]']' + \frac{1}{2! 2!} [G_\psi J \otimes G_\psi [\psi^{\otimes 2} \otimes (G_\psi J)^{\otimes 2}]']' + \\
+		   &\hspace{1.6cm} \frac{1}{2! 2!} [\psi \otimes G_\psi J \otimes G_\psi [\psi \otimes (G_\psi J)^{\otimes 2}]']'+  \ldots \Big],
+\end{aligned}
+\ee
+where $G_\psi$ is an appropriate Green's function (of the kinetic operator of the deformed background), given a set of boundary conditions on the fluctuation modes. We see that for the 4pt. amplitude computation, plugging in the solutions from previous orders gives Feynman channels, as one would expect.
+
+The LSZ procedure will roughly be replacing $G_\Psi \star J$ by the sum over different on-shell axion solutions to $Q_\psi \phi = 0$ [with appropriate boundary conditions], and hitting the solution with $\phi \star G_\psi^{-1}$. At least, this is what works in flat space.
+
+
+
+We can check that say $\phi^{(2)}$ contains precisely the right information to capture 3pt. scattering of on-shell fluctuations. Such scattering would be often computed through the use of an effective action [for 3pt. there are only effective vertices that contribute]
+\be
+S = \ldots + \frac{1}{3!} \{\phi^{\otimes 3}\}' + \frac{1}{3!} \{\psi \otimes \phi^{\otimes 3}\}' + \frac{1}{2! 3!} \{\psi^{\otimes 2} \otimes \phi^{\otimes 3}\}' + \ldots,
+\ee
+where one would plug in $\phi$ i.e. a solution to
+\be
+Q_\psi \phi = 0 .
+\ee
+One can easily match this to the above equations of motion with a source $J$ provided that $G_\psi J$ is suitably replaced with an on-shell fluctuation (corrected to subleading orders, of course). To be more precise, as usual the factorials in definition of vertices cancel out of amplitude computations - the nonlinear EOM counterpart of this is that when we actually write $J$ as a sum of sources $J = \sum_{i=1}^{n-1} J_i$, one for each external particle, and all the different orderings of currents cancel the $\frac{1}{(n-1)!}$ factors and so on.
+
+Note that in general one also has to be careful about potential wavefunction renormalization and normalize the fluctuations so that their kinetic terms are canonically normalized. One can also try to determine the wavefunction renormalization indirectly from the computation of the axion 3pt. amplitude. The issue with this is that the 3pt. amplitude vanishes in flat space, and so one would have to go to higher orders ($1/R^3$) to pin down the wavefunction renormalization given the $AdS_5 \cross S^5$ amplitude.
+
+\appendix
+
+\section{Worldsheet conventions} \label{WSconventions}
+The worldsheet theory of IIB string theory has 10 free bosons $X^\mu$, 10 free fermions $\psi^\mu, \bar{\psi}^\mu$, the $b,c, \bar{b}, \bar{c}$ fermionic ghosts and the $\beta, \gamma, \bar{\beta}, \bar{\gamma}$ bosonic ghosts. The bosonic ghosts are re-bosonized in terms of the $(\phi,\eta, \xi)$ system as
+\begin{equation}
+    \beta = \partial \xi e^{-\phi}, \, \, \gamma = \eta e^{\phi}
+\end{equation}
+and similar for its antiholomorphic counterpart. Here we follow the conventions of \cite{Sen:2024nfd}, which are those of \cite{Sen:2021tpp} apart from a factor of 2 in the PCO. These are obtained from \cite{Polchinski:1998rr} by rescaling
+\begin{align}
+    & \beta \to -\beta/2, \, \, \gamma \to 2 \gamma,  \, \, \xi \to \xi/2 \, \, \eta \to 2\eta, \, \, \phi \to \phi, \,\, X^\mu \to X^\mu, \, \, \psi^\mu \to -i \psi^\mu/\sqrt{2}.
+\end{align}
+Note that in these conventions, one also has an additional factor of $\frac{1}{2}$ in the definition of the supercurrent $G_m$ compared to  \cite{Polchinski:1998rr}.
+
+{\allowdisplaybreaks
+
+The basic operator products are
+\be
+\begin{aligned}
+    &\partial X^\mu (z) \partial X^\nu (w) \sim -\frac{\eta^{\mu \nu}}{2} \frac{1}{(z-w)^2} \\
+    &\psi^\mu (z) \psi^\nu (w) \sim -\frac{\eta^{\mu \nu}}{2} \frac{1}{z-w} \\
+    & c(z) b(w) \sim \frac{1}{z-w} \\
+    & \eta(z) \xi(w) \sim \frac{1}{z-w} \\
+    & \partial \phi(z) \partial \phi(w) \sim - \frac{1}{(z-w)^2} \\
+    &e^{i k_1 \cdot X(z)} e^{i k_2 \cdot X(w)} \sim (z-w)^{-\frac{1}{2} k_1 \cdot k_2} e^{i(k_1+k_2) X(w)}\\
+&e^{q_1 \phi(z)} e^{q_2 \phi(w)} \sim (z-w)^{-q_1 q_2} e^{(q_1 + q_2)\phi(w)}.
+\end{aligned}
+\ee
+}
+Note that using
+    $\partial X^\mu(z) f(X(w)) \sim -\frac{1}{2} \frac{1}{z-w} (\partial^\mu f)(X(w))$, we can write that
+    \begin{equation}
+        \oint \partial X^\mu \to -\frac{1}{2} \partial^\mu
+    \end{equation}
+    when acting on a function of $X$ in position space. In momentum space $\oint \partial X^\mu \to -\frac{1}{2} i k^\mu$.
+
+
+Then we have the matter stress-energy tensor $T_m$ and its associated supercurrent $G_m$
+\be
+\begin{aligned}
+    T_m &= - \partial X^\mu \partial X_\mu + \psi_\mu \partial \psi^\mu \\
+    G_m &= - \psi_\mu \partial X^\mu.
+\end{aligned}
+\ee
+Upon rebosonization, these give the BRST charge $Q = Q^L + Q^R$ where
+\begin{align}
+  Q^L = \oint \dd z \biggr(c T_m - e^{\phi} \eta G_m + b c \partial c + c\big(-\eta \partial \xi - \frac{1}{2} \partial \phi \partial \phi - \partial^2 \phi\big) - \frac{1}{4} b e^{2\phi}\eta \partial \eta\biggr)
+\end{align}
+and $Q^R$ is its antiholomorphic counterpart. The holomorphic PCO is given by
+\begin{equation}
+    \mathcal{X}(z) = \acomm{Q}{\xi(z)} =  c \partial \xi + e^\phi G_m - \frac{1}{4} \partial \eta e^{2\phi}b-\frac{1}{4}\partial(\eta e^{2\phi}b).
+\end{equation}
+
+There are also the chiral spin fields $S_\alpha$ and the anti-chiral spin fields $S^\beta$ that are assembled into the Dirac spinor
+\ie{}
+S_A =
+\begin{pmatrix}
+	S_\alpha \\
+	S^\beta
+\end{pmatrix}.
+\fe
+In this basis, the gamma matrices take the off-diagonal form
+\ie{}
+(\Gamma^\mu)_A^{~B} =
+\begin{pmatrix}
+0 & (\gamma^\mu)_{\alpha\beta} \\
+(\gamma^\mu)^{\alpha\beta} & 0
+\end{pmatrix},
+\fe
+where the matrices $(\gamma^\mu)_{\alpha\beta} = (\gamma^\mu)_{\beta\alpha}$ have real-valued entries, and satisfy $\{\gamma^\mu, \gamma^\nu\} = 2\eta^{\mu\nu}$.  The charge conjugation matrix $C = \Gamma^0$ and its inverse are given by
+\ie{}
+C_{AB} =
+\begin{pmatrix}
+0 & \delta_\alpha^{~\beta} \\
+- \delta^\alpha_{~\beta} & 0
+\end{pmatrix}, \qquad
+(C^{-1})^{AB} =
+\begin{pmatrix}
+0 & -\delta^\alpha_{~\beta} \\
+\delta_\alpha^{~\beta} & 0
+\end{pmatrix}.
+\fe
+Similarly, the chirality matrix $\Gamma \equiv \Gamma^0 \cdots \Gamma^9$ takes the form
+\ie{}
+\Gamma_A^{~B} =
+\begin{pmatrix}
+\delta_\alpha^{~\beta} & 0 \\
+0 & -\delta^\alpha_{~\beta}
+\end{pmatrix},
+\fe
+such that the projectors onto chiral and anti-chiral spinors $P_\pm = \frac12(1\pm \Gamma)$ read
+\ie{}
+(P_+)_A^{~B} =
+\begin{pmatrix}
+\delta_\alpha^{~\beta} & 0 \\
+0 & 0
+\end{pmatrix}, \quad
+(P_-)_A^{~B} =
+\begin{pmatrix}
+0 & 0 \\
+0 & \delta^\alpha_{~\beta}
+\end{pmatrix}.
+\fe
+In other words, $P_+ S_\alpha = 1$ and $P_- S^\alpha = 1$. It is useful to note that
+\ie{}
+(\Gamma^\mu C)_{AB} =
+\begin{pmatrix}
+-(\gamma^\mu)_{\alpha\beta} & 0 \\
+0 & (\gamma^\mu)^{\alpha\beta}
+\end{pmatrix}, \quad
+(C^{-1}\Gamma^\mu )^{AB} =
+\begin{pmatrix}
+-(\gamma^\mu)^{\alpha\beta} & 0 \\
+0 & (\gamma^\mu)_{\alpha\beta}
+\end{pmatrix}.
+\fe
+
+The basic OPEs for the spin field are
+\be
+\begin{aligned}
+\psi^\mu(z)~ e^{-\frac12\phi}S_A(w) &\sim \frac{i}{2}{(\Gamma^\mu)_A^{\:\:\: B} \over \sqrt{(z-w)}}~ e^{-\frac12 \phi}S_B(w) \\
+ e^{-\frac12\phi}S_A(z)~  e^{-\frac12\phi}S_B(w) &\sim  - {C_{AB} \over (z-w)^\frac{3}{2}}~ e^{-\phi}(w) -i{(\Gamma_\mu C)_{AB} \over z-w}~ e^{-\phi}\psi^\mu(w).
+\end{aligned}
+\ee
+The composite operators $e^{-\frac12\phi}S^\alpha$ and $e^{-\frac32\phi}S^\alpha$ have weight $h=1$ and are GSO even and Grassmann odd, as expected for spacetime fermions. We can use the fact that $e^{\pm \phi}$ is GSO odd and Grassmann odd to obtain other such composite operators, e.g. $e^{\frac12\phi}S^\alpha$ and $e^{-\frac52 \phi}S^\alpha$. From the basic OPEs above, we have that
+\be
+\begin{aligned}
+\psi^\mu(z)~e^{-\frac12\phi}S^\alpha(w) &\sim \frac{i}{2}{(\gamma^\mu)^{\alpha\beta} \over \sqrt{z-w} }~e^{-\frac12\phi}S_{\beta}(w) + \cdots \\
+\psi^\mu(z)~e^{-\frac12\phi}S_{\alpha}(w) &\sim  \frac{i}{2}{(\gamma^\mu)_{\alpha\beta} \over \sqrt{z-w} }~e^{-\frac12\phi}S^\beta(w) + \cdots \\
+e^{-\frac12\phi}S^\alpha(z)~e^{-\frac12\phi}S^\beta(w) &\sim  -i{(\gamma_\mu)^{\alpha\beta} \over z-w }~e^{-\phi}\psi^\mu(w) + \cdots \\
+e^{-\frac12\phi}S_\alpha(z)~e^{-\frac12\phi}S_\beta(w) &\sim  i{(\gamma_\mu)_{\alpha\beta} \over z-w }~e^{-\phi}\psi^\mu(w) + \cdots \\
+e^{-\frac32\phi}S_\alpha(z)~e^{-\frac12\phi}S^\beta(w) &\sim -{\delta_\alpha^{~\beta} \over (z-w)^2}~ e^{-2\phi}(w) + \cdots \\
+e^{-\frac32\phi}S^\alpha(z)~e^{-\frac12\phi}S_\beta(w) &\sim {\delta^\alpha_{~\beta} \over (z-w)^2}~ e^{-2\phi}(w) + \cdots.
+\label{SOPEs}
+\end{aligned}
+\ee
+Using these, we can construct a plethora of other useful OPEs, e.g.
+\be
+\begin{aligned}
+e^{-\phi}\psi^\mu(z)~ e^{-\frac12\phi} S^\alpha(w) &\sim \frac{i}{2}{(\gamma^\mu)^{\alpha\beta} \over z-w}~ e^{-\frac32\phi} S_{\beta}(w) + \cdots \\
+e^{\phi}\psi^\mu(z)~ e^{-\frac12\phi} S^\alpha(w) &\sim \frac{i}{2}(\gamma^\mu)^{\alpha\beta}  e^{\frac12\phi} S_{\beta}(w) + \cdots \\
+e^{-\phi}\psi^\mu(z)~ e^{\frac12\phi}S_{\alpha}(w) &\sim -\frac{i}{2}(\gamma^\mu)_{\alpha\beta}  e^{-\frac12\phi}S^\beta(w) + \cdots \\
+e^{\phi} \psi^\mu(z) e^{-\frac{3}{2}\phi}S_\alpha (w)&\sim -\frac{i}{2} (z-w)(\gamma^\mu)^\beta_\alpha e^{-\frac{1}{2}\phi}S_\beta(w)+\cdots \\
+e^{\phi} \psi^\mu(z) e^{-\frac{5}{2}\phi}S_\alpha (w)&\sim \frac{i}{2} (\gamma^\mu)^\beta_\alpha (z-w)^2 e^{-\frac{3}{2}\phi}S_\beta(w)+\cdots.
+\end{aligned}
+\ee
+We also have
+\be
+\begin{aligned}
+e^{\frac12\phi}S_{\alpha}(z)~e^{-\frac12\phi} S^\beta(w) &\sim  -{\delta_\alpha^{~\beta} \over z-w} - \frac{1}{2}\delta_\alpha^{~\beta} \partial \phi(w) + (\gamma_{\mu\nu})_\alpha^{~\beta}~\psi^\mu\psi^\nu(w) + \ldots \\
+e^{-\phi}\psi^\mu(z)~e^{-\phi}\psi^\nu(w) &\sim
+{\eta^{\mu\nu} \over 2(z-w)^2}~e^{-2\phi}(w) \\
+&~~~- {1 \over z-w}~ \bigg[e^{-2\phi}\psi^\mu\psi^\nu(w) + \frac{1}{2}\eta^{\mu\nu} e^{-2\phi}\partial\phi(w) \bigg] + \ldots.
+\end{aligned}
+\ee
+
+To see that these OPEs are consistent, we can try to compute the correlator
+\begin{equation}
+    \langle e^{-\phi}\psi^\mu(z_1) e^{-\frac{1}{2} \phi} S_\alpha (z_2) e^{-\frac{1}{2}\phi} S_\beta(z_3)\rangle
+\end{equation}
+    in various channels. Let us begin with the $z_{23} \to 0$ channel followed by the $z_{13} \to 0$ channel:
+\be
+\begin{aligned}
+    \langle e^{-\phi}\psi^\mu(z_1) e^{-\frac{1}{2} \phi} S_\alpha (z_2) e^{-\frac{1}{2}\phi} S_\beta(z_3)\rangle &\sim \frac{i}{z_{23}} (\gamma_\nu)_{\alpha \beta} \langle  e^{-\phi}\psi^\mu(z_1) e^{-\phi} \psi^\nu(z_3)\rangle \\
+    & \sim \frac{i}{2z_{23}z_{13}^2} (\gamma^\mu)_{\alpha \beta}.
+\end{aligned}
+\ee
+And computing it in the channel where $z_{12} \to 0$ followed by $z_{23} \to 0$ gives
+\be
+\begin{aligned}
+    \langle e^{-\phi}\psi^\mu(z_1) e^{-\frac{1}{2} \phi} S_\alpha (z_2) e^{-\frac{1}{2}\phi} S_\beta(z_3)\rangle &\sim \frac{i}{2 z_{12}} (\gamma^\mu)_{\alpha \gamma}\langle  e^{-\frac{3}{2}\phi} S^\gamma(z_2) e^{-\frac{1}{2}\phi} S_\beta(z_3) \rangle \\
+    & \sim \frac{i}{2 z_{12} z_{23}^2} (\gamma^\mu)_{\alpha \beta}
+\end{aligned}
+\ee
+obtaining a match. These limits are consistent with the correlator
+\begin{equation}
+    \langle e^{-\phi}\psi^\mu(z_1) e^{-\frac{1}{2} \phi} S_\alpha (z_2) e^{-\frac{1}{2}\phi} S_\beta(z_3)\rangle = \frac{i}{2} \frac{(\gamma^\mu)_{\alpha \beta}}{z_{12} z_{13} z_{23}}.
+\end{equation}
+Similarly one can check the consistency of the correlators
+\be
+\begin{aligned}
+&  \langle e^{-\phi}\psi^\mu(z_1) e^{-\frac{1}{2} \phi} S^\alpha (z_2) e^{-\frac{1}{2}\phi} S^\beta(z_3)\rangle = -\frac{i}{2} \frac{(\gamma^\mu)^{\alpha \beta}}{z_{12} z_{13} z_{23}}\\
+&\left\langle e^{-\frac12\phi}S_{\alpha_1}(z_1) \cdots e^{-\frac12\phi}S_{\alpha_4}(z_4)\right\rangle \\
+&~~~=  -{(\gamma_\mu)_{\alpha_1\alpha_2}(\gamma^\mu)_{\alpha_3\alpha_4} \over 2z_{12} z_{23}z_{24}z_{34}}-{(\gamma_\mu)_{\alpha_1\alpha_3}(\gamma^\mu)_{\alpha_2\alpha_4} \over 2z_{13} z_{23}z_{34}z_{24}}-{(\gamma_\mu)_{\alpha_1\alpha_4}(\gamma^\mu)_{\alpha_2\alpha_3} \over 2z_{14} z_{24}z_{34}z_{23}} \\
+&\left\langle e^{-\frac12\phi}S^{\alpha_1}(z_1) \cdots e^{-\frac12\phi}S^{\alpha_4}(z_4)\right\rangle \\
+&~~~=  -{(\gamma_\mu)^{\alpha_1\alpha_2}(\gamma^\mu)^{\alpha_3\alpha_4} \over 2z_{12} z_{23}z_{24}z_{34}}-{(\gamma_\mu)^{\alpha_1\alpha_3}(\gamma^\mu)^{\alpha_2\alpha_4} \over 2z_{13} z_{23}z_{34}z_{24}}-{(\gamma_\mu)^{\alpha_1\alpha_4}(\gamma^\mu)^{\alpha_2\alpha_3} \over 2z_{14} z_{24}z_{34}z_{23}}.
+\end{aligned}
+\ee
+{\allowdisplaybreaks
+Below we list some useful formulas involving the action of $Q$ on level zero states:
+\begin{align}
+&Q \cdot f(X) ce^{-\phi}\psi^\mu = \frac14 \Box f(X) c \partial c  e^{-\phi}\psi^\mu  - \frac{1}{4} \partial^\mu f(X) c\eta \\
+&Q \cdot f(X) c \partial c e^{-\phi}\psi^\mu  = \frac{1}{4}\partial^\mu f(X) c \partial c \eta  \\
+&Q \cdot f(X) ce^{-\frac12\phi}S^\alpha  = \frac14 \Box f(X) c \partial c  e^{-\frac12\phi}S^\alpha - \frac{i}{4} \slashed{\partial}^{\alpha\beta} f(X) c \eta e^{\frac{1}{2}\phi} S_\beta \\
+&Q \cdot f(X) c \partial c e^{-\frac12\phi}S^\alpha  =  \frac{i}{4}\slashed{\partial}^{\alpha \beta}f(X) c\partial c \eta e^{\frac{1}{2}\phi}S_\beta + \frac{1}{4} f(X) c \eta \partial \eta e^{\frac32\phi} S^\alpha\\
+&Q \cdot f(X) ce^{-\frac32\phi}S_\alpha = \frac14 \Box f(X) c \partial c e^{-\frac32\phi}S_\alpha \\
+&Q \cdot f(X) c \partial ce^{-\frac32\phi}S_\alpha = 0 \\
+& Q \cdot f(X) c \eta e^{\frac{1}{2}\phi} S_\alpha = \frac{1}{4} \Box f(X) c\partial c \eta e^{\frac{1}{2}\phi} S_\alpha - \frac{i}{4} (\slashed{\partial} f)_{\alpha \beta} c \eta \partial \eta e^{\frac{3}{2} \phi} S^\beta \\
+& Q \cdot f(X) c \partial c \eta e^{\frac{1}{2}\phi} S_\alpha = \frac{i}{4} (\slashed{\partial} f)_{\alpha \beta} c \partial c \eta \partial \eta e^{\frac{3}{2} \phi} S^\beta\\
+&Q \cdot f(X) c \partial \xi e^{-\frac52\phi}S^\alpha  = \frac14 \Box f(X) c \partial c \partial \xi e^{-\frac52\phi}S^\alpha - \frac{i}{4} \slashed{\partial}^{\alpha \beta}f(X) c e^{-\frac32\phi}S_\beta \\
+&Q \cdot f(X) c \partial c \partial \xi e^{-\frac52\phi}S^\alpha = \frac{i}{4} \slashed{\partial}^{\alpha \beta}f(X) c \partial c e^{-\frac32\phi}S_\beta\\
+&Q \cdot f(X) c e^{-2\phi}\partial\xi = \frac{1}{4} \Box f(X) c \partial c e^{-2\phi}\partial \xi - \frac{1}{2} \partial_\mu f(X) c e^{-\phi} \psi^\mu \\
+&Q \cdot f(X) c \partial c e^{-2\phi}\partial\xi = -\frac{1}{2} f(X) c \eta + \frac{1}{2}\partial_\mu f(X) c \partial c e^{-\phi} \psi^\mu \\
+& Q \cdot f(X) c \eta=  \frac{1}{4}\Box f(X) c\partial c \eta \\
+& Q \cdot f(X) c\partial c \eta = 0.
+\label{QAct}
+\end{align}
+}
+{\allowdisplaybreaks
+Similarly, using $\mathcal{X}_0 = \oint \frac{\dd z}{z} \mathcal{X}$, we have the picture-raised states:
+\begin{align}
+\label{PCO1}
+&{\cal X}_0 \cdot f(X) c e^{-\phi}\psi^\mu  = c\big(-\frac{1}{2} f(X) \partial X^\mu - \frac{1}{2} \partial_\nu f(X) \psi^\nu \psi^\mu + \frac{1}{4} \partial^\mu f(X) \partial \phi \big) - \frac{1}{4} f(X) \eta e^{\phi}\psi^\mu \\
+\label{PCO2}
+&{\cal X}_0 \cdot f(X) c \partial ce^{-\phi}\psi^\mu = c\partial c \big(-\frac{1}{2} f(X) \partial X^\mu - \frac{1}{2}\partial_\nu f(X) \psi^\nu \psi^\mu + \frac{1}{4} \partial^\mu f(X) \partial \phi \big) - \\ \nonumber
+& \hspace{3.8cm}\frac{1}{4}f(X)\left(2 c\partial \eta - \partial c \eta + 2 c \eta \partial \phi \right)e^{\phi}\psi^\mu\\
+\label{PCO3}
+&{\cal X}_0 \cdot f(X) ce^{-\frac12\phi}S^\alpha =  -\frac{i}{2} f(X) ce^{\frac12\phi} (\slashed{\partial X} S)^\alpha - \frac{1}{4}f(X)(2 \partial \eta + \eta bc + 2 \eta \partial \phi)e^{\frac32\phi}S^\alpha \\
+\label{PCO4}
+&{\cal X}_0 \cdot f(X) \eta ce^{-\frac12\phi}S^\alpha=  -f(X) c\partial c e^{-\frac{1}{2}\phi}S^\alpha - \frac{i}{2} f(X) \eta ce^{\frac12\phi} (\slashed{\partial X} S)^\alpha - \frac{1}{2}f(X)\eta \partial \eta e^{\frac32\phi}S^\alpha \\
+\label{PCO5}
+&{\cal X}_0 \cdot f(X) ce^{-\frac32\phi}S_\alpha =  -\frac{i}{4} \slashed{\partial}_{\alpha \beta} f(X) c e^{-\frac12\phi} S^\beta  \\
+\label{PCO6}
+&{\cal X}_0 \cdot f(X) c \partial ce^{-\frac32\phi}S_\alpha = -\frac{i}{4} \slashed{\partial}_{\alpha \beta} f(X) c \partial ce^{-\frac12\phi} S^\beta -\frac{1}{4} f(X) c \eta e^{\frac12\phi}S_\alpha  \\
+\label{PCO7}
+&{\cal X}_0 \cdot f(X) c \partial \xi e^{-\frac12\phi}S^\alpha = 0 \\
+\label{PCO8}
+&{\cal X}_0 \cdot f(X) c \partial \xi e^{-\frac52 \phi}S^\alpha   = 0\\
+\label{PCO9}
+&{\cal X}_0 \cdot f(X) c \partial c \partial \xi e^{-\frac52 \phi}S^\alpha   = \frac{1}{4} f(X)c e^{-\frac12\phi}S^\alpha\\
+\label{PCO10}
+& {\cal{X}}_0 \cdot f(X) c \partial e^{-2\phi} e^{i k \cdot X} = \partial_\mu f(X) c e^{-\phi} \psi^\mu e^{i k \cdot X} \\
+\label{PCO11}
+& \mathcal{X}_0 \cdot f(X) c e^{-2\phi}\partial X^\mu = \frac{1}{2} f(X)c e^{-\phi}\psi^\mu \\
+\label{PCO12}
+& \mathcal{X}_0 \cdot \partial_\rho f(X) c e^{-3\phi}  \partial X^\rho \psi^\nu \partial \xi =  \frac{1}{4} \partial^\nu f(X) c e^{-2\phi} \partial \xi\\
+\label{PCO13}
+&  \mathcal{X}_0\cdot \partial_\rho f(X) c \partial c e^{-3 \phi}\partial X^\rho \psi^\nu \partial\xi = \frac{1}{4} \partial^\nu f(X) c \partial c e^{-2\phi}\partial \xi \\
+\label{PCO14}
+&  \mathcal{X}_0  \cdot f(X) c e^{-3\phi} \partial \psi^\nu \partial \xi = \frac{1}{4} \partial^\nu f(X) c e^{-2\phi}\partial\xi \\
+\label{PCO15}
+&  \mathcal{X}_0  \cdot f(X) c \partial c e^{-3 \phi}\partial \psi^\nu \partial \xi = \frac{1}{4}\partial^\nu f(X) c\partial c e^{-2\phi}\partial\xi \\
+\label{PCO16}
+&  \mathcal{X}_0 \cdot  f(X) c e^{-3 \phi} \psi^\nu \partial^2 \xi = 0 \\
+\label{PCO17}
+&  \mathcal{X}_0 \cdot f(X) c \partial c e^{-3\phi} \psi^\nu \partial^2 \xi =f(X) c e^{-\phi}\psi^\nu \\
+\label{PCO18}
+&  \mathcal{X}_0 \cdot f(X) c \partial e^{-3\phi}\psi^\nu \partial\xi = - \frac{3}{4}
+\partial^\nu f(X) c e^{-2\phi}\partial \xi \\
+\label{PCO19}
+&  \mathcal{X}_0  \cdot f(X) c \partial c \partial e^{-3 \phi} \psi^\nu \partial \xi = -\frac{3}{2} f(X) c e^{-\phi} \psi^\nu - \frac{3}{4} \partial^\nu f(X) c \partial c e^{-2 \phi}\partial \xi \\
+\label{PCO20}
+& \mathcal{X}_0 \cdot f(X) c \partial^2 c e^{-3 \phi} \psi^\mu \partial \xi = \frac{1}{2}f(X) c e^{-\phi}\psi ^\mu \\
+\label{PCO21}
+& \mathcal{X}_0 \cdot  f(X) c \partial^3 c \partial^2 \xi \partial \xi  e^{-4 \phi} = 6 f(X) c e^{-2 \phi}\partial \xi \\
+\label{PCO22}
+& \mathcal{X}_0 \cdot  f(X) c \partial c \partial^3 c \partial^2 \xi \partial \xi  e^{-4 \phi} = 6 f(X) c \partial c e^{-2 \phi} \partial \xi \\
+\label{PCO23}
+   & \mathcal{X}_0 \cdot \partial_\nu f(X) c_0^+ c  \partial^2 c \partial^2 \xi \partial \xi \partial X^\nu e^{-4 \phi} = 0.
+\end{align}
+}
+
+
+\section{Flat superstring brackets}
+\label{sec:flatvert}
+
+%and the integration chain $\Gamma_{0,n+1}$ is specified by a symmetric choice of functions $(q_i, z_i)$ over the moduli domain $\pi(\Gamma_{0,n+1})\subset {\cal M}_{0,n+1}$, with the worldsheet surface $\Sigma$ being a Riemann sphere punctured at $z_1, \cdots, z_n$ and $\infty$.
+
+
+As seen in the context of bosonic SFT in \cite{Mazel:2024alu}, one may consider an asymmetric version of the string vertex (\ref{supersftvert}) where the first puncture is treated differently from the rest, yielding a generalized set of string brackets $[\Psi^{\otimes n}]$ that still satisfy the $L_\infty$ relation (\ref{linfty}) and thereby define consistent gauge-invariant string field equation (\ref{generalEOM}). The asymmetric string vertices define a string field frame related to the one considered in section \ref{sec:stringfieldbracket} by a field redefinition.
+
+
+For instance, we can choose the coordinate map $f_1$ to be the inversion, and $f_2, \cdots, f_{n+1}$ to be simply Euclidean transformations combined with scaling,
+\ie\label{flatcoormaps}
+f_1(w_1) = r_0 w_1^{-1},~~~~ f_{i+1}(w_{i+1}) = q_i w_{i+1} + z_i,~~~~ i = 1,\cdots, n,
+\fe
+The coordinate maps (\ref{flatcoormaps}) give rise to the ``flat'' superstring bracket
+\ie
+[\Psi^{\otimes n}] =  {\cal G} {b_0^- \mathbb{P}^- r_0^{-L_0^+}\over (-2\pi i)^{n-2}} \int_{\Upsilon_{n;1}} e^{\cal B}\prod_{a=1}^{d_o} \big[ {\cal X}(x_a) - d\xi(x_a) \big] \prod_{\bar a=1}^{\bar d_o} \big[ \bar{\cal X}(\bar x_{\bar a}) - d\bar\xi(\bar x_{\bar a})\big] \prod_{i=1}^{n} (|q_i|^{L_0^+}\Psi)(z_i) ,
+\fe
+where $\mathbb{P}^-$ is the projector onto $L_0^-=0$ states, and ${\cal B}$ is explicitly given by
+\ie\label{binsertflat}
+{\cal B} = - \sum_{i=1}^n \left[ dz_i b_{-1}^{(z_i)} + {dq_i\over q_i} b_0^{(z_i)} + d\bar z_i \bar b_{-1}^{(\bar z_i)} + {d\bar q_i\over \bar q_i} \bar b_0^{(\bar z_i)} \right],
+\fe
+where $b_n^{(z_i)}$ stands for $b_n$ acting on the field operator inserted at $z_i$.
+The integration contour $\Upsilon_{n;1}$ is a $(2n-4)$-dimensional chain in $\widehat{\cal Q}_{n+1}\to {\cal M}_{0,n+1}$ specified by coordinate maps of the form (\ref{flatcoormaps}) with a symmetric choice of $(q_i, z_i)$ as functions over the moduli domain $\pi(\Upsilon_{n;1})\subset {\cal M}_{0,n+1}$, together with the choice of holomorphic PCO positions $x_1, \cdots, x_{d_o}$ and anti-holomorphic PCO positions $\bar x_1, \cdots, \bar x_{\bar d_o}$ that satisfy the matching conditions
+\ie\label{geommassuperflat}
+- \partial \Upsilon_{0,n;1} &= \sum_{\A \subset\{1,\cdots,n\}} \varrho_{\A} \left( \widetilde\Upsilon_{0,|\A|;1}\times \widetilde\Upsilon_{0,n-|\A|+1;1}\times \{q:|q|=1\} \right),
+\fe
+where $\varrho_{\A}$ is a plumbing map defined analogously to (\ref{plumbingmapab}) that takes $(q'_i, z'_i, x'_{a'}, \bar x'_{\bar a'})\in \Gamma_{0,|\A|;1}$ and $(q''_j, z''_j, x''_{a''}, x''_{\bar a''})\in \Gamma_{0,n-|\A|+1;1}$ to
+\ie\label{flatmatch}
+& z_{\A(i)} = r_0^{-1} q q_1'' z_i' + z_1'',~~~ |q_{\A(i)}| =r_0^{-1} |q_1'' q_i'| ,~~~i = 1,\cdots |\A|,
+\\
+& z_{\overline\A(j)} = z_{j+1}'',~~~|q_{\overline\A(j)}| = |q_{j+1}''|,~~~j=1,\cdots,n-|\A|,
+\\
+& x_{a'} =  r_0^{-1}qq_1'' x'_{a'}+z_1'', ~~~ \bar x_{\bar a'} =  r_0^{-1}q q_1'' \bar x'_{\bar a'} + z_1'',~~~x_{a''} = x''_{a''}, ~~~ \bar x_{\bar a''} = \bar x''_{\bar a''}.
+\fe
+Here $\A(i)$ stands for the $i$-th element of the index set $\A\subset \{1,\cdots, n\}$ with an arbitrarily chosen ordering, and similarly $\overline\A(j)$ stands for the $j$-th element of the complement of $\A$.
+
+
+
+
+Explicitly, we may take the flat 2-string bracket to be
+\ie\label{twostringbracksuper}
+[\Psi^{\otimes 2}] = {\cal G^\#} [\Psi^{\otimes 2}]_b,
+\fe
+where the picture-adjusting operator ${\cal G^\#}$ defined as repeatedly acting with ${\cal X}_0$ or $\bar{\cal X}_0$ to raise the picture number to $-1$ in the NS sector and $-{1\over 2}$ in the R sector, and $[\Psi^{\otimes 2}]_b$ is defined as
+\ie\label{eqn:2vt}
+[\Psi^{\otimes 2}]_b \equiv b_0^-\mathbb{P}^- r_0^{-L_0^+} \left( \Psi(-z_0)  \Psi(z_0) \right).
+\fe
+The flat 3-string bracket can be constructed as
+\ie\label{threestringbracksuper}
+[\Psi^{\otimes 3}] = {\cal G^\#}{ b_0^-\mathbb{P}^- r_0^{-L_0^+} \over -2\pi i} \int_{{\cal D}_{0,4}} dt\wedge d\bar t \, {\cal B}_{\bar t} {\cal B}_t \prod_{i=1}^3 (|q_i|^{L_0^+} \Psi)(z_i) \, - 3 {\rm Vert} \big[[\Psi^{\otimes 2}]_b \otimes \Psi\big],
+\fe
+where $q_i=q_i(t, \bar t)$, $z_i=z_i(t, \bar t)$, ${\cal B}_t$, ${\cal B}_{\bar t}$, and the domain ${\cal D}_{0,4}$ are constructed as in section 4.2 of \cite{Mazel:2024alu}, and the second term on the RHS is a correction due to vertical integration \cite{Sen:2015hia}. In particular, ${\rm Vert}[\Phi\otimes \Psi]=0$ for an ordinary string field $\Phi$ carrying picture number $-1$ or $-{1\over 2}$. When $\Phi$ carries holomorphic picture number $-2$ or $-{3\over 2}$, and anti-holomorphic picture number $-1$ or $-{1\over 2}$, we have
+\ie
+{\rm Vert}[\Phi\otimes \Psi] &= {\cal G^\#}\Big( \big[ \xi_0 \bar{\cal X}_0 \Phi \otimes \Psi \big]_b - \xi_0 \big[ \bar{\cal X}_0 \Phi\otimes \Psi \big]_b  \Big),
+\fe
+and when $\Phi=[\Psi^{\otimes 2}]_b$ carries holomorphic and anti-holomorphic picture number $-2$ or $-{3\over 2}$, we may take
+\ie
+{\rm Vert}[\Phi\otimes \Psi] &= {\cal G^\#}\Big( \big[ \xi_0 \bar{\cal X}_0 \Phi \otimes \Psi \big]_b - \xi_0 \big[ \bar{\cal X}_0 \Phi\otimes \Psi \big]_b + {\cal X}_0 \big[ \bar\xi_0 \Phi\otimes \Psi \big]_b - {\cal X}_0 \bar\xi_0 \big[ \bar{\cal X}_0 \Phi\otimes \Psi \big]_b \Big).
+\fe
+
+For later use, we provide more details on the relevant plumbing construction for the four-punctured sphere. Consider two cubic flat vertices defined in (\ref{eqn:2vt}). Each of them is described by a sphere with a global coordinate $z_i$ $(i=1,2)$ with local charts around the three punctures
+\be
+\begin{aligned}
+    z_1&=f_1(w_1)=r_0 w_1^{-1},~z_1=f_2(w_2)=w_2-z_0,~z_1=f_3(w_3)=w_3+z_0,
+    \\
+    z_2&=f_1(w'_1)=r_0 {w'_1}^{-1},~z_2=f_2(w'_2)=w'_2-z_0,~z_2=f_3(w'_3)=w'_3+z_0.
+\end{aligned}
+\ee
+The plumbing operation of the flat vertices is performed by making the identifications
+\begin{equation}\label{eqn:plumbingPara}
+    w'_1w_2=q~\text{ and }~w'_1w_3=q'
+\end{equation}
+where $|q|\leq1$ and $|q'|\leq1$ are the plumbing parameters. We focus on the first plumbing with $q$-parameter as the latter can be obtained by a replacement $z_0\rightarrow -z_0$. In $z_1$-coordinate system, the plumbing brings points $z_2=\pm z_0$ to $z_1=z_0\left(\pm{q\over r_0}-1\right)$. Performing an $SL(2,\mathbb{C})$ transformation, we can bring points $z_1=\infty,z_0\left({q\over r_0}-1\right),z_0\left(-{q\over r_0}-1\right)$ and $z_0$ to $z=\infty,0,t,1$ where the modulus is expressed in terms of the plumbing parameter as $t={2q\over q-2r_0}$. The corresponding propagator region $|q|\leq1$ is given by
+\begin{equation}\label{eqn:propRegion}
+    \bigg| {1\over t}-{1\over2}\bigg|\geq r_0.
+\end{equation}
+Similar plumbing constructions in the other channels lead to the determination of the vertex region of \cite{Mazel:2024alu}
+\be
+{\cal D}_{0,4} =\{t\in \mathbb{C}: \,\, \abs{t-\frac{1}{2}}, \abs{\frac{1}{t}-\frac{1}{2}}, \abs{\frac{1}{1-t}-\frac{1}{2}} < r_0\}
+\label{vertexRegionFour}
+\ee
+mentioned above. The identification of the plumbing region in terms of the parameter $q$ will be necessary when we discuss the linearized equations of motion in section \ref{sec:linEOM}.
+
+
+To see the dependence of our solution on the parameter $r_0$ entering into the flat bracket, we will find it useful to define the Hata-Zwiebach double bracket \cite{Hata:1993gf, Mazel:2024alu}
+\be
+[[\Psi^{\otimes n}]]_{r_0} =  {\cal G} {b_0^- \mathbb{P}^- r_0^{-L_0^+}\over (-2\pi i)^{n-2}} \int_{\Upsilon_{n;1}} \mathcal{B}_{r_0} e^{\cal B}\prod_{a=1}^{d_o} \big[ {\cal X}(x_a) - d\xi(x_a) \big] \prod_{\bar a=1}^{\bar d_o} \big[ \bar{\cal X}(\bar x_{\bar a}) - d\bar\xi(\bar x_{\bar a})\big] \prod_{i=1}^{n} (|q_i|^{L_0^+}\Psi)(z_i),
+\label{doubledef}
+\ee
+where $\mathcal{B}_{r_0}$ is a $b$-ghost insertion measuring the dependence of transition maps on $r_0$.
+The bracket is defined such that the $r_0$ dependence of $\Psi$ is determined via
+\be
+\partial_{r_0} \Psi(r_0) = \sum\limits_{n=2}^\infty [[\Psi^{\otimes n}]_{r_0}.
+\ee
+In this paper, we need only the explicit form of the flat double 2-bracket, which using (\ref{twostringbracksuper}) and (\ref{doubledef}) is given by
+\be
+[[\Psi^{\otimes 2}]]_{r_0} = b_0^+ [\Psi^{\otimes 2}].
+\label{hata2}
+\ee
+
+
+
+
+
+
+
+\printbibliography
+\end{document}
+\bye
