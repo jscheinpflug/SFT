@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+%\usepackage{amssymb,epsf,graphicx}
+\usepackage{amsmath,amssymb,bm,epsf,epsfig,graphicx,hyperref,physics, cleveref, subfig, slashed, stmaryrd, tensor}
+\usepackage[backend=bibtex,natbib,style=numeric-comp,sorting=none, doi=false, isbn=false,url=false]{biblatex}
+\addbibresource{refs}
+\input epsf.sty
+\topmargin -.5cm \textheight 21cm \oddsidemargin -.125cm
+\textwidth 17cm
+
+\usepackage[]{todonotes}
+\hypersetup{
+    colorlinks=true,
+    citecolor=violet,
+    linkcolor=violet, % optional: color of internal links (sections, etc.)
+    urlcolor=violet    % optional: color of URL links
+}
+\usepackage[weather, alpine]{ifsym}
+
+\definecolor{bisque}{rgb}{1.0, 0.89, 0.77}
+\definecolor{forestgreen(web)}{rgb}{0.13, 0.55, 0.13}
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\ie{\begin{equation}\begin{aligned}}
+\def\fe{\end{aligned}\end{equation}}
+\def\is{\begin{equation}\begin{split}}
+\def\fs{\end{split}\end{equation}}
+\numberwithin{equation}{section}
+\def\mt{\bar}
+
+\newcommand{\WT}[1]{\widetilde{#1}}
+\newcommand{\HH}[1]{\widehat{#1}}
+\newcommand{\m}[1]{\mathcal{#1}}
+
+
+\newcommand{\fixme}[1]{{\bf {\color{red}[#1]}}}
+\newcommand{\A}{{\alpha}}
+\newcommand{\sfeom}{\mathrm{SFEOM}}
+
+
+\newcommand{\B}[1]{\bar{#1}}
+\newcommand{\jg}[1]{\todo[color=forestgreen(web)!30, size=\scriptsize, bordercolor=forestgreen(web)!30]{JG: #1}}
+
+\newcommand{\mc}[1]{\todo[color=lightgray!50, size=\scriptsize, bordercolor=lightgray]{MC: #1}}
+
+\newcommand{\xy}[1]{\todo[color=lightgray!50, size=\scriptsize, bordercolor=lightgray]{XY: #1}}
+
+
+\newcommand{\js}[1]{\todo[color=bisque!30, size=\scriptsize, bordercolor=bisque!30]{JS: #1}}
+
+\begin{document}
+
+\title{Integrability in String Field Theory}
+
+\maketitle
+\section{Project Idea}
+\begin{itemize}
+    \item We want to uncover the integrability structure of SFT.
+    \item At present, it is not clear how this structure appears even for the flat string.
+    \item We will try to investigate the \textit{pp-wave background string field solution}.
+    \item Why pp-wave? Simplest non-trivial case: solution truncates at second order, plethora of results in integrability of the BMN sector of $\mathcal{N}=4,d=4$ SYM.
+\end{itemize}
+
+\section{Goals}
+\begin{itemize}
+    \item Short term: determine string field corresponding to the spin-chain vacuum $\tr\left(Z^J\right)$, and excited states with magnons.
+    \item Short term: Compute 3-point correlator between these states - what is the prescription?
+    \item Long term: connect with pp-wave vertex in the literature.
+    \item Long term: find ``hexagonalization''?
+\end{itemize}
+
+\section{What has been established?}
+\begin{itemize}
+    \item pp-wave Hamiltonian $H^{(0)}=N_H c\WT{c}\left( e^{-\phi}\psi^-e^{-2\WT{\phi}}\B{\partial}\WT{\xi}+e^{-2\phi}\partial\xi e^{-\WT{\phi}}\WT{\psi}^- \right)$. Seems to be corrected at second order, waiting for check using \texttt{StringCode}.
+    \item Identification of the spin-chain ground state 
+    $$\tr(Z^J)\mapsto e^{ip_-X^-}\left(\alpha_{--}\delta_{\mu}^{-}\delta_{\nu}^{-}+\alpha_{ij}\delta_{\mu}^i\delta_{\nu}^j+\alpha_{-i}\delta_{(\mu}^-\delta_{\nu)}^i\right)e^{-\phi}\psi^{\mu}e^{-\WT{\phi}}\WT{\psi}^{\nu}$$
+    at zeroth order.
+\end{itemize}
+
+\section{To-do}
+\begin{itemize}
+    \item Compute $\mathcal{O}(\mu),\mathcal{O}(\mu^2)$ corrections to the ground state.
+    \item Compute supersymmetry action on ground state. Single out preserved supersymmetries.
+    \item Compute 3-point function of ground states. The simplest thing we should be able to reproduce is the correlator between three vacuum states
+    \begin{equation}
+        \left\langle \tr(Z^{J_1})(x_1)\tr(Z^{J_2})(x_2)\tr(Z^{J_3})(x_3)\right\rangle=\frac{\sqrt{J_1J_2J_3}}{N}\frac{1}{|x_{12}|^{2\Delta_{12,3}}|x_{13}|^{2\Delta_{13,2}}|x_{23}|^{2\Delta_{23,1}}}
+    \end{equation}
+    The rationale is that in the process of reproducing this simple correlator we may learn more about the prescription for computing amplitudes in backgrounds with RR charge in the SFT framework.
+    \item In particular: how do the boundary $x$-dependence appears in the prescription?
+\end{itemize}
+
+
+\end{document}

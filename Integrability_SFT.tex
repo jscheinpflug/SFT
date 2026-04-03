@@ -1,0 +1,242 @@
+\documentclass[12pt]{article}
+%\usepackage{amssymb,epsf,graphicx}
+\usepackage{amsmath,amssymb,bm,epsf,epsfig,graphicx,hyperref,physics, cleveref, subfig, slashed, stmaryrd, tensor}
+\usepackage[backend=bibtex,natbib,style=numeric-comp,sorting=none, doi=false, isbn=false,url=false]{biblatex}
+\addbibresource{refs}
+\input epsf.sty
+\topmargin -.5cm \textheight 21cm \oddsidemargin -.125cm
+\textwidth 17cm
+
+\usepackage[]{todonotes}
+\hypersetup{
+    colorlinks=true,
+    citecolor=violet,
+    linkcolor=violet, % optional: color of internal links (sections, etc.)
+    urlcolor=violet    % optional: color of URL links
+}
+\usepackage[weather, alpine]{ifsym}
+
+\definecolor{bisque}{rgb}{1.0, 0.89, 0.77}
+\definecolor{forestgreen(web)}{rgb}{0.13, 0.55, 0.13}
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\ie{\begin{equation}\begin{aligned}}
+\def\fe{\end{aligned}\end{equation}}
+\def\is{\begin{equation}\begin{split}}
+\def\fs{\end{split}\end{equation}}
+\numberwithin{equation}{section}
+\def\mt{\bar}
+
+\renewcommand{\title}[1]{\vbox{\center\LARGE{#1}}\vspace{5mm}}
+\renewcommand{\author}[1]{\vbox{\center#1}\vspace{5mm}}
+\newcommand{\address}[1]{\vbox{\center\em#1}}
+\newcommand{\email}[1]{\vbox{\center\tt#1}\vspace{5mm}}
+\newcommand{\WT}[1]{\widetilde{#1}}
+\newcommand{\HH}[1]{\widehat{#1}}
+\newcommand{\m}[1]{\mathcal{#1}}
+\newcommand{\StringCode}{\texttt{StringCode}}
+
+
+\newcommand{\fixme}[1]{{\bf {\color{red}[#1]}}}
+\newcommand{\A}{{\alpha}}
+\newcommand{\sfeom}{\mathrm{SFEOM}}
+
+
+\newcommand{\B}[1]{\bar{#1}}
+\newcommand{\jg}[1]{\todo[color=forestgreen(web)!30, size=\scriptsize, bordercolor=forestgreen(web)!30]{JG: #1}}
+
+\newcommand{\mc}[1]{\todo[color=lightgray!50, size=\scriptsize, bordercolor=lightgray]{MC: #1}}
+
+\newcommand{\xy}[1]{\todo[color=lightgray!50, size=\scriptsize, bordercolor=lightgray]{XY: #1}}
+
+
+\newcommand{\js}[1]{\todo[color=bisque!30, size=\scriptsize, bordercolor=bisque!30]{JS: #1}}
+
+\begin{document}
+
+\unitlength = .8mm
+
+\begin{titlepage}
+
+\begin{center}
+
+\hfill \\
+\hfill \\
+\vskip 1cm
+
+\title{Integrability in String Field Theory}
+
+\begin{abstract}
+    In this note, we investigate how the worldsheet integrability of string theory in a flat and some RR backgrounds is realized in the String Field Theory formulation.
+\end{abstract}
+\end{center}
+
+
+\vfill
+
+\end{titlepage}
+
+\eject
+
+\begingroup
+\hypersetup{linkcolor=black}
+
+\endgroup
+\section{Introduction}
+
+In the pioneering paper \cite{Cho:2018nfn}, the authors were able to determine the string field solution which describes the pp-wave background to second order in the RR-charge, and were also able to reproduce the dispersion relation for the maximally spinning string state. In \cite{Cho:2025coy}, the pp-wave solution was reproduced by solving the extended system that takes into account the global symmetries of the background, and was also shown to truncate at second order. Here, we will try to use both ingredients to understand how integrability is realized in the SFT framework. In particular, we would like to start building intuition on how the spin chain structure can be described in SFT language and, if we are successful, understand magnon scattering in this formalism.
+
+In order to do so, we start by reminding ourselves what is the solution to the SFEOM which corresponds to the pp-wave background, and then move on to investigating the spectrum of linear perturbations around it. Following the lore initiated in the original reference \cite{Berenstein:2002jq}, we will single out the string field which describes the vacuum state of the spin chain $\tr(Z^J)$ and establish some of its properties. We will then identify the excited states of the spin chain in terms of string fields, and thus obtain a description of the magnons in the SFT framework.
+
+We will also analyze the algebra of global symmetries of the BMN sector and investigate its interplay with the spectrum and scattering amplitudes. The reason why the scattering amplitude exploration is particularly interesting is twofold. First, it is a simpler (but non-trivial) setup to understand what the prescription is, laying the foundations to, say, the computation of the Virasoro-Shapiro amplitude in $AdS_5\times S^5$. Second, hopefully it will allow us to make contact with yet another subject from integrability: \textit{hexagonalization}.
+
+\section{SFT framework: pp-wave solution and spectrum}
+
+\subsection{Remembering the pp-wave solution}
+In \cite{Cho:2018nfn} the string field solution to the SFEOM that describes the pp-wave background was determined to second order in perturbation theory. Later, in \cite{Cho:2025coy}, this solution was recovered from the generalized system of equations which includes the global symmetries of the background. It was also shown to truncate at second order, so that the full solution is
+\begin{equation}
+    \psi=\mu(\gamma^{+1234})_{\alpha\beta}c\WT{c}e^{-\frac{1}{2}\phi}S^{\alpha}e^{-\frac{1}{2}\WT{\phi}}\WT{S}^{\beta}+\mu^2(X^{\perp})^2c\WT{c}e^{-\phi}\psi^+e^{-\WT{\phi}}\WT{\psi}^+.
+\end{equation}
+
+The SFT framework allows the determination of the spectrum in general backgrounds by computing the linearized equation of motion for a perturbation $\Phi$ around $\Psi$. It reads
+\begin{equation}
+    Q_B\Phi+\sum_{n=1}^{\infty}\frac{1}{n!}\left[\Phi\otimes\Psi^{\otimes n}\right]=0.
+\end{equation}
+
+\subsection{pp-wave Hamiltonian}
+To identify the string fields which correspond to magnons on the worldsheet, we start from the bottom. The original reference \cite{Berenstein:2002jq} suggests that, in order to determine the string field dual to $\mathrm{tr}(Z^J)$ we must find the vacuum state with $p_+=0$. We should therefore characterize string fields which are annihilated by the Hamiltonian. The order zero string field Hamiltonian in a pp-wave background reads
+\begin{equation}
+    H^{(0)}=N_H c\WT{c}\left( e^{-\phi}\psi^-e^{-2\WT{\phi}}\B{\partial}\WT{\xi}+e^{-2\phi}\partial\xi e^{-\WT{\phi}}\WT{\psi}^- \right).
+\end{equation}
+The Hamiltonian does not get corrected at first order in perturbation theory because the order $\mu$ string field describing the pp-wave background is constant. It also does not get corrected at second order because the profile for the metric only depends on the perpendicular coordinates. \textcolor{violet}{JG: checked by current lightcone module in \texttt{StringCode}, still being tested.} Consequently, we are led to consider a ghost-number two string field that is $X^+$-independent. Furthermore, it should also be invariant under half of the supersymmetry generators.
+
+\subsection{pp-wave supersymmetry: under construction}
+\textcolor{violet}{JG: this subsection has been copied from the old Konishi draft. Pending verification from \StringCode}
+
+The zeroth order supersymmetry algebra analysis is general for string field solutions built on top of the flat space CFT. As in the case of the $AdS_5\times S^5$ solution, the 32 generators can be written in terms of two string fields, which are themselves linear combinations of string fields in the RNS and NSR sectors. These two string fields have opposite worldsheet parity and are given by
+\be
+    \lambda^{(0)\pm}\equiv\epsilon^{(0)}_{\alpha}c\B{c}\big(e^{-\frac{1}{2}\phi}S^{\alpha}e^{-2\B{\phi}}\B{\partial}\B{\xi}\pm e^{-2\phi}\partial\xi e^{-\frac{1}{2}\B{\phi}}\B{S}^{\alpha}\big)
+\ee
+where $\epsilon^{(0)}_{\alpha}$ is a constant spinor. The 2-bracket between two $\lambda^+$ or two $\lambda^-$ yields the worldsheet parity even string field corresponding to the translation generator
+\be
+    [\lambda_1^{\pm}\otimes\lambda_2^{\pm}]=\frac{i}{4}\big(\epsilon_1\gamma_{\mu}\epsilon_2\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big).
+\ee
+One can also consider the 2-bracket between one $\lambda^+$ and $\lambda^-$ which yields the worldsheet parity odd string field
+\be
+    [\lambda_1^{+}\otimes\lambda_2^{-}]=\frac{i}{4}\big(\epsilon_1\gamma_{\mu}\epsilon_2\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big).
+\ee
+Note, however, that this is $Q_{B}$-exact
+\be
+    Q_{B}\omega^{(0)}=\frac{i}{4}\big(\epsilon_1\gamma_{\mu}\epsilon_2\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)
+\ee
+where
+\ie
+    \omega^{(0)}\equiv-\frac{i}{2}\big(\epsilon_1\slashed{X}\epsilon_2\big)c\B{c}e^{-2\phi}\partial\xi e^{-2\B{\phi}}\B{\partial}\B{\xi}.
+\fe
+
+The first order analysis also mimics the $AdS_5\times S^5$ case perfectly. We compute
+\ie
+    &[\lambda_1^{(0)\pm}\otimes\lambda_2^{(1)\pm}]+[\lambda_1^{(1)\pm}\otimes\lambda_2^{(0)\pm}]\equiv\WT{V}_{\mu}c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)\\
+    &=\frac{1}{16}\big(\epsilon_1^{(0)}\gamma_{\mu}F^{(1)}\slashed{X}\epsilon_2^{(0)}+\epsilon_1^{(0)}\slashed{X}F^{(1)}\gamma_{\mu}\epsilon_2^{(0)}\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}-e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)
+\fe
+for $F^{(1)}=\mu\left(\gamma^{+1234}\right)$, which is also $Q_B$-exact
+\be
+    [\lambda_1^{(0)\pm}\otimes\lambda_2^{(1)\pm}]+[\lambda_1^{(1)\pm}\otimes\lambda_2^{(0)\pm}]=Q_B\omega^{(1)}
+\ee
+where
+\be
+    \omega^{(1)}=-\frac{1}{8}\big(\epsilon^{(0)}\slashed{X}F^{(1)}\slashed{X}\epsilon^{(0)}\big).
+\ee
+Furthermore, we can also compute
+\ie \label{P1st}
+    &[\lambda_1^{(0)+}\otimes\lambda_2^{(1)-}]+[\lambda_1^{(1)+}\otimes\lambda_2^{(0)-}]\equiv V_{\mu}c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)\\
+    &=-\frac{1}{16}\big(\epsilon_1^{(0)}\gamma_{\mu}F^{(1)}\slashed{X}\epsilon_2^{(0)}-\epsilon_1^{(0)}\slashed{X}F^{(1)}\gamma_{\mu}\epsilon_2^{(0)}\big)c\B{c}\big(e^{-\phi}\psi^{\mu}e^{-2\B{\phi}}\B{\partial}\B{\xi}+e^{-2\phi}\partial\xi e^{-\B{\phi}}\B{\psi}^{\mu}\big)
+\fe
+which is $Q_B$-closed
+\ie
+\partial^{\mu}{V}_{\mu}=0,\quad \partial_{(\mu}{V}_{\nu)}=0.
+\fe
+
+
+\subsection{Identifying the states}
+We start by considering the vacuum state $\mathrm{tr}(Z^J)$. As stated in the original paper \cite{Berenstein:2002jq}, it is dual to a supergraviton with very large momentum $p_-$ and $p_+=0$. In the SFT framework, it should be described by a ghost number two string field in the NSNS whose zeroth-order component is given by the ansatz
+\begin{equation}
+    \phi^{(0)}=c\WT{c}h_{\mu\nu}(X)e^{-\phi}\psi^{\mu}e^{-\WT{\phi}}\WT{\psi}^{\nu}
+\end{equation}
+satisfying
+\begin{equation}
+    \Box h_{\mu\nu}(X)=0,\quad \partial^{\nu}h_{\mu\nu}(X)=0
+\end{equation}
+since the EOM for the linear perturbation at zeroth order is $Q_B\phi^{(0)}=0$. The first equation can be rewritten as $p^+p^-+p_ip^i=0$, which in turn implies that $p_i=0$ for the transverse directions. Consequently, we take the profile to be independent of $X^+$ and $X^i$. Taking this into account, the second equation reduces to the following equations
+\begin{equation}
+    \partial_- h_{++}=\partial_- h_{-+} = \partial_- h_{i+}=0.
+\end{equation}
+These conditions can be trivially solved by taking the ansatz
+\begin{equation}
+    h_{\mu\nu}(X)=e^{ip_-X^-}\left(\alpha_{--}\delta_{\mu}^{-}\delta_{\nu}^{-}+\alpha_{ij}\delta_{\mu}^i\delta_{\nu}^j+\alpha_{-i}\delta_{(\mu}^-\delta_{\nu)}^i\right)
+\end{equation}
+where $\alpha_{--},\alpha_{ij}$ and $\alpha_{-i}$ are constants. Our vacuum is therefore
+\begin{equation} \label{Grav0}
+    \phi^{(0)}=c\WT{c}e^{ip_-X^-}\left( \alpha_{--} e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^-+\alpha_{ij}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^j+\alpha_{-i}e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^i+\alpha_{-i}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^-\right).
+\end{equation}
+It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonian computed by $\left[H^{(0)}\otimes\phi^{(0)}\right]$ is indeed zero. Furthermore, it is also easy to see that this field is not corrected at first order in perturbation theory by the bracket $\left[\psi^{(1)}\otimes \phi^{(0)}\right]$ due to $(\gamma^-)^2=0$. However, it does get corrected at second order. Computing the $\left[\psi^{(2)}\otimes\phi^{(0)}\right]$ one finds \textcolor{violet}{JG: checking with \StringCode.}
+
+Now that we have a good description of the vacuum state up to second order in perturbation theory, we move on to the excited states which correspond to the addition of magnons in the spin chain. The lore \cite{Berenstein:2002jq} states that these correspond to the action of oscillators on the supergraviton mode. We will therefore consider the following zeroth order ansatz
+\begin{equation}
+    \varphi^{(0)}=c\WT{c}e^{ip_-X^-}m(X)e^{-\phi}\psi^-\partial X^1e^{-\WT{\phi}}\WT{\psi}^-\B{\partial}X^1.
+\end{equation}
+The zeroth order equation of motion for this linearized perturbation $Q_B\varphi^{(0)}=0$ implies
+\begin{equation}
+    \Box\left(e^{ip_-X^-}m(X)\right)-1=0\ldots
+\end{equation}
+
+\section{Magnon scattering: pair of pants}
+Now that we have nailed down the states, we can formulate the computation we expect to match with the pair of pants diagram. We start with the simplest possible case which is that of three vacuum operators scattering. This is just 3-graviton scattering in the pp-wave background. Let us investigate this order by order in the $\mu$-expansion. \textcolor{violet}{JG: work out nonzero polarizations?}
+
+\subsection{$\mu^0$ order}
+This is just on-shell scattering of three gravitons in flat space. As stated above, we consider the pp-wave ansatz (\ref{Grav0}) and, since this is an on-shell computation, we can choose one of the vacua to be picture-raised. For this particular profile, picture-raising yields
+\begin{equation}
+    \mathcal{X}_0\cdot\phi^{(0)}=e^{ip_-X^-}\left(-\frac{1}{2}c\partial X^--\frac{1}{4}\eta e^{\phi}\psi^-\right)\left(-\frac{1}{2}\WT{c}\B{\partial}X^--\frac{1}{4}\WT{\eta}e^{\WT{\phi}}\WT{\psi}^-\right).
+\end{equation}
+However, since the wave-function only depends on the lightcone coordinate $X^-$, it is easy to see that this particular arrangement of wavefunctions leads to a correlation function that is identically zero
+\begin{equation}
+    \left\langle\phi_{p_1}^{(0)}(z_1)\phi_{p_2}^{(0)}(z_2)\left(\mathcal{X}_0\WT{\mathcal{X}}_0\cdot\phi_{p_3}^{(0)}\right)(z_3)\right\rangle=0.
+\end{equation}
+
+\subsection{$\mu^1$ order}
+The contribution to the correlation function at order $\mu^1$ involves, in principle, three insertions of the zeroth order graviton string field $\phi^{(0)}$ and one insertion of the first order background string field $\psi^{(1)}$. However, since this correlator involves three NSNS insertions and one RR insertion, the picture-number $-2$ requirement can never be satisfied. Consequently, the contribution at order $\mu^1$ is zero.
+
+\subsection{$\mu^2$ order}
+There are two correlators which contribute at this order. The first one is
+\begin{equation}
+    \left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \phi_{p_1}^{(0)}(z_1)\phi_{p_2}^{(0)}(z_2)\phi_{p_3}^{(0)}(z_3)\psi^{(2)}(w)\right\rangle.
+\end{equation}
+Let us investigate the different PCO arrangements. The first arrangement we can consider is one pair of PCO's on the first graviton, and another pair on the second. However, this arrangement yields zero because there are two $\partial X^-$ and $\B{\partial}X^-$ modes which cannot be contracted because none of the profiles have $X^+$-dependence. The other arrangement we have to consider is one pair of PCO's on one graviton, and the other pair on the background insertion. We would be again be left with uncontracted $\psi^i$, $\psi^-$, $\partial X^-$ or $\eta$, leading to a zero contribution once again.
+
+Next, we consider
+\begin{equation}
+    \left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \phi_{p_1}^{(0)}(z_1)\phi_{p_2}^{(0)}(z_2)\phi_{p_3}^{(0)}(z_3)\psi^{(1)}(w_1)\psi^{(1)}(w_2)\right\rangle.
+\end{equation}
+Again, this is zero for all the PCO arrangements because there are always uncontracted $\partial X^{\pm}$, $\psi^-$ or $\eta$ modes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\printbibliography
+\end{document}
