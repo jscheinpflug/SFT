@@ -771,24 +771,55 @@ mixing forced by the background.
 
 \section{Working Recommendation}
 
-My current recommendation is:
-\begin{enumerate}
-\item Take $[2,0,2]_{(0,0)}$ as the default Konishi candidate from the SFT point of view.
-It is the cleanest bona fide $\D_0=4$ descendant: unique in Table 1, spinless in $AdS$, and naturally carried by internal quantum numbers.
-\item Keep $[0,2,0]_{(1,1)}$ as the strongest alternative.
-It has the best direct literature identification as a Konishi descendant, but it is somewhat less economical in the reduced-symmetry variables.
-\item Do not insist on a pure NSNS truncation at first order.
-If either NSNS seed sources the $[1,1,1]_{(\frac{1}{2},\frac{1}{2})}$ RR family, those RR states should be included immediately.
-\item Retain the spin-4 singlet \eqref{S4ansatz} and the sphere $J=4$ state only as controls.
-They are useful for diagnosing kinematic accidents, but they should no longer anchor the Konishi strategy.
-\end{enumerate}
+There are two natural strategies, depending on whether one prioritises
+\emph{unique identification} by manifest quantum numbers or
+\emph{computational simplicity} of the perturbative expansion.
 
-So the best ``convenient representative'' depends on what one wants:
+\subsection{Strategy A: unique identification at \texorpdfstring{$\D_0=6$}{Delta0=6}}
+
+Take $[2,0,2]_{(1,1)}$ at $\D_0=6$ as the primary target (\S\ref{sec:202_11}).
 \begin{itemize}
-\item for a first serious Konishi attempt in the current SFT frame, start with $[2,0,2]_{(0,0)}$;
-\item if external confidence in the identification matters more than ansatz economy, use $[0,2,0]_{(1,1)}$;
-\item in either case, expect that the minimal physically sensible system may already involve RR partners at first order.
+\item The manifest label $\langle 4,0\rangle_{(1,1)}$ isolates a single Konishi state in the
+entire Table~1 --- no mixing ambiguity.
+\item The $\langle 4,0\rangle$ representation forces internal oscillators with Weyl-tensor
+symmetry, producing a nonvanishing NSNS--RR coupling at first order
+(contrast: all null-polarised highest-weight seeds have vanishing first-order source).
+\item The zeroth-order ansatz is a mixed NSNS+RR state; the constant correction $b_0=+2$
+is extracted from the off-diagonal first-order perturbation matrix.
+\item The vertex operator is more involved (tensor-valued profile, four $S^5$ oscillator
+indices, boundary spin in the $AdS$ profile), so the OPE/PCO technology is heavier.
 \end{itemize}
+
+\subsection{Strategy B: simplest second-order computation at \texorpdfstring{$\D_0=4$}{Delta0=4}}
+
+Take $[2,0,2]_{(0,0)}$ at $\D_0=4$ as the default computational target.
+\begin{itemize}
+\item It is a bona fide Konishi descendant, unique in Table 1
+at $\D_0=4$, spinless in $AdS$, and naturally carried by internal quantum numbers.
+\item The first-order source vanishes (null-polarisation identity),
+but this is consistent with $b_0=0$. No information is lost.
+\item The first nontrivial coefficient $b_1=2$ enters at second order, where the NSNS bracket
+$[\psi^{(2)}\otimes\varphi^{(0)}]'$ is nonvanishing and already worked out for the spin-4
+singlet in \texttt{draftKonishi.tex}.
+\item The vertex operator is simple: a quadratic scalar harmonic $Y_{(2)}(U)$ times internal
+oscillators $\psi^{V^+}\partial V^+$ on each side.
+\item The manifest label $\langle 0,2\rangle_{(0,0)}$ is \emph{not} unique: it appears at
+$\D_0=4,5,6,7,8$. The identification rests on Table~1 uniqueness within the $[2,0,2]$
+family, not on manifest quantum numbers alone.
+\end{itemize}
+
+Keep $[0,2,0]_{(1,1)}$ as the strongest alternative if external confidence in the identification
+matters more than ansatz economy.
+
+\subsection{Combined strategy}
+
+Both strategies can be pursued in parallel. Strategy~A provides an unambiguous identification
+anchor and a first-order test of $b_0=+2$; Strategy~B provides the most economical path to
+the second-order coefficient $b_1=2$. Success in either one validates the other.
+
+In both cases, do not insist on a pure NSNS truncation.
+If the NSNS seed sources an RR family at first order, those RR states should be included
+in the ansatz from the start.
 
 \section{The \texorpdfstring{$[2,0,2]_{(1,1)}$}{[2,0,2](1,1)} Candidate at \texorpdfstring{$\D_0=6$}{Delta0=6}}
 \label{sec:202_11}
@@ -880,10 +911,194 @@ of their respective complex planes. The profile $f$ then depends only on $X^+\eq
 and on the radial variable; concretely one expects $f\sim a(X^+)$ with $a$ satisfying the same
 mass-shell and transversality conditions as before.
 
-\subsection{The first-order source is nonvanishing}
+\subsection{RR states at mass level 1}
+\label{sec:RR_partner}
 
-For the vertex \eqref{202_11vertex} the first-order bracket
-$[\psi^{(1)}_{RR}\otimes\varphi^{(0)}]'$ involves the gamma-matrix bilinear
+To extract $b_0\neq 0$ via the mechanism of the next subsection, the zeroth-order
+ansatz must include both the NSNS seed \eqref{202_11vertex} and RR partners at the same
+mass level with the same manifest quantum numbers $\langle 4,0\rangle_{(1,1)}$.
+
+\paragraph{Excitations in the Ramond sector.}
+At mass level~1 in the R sector, each worldsheet side has two independent types of
+excitation above the spin-field ground state $S^\alpha$ (weight $\tfrac58$):
+\begin{enumerate}
+\item the bosonic oscillator $\alpha^\mu_{-1}$, giving the vertex operator field
+$S^\alpha\partial X^\mu$ (weight $\tfrac58+1=\tfrac{13}{8}$);
+\item the Ramond fermion oscillator $\psi^\mu_{-1}$, giving the \emph{excited spin field}
+$S^\mu_\alpha$ (weight $\tfrac{13}{8}$), which carries both a spinor and a vector index.
+\end{enumerate}
+These are independent conformal primaries at the same weight.
+The gamma-trace $(\Gamma_\mu)^\alpha{}_\beta S^{\mu\beta}$ is proportional to $\partial S^\alpha$
+(the derivative of the ground-state spin field), so the irreducible content of $S^\mu_\alpha$ is
+the gamma-traceless vector-spinor ($\mathbf{144}$ of $SO(9,1)$) plus the gamma-trace
+($\mathbf{16}$, which is not independent of $\partial S^\alpha$).
+
+\paragraph{General RR vertex at mass level~1.}
+In the $(-\tfrac12,-\tfrac12)$ picture, the most general RR vertex at mass level~1 is
+a linear combination of four structures, labelled by which type of excitation appears
+on each worldsheet side:
+\ie\label{RRgeneral}
+\varphi^{(0)}_{RR}
+&= g^{(1)}_{\alpha\beta}(X)\,
+c\bar c\,
+e^{-\frac{1}{2}\phi}S^\alpha\,\partial X^\mu\,
+e^{-\frac{1}{2}\bar\phi}\bar S^\beta\,\bar\partial X^\nu
+\quad&&\text{(bosonic--bosonic)}
+\nonumber\\
+&+ g^{(2)}_{\alpha\beta}(X)\,
+c\bar c\,
+e^{-\frac{1}{2}\phi}S^{\mu}_\alpha\,
+e^{-\frac{1}{2}\bar\phi}\bar S^{\nu}_\beta
+&&\text{(excited--excited)}
+\nonumber\\
+&+ g^{(3)}_{\alpha\beta}(X)\,
+c\bar c\,
+e^{-\frac{1}{2}\phi}S^{\mu}_\alpha\,
+e^{-\frac{1}{2}\bar\phi}\bar S^\beta\,\bar\partial X^\nu
+&&\text{(excited--bosonic)}
+\nonumber\\
+&+ g^{(4)}_{\alpha\beta}(X)\,
+c\bar c\,
+e^{-\frac{1}{2}\phi}S^\alpha\,\partial X^\mu\,
+e^{-\frac{1}{2}\bar\phi}\bar S^{\nu}_\beta,
+&&\text{(bosonic--excited)}
+\fe
+where $S^\alpha,\bar S^\beta$ are both of positive $\mathrm{Spin}(9,1)$ chirality (Type~IIB),
+the profiles $g^{(n)}_{\alpha\beta}$ carry the $AdS$ quantum numbers and mass-shell
+condition, and $\mu,\nu$ run over all 10 directions (restricted to $S^5$ indices
+$i,j\in\{5,\ldots,9\}$ for the $\langle 4,0\rangle$ quantum numbers of interest here).
+The physical state conditions (BRST closure, level matching) constrain the relative
+coefficients and profiles; in general the physical RR state at mass level~1 is a specific
+linear combination of all four types.
+
+\paragraph{SO(5) content.}
+Under $\mathrm{Spin}(1,4)\times\mathrm{Spin}(5)$ the 10d spin field decomposes as
+$\mathbf{16}_+\to(\mathbf{4},\mathbf{4})$,
+so each $S^\alpha$ contributes $\langle 1,0\rangle$ on the internal side. Each vector index
+$\mu$ in $S^5$ contributes $\langle 0,1\rangle$.
+For the structures in \eqref{RRgeneral} with $\mu,\nu\in S^5$, the internal content
+\emph{per worldsheet side} is the same for both the bosonic-oscillator and the
+excited-spin-field excitation:
+\be
+\langle 1,0\rangle\otimes\langle 0,1\rangle
+=\langle 1,1\rangle\oplus\langle 1,0\rangle
+\qquad(4\otimes 5=16\oplus 4),
+\ee
+where the $\langle 1,0\rangle$ piece is the gamma-trace and the $\langle 1,1\rangle$ piece is the
+gamma-traceless part. For $S^\alpha\partial X^i$ the gamma-trace is
+$(\Gamma_i)^\alpha{}_\beta S^\beta\partial X^i$; for $S^i_\alpha$ it is
+$(\Gamma_i)^\alpha{}_\beta S^{i\beta}=\partial S^\alpha$.
+In both cases the physical $\langle 1,1\rangle$ component is the gamma-traceless part.
+
+Taking $\langle 1,1\rangle$ on both sides, the product contains
+\be
+\langle 1,1\rangle\otimes\langle 1,1\rangle
+\;\supset\;\langle 4,0\rangle.
+\ee
+This is verified by the highest weights: $\langle 1,1\rangle$ has highest weight
+$(\tfrac32,\tfrac12)$, the weight $(\tfrac12,\tfrac32)$ is also present
+(obtained by subtracting $\alpha_2=e_1-e_2$), and
+$(\tfrac32,\tfrac12)+(\tfrac12,\tfrac32)=(2,2)$ is the highest weight of $\langle 4,0\rangle$.
+
+Since the SO(5) analysis is the same for all four structures in \eqref{RRgeneral},
+the $\langle 4,0\rangle_{(1,1)}$ projection can in principle draw on all of them.
+BRST closure determines the specific combination.
+
+\paragraph{Schematic form of the $\langle 4,0\rangle$ projection.}
+To make the representation content explicit, decompose the bispinor profile in 10d gamma matrices.
+The $\langle 2,0\rangle$ from the spinor bilinear (the adjoint of $SO(5)$, i.e.\ the symmetric
+part of the $\mathrm{Spin}(5)$ tensor product) is extracted by
+\be
+g_{\alpha\beta}(X)\supset g(X^a)\,(\Gamma^{mn})_{\alpha\beta},
+\qquad m,n\in\{5,\ldots,9\},
+\ee
+where $\Gamma^{mn}=\Gamma^{[m}\Gamma^{n]}$ acts as $\Gamma^{mn}_{S^5}$ on the internal spinor.
+Combined with the $\langle 2,0\rangle$ from the vector indices (the antisymmetric
+part $[ij]$), the $\langle 4,0\rangle$ projection uses the Weyl-tensor contraction
+$T_{[mn],[ij]}$ as before. Schematically, each of the four structures in
+\eqref{RRgeneral} contributes a term of the form
+\be\label{RR202vertex}
+g(X^a)\,T_{[mn],[ij]}\,(\Gamma^{mn})_{\alpha\beta}\,
+c\bar c\,
+e^{-\frac{1}{2}\phi}(\cdots)^{\alpha,i}\,
+e^{-\frac{1}{2}\bar\phi}(\cdots)^{\beta,j},
+\ee
+where $(\cdots)^{\alpha,i}$ stands for $S^\alpha\partial X^i$ or $S^i_\alpha$
+(and similarly on the anti-holomorphic side).
+
+\paragraph{Highest-weight form.}
+At the $\langle 4,0\rangle$ highest weight $(2,2)$, the left sector carries
+$(\tfrac32,\tfrac12)$ (spin field at $\mathrm{Spin}(5)$ highest weight $(\tfrac12,\tfrac12)$
+with the extra oscillator or excited spin field in the $U^+$ direction at vector weight $(1,0)$),
+and the right sector carries $(\tfrac12,\tfrac32)$ (spin field at $(\tfrac12,\tfrac12)$
+with excitation in the $V^+$ direction at $(0,1)$).
+The bispinor factor at the $\langle 2,0\rangle$ highest weight is
+$\Gamma^{U^+V^+}\equiv\Gamma^{U^+}\Gamma^{V^+}$.
+
+For the bosonic--bosonic type, the highest-weight vertex is
+\be
+g(X^+)\,(\Gamma^{U^+V^+})_{\alpha\beta}\,
+c\bar c\,
+e^{-\frac{1}{2}\phi}S^\alpha\,\partial U^+\,
+e^{-\frac{1}{2}\bar\phi}\bar S^\beta\,\bar\partial V^+.
+\ee
+The excited--excited type gives
+\be
+\tilde g(X^+)\,(\Gamma^{U^+V^+})_{\alpha\beta}\,
+c\bar c\,
+e^{-\frac{1}{2}\phi}S^{U^+}_\alpha\,
+e^{-\frac{1}{2}\bar\phi}\bar S^{V^+}_\beta,
+\ee
+and the two mixed types are analogous.
+The physical RR eigenstate at mass level~1 with $\langle 4,0\rangle_{(1,1)}$ is the specific
+linear combination of all four types determined by BRST closure.
+
+\paragraph{Comparison of the three sectors.}
+The $\langle 4,0\rangle_{(1,1)}$ Konishi state at $\D_0=6$ is a superposition of the NSNS
+seed \eqref{202_11vertex} and the RR partners \eqref{RR202vertex}, all
+sharing the same $\langle 4,0\rangle$ Weyl-tensor structure $T_{[mn],[ij]}$.
+On the NSNS side the internal charge is assembled from four vector indices
+($\psi^i\partial X^j\bar\psi^k\bar\partial X^l$);
+on the RR side it is assembled from two spinor-bilinear indices and two
+vector-or-excited-spin-field indices.
+The key difference is that the NSNS vertex uses the same Weyl-tensor directions on both
+worldsheet sectors (both are $S^5$ vectors), while the RR vertex distributes the quantum
+numbers between the spin field (spinorial) and the oscillators (vectorial), which is what
+creates a nontrivial off-diagonal coupling to the RR background $\psi^{(1)}$.
+
+\subsection{NSNS--RR coupling and the first-order eigenvalue shift}
+\label{sec:nsns_rr_coupling}
+
+The vertex \eqref{202_11vertex} is purely NSNS. The bracket
+$[\psi^{(1)}_{RR}\otimes\varphi^{(0)}_{NSNS}]'$ produces an RR source for
+$\varphi^{(1)}$. But the first-order eigenvalue shift cannot come from the
+diagonal matrix element
+$\langle\varphi^{(0)}_{NSNS}|[\psi^{(1)}\otimes\cdot]|\varphi^{(0)}_{NSNS}\rangle$,
+which vanishes by sector: the source is RR while the bra is NSNS.
+
+For $b_0\neq 0$ to arise at first order, the mechanism is necessarily \emph{off-diagonal}.
+At zeroth order (flat space), the mass-level-1 spectrum contains both NSNS and RR states
+at the same mass, degenerate by construction. Suppose there exists an RR state
+$\varphi^{(0)}_{RR}$ at mass level~1 with the same manifest quantum numbers
+$\langle 4,0\rangle_{(1,1)}$. In the degenerate subspace
+$\{\varphi^{(0)}_{NSNS},\,\varphi^{(0)}_{RR}\}$,
+the first-order perturbation matrix is
+\be\label{pertmat}
+M=\begin{pmatrix}
+0 & V \\ W & 0
+\end{pmatrix},
+\ee
+where
+\ie
+V &= \langle\varphi^{(0)}_{NSNS}|[\psi^{(1)}_{RR}\otimes\varphi^{(0)}_{RR}]'\rangle,\\
+W &= \langle\varphi^{(0)}_{RR}|[\psi^{(1)}_{RR}\otimes\varphi^{(0)}_{NSNS}]'\rangle.
+\fe
+The diagonal entries vanish by sector. The eigenvalues of $M$ are $\pm\sqrt{VW}$;
+if $VW\neq 0$, there is a first-order splitting, and the correct zeroth-order
+eigenstates are specific NSNS+RR superpositions.
+
+The gamma-matrix bilinear $\gamma^i\gamma^{01234}\gamma^k$ controls whether
+these off-diagonal entries are nonzero. For the vertex \eqref{202_11vertex},
 \be
 \gamma^i F^{(1)}\gamma^k
 = \frac{i}{R}\,\gamma^i\gamma^{01234}\gamma^k.
@@ -901,8 +1116,10 @@ so that
 \ee
 For $i\neq k$ (as required by the antisymmetry of $T$), the antisymmetric part
 $\gamma^{ik}$ is nonzero, and the full bilinear does not vanish.
+This means the off-diagonal entries $V,W$ in \eqref{pertmat} are generically nonzero,
+and the first-order eigenvalue split $\pm\sqrt{VW}$ is nontrivial.
 
-Contrast this with the cases where the first-order source vanishes:
+Contrast this with the cases where the bilinear vanishes:
 \begin{itemize}
 \item spin-4 singlet: $\gamma^+\gamma^{01234}\gamma^+\propto(\gamma^+)^2=0$;
 \item sphere $J\!=\!4$: $\gamma^{U^+}\gamma^{01234}\gamma^{U^+}\propto(\gamma^{U^+})^2=0$;
@@ -910,9 +1127,18 @@ Contrast this with the cases where the first-order source vanishes:
 $\gamma^{V^+}\gamma^{01234}\gamma^{V^+}\propto(\gamma^{V^+})^2=0$.
 \end{itemize}
 These all use the \emph{same} complexified null direction on both worldsheet sectors,
-forcing a square of a null gamma matrix.
-For $\langle 4,0\rangle_{(1,1)}$ the two antisymmetric pairs $(ij)$ and $(kl)$ generically involve
-\emph{different} $S^5$ directions, so no null-square identity applies.
+forcing a square of a null gamma matrix. The off-diagonal entries in \eqref{pertmat} then
+vanish, and there is no first-order splitting from this mechanism.
+
+For $\langle 4,0\rangle_{(1,1)}$ the Weyl-tensor structure forces the two antisymmetric pairs
+$(ij)$ and $(kl)$ to involve \emph{different} $S^5$ directions, so no null-square identity applies.
+
+\paragraph{Upshot.}
+The zeroth-order ansatz for the $[2,0,2]_{(1,1)}$ Konishi state should include
+\emph{both} the NSNS seed \eqref{202_11vertex} and an RR partner at mass level~1 with the same
+$\langle 4,0\rangle_{(1,1)}$ quantum numbers. The true zeroth-order eigenstate is the NSNS+RR
+superposition that diagonalises \eqref{pertmat}, and the first-order eigenvalue $b_0=+2$
+is the positive eigenvalue $+\sqrt{VW}$.
 
 \subsection{Summary and comparison}
 
@@ -920,7 +1146,7 @@ The situation for the explicitly checked unique $\D_0=6$ candidates is:
 \begin{center}
 \begin{tabular}{|l|c|c|c|}
 \hline
-Manifest label & Parent & 1st-order source & Internal structure \\
+Manifest label & Parent & NSNS--RR coupling & Internal structure \\
 \hline
 $\langle 0,0\rangle_{(2,2)}$ & $[0,0,0]_{(2,2)}$ & vanishes ($(\gamma^+)^2\!=\!0$)
 & trivial \\
@@ -934,14 +1160,16 @@ $\langle 4,0\rangle_{(1,1)}$ & $[2,0,2]_{(1,1)}$ & \textbf{nonvanishing}
 
 The state $[2,0,2]_{(1,1)}$ at $\D_0=6$ is therefore the natural primary target if one insists
 on a Konishi candidate that can be pinned down by $SO(1,4)\times SO(5)$ invariance alone:
-it is uniquely identified by its manifest quantum numbers and has a nonvanishing first-order
-source.
+it is uniquely identified by its manifest quantum numbers and has a nonvanishing NSNS--RR
+coupling at first order, enabling the extraction of $b_0$.
 
 The expected scaling dimension is
 \be
 \D_{[2,0,2]_{(1,1)}}=2R+2+\frac{2}{R}+O(R^{-2}),
 \ee
-with the constant $+2$ now accessible already at first order in the perturbative SFT expansion.
+with the constant $+2$ accessible at first order through the off-diagonal
+mechanism \eqref{pertmat}, provided one includes the RR partner in the
+zeroth-order ansatz.
 
 The trade-off relative to the $\D_0=4$ candidates is clear: the vertex operator
 \eqref{202_11vertex} is more complex (tensor-valued with Weyl-tensor internal
