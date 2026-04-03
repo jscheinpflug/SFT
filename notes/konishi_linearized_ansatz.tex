@@ -1,0 +1,1065 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,hyperref,longtable}
+\topmargin -.5cm
+\textheight 21cm
+\oddsidemargin -.125cm
+\textwidth 17cm
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\ie{\begin{equation}\begin{aligned}}
+\def\fe{\end{aligned}\end{equation}}
+\newcommand{\adss}{\ensuremath{AdS_5\times S^5}}
+\newcommand{\D}{\ensuremath{\Delta}}
+\newcommand{\Tr}{\mathrm{Tr}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bf Notes on Convenient Konishi Representatives for the Linearized SFT Equations}
+\end{center}
+
+\tableofcontents
+
+\section{Goal}
+
+The goal of this note is to identify useful representatives of the Konishi multiplet for the
+linearized closed superstring field theory analysis around the \adss\ background.
+The practical tension is the following.
+
+\begin{itemize}
+\item Table 1 of \texttt{references/1102.1209/1102.1209.tex} organizes the Konishi multiplet in terms of
+the full $SO(2,4)\times SO(6)$ quantum numbers.
+\item In the SFT construction of \texttt{references/2507.12921/2507.12921.tex}, the background is written in
+flat ten-dimensional variables $X^\mu$ with only the split into $AdS_5$ and $S^5$ directions manifest, i.e.
+effectively an $SO(1,4)\times SO(5)$-covariant description.
+\end{itemize}
+
+Therefore the most convenient state for the linearized equations is not automatically the most
+useful state for seeing the expected Konishi anomalous dimension. In particular, odd orders in the
+background expansion are RR and even orders are NSNS, and this often removes the obvious
+constant correction for simple pure-sector trial states.
+
+Throughout the note I will use the same background notation as in \texttt{draftKonishi.tex}:
+\ie
+\psi = F_{\alpha\beta}(X)V^{\alpha\beta}_{RR}
++ h_{\mu\nu}(X)V^{\mu\nu}_{NSNS}
++ \phi(X)D
++ A_\mu(X)V^\mu_{\rm aux.},
+\fe
+with
+\ie
+F^{(1)}_{\alpha\beta}\neq 0,\qquad
+(h^{(2)}_{\mu\nu},\phi^{(2)},A^{(2)}_\mu)\neq 0,
+\fe
+so that the perturbative background alternates as
+\be
+\psi=\psi^{(1)}_{RR}+\psi^{(2)}_{NSNS}+\psi^{(3)}_{RR}+\cdots.
+\ee
+
+The massless effective linearized equation is
+\be
+Q\varphi+\sum_{n=1}^{\infty}\frac{1}{n!}[\psi^{\otimes n}\otimes\varphi]'=0.
+\ee
+
+\section{Konishi Data and Expected Strong-Coupling Behavior}
+
+For a genuine member of the Konishi multiplet on the first excited string level, the strong-coupling
+expansion reviewed in \texttt{1102.1209} takes the form
+\be
+\D = 2\lambda^{1/4}+b_0+\frac{b_1}{\lambda^{1/4}}+O(\lambda^{-1/2}),
+\ee
+with
+\be
+b_0=\D_0-4,
+\ee
+and, for the states that should belong to the same Konishi long multiplet,
+\be
+b_1=2.
+\ee
+
+In the radius conventions used in the SFT draft, one sets $\lambda^{1/4}=R$ (up to possible
+scheme-dependent redefinitions of $R$). Then the expected Konishi behavior is
+\be
+\D = 2R+(\D_0-4)+\frac{2}{R}+O(R^{-2}).
+\ee
+
+The order counting relevant for the SFT computation is then:
+\begin{itemize}
+\item the piece $2R$ is the zeroth-order contribution;
+\item the constant piece $\D_0-4$ is the first correction;
+\item the $2/R$ term is the next correction.
+\end{itemize}
+
+The relevant expectations are then:
+\begin{itemize}
+\item bottom component, $\D_0=2$:
+\be
+\D_{\rm bottom}=2R-2+\frac{2}{R}+O(R^{-2});
+\ee
+\item level-4 descendants, $\D_0=4$:
+\be
+\D_{\D_0=4}=2R+\frac{2}{R}+O(R^{-2});
+\ee
+\item level-6 descendants, $\D_0=6$:
+\be
+\D_{\D_0=6}=2R+2+\frac{2}{R}+O(R^{-2}).
+\ee
+\end{itemize}
+
+Table 1 of \texttt{1102.1209} contains in particular the following useful representatives:
+\begin{itemize}
+\item $\D_0=2$: the singlet $[0,0,0]_{(0,0)}$.
+\item $\D_0=4$: the familiar descendants $[0,2,0]_{(1,1)}$ and $[2,0,2]_{(0,0)}$.
+\item $\D_0=6$: the spin-4 singlet $[0,0,0]_{(2,2)}$ and the sphere highest-weight state
+$[0,4,0]_{(0,0)}$.
+\end{itemize}
+
+The basic lesson is that the $\D_0=4$ states are best if one wants the simplest expected answer
+$\D=2R+\frac{2}{R}+\cdots$, whereas the $\D_0=6$ states are easier to isolate in the
+$SO(1,4)\times SO(5)$ language.
+
+\section{Why the First Constant Correction Often Disappears}
+
+This is the main structural issue in the SFT setup.
+
+Suppose one starts from a pure NSNS trial state $\varphi^{(0)}_{NSNS}$. Then at first order,
+\be
+Q\varphi^{(1)}=-[\psi^{(1)}_{RR}\otimes \varphi^{(0)}_{NSNS}]',
+\ee
+so the first-order correction lives in the RR sector. Conversely, if one starts from a pure RR seed,
+the first-order correction is driven into the NSNS sector.
+
+Schematically, the first correction to the scaling dimension can only come from matrix elements of the form
+\be
+\delta \D^{(1)}\sim
+\langle \varphi^{(0)}|H^{(1)}|\varphi^{(0)}\rangle
++\langle \varphi^{(0)}|H^{(0)}|\varphi^{(1)}\rangle,
+\ee
+with $H^{(1)}$ in the RR sector. For a pure NSNS seed, the diagonal term
+$\langle \varphi^{(0)}_{NSNS}|H^{(1)}_{RR}|\varphi^{(0)}_{NSNS}\rangle$ is absent by sector/parity.
+Thus one only gets the constant correction if the first-order source produces a nonzero opposite-sector
+admixture with the same manifest quantum numbers.
+
+This is where the simple candidates become deceptive:
+\begin{itemize}
+\item for some trial states the source $[\psi^{(1)}_{RR}\otimes \varphi^{(0)}]'$ vanishes outright by gamma-matrix kinematics;
+\item for other trial states the source is nonzero, but there is no matching opposite-sector state with the same
+manifest $SO(1,4)\times SO(5)$ labels and worldsheet parity to mix with;
+\item a universal redefinition $\lambda^{1/4}=R+a_0+a_1/R+\cdots$ can reshuffle the constant and $1/R$ coefficients,
+but it cannot by itself explain a state-by-state absence of the correction structure expected for a fixed supermultiplet.
+\end{itemize}
+
+So if a simple one-component ansatz shows no first constant correction, the right conclusion is not
+that Konishi has $b_1=0$. The right conclusion is that the ansatz is too small, or too kinematically special,
+to capture the needed opposite-sector mixing.
+
+\section{Negative Control: The AdS Spin-4 Singlet}
+
+The cleanest representative for the linearized equations is the level-6 AdS highest-weight state
+$[0,0,0]_{(2,2)}$, i.e. the $S=4$ singlet. Introduce
+\be
+X^\pm = X^1 \pm i X^2,
+\ee
+and take the zeroth-order NSNS state
+\be
+\varphi^{(0)}_{S=4}
+=a^{(0)}(X^+) \,
+c\bar c\, e^{-\phi}\psi^+\partial X^+\,
+e^{-\bar\phi}\bar\psi^+\bar\partial X^+.
+\label{S4ansatz}
+\ee
+In the notation used later for the $\D_0=4$ descendants, this state has the trivial internal profile
+\be
+Y_{(0)}=1.
+\ee
+That is the basic difference between the $\D_0=6$ spin-4 singlet and the $\D_0=4$ state built on the same
+$\psi^+\partial X^+$ oscillator core: for the singlet, all nontrivial quantum numbers are carried by the
+polarization tensor in the $AdS$ directions, with no extra $S^5$ harmonic turned on.
+
+This is attractive for several reasons.
+\begin{itemize}
+\item It is a single highest-weight component under the manifest $SO(1,4)$.
+\item It is an $R$-singlet, so it is closer to ``Konishi proper'' than a pure sphere excitation.
+\item Its zeroth-order BRST conditions are simple and already worked out in \texttt{draftKonishi.tex}:
+\be
+\left(1-\frac{1}{2}\Box\right)a^{(0)}=0,\qquad \partial^+ a^{(0)}=0.
+\label{S4BRST}
+\ee
+\item The second-order source generated by $(h^{(2)},\phi^{(2)},A^{(2)})$ is nontrivial, so it is a good
+warm-up problem for the actual linearized EOM technology.
+\end{itemize}
+
+However, this state is also the sharpest example of the first-order obstruction.
+The first-order bracket computed in \texttt{draftKonishi.tex} is proportional to
+\be
+(\gamma^+F^{(1)}\gamma^+)^{\alpha\beta},
+\ee
+and vanishes because
+\be
+\gamma^+F^{(1)}\gamma^+ =0.
+\ee
+So the same feature that makes the mode easy to isolate also removes the obvious constant
+correction in the one-mode truncation.
+
+If this state is indeed a member of the Konishi multiplet, the expected answer is still
+\be
+\D_{S=4}=2R+2+\frac{2}{R}+O(R^{-2}),
+\ee
+because here $\D_0=6$. The point is that the first correction, namely the constant $+2$, is not visible
+from the naive first-order diagonal analysis of the simple ansatz \eqref{S4ansatz}. The $2/R$ piece is then
+a further-order question on top of that.
+
+This is not a true contradiction. The representation-theoretic statement from Table 1 is only that there is
+a unique \emph{interacting} Konishi state with labels $[0,0,0]_{(2,2)}$. It does \emph{not} imply that, in the
+flat-space large-$R$ expansion, this state is already represented by the single bare NSNS vertex
+\eqref{S4ansatz} with no additional homogeneous admixtures. Indeed, the first-order equation is
+\be
+Q\varphi^{(1)}_{S=4}=-[\varphi^{(0)}_{S=4}\otimes\psi^{(1)}]',
+\ee
+and for the simple highest-weight seed the right-hand side vanishes. But this only implies
+\be
+Q\varphi^{(1)}_{S=4}=0,
+\ee
+not $\varphi^{(1)}_{S=4}=0$. So first order leaves a nontrivial homogeneous sector, and the true Konishi
+eigenstate may already require additional BRST-closed NSNS and/or RR components with the same overall
+quantum numbers.
+
+Equivalently, one should think of this as a degenerate-perturbation-theory problem on the full mass-level-1
+state space, not as a one-by-one matrix element computation. The vanishing of
+\be
+\gamma^+F^{(1)}\gamma^+=0
+\ee
+only shows that the \emph{diagonal} first-order coupling of the top null-polarization component vanishes.
+It does not prove that the whole first-order perturbation matrix vanishes in the enlarged level-1 sector.
+
+There is also direct evidence in this direction from the higher-order equations already analyzed in
+\texttt{draftKonishi.tex}: the spin-4 seed does not remain a closed one-field subsector. At second order it
+sources additional $X^-$-dependent and transverse companions, so the single vertex \eqref{S4ansatz} was never
+the full perturbative state to begin with. The correct interpretation is therefore:
+\begin{itemize}
+\item the spin-4 singlet is uniquely identified as a Konishi descendant at the representation-theory level;
+\item the simple NSNS seed \eqref{S4ansatz} is only one convenient leading component of that state;
+\item the apparent first-order contradiction is an artifact of over-truncating the degenerate level-1 problem.
+\end{itemize}
+
+\section{Secondary Control: The Sphere Highest-Weight Mode}
+
+A similarly simple control problem is the sphere highest-weight state at $\D_0=6$.
+Choose a complex polarization
+\be
+U^\pm = X^5 \pm i X^6,
+\ee
+and consider
+\be
+\varphi^{(0)}_{J=4}
+=Y_{(4)}(U)\, c\bar c\, e^{-\phi}\psi^u\partial U^+\,
+e^{-\bar\phi}\bar\psi^u\bar\partial U^+,
+\ee
+with
+\be
+Y_{(4)}(U)=\frac{(U^+)^4}{R^4}
+=\frac{(X^5+iX^6)^4}{R^4},
+\ee
+where $\psi^u$ denotes the fermion in the same complex sphere direction.
+This is the quartic highest-weight harmonic appropriate to the $[0,4,0]$ representation.
+Equivalently one can think of it as the rank-4 symmetric traceless profile $(n\cdot X)^4/R^4$ with the
+same null polarization $n^i=(1,i,0,0,0)$ used for $Y_{(2)}$.
+If one prefers the notation used earlier in the draft, one may simply regard the old
+$b^{(0)}(U^+)$ as shorthand for this quartic highest-weight profile.
+
+This state is also straightforward in the reduced-symmetry frame: it is a single highest-weight
+component under the manifest $SO(5)$. It should have the same strong-coupling form
+\be
+\D_{J=4}=2R+2+\frac{2}{R}+O(R^{-2}).
+\ee
+
+I do not currently see a reason to prefer it over the AdS spin-4 state for the first pass.
+It is useful mainly as a control: if both simple highest-weight states fail to show the first-order
+constant correction, then the issue is probably structural rather than specific to the AdS polarization.
+
+\section{Better \texorpdfstring{$\D_0=4$}{Delta0=4} Candidates}
+
+If the criterion is ``easiest from the SFT point of view,'' the natural place to look is the
+$\D_0=4$ part of Table 1 rather than the $\D_0=6$ spin-4 singlet.
+At $\D_0=4$ the first correction vanishes,
+\be
+\D_{\D_0=4}=2R+\frac{2}{R}+O(R^{-2}),
+\ee
+so one can focus directly on the nontrivial coefficient $b_1$.
+The important candidates are
+\be
+[2,0,2]_{(0,0)},\qquad [0,2,0]_{(1,1)},\qquad [1,1,1]_{(\frac{1}{2},\frac{1}{2})},
+\ee
+with the caveat that the last two families come with multiplicities in Table 1.
+
+To make the relevant zeroth-order quantum numbers visible already in the vertex operator, it is useful
+to pick one complex $AdS$ plane and two complex sphere planes,
+\be
+X^\pm = X^1 \pm i X^2,\qquad
+U^\pm = X^5 \pm i X^6,\qquad
+V^\pm = X^7 \pm i X^8,
+\ee
+and to denote by $Y_{(2)}(U)$ a charge-two highest-weight sphere profile whose leading harmonic is
+\be
+Y_{(2)}(U)=\frac{(U^+)^2}{R^2}
+=\frac{(X^5+iX^6)^2}{R^2}.
+\ee
+In the reduced-symmetry language this profile is the simplest way to keep track of the $S^5$
+highest-weight data without committing to a full $SO(6)$-covariant harmonic basis.
+Equivalently one can write
+\be
+Y_{(2)}(X)=\frac{1}{R^2}C_{ij}X^iX^j,
+\ee
+with $C_{ij}$ a symmetric traceless highest-weight tensor. For the present choice,
+\be
+C_{55}=1,\qquad C_{66}=-1,\qquad C_{56}=C_{65}=i,
+\ee
+with all other components vanishing. No extra trace subtraction is needed, because this is just the
+null-polarization form $(n\cdot X)^2/R^2$ with
+\be
+n^i=(1,i,0,0,0),\qquad n_i n^i=0.
+\ee
+Thus the quadratic polynomial is already traceless and transforms in the desired $[0,2,0]$
+highest-weight representation.
+
+\subsection{Default target: \texorpdfstring{$[2,0,2]_{(0,0)}$}{[2,0,2](0,0)}}
+
+This is the $su(2)$ Konishi descendant, explicitly identified in \texttt{1102.1209} through the operator
+$\Tr([\Phi_1,\Phi_2]^2)$.
+It is the best default candidate for the present SFT setup for three reasons.
+\begin{itemize}
+\item It is a bona fide Konishi descendant, not merely a candidate dual.
+\item At $\D_0=4$ it appears as a single $[2,0,2]_{(0,0)}$ state in Table 1, unlike the
+$[0,2,0]$ and $[1,1,1]$ families which come with multiplicities.
+\item It is spinless in the $AdS_5$ directions, so its nontrivial quantum numbers live entirely in
+$S^5$, which is closer to the manifest subgroup structure of the current SFT variables.
+\end{itemize}
+
+The natural zeroth-order NSNS representative in the $(-1,-1)$ picture is
+\be
+\varphi^{(0)}_{[2,0,2]}
+=Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^{V^+}\partial V^+\,
+e^{-\bar\phi}\bar\psi^{V^+}\bar\partial V^+.
+\label{202vertex}
+\ee
+Its zeroth-order quantum numbers are easy to read off:
+\begin{itemize}
+\item there is no $AdS$ polarization, so the state is spinless in the chosen $AdS$ plane;
+\item the profile $Y_{(2)}(U)$ carries a highest-weight sphere charge two in the $U$-plane;
+\item the left- and right-moving oscillators in the $V$-plane contribute the second internal excitation.
+\end{itemize}
+So \eqref{202vertex} is the reduced-symmetry avatar of the $[2,0,2]_{(0,0)}$ descendant.
+
+At zeroth order one expects the same type of BRST conditions as for the spin-4 test state
+\eqref{S4ansatz}: the flat-space level-1 mass-shell condition together with transversality in the
+polarized directions. For the particular highest-weight choice above, the transversality part is automatic
+at the candidate level because the profile depends only on $U^+$ and is independent of the polarized
+$V$-direction. In other words, \eqref{202vertex} is already the minimal highest-weight/traceless NSNS seed;
+the real question is not zeroth-order identification but what RR partners it sources at first order.
+
+From the SFT point of view, the natural hope is that one can start from a relatively small NSNS seed
+built from two internal complex polarizations and only enlarge the ansatz if the first-order RR source
+forces it.
+
+The consistency checks for this candidate are:
+\begin{itemize}
+\item verify that $[\psi^{(1)}_{RR}\otimes \varphi^{(0)}_{[2,0,2]}]'$ does not vanish by a trivial gamma-matrix identity;
+\item determine whether the first-order source lands in the $[1,1,1]_{(\frac{1}{2},\frac{1}{2})}$ RR family;
+\item check that the second-order system preserves the traceless $[2,0,2]$ structure rather than collapsing onto singlet or trace components.
+\end{itemize}
+
+\subsection{Strong alternative: \texorpdfstring{$[0,2,0]_{(1,1)}$}{[0,2,0](1,1)}}
+
+This is the standard $sl(2)$ Konishi descendant, explicitly identified in \texttt{1102.1209} through
+$\Tr(\Phi_1 D^2\Phi_1)$ and matched there to $b_1=2$.
+It has the strongest external evidence as a Konishi state, but it is slightly less attractive as a first SFT target.
+\begin{itemize}
+\item It mixes AdS spin and $S^5$ charge, so it is less naturally packaged in the manifest subgroup language.
+\item The $[0,2,0]$ family at $\D_0=4$ is not isolated to a single state in Table 1.
+\item One has to make sure that the ansatz isolates the $(1,1)$ component rather than drifting into one of the scalar $[0,2,0]_{(0,0)}$ copies.
+\end{itemize}
+
+Its main consistency checks are:
+\begin{itemize}
+\item verify that the $J=2$ structure can be represented economically in the embedding-coordinate variables;
+\item check whether the first-order RR source is less degenerate than for the spin-4 singlet;
+\item confirm that the resulting system does not mix uncontrollably with the other $[0,2,0]$ states at the same level.
+\end{itemize}
+
+The corresponding zeroth-order NSNS representative is
+\be
+\varphi^{(0)}_{[0,2,0]}
+=Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^+\partial X^+\,
+e^{-\bar\phi}\bar\psi^+\bar\partial X^+.
+\label{020vertex}
+\ee
+Its quantum numbers are again immediate from the operator itself:
+\begin{itemize}
+\item the oscillator part is the same $(1,1)$ highest-weight AdS excitation as in the spin-4 control,
+but with only one $X^+$ derivative on each side;
+\item the sphere profile contributes the charge-two internal highest weight;
+\item together these give the reduced-symmetry version of the $[0,2,0]_{(1,1)}$ Konishi descendant.
+\end{itemize}
+
+It is important that this is \emph{not} a different choice of oscillator core from the earlier
+suggestion $c\bar c\,e^{-\phi}\psi^+\partial X^+\,e^{-\bar\phi}\bar\psi^+\bar\partial X^+$.
+The AdS part is exactly the same highest-weight $(1,1)$ excitation. The difference is the extra factor
+$Y_{(2)}(U)$.
+Without that sphere profile one is only specifying the $AdS$ quantum numbers, which is not enough to
+distinguish the $\D_0=4$ descendant from the $\D_0=6$ spin-4 singlet in the reduced-symmetry language.
+The role of $Y_{(2)}(U)$ is precisely to supply the internal charge-two data that moves the state into the
+$[0,2,0]$ family.
+
+As for \eqref{S4ansatz}, the zeroth-order BRST conditions should reduce to the mass-shell equation for
+the profile together with transversality. For \eqref{020vertex} the transversality condition is again
+automatic at the level of this highest-weight seed, since $Y_{(2)}(U)$ is independent of the conjugate
+$AdS$ direction. So \eqref{020vertex} is the natural one-component starting point for the $sl(2)$
+descendant, with the understanding that the full first-order solution may force RR companions.
+
+\subsection{Likely RR partners: \texorpdfstring{$[1,1,1]_{(\frac{1}{2},\frac{1}{2})}$}{[1,1,1](1/2,1/2)}}
+
+These are not my preferred standalone starting points, but they are important because the odd-order RR
+background naturally drives a first-order correction of an NSNS seed into RR-type states.
+At $\D_0=4$ Table 1 contains two such $[1,1,1]_{(\frac{1}{2},\frac{1}{2})}$ states.
+
+From the SFT point of view, these should be treated as probable mixing partners rather than primary seeds.
+The key check is simply whether a chosen NSNS candidate sources this RR family already at first order.
+If yes, the minimal sensible ansatz should include them from the start instead of insisting on a pure NSNS truncation.
+
+\subsection{Ambiguous scalar option: \texorpdfstring{$[0,2,0]_{(0,0)}$}{[0,2,0](0,0)}}
+
+This scalar is worth remembering because \texttt{1102.1209} mentions it as a candidate dual to a pulsating
+string with $N=2$ and $J=2$. It looks superficially easy from the SFT point of view because it is spinless in $AdS$.
+I do not think it should be the default target, because the identification is weaker than for
+$[2,0,2]_{(0,0)}$ or $[0,2,0]_{(1,1)}$, and the $[0,2,0]$ family is already degenerate at $\D_0=4$.
+
+\subsection{Why Their First-Order EOM Match the Expected Dimension}
+
+For either of the zeroth-order NSNS seeds \eqref{202vertex} or \eqref{020vertex}, the first correction obeys
+\be
+Q\varphi^{(1)}=-[\psi^{(1)}_{RR}\otimes \varphi^{(0)}_{\D_0=4}]'.
+\label{FirstOrderDelta4}
+\ee
+The right-hand side is RR, so the first correction is generically RR-valued. This is exactly what one
+should expect from the alternating RR/NSNS structure of the background.
+
+Crucially, this does \emph{not} conflict with the Konishi dimension formula for the $\D_0=4$ descendants,
+because for these states the first constant correction is supposed to vanish:
+\be
+\D_{\D_0=4}=2R+\frac{2}{R}+O(R^{-2}).
+\ee
+So the first-order equation \eqref{FirstOrderDelta4} is not required to generate a diagonal mass shift.
+Its job is only to determine the opposite-sector admixture demanded by the RR background.
+
+There are then two logically allowed outcomes, and both are consistent with the expected dimension.
+\begin{itemize}
+\item If $[\psi^{(1)}_{RR}\otimes \varphi^{(0)}_{\D_0=4}]'\neq 0$, then the true first-order eigenstate is
+not purely NSNS: it contains an RR piece, most naturally in the $[1,1,1]_{(\frac{1}{2},\frac{1}{2})}$ family.
+This is compatible with $b_0=0$ because no constant shift is required.
+\item If $[\psi^{(1)}_{RR}\otimes \varphi^{(0)}_{\D_0=4}]'=0$, that is also compatible with $b_0=0$.
+It simply means that the first nontrivial dynamical test moves to the next order, where one should recover
+the universal Konishi coefficient $b_1=2$.
+\end{itemize}
+
+This is precisely why the $\D_0=4$ candidates are better behaved than the $\D_0=6$ controls.
+For the spin-4 singlet and the $J=4$ sphere mode one expects
+\be
+\D_{\D_0=6}=2R+2+\frac{2}{R}+O(R^{-2}),
+\ee
+so a vanishing first-order source is then a genuine warning sign: the simple pure NSNS seed cannot by
+itself reproduce the required constant $+2$, and one probably needs a mixed zeroth-order ansatz already at
+the start.
+
+\subsection{Explicit First-Order Bracket Check for the \texorpdfstring{$\D_0=4$}{Delta0=4} Seeds}
+\label{sec:delta4_bracket}
+
+We can now perform the gamma-matrix check flagged in \S6.1 for both $\D_0=4$ candidates.
+The outcome will make clear why the $\D_0=4$ seeds are ``better behaved'' in a more precise sense
+than the discussion in \S6.5 alone captures.
+
+\paragraph{The $[2,0,2]_{(0,0)}$ seed.}
+For the vertex \eqref{202vertex},
+\be
+\varphi^{(0)}_{[2,0,2]}
+=Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^{V^+}\partial V^+\,
+e^{-\bar\phi}\bar\psi^{V^+}\bar\partial V^+,
+\ee
+both worldsheet sectors carry the same complexified null direction $V^+=X^7+iX^8$ in $S^5$.
+The relevant gamma-matrix bilinear is
+\be
+\gamma^{V^+}F^{(1)}\gamma^{V^+}
+=\frac{i}{R}\,\gamma^{V^+}\gamma^{01234}\gamma^{V^+}.
+\ee
+Since $V^+$ is an $S^5$ direction, $\gamma^{V^+}$ anticommutes with $\gamma^{01234}$,
+so one can pull the left factor through:
+$\gamma^{V^+}\gamma^{01234}\gamma^{V^+}=-\gamma^{01234}(\gamma^{V^+})^2$.
+But
+\be
+(\gamma^{V^+})^2=(\gamma^7+i\gamma^8)^2
+=(\gamma^7)^2+i\{\gamma^7,\gamma^8\}+(i\gamma^8)^2
+=-1+0+1=0,
+\ee
+where the signs come from the Euclidean signature of the $S^5$ directions ($(\gamma^i)^2=-1$).
+
+\emph{The first-order bracket vanishes for the $[2,0,2]_{(0,0)}$ highest-weight seed,
+by the same null-polarisation mechanism as for the spin-4 singlet.}
+
+\paragraph{The $[0,2,0]_{(1,1)}$ seed.}
+For the vertex \eqref{020vertex},
+\be
+\varphi^{(0)}_{[0,2,0]}
+=Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^+\partial X^+\,
+e^{-\bar\phi}\bar\psi^+\bar\partial X^+,
+\ee
+both sectors carry $X^+=X^1+iX^2$ in $AdS$.
+The bilinear is $\gamma^+\gamma^{01234}\gamma^+=\gamma^{01234}(\gamma^+)^2=0$
+(with $(\gamma^+)^2=0$ as in \S4). So the bracket vanishes here too.
+
+\paragraph{Interpretation.}
+The vanishing of both first-order brackets is consistent with $b_0=0$ for $\D_0=4$
+and changes nothing about the expected scaling dimension
+$\D=2R+2/R+O(R^{-2})$.
+The first nontrivial dynamical coefficient is $b_1=2$, which enters at second order.
+Therefore the $\D_0=4$ seeds are well suited for a \emph{second-order} computation
+of the Konishi anomalous dimension.
+
+\paragraph{Why the first-order source vanishes for all highest-weight seeds.}
+The common origin of the vanishing in all cases above is the use of a complexified
+null polarisation on both worldsheet sectors. For any vector $n^\mu$ with $n_\mu n^\mu=0$
+(whether in $AdS$ or in $S^5$), the combination
+$\gamma^{n}=n_\mu\gamma^\mu$ satisfies $(\gamma^n)^2=0$,
+so the bilinear $\gamma^n\gamma^{01234}\gamma^n$ always vanishes.
+Since the natural highest-weight seeds always choose the same null direction for both the
+left- and right-moving oscillators, the first-order source vanishes for all of them.
+
+There are two ways to proceed:
+\begin{enumerate}
+\item \textbf{Use a state whose SO(5) quantum numbers force different directions on the two
+worldsheet sectors,} so that the first-order source is nonzero. This is the mechanism exploited
+by $\langle 4,0\rangle_{(1,1)}$ in \S\ref{sec:202_11}: the Weyl-tensor structure
+$T_{[ij],[kl]}$ requires the pairs $(ij)$ and $(kl)$ to be in \emph{different} planes,
+so $\gamma^i\gamma^{01234}\gamma^k\neq 0$.
+\item \textbf{Accept the vanishing first-order source and go directly to second order.}
+This is what the $\D_0=4$ candidates allow, since $b_0=0$ is expected and
+no information is lost.
+\end{enumerate}
+
+For the second-order computation itself, it is worth noting that the second-order bracket
+$[\psi^{(2)}_{NSNS}\otimes\varphi^{(0)}]'$ does \emph{not} have a vanishing source
+(it involves bosonic profiles $h_{\mu\nu}^{(2)}$, $\phi^{(2)}$, $A_\mu^{(2)}$
+contracted with the seed, as already worked out in detail for the spin-4 singlet in
+\texttt{draftKonishi.tex}).
+
+\paragraph{Summary for the $\D_0=4$ strategy.}
+The $\D_0=4$ seeds \eqref{202vertex} and \eqref{020vertex} cannot be uniquely identified by
+$SO(1,4)\times SO(5)$ quantum numbers (their manifest labels are shared by states at
+$\D_0=4,5,6,7,8$). However, if one accepts the identification on other grounds
+(operator matching, Table-1 uniqueness within each $[p,q,r]$, or descent from a uniquely
+identified $\D_0=6$ state), then $b_0=0$ makes them the cleanest setting for extracting $b_1=2$
+at second order.
+
+The computation for $[2,0,2]_{(0,0)}$ is the more economical one: both oscillators are
+internal, the profile is a simple quadratic harmonic, and the state is spinless in $AdS$.
+For $[0,2,0]_{(1,1)}$, the AdS spin forces additional bookkeeping in the second-order
+brackets, but the external evidence for the identification is strongest.
+
+\subsection{How Far Manifest \texorpdfstring{$SO(5)$}{SO(5)} Really Gets Us}
+
+The manifest $SO(5)$ is sufficient to write down concrete highest-weight seeds, but it is not by itself
+enough to certify the full $SO(6)$ representation, let alone Konishi membership.
+
+For the concrete candidates above, the practical situation is as follows.
+\begin{itemize}
+\item For the spin-4 control \eqref{S4ansatz}, the internal profile is just $Y_{(0)}=1$. Here the loss of
+full $SO(6)$ is not the main issue: the state is already an internal singlet. The real problem is dynamical,
+namely the first-order obstruction.
+\item For the $sl(2)$ candidate \eqref{020vertex}, the explicit profile
+$Y_{(2)}=(X^5+iX^6)^2/R^2$ is a highest-weight component of the rank-2 traceless tensor of the manifest
+$SO(5)$. This is enough to say that one is looking at the correct \emph{type} of internal excitation.
+But under the standard branching $SO(6)\to SO(5)$, the full $[0,2,0]$ decomposes as
+\be
+[0,2,0]\downarrow SO(5)=14\oplus 5\oplus 1.
+\ee
+So the manifest description only picks one branch of the full $SO(6)$ multiplet. It does not by itself
+reconstruct how the hidden generators mixing the fifth-sphere direction with the non-manifest sixth one
+complete that branch into the full $[0,2,0]$ representation.
+\item The same issue is even clearer for the quartic control profile
+$Y_{(4)}=(X^5+iX^6)^4/R^4$. As an $SO(5)$ tensor it is the highest-weight component of the rank-4
+traceless symmetric tensor, but the full $SO(6)$ representation branches as
+\be
+[0,4,0]\downarrow SO(5)=55\oplus 30\oplus 14\oplus 5\oplus 1.
+\ee
+Again, the manifest variables isolate a very useful top component, but not the whole $SO(6)$ multiplet.
+\item For the preferred $su(2)$ candidate \eqref{202vertex}, manifest $SO(5)$ gets us somewhat farther in
+practice because both the profile $Y_{(2)}(U)$ and the oscillator polarization
+$\psi^{V^+}\partial V^+$ live in the internal directions. So one can build a small seed with no $AdS$ spin
+and with very explicit internal charges. This makes it a good \emph{working ansatz}. But it is still not a
+proof of the full $[2,0,2]$ assignment, because the missing $SO(6)/SO(5)$ generators and the first-order
+RR mixing can relate this seed to other states with the same manifest $SO(5)$ labels.
+\end{itemize}
+
+The right conclusion is therefore intermediate.
+\begin{itemize}
+\item Manifest $SO(5)$ is sufficient to choose economical zeroth-order trial vertices and to separate the
+main qualitative options: singlet, rank-2 internal tensor, rank-4 internal tensor, mixed AdS/internal state,
+etc.
+\item Manifest $SO(5)$ is not sufficient to pin down ``this is the Konishi state'' in a representation-theoretic
+sense. To establish that, one still needs the full linearized EOM together with the non-manifest symmetry
+completion, or equivalently enough information to see that the chosen seed sits in the correct
+$PSU(2,2|4)$ long multiplet.
+\end{itemize}
+
+\subsection{Explicit Table-1 Collision Check}
+\label{app:table1scan}
+
+One can make the previous statement completely explicit by scanning all 17 rows of Table 1 of
+\texttt{1102.1209}. I branch every $SO(6)$ irrep down to manifest $SO(5)$ and denote the resulting
+$SO(5)$ irreps by $\langle a,b\rangle$ in the $C_2\simeq B_2$ convention, with
+\be
+\langle 1,0\rangle = {\bf 4},\qquad \langle 0,1\rangle = {\bf 5}.
+\ee
+The full branching list used in the scan is collected in Appendix~\ref{app:branching}, and Table 1 itself
+is reproduced in Appendix~\ref{app:table1}.
+
+The important caveat is that Table 1 is \emph{not} already organized in manifest
+$SO(1,4)\times SO(5)$ multiplets. On the spacetime side it gives the boundary
+$SO(4)\subset SO(2,4)$ labels $(s_L,s_R)$, not a bulk $SO(1,4)$ tensor label.
+So the direct all-state question
+\be
+\text{``which full }SO(1,4)\times SO(5)\text{ irrep does this Table-1 state become?''}
+\ee
+cannot actually be answered from Table 1 alone.
+
+One can see this explicitly by trying to lift the displayed $SO(4)$ content to finite-dimensional
+$SO(1,4)$ representations. The simplest obstruction already appears at $\D_0=3$:
+\be
+[0,1,0]_{(0,1)+(1,0)}.
+\ee
+There is no finite-dimensional $SO(1,4)$ irrep whose $SO(4)$ branching is just $(0,1)+(1,0)$.
+The minimal candidate would be $\langle 2,0\rangle$, but
+\be
+\langle 2,0\rangle \downarrow SO(4)=(0,1)+\Big(\frac12,\frac12\Big)+(1,0),
+\ee
+so the $(\frac12,\frac12)$ piece is missing. The same issue persists after first branching the
+internal side to $SO(5)$: for instance, the full $\langle 0,2\rangle$ block at $\D_0=4$ has total
+$SO(4)$ content
+\be
+3(0,0)+(1,1),
+\ee
+whereas a local symmetric traceless $SO(1,4)$ tensor $\langle 0,2\rangle$ would branch as
+\be
+\langle 0,2\rangle \downarrow SO(4)=(0,0)+\Big(\frac12,\frac12\Big)+(1,1).
+\ee
+Thus Table 1 does \emph{not} supply a full manifest $SO(1,4)$ label for every state.
+
+What one \emph{can} do explicitly is a lower-resolution scan that keeps the full $SO(5)$ branching
+on the internal side and the displayed $(s_L,s_R)$ data on the spacetime side. Concretely, the check
+uses the pair
+\be
+\big(\langle a,b\rangle,\,(s_L,s_R)\big)
+\ee
+as a coarse label. If collisions already occur at this level, then Table 1 certainly does not give
+enough information to distinguish those states in a manifest $SO(1,4)\times SO(5)$ language.
+
+The outcome of this coarse scan is still stark. After branching the full Table 1 in this way, one finds
+\be
+109
+\ee
+distinct manifest labels $\big(\langle a,b\rangle,(s_L,s_R)\big)$.
+Of these,
+\be
+97
+\ee
+occur at more than one value of $\D_0$.
+Only
+\be
+12
+\ee
+manifest labels are unique to a single value of $\D_0$, and only
+\be
+11
+\ee
+actually isolate a single Table-1 state. All 11 of these fully unique labels sit at $\D_0=6$.
+
+So the correct conclusion is:
+\begin{itemize}
+\item Table 1 by itself does not determine the full $SO(1,4)\times SO(5)$ branching of all Konishi states.
+\item Even at the coarser level accessible directly from Table 1, it is very common for states with different
+$\D_0$ to look identical.
+\end{itemize}
+
+Some concrete collisions are especially relevant for the present SFT discussion.
+\begin{itemize}
+\item The scalar singlet label
+\be
+\langle 0,0\rangle_{(0,0)}
+\ee
+appears at
+\be
+\D_0=2,4,6,8,10,
+\ee
+coming from the $SO(6)$ representations $[0,0,0]$, $[0,2,0]$ and $[0,4,0]$.
+\item The manifest label relevant to the simple scalar $su(2)$-type internal ansatz,
+\be
+\langle 0,2\rangle_{(0,0)},
+\ee
+appears at
+\be
+\D_0=4,5,6,7,8,
+\ee
+coming from $[0,2,0]$, $[1,1,1]$, $[1,2,1]$, $[0,4,0]$ and $[2,0,2]$.
+So a rank-2 internal scalar profile by itself is far from enough to identify the $\D_0=4$ Konishi
+descendant.
+\item The manifest label relevant to the $sl(2)$ descendant,
+\be
+\langle 0,2\rangle_{(1,1)},
+\ee
+also appears at
+\be
+\D_0=4,5,6,7,8,
+\ee
+coming from $[0,2,0]$, $[1,1,1]$ and $[2,0,2]$.
+\item By contrast, the AdS spin-4 singlet is special: its manifest label
+\be
+\langle 0,0\rangle_{(2,2)}
+\ee
+occurs only once in the whole table, namely for the $\D_0=6$ state $[0,0,0]_{(2,2)}$.
+This explains why it was so easy to isolate in the reduced-symmetry variables.
+\item The sphere highest-weight control also has a unique top branch:
+\be
+\langle 0,4\rangle_{(0,0)}
+\ee
+appears only once, for $[0,4,0]_{(0,0)}$ at $\D_0=6$.
+\item A similar statement holds for the top branch
+\be
+\langle 4,0\rangle_{(1,1)},
+\ee
+which appears only once, for the $\D_0=6$ state $[2,0,2]_{(1,1)}$.
+\end{itemize}
+
+The practical lesson is therefore very sharp.
+\begin{itemize}
+\item If one works only with the data directly visible in Table 1, then most states in the Konishi table are
+heavily degenerate across different values of $\D_0$.
+\item A genuine $SO(1,4)$-refined scan requires extra bulk input beyond Table 1, i.e. a dictionary from the
+Table-1 conformal data to actual $AdS_5$ field representations.
+\item The apparently simple $\D_0=4$ candidates are \emph{not} protected against this ambiguity: their low
+rank manifest $SO(5)$ branches are shared by many other states.
+\item The reason the spin-4 singlet was such a clean diagnostic was precisely that it sits in one of the very
+few manifest labels that remain unique after branching.
+\end{itemize}
+
+\section{A Useful Caution from RR Seeds}
+
+One could try to avoid the previous problem by starting from an RR representative instead of an NSNS one.
+But that does not solve the issue automatically. For a pure RR seed, the first-order correction must lie in
+the NSNS sector, and one again needs an NSNS state with the same manifest quantum numbers.
+
+The example already mentioned in \texttt{draftKonishi.tex} is a level-3 RR descendant with $\D_0=5$:
+it has the same flat-space mass as the simple NSNS Konishi candidate, but there is no obvious NSNS state
+of the required spin to mix with at first order. So pure RR seeds can fail for the same structural reason.
+
+In other words, the problem is not ``RR bad, NSNS good'' or vice versa. The real issue is whether the
+reduced-symmetry sector one is working in contains enough states to support the odd-order RR/even-order NSNS
+mixing forced by the background.
+
+\section{Working Recommendation}
+
+My current recommendation is:
+\begin{enumerate}
+\item Take $[2,0,2]_{(0,0)}$ as the default Konishi candidate from the SFT point of view.
+It is the cleanest bona fide $\D_0=4$ descendant: unique in Table 1, spinless in $AdS$, and naturally carried by internal quantum numbers.
+\item Keep $[0,2,0]_{(1,1)}$ as the strongest alternative.
+It has the best direct literature identification as a Konishi descendant, but it is somewhat less economical in the reduced-symmetry variables.
+\item Do not insist on a pure NSNS truncation at first order.
+If either NSNS seed sources the $[1,1,1]_{(\frac{1}{2},\frac{1}{2})}$ RR family, those RR states should be included immediately.
+\item Retain the spin-4 singlet \eqref{S4ansatz} and the sphere $J=4$ state only as controls.
+They are useful for diagnosing kinematic accidents, but they should no longer anchor the Konishi strategy.
+\end{enumerate}
+
+So the best ``convenient representative'' depends on what one wants:
+\begin{itemize}
+\item for a first serious Konishi attempt in the current SFT frame, start with $[2,0,2]_{(0,0)}$;
+\item if external confidence in the identification matters more than ansatz economy, use $[0,2,0]_{(1,1)}$;
+\item in either case, expect that the minimal physically sensible system may already involve RR partners at first order.
+\end{itemize}
+
+\section{The \texorpdfstring{$[2,0,2]_{(1,1)}$}{[2,0,2](1,1)} Candidate at \texorpdfstring{$\D_0=6$}{Delta0=6}}
+\label{sec:202_11}
+
+The analysis in \S\ref{app:table1scan} shows that only 11 manifest labels
+$\big(\langle a,b\rangle,(s_L,s_R)\big)$ isolate a single Table-1 state, all at $\D_0=6$.
+Among these, the simplest candidates that were checked --- the spin-4 singlet
+$\langle 0,0\rangle_{(2,2)}$ and the sphere $J\!=\!4$ mode $\langle 0,4\rangle_{(0,0)}$
+--- both have a vanishing first-order source, as discussed in \S4 and \S\ref{sec:delta4_bracket}.
+This section identifies
+\be
+\langle 4,0\rangle_{(1,1)},\qquad\text{from }[2,0,2]_{(1,1)}\text{ at }\D_0=6,
+\ee
+as a candidate that is uniquely pinned down by manifest $SO(1,4)\times SO(5)$
+quantum numbers \emph{and} has a nonvanishing first-order source.
+
+\subsection{Representation theory: \texorpdfstring{$\langle 4,0\rangle$}{<4,0>} of \texorpdfstring{$SO(5)$}{SO(5)}}
+
+In the $B_2$ convention used throughout ($\langle 1,0\rangle={\bf 4}$, $\langle 0,1\rangle={\bf 5}$),
+a representation $\langle a,b\rangle$ of $SO(5)$ is tensorial (single-valued on $SO(5)$, not only
+on $\mathrm{Spin}(5)$) if and only if $a$ is even.
+This is because the first fundamental weight $\omega_1=(e_1+e_2)/2$
+has half-integer coordinates in the orthonormal basis, so $\lambda=a\omega_1+b\omega_2$ has
+integer coordinates iff $a$ is even.
+
+Since $a=4$ is even, $\langle 4,0\rangle$ is a \emph{tensor} representation of $SO(5)$.
+It can be realised entirely from tensor products of the vector representation $\langle 0,1\rangle={\bf 5}$.
+
+Using the Weyl dimension formula for $B_2$,
+\be
+\dim\langle a,b\rangle = \frac{(a+1)(b+1)(a+2b+3)(a+b+2)}{6},
+\ee
+one finds $\dim\langle 4,0\rangle = 5\cdot 1\cdot 7\cdot 6/6 = 35$.
+
+The explicit tensor product chain is
+\ie
+\langle 0,1\rangle\otimes\langle 0,1\rangle
+&= \langle 0,0\rangle\oplus\langle 2,0\rangle\oplus\langle 0,2\rangle,\\
+\langle 2,0\rangle\otimes\langle 2,0\rangle
+&= \langle 4,0\rangle\oplus\langle 2,1\rangle\oplus\langle 0,2\rangle
+\oplus\langle 2,0\rangle\oplus\langle 0,1\rangle\oplus\langle 0,0\rangle,
+\fe
+so $\langle 4,0\rangle$ sits inside $\mathrm{Sym}^2(\Lambda^2 V_5)$.
+As a rank-4 tensor in $SO(5)$ vector indices, it has the symmetries of the Weyl tensor:
+\be
+T_{[ij],[kl]}=T_{[kl],[ij]},\qquad
+T_{[ij],[kl]}+T_{[ik],[lj]}+T_{[il],[jk]}=0,\qquad
+\delta^{ik}T_{[ij],[kl]}=0.
+\ee
+
+\paragraph{Scalar harmonics only give $\langle 0,b\rangle$.}
+Polynomial harmonics on $S^4$ (homogeneous harmonic polynomials in $X^i$, $i=5,\ldots,9$)
+furnish the symmetric traceless tensor representations $\langle 0,b\rangle$.
+Since $\langle 4,0\rangle$ is \emph{not} of the form $\langle 0,b\rangle$, it cannot be
+carried by a scalar profile alone.
+
+\subsection{Vertex operator}
+
+At the first massive level one has one holomorphic and one anti-holomorphic oscillator excitation.
+Since the $\langle 4,0\rangle$ charge cannot sit in the profile, the worldsheet oscillators must carry
+$S^5$ indices. The natural NSNS vertex operator in the $(-1,-1)$ picture is
+\be\label{202_11vertex}
+\varphi^{(0)}_{[2,0,2]_{(1,1)}}
+= f(X^a)\,T_{[ij],[kl]}\,
+c\bar c\,
+e^{-\phi}\psi^i\partial X^j\,
+e^{-\bar\phi}\bar\psi^k\bar\partial X^l,
+\ee
+where
+\begin{itemize}
+\item $i,j,k,l\in\{5,\ldots,9\}$ are $S^5$ directions;
+\item $T_{[ij],[kl]}$ is the $\langle 4,0\rangle$ highest-weight projection
+of the Weyl-tensor-type contraction (antisymmetric in each pair, symmetric under pair exchange,
+with all traces removed);
+\item $f(X^a)$ carries the boundary spin $(1,1)$ via its dependence on the $AdS_5$ coordinates
+$X^0,\ldots,X^4$, together with the radial/mass-shell information appropriate to $\D_0=6$.
+\end{itemize}
+
+The highest-weight component of $T$ is obtained by choosing the null polarisations
+\be
+U^\pm = X^5\pm iX^6,\qquad V^\pm = X^7\pm iX^8,
+\ee
+and setting
+\be
+T_{[56],[78]}\sim 1,
+\ee
+i.e.\ the antisymmetric pair $(ij)=(56)$ and $(kl)=(78)$, both in the ``$+$'' direction
+of their respective complex planes. The profile $f$ then depends only on $X^+\equiv X^1+iX^2$
+and on the radial variable; concretely one expects $f\sim a(X^+)$ with $a$ satisfying the same
+mass-shell and transversality conditions as before.
+
+\subsection{The first-order source is nonvanishing}
+
+For the vertex \eqref{202_11vertex} the first-order bracket
+$[\psi^{(1)}_{RR}\otimes\varphi^{(0)}]'$ involves the gamma-matrix bilinear
+\be
+\gamma^i F^{(1)}\gamma^k
+= \frac{i}{R}\,\gamma^i\gamma^{01234}\gamma^k.
+\ee
+Since $\gamma^i$ (with $i\in\{5,\ldots,9\}$) anticommutes with each of
+$\gamma^0,\ldots,\gamma^4$,
+\be
+\gamma^i\gamma^{01234}=(-1)^5\gamma^{01234}\gamma^i=-\gamma^{01234}\gamma^i,
+\ee
+so that
+\be
+\gamma^i\gamma^{01234}\gamma^k
+=-\gamma^{01234}\gamma^i\gamma^k
+=-\gamma^{01234}\big(\delta^{ik}+\gamma^{ik}\big).
+\ee
+For $i\neq k$ (as required by the antisymmetry of $T$), the antisymmetric part
+$\gamma^{ik}$ is nonzero, and the full bilinear does not vanish.
+
+Contrast this with the cases where the first-order source vanishes:
+\begin{itemize}
+\item spin-4 singlet: $\gamma^+\gamma^{01234}\gamma^+\propto(\gamma^+)^2=0$;
+\item sphere $J\!=\!4$: $\gamma^{U^+}\gamma^{01234}\gamma^{U^+}\propto(\gamma^{U^+})^2=0$;
+\item $[2,0,2]_{(0,0)}$ at $\D_0=4$:
+$\gamma^{V^+}\gamma^{01234}\gamma^{V^+}\propto(\gamma^{V^+})^2=0$.
+\end{itemize}
+These all use the \emph{same} complexified null direction on both worldsheet sectors,
+forcing a square of a null gamma matrix.
+For $\langle 4,0\rangle_{(1,1)}$ the two antisymmetric pairs $(ij)$ and $(kl)$ generically involve
+\emph{different} $S^5$ directions, so no null-square identity applies.
+
+\subsection{Summary and comparison}
+
+The situation for the explicitly checked unique $\D_0=6$ candidates is:
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+Manifest label & Parent & 1st-order source & Internal structure \\
+\hline
+$\langle 0,0\rangle_{(2,2)}$ & $[0,0,0]_{(2,2)}$ & vanishes ($(\gamma^+)^2\!=\!0$)
+& trivial \\
+$\langle 0,4\rangle_{(0,0)}$ & $[0,4,0]_{(0,0)}$ & vanishes ($(\gamma^{U^+})^2\!=\!0$)
+& quartic scalar \\
+$\langle 4,0\rangle_{(1,1)}$ & $[2,0,2]_{(1,1)}$ & \textbf{nonvanishing}
+& Weyl tensor $T_{[ij],[kl]}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+The state $[2,0,2]_{(1,1)}$ at $\D_0=6$ is therefore the natural primary target if one insists
+on a Konishi candidate that can be pinned down by $SO(1,4)\times SO(5)$ invariance alone:
+it is uniquely identified by its manifest quantum numbers and has a nonvanishing first-order
+source.
+
+The expected scaling dimension is
+\be
+\D_{[2,0,2]_{(1,1)}}=2R+2+\frac{2}{R}+O(R^{-2}),
+\ee
+with the constant $+2$ now accessible already at first order in the perturbative SFT expansion.
+
+The trade-off relative to the $\D_0=4$ candidates is clear: the vertex operator
+\eqref{202_11vertex} is more complex (tensor-valued with Weyl-tensor internal
+indices and boundary spin carried by the $AdS$ profile), but the identification is
+unambiguous and the first-order source is nontrivial, giving access to the constant
+correction $b_0=+2$ already at the first perturbative order.
+
+\appendix
+
+\section{Explicit \texorpdfstring{$SO(6)\to SO(5)$}{SO(6)->SO(5)} Branching Data}
+\label{app:branching}
+
+For the explicit Table-1 scan I use the following $SO(6)\to SO(5)$ branchings, written in the
+$C_2\simeq B_2$ convention where $\langle 1,0\rangle={\bf 4}$ and $\langle 0,1\rangle={\bf 5}$.
+The pairs related by conjugation in $SU(4)\simeq SO(6)$ branch identically to $SO(5)$.
+
+\begin{align*}
+[0,0,0] &\to \langle 0,0\rangle, \\
+[0,0,1]=[1,0,0] &\to \langle 1,0\rangle, \\
+[0,1,0] &\to \langle 0,1\rangle\oplus \langle 0,0\rangle, \\
+[0,0,2]=[2,0,0] &\to \langle 2,0\rangle, \\
+[1,0,1] &\to \langle 2,0\rangle\oplus \langle 0,1\rangle, \\
+[0,1,1]=[1,1,0] &\to \langle 1,1\rangle\oplus \langle 1,0\rangle, \\
+[0,0,3]=[3,0,0] &\to \langle 3,0\rangle, \\
+[1,0,2]=[2,0,1] &\to \langle 3,0\rangle\oplus \langle 1,1\rangle, \\
+[0,2,0] &\to \langle 0,2\rangle\oplus \langle 0,1\rangle\oplus \langle 0,0\rangle, \\
+[0,1,2]=[2,1,0] &\to \langle 2,1\rangle\oplus \langle 2,0\rangle, \\
+[1,1,1] &\to \langle 2,1\rangle\oplus \langle 2,0\rangle\oplus \langle 0,2\rangle\oplus \langle 0,1\rangle, \\
+[0,2,1]=[1,2,0] &\to \langle 1,2\rangle\oplus \langle 1,1\rangle\oplus \langle 1,0\rangle, \\
+[2,1,1]=[1,1,2] &\to \langle 3,1\rangle\oplus \langle 3,0\rangle\oplus \langle 1,2\rangle\oplus \langle 1,1\rangle, \\
+[0,3,0] &\to \langle 0,3\rangle\oplus \langle 0,2\rangle\oplus \langle 0,1\rangle\oplus \langle 0,0\rangle, \\
+[1,0,3]=[3,0,1] &\to \langle 4,0\rangle\oplus \langle 2,1\rangle, \\
+[2,0,2] &\to \langle 4,0\rangle\oplus \langle 2,1\rangle\oplus \langle 0,2\rangle, \\
+[0,2,2]=[2,2,0] &\to \langle 2,2\rangle\oplus \langle 2,1\rangle\oplus \langle 2,0\rangle, \\
+[1,2,1] &\to \langle 2,2\rangle\oplus \langle 2,1\rangle\oplus \langle 2,0\rangle\oplus \langle 0,3\rangle\oplus \langle 0,2\rangle\oplus \langle 0,1\rangle, \\
+[1,3,0]=[0,3,1] &\to \langle 1,3\rangle\oplus \langle 1,2\rangle\oplus \langle 1,1\rangle\oplus \langle 1,0\rangle, \\
+[3,1,0]=[0,1,3] &\to \langle 3,1\rangle\oplus \langle 3,0\rangle, \\
+[0,0,4]=[4,0,0] &\to \langle 4,0\rangle, \\
+[0,4,0] &\to \langle 0,4\rangle\oplus \langle 0,3\rangle\oplus \langle 0,2\rangle\oplus \langle 0,1\rangle\oplus \langle 0,0\rangle.
+\end{align*}
+
+\section{Table 1 of \texttt{1102.1209}}
+\label{app:table1}
+
+For convenience I reproduce Table 1 of \texttt{1102.1209} here, with the original
+shorthand written out explicitly in terms of $\Delta_0$.
+
+\footnotesize
+\begin{longtable}{|c|p{0.77\textwidth}|}
+\hline
+$\D_0$ & States \\
+\hline
+\endfirsthead
+\hline
+$\D_0$ & States \\
+\hline
+\endhead
+$2$ & $[0,0,0]_{(0,0)}$ \\
+\hline
+$2+\frac{1}{2}$ & $[0,0,1]_{(0,\frac{1}{2})}+[1,0,0]_{(\frac{1}{2},0)}$ \\
+\hline
+$2+1$ & $[0,0,0]_{(\frac{1}{2},\frac{1}{2})}+[0,0,2]_{(0,0)}+[0,1,0]_{(0,1)+(1,0)}+[1,0,1]_{(\frac{1}{2},\frac{1}{2})}+[2,0,0]_{(0,0)}$ \\
+\hline
+$2+\frac{3}{2}$ & $[0,0,1]_{(\frac{1}{2},0)+(\frac{1}{2},1)+(\frac{3}{2},0)}+[0,1,1]_{(0,\frac{1}{2})+(1,\frac{1}{2})}+[1,0,0]_{(0,\frac{1}{2})+(0,\frac{3}{2})+(1,\frac{1}{2})}+[1,0,2]_{(\frac{1}{2},0)}$ \\
+& $+[1,1,0]_{(\frac{1}{2},0)+(\frac{1}{2},1)}+[2,0,1]_{(0,\frac{1}{2})}$ \\
+\hline
+$2+2$ & $[0,0,0]_{(0,0)+(0,2)+(1,1)+(2,0)}+[0,0,2]_{(\frac{1}{2},\frac{1}{2})+(\frac{3}{2},\frac{1}{2})}+[0,1,0]_{2(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})}+[2,0,2]_{(0,0)}+[2,1,0]_{(0,1)}$ \\
+& $+[0,1,2]_{(1,0)}+[0,2,0]_{2(0,0)+(1,1)}+[1,0,1]_{(0,0)+2(0,1)+2(1,0)+(1,1)}+[1,1,1]_{2(\frac{1}{2},\frac{1}{2})}+[2,0,0]_{(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})}$ \\
+\hline
+$2+\frac{5}{2}$ & $[0,0,1]_{(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})+(1,\frac{3}{2})+(2,\frac{1}{2})}+[0,0,3]_{(\frac{3}{2},0)}+[0,1,1]_{3(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{3}{2},0)+(\frac{3}{2},1)}+[0,2,1]_{(0,\frac{1}{2})+(1,\frac{1}{2})}$ \\
+& $+[1,0,0]_{(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{1}{2},2)+(\frac{3}{2},0)+(\frac{3}{2},1)}+[1,0,2]_{(0,\frac{1}{2})+2(1,\frac{1}{2})}+[1,1,0]_{3(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})+(1,\frac{3}{2})}$ \\
+& $+[1,1,2]_{(\frac{1}{2},0)}+[1,2,0]_{(\frac{1}{2},0)+(\frac{1}{2},1)}+[2,0,1]_{(\frac{1}{2},0)+2(\frac{1}{2},1)}+[2,1,1]_{(0,\frac{1}{2})}+[3,0,0]_{(0,\frac{3}{2})}$ \\
+\hline
+$2+3$ & $[0,0,0]_{(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})+(\frac{3}{2},\frac{3}{2})}+[0,0,2]_{2(0,0)+(1,0)+2(1,1)+(2,0)}+[0,1,0]_{3(0,1)+3(1,0)+2(1,1)+(1,2)+(2,1)}$ \\
+& $+[0,1,2]_{2(\frac{1}{2},\frac{1}{2})+(\frac{3}{2},\frac{1}{2})}+[0,2,0]_{3(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})}+[0,2,2]_{(0,0)}+[0,3,0]_{(0,1)+(1,0)}$ \\
+& $+[1,0,3]_{(1,0)}+[1,1,1]_{2(0,0)+2(0,1)+2(1,0)+2(1,1)}+[1,2,1]_{(\frac{1}{2},\frac{1}{2})}+[2,0,0]_{2(0,0)+(0,1)+(0,2)+2(1,1)}$ \\
+& $+[2,0,2]_{(\frac{1}{2},\frac{1}{2})}+[2,1,0]_{2(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})}+[2,2,0]_{(0,0)}+[3,0,1]_{(0,1)}+[1,0,1]_{4(\frac{1}{2},\frac{1}{2})+2(\frac{1}{2},\frac{3}{2})+2(\frac{3}{2},\frac{1}{2})+(\frac{3}{2},\frac{3}{2})}$ \\
+\hline
+$2+\frac{7}{2}$ & $[0,0,1]_{2(\frac{1}{2},0)+3(\frac{1}{2},1)+(\frac{3}{2},0)+2(\frac{3}{2},1)+(\frac{3}{2},2)}+[0,0,3]_{(0,\frac{1}{2})+(1,\frac{1}{2})}+[0,1,1]_{3(0,\frac{1}{2})+(0,\frac{3}{2})+4(1,\frac{1}{2})+2(1,\frac{3}{2})+(2,\frac{1}{2})}$ \\
+& $+[0,1,3]_{(\frac{1}{2},0)}+[0,2,1]_{2(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{3}{2},0)}+[0,3,1]_{(0,\frac{1}{2})}+[1,0,0]_{2(0,\frac{1}{2})+(0,\frac{3}{2})+3(1,\frac{1}{2})+2(1,\frac{3}{2})+(2,\frac{3}{2})}$ \\
+& $+[1,0,2]_{2(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{3}{2},0)+(\frac{3}{2},1)}+[1,1,0]_{3(\frac{1}{2},0)+4(\frac{1}{2},1)+(\frac{1}{2},2)+(\frac{3}{2},0)+2(\frac{3}{2},1)}+[1,1,2]_{(0,\frac{1}{2})+(1,\frac{1}{2})}$ \\
+& $+[1,2,0]_{2(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})}+[1,3,0]_{(\frac{1}{2},0)}+[2,0,1]_{2(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})+(1,\frac{3}{2})}+[2,1,1]_{(\frac{1}{2},0)+(\frac{1}{2},1)}$ \\
+& $+[3,0,0]_{(\frac{1}{2},0)+(\frac{1}{2},1)}+[3,1,0]_{(0,\frac{1}{2})}$ \\
+\hline
+$2+4$ & $[0,0,0]_{3(0,0)+3(1,1)+(2,2)}+[0,0,2]_{3(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})+(\frac{3}{2},\frac{3}{2})}+[0,1,0]_{4(\frac{1}{2},\frac{1}{2})+2(\frac{1}{2},\frac{3}{2})+2(\frac{3}{2},\frac{1}{2})+2(\frac{3}{2},\frac{3}{2})}$ \\
+& $+[0,1,2]_{(0,0)+2(0,1)+2(1,0)+(1,1)}+[0,2,0]_{3(0,0)+(0,1)+(0,2)+(1,0)+3(1,1)+(2,0)}+[0,2,2]_{(\frac{1}{2},\frac{1}{2})}$ \\
+& $+[0,3,0]_{2(\frac{1}{2},\frac{1}{2})}+[0,4,0]_{(0,0)}+[1,0,1]_{(0,0)+3(0,1)+3(1,0)+4(1,1)+(1,2)+(2,1)}+[1,0,3]_{(\frac{1}{2},\frac{1}{2})}+[0,0,4]_{(0,0)}$ \\
+& $+[1,1,1]_{4(\frac{1}{2},\frac{1}{2})+2(\frac{1}{2},\frac{3}{2})+2(\frac{3}{2},\frac{1}{2})}+[1,2,1]_{(0,0)+(0,1)+(1,0)}+[2,0,0]_{3(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})+(\frac{3}{2},\frac{3}{2})}$ \\
+& $+[2,0,2]_{(0,0)+(1,1)}+[2,1,0]_{(0,0)+2(0,1)+2(1,0)+(1,1)}+[2,2,0]_{(\frac{1}{2},\frac{1}{2})}+[3,0,1]_{(\frac{1}{2},\frac{1}{2})}+[4,0,0]_{(0,0)}$ \\
+\hline
+$2+\frac{9}{2}$ & $[0,0,1]_{2(0,\frac{1}{2})+(0,\frac{3}{2})+3(1,\frac{1}{2})+2(1,\frac{3}{2})+(2,\frac{3}{2})}+[0,0,3]_{(\frac{1}{2},0)+(\frac{1}{2},1)}+[0,1,1]_{3(\frac{1}{2},0)+4(\frac{1}{2},1)+(\frac{1}{2},2)+(\frac{3}{2},0)+2(\frac{3}{2},1)}$ \\
+& $+[0,1,3]_{(0,\frac{1}{2})}+[0,2,1]_{2(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})}+[0,3,1]_{(\frac{1}{2},0)}+[1,0,0]_{2(\frac{1}{2},0)+3(\frac{1}{2},1)+(\frac{3}{2},0)+2(\frac{3}{2},1)+(\frac{3}{2},2)}$ \\
+& $+[1,0,2]_{2(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})+(1,\frac{3}{2})}+[1,1,0]_{3(0,\frac{1}{2})+(0,\frac{3}{2})+4(1,\frac{1}{2})+2(1,\frac{3}{2})+(2,\frac{1}{2})}+[1,1,2]_{(\frac{1}{2},0)+(\frac{1}{2},1)}$ \\
+& $+[1,2,0]_{2(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{3}{2},0)}+[1,3,0]_{(0,\frac{1}{2})}+[2,0,1]_{2(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{3}{2},0)+(\frac{3}{2},1)}+[2,1,1]_{(0,\frac{1}{2})+(1,\frac{1}{2})}$ \\
+& $+[3,0,0]_{(0,\frac{1}{2})+(1,\frac{1}{2})}+[3,1,0]_{(\frac{1}{2},0)}$ \\
+\hline
+$2+5$ & $[0,0,0]_{(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})+(\frac{3}{2},\frac{3}{2})}+[0,0,2]_{2(0,0)+(0,1)+(0,2)+2(1,1)}+[0,1,0]_{3(0,1)+3(1,0)+2(1,1)+(1,2)+(2,1)}$ \\
+& $+[0,1,2]_{2(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})}+[0,2,0]_{3(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})}+[0,2,2]_{(0,0)}+[0,3,0]_{(0,1)+(1,0)}$ \\
+& $+[1,0,3]_{(0,1)}+[1,1,1]_{2(0,0)+2(0,1)+2(1,0)+2(1,1)}+[1,2,1]_{(\frac{1}{2},\frac{1}{2})}+[2,0,0]_{2(0,0)+(1,0)+2(1,1)+(2,0)}$ \\
+& $+[2,0,2]_{(\frac{1}{2},\frac{1}{2})}+[2,1,0]_{2(\frac{1}{2},\frac{1}{2})+(\frac{3}{2},\frac{1}{2})}+[2,2,0]_{(0,0)}+[3,0,1]_{(1,0)}+[1,0,1]_{4(\frac{1}{2},\frac{1}{2})+2(\frac{1}{2},\frac{3}{2})+2(\frac{3}{2},\frac{1}{2})+(\frac{3}{2},\frac{3}{2})}$ \\
+\hline
+$2+\frac{11}{2}$ & $[0,0,1]_{(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{1}{2},2)+(\frac{3}{2},0)+(\frac{3}{2},1)}+[0,0,3]_{(0,\frac{3}{2})}+[0,1,1]_{3(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})+(1,\frac{3}{2})}+[0,2,1]_{(\frac{1}{2},0)+(\frac{1}{2},1)}$ \\
+& $+[1,0,0]_{(0,\frac{1}{2})+(0,\frac{3}{2})+2(1,\frac{1}{2})+(1,\frac{3}{2})+(2,\frac{1}{2})}+[1,0,2]_{(\frac{1}{2},0)+2(\frac{1}{2},1)}+[1,1,0]_{3(\frac{1}{2},0)+2(\frac{1}{2},1)+(\frac{3}{2},0)+(\frac{3}{2},1)}$ \\
+& $+[1,1,2]_{(0,\frac{1}{2})}+[1,2,0]_{(0,\frac{1}{2})+(1,\frac{1}{2})}+[2,0,1]_{(0,\frac{1}{2})+2(1,\frac{1}{2})}+[2,1,1]_{(\frac{1}{2},0)}+[3,0,0]_{(\frac{3}{2},0)}$ \\
+\hline
+$2+6$ & $[0,0,0]_{(0,0)+(0,2)+(1,1)+(2,0)}+[0,0,2]_{(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})}+[0,1,0]_{2(\frac{1}{2},\frac{1}{2})+(\frac{1}{2},\frac{3}{2})+(\frac{3}{2},\frac{1}{2})}+[2,0,2]_{(0,0)}+[2,1,0]_{(1,0)}$ \\
+& $+[0,1,2]_{(0,1)}+[0,2,0]_{2(0,0)+(1,1)}+[1,0,1]_{(0,0)+2(0,1)+2(1,0)+(1,1)}+[1,1,1]_{2(\frac{1}{2},\frac{1}{2})}+[2,0,0]_{(\frac{1}{2},\frac{1}{2})+(\frac{3}{2},\frac{1}{2})}$ \\
+\hline
+$2+\frac{13}{2}$ & $[0,0,1]_{(0,\frac{1}{2})+(0,\frac{3}{2})+(1,\frac{1}{2})}+[0,1,1]_{(\frac{1}{2},0)+(\frac{1}{2},1)}+[1,0,0]_{(\frac{1}{2},0)+(\frac{1}{2},1)+(\frac{3}{2},0)}+[1,0,2]_{(0,\frac{1}{2})}$ \\
+& $+[1,1,0]_{(0,\frac{1}{2})+(1,\frac{1}{2})}+[2,0,1]_{(\frac{1}{2},0)}$ \\
+\hline
+$2+7$ & $[0,0,0]_{(\frac{1}{2},\frac{1}{2})}+[0,0,2]_{(0,0)}+[0,1,0]_{(0,1)+(1,0)}+[1,0,1]_{(\frac{1}{2},\frac{1}{2})}+[2,0,0]_{(0,0)}$ \\
+\hline
+$2+\frac{15}{2}$ & $[0,0,1]_{(\frac{1}{2},0)}+[1,0,0]_{(0,\frac{1}{2})}$ \\
+\hline
+$2+8$ & $[0,0,0]_{(0,0)}$ \\
+\hline
+\end{longtable}
+\normalsize
+
+\end{document}
