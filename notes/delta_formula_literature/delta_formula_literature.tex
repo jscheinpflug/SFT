@@ -71,6 +71,199 @@ mode.  On the CFT side this matches the fact that the axion-dilaton couples to t
 complex gauge coupling $\tau$, so the corresponding dimension-four operators are protected
 \cite{AharonyReview}.
 
+\subsection*{Direct derivation in the projective $X^a$ coordinates}
+
+The same result can be derived directly in the projective coordinates used in
+\texttt{2507.12921}.  For a mode that is trivial on $S^5$, the scalar Laplacian is
+\cite{SFT2507}
+\begin{equation}
+\Box_{\rm AdS}
+=
+\partial_a\partial^a
++\frac{1}{R^2}\Big(X^aX^b\partial_a\partial_b+5X^a\partial_a\Big)
++O(R^{-4}),
+\end{equation}
+where $a=0,\ldots,4$.  In the same coordinate frame, the global-time generator is
+\begin{equation}
+\partial_\tau=X^{-1}\partial_{X^0},
+\qquad
+X^{-1}=\sqrt{R^2+X_aX^a},
+\end{equation}
+as written in \texttt{draftKonishi.tex}.
+
+So a mode of definite global frequency $\omega$ can be written as
+\begin{equation}
+c_\omega(X)=\Big(\sqrt{R^2+X_aX^a}+iX^0\Big)^{-\omega},
+\end{equation}
+because if we define
+\[
+Z(X)\equiv \sqrt{R^2+X_aX^a}+iX^0=X^{-1}+iX^0,
+\]
+then in global coordinates
+\[
+X^{-1}=R\sin\tau\cosh\rho,\qquad X^0=R\cos\tau\cosh\rho,
+\]
+so
+\[
+Z=R\cosh\rho(\sin\tau+i\cos\tau)=iR\cosh\rho\,e^{-i\tau}.
+\]
+Therefore $Z$ carries one unit of negative global-time frequency:
+\[
+\partial_\tau Z=-iZ.
+\]
+Hence
+\begin{equation}
+\partial_\tau c_\omega=-i\omega\,c_\omega.
+\end{equation}
+Indeed,
+\[
+\partial_\tau c_\omega
+=
+\partial_\tau(Z^{-\omega})
+=
+(-\omega)Z^{-\omega-1}\partial_\tau Z
+=
+(-\omega)Z^{-\omega-1}(-iZ)
+=
+-i\omega\,c_\omega.
+\]
+
+Now write
+\begin{equation}
+X_aX^a=-(X^0)^2+r^2,
+\qquad
+r^2=\sum_{m=1}^4 (X^m)^2.
+\end{equation}
+Then
+\begin{equation}
+\sqrt{R^2+X_aX^a}
+=
+R+\frac{r^2-(X^0)^2}{2R}+O(R^{-3}),
+\end{equation}
+and hence
+\begin{equation}
+c_\omega(X)=
+R^{-\omega}e^{-i\omega X^0/R}
+\left[1-\frac{\omega r^2}{2R^2}+O(R^{-3})\right].
+\end{equation}
+This expansion is obtained as follows:
+\[
+Z
+=
+R\left[
+1+\frac{iX^0}{R}+\frac{r^2-(X^0)^2}{2R^2}+O(R^{-3})
+\right].
+\]
+So
+\[
+Z^{-\omega}
+=
+R^{-\omega}(1+u)^{-\omega},
+\qquad
+u=\frac{iX^0}{R}+\frac{r^2-(X^0)^2}{2R^2}+O(R^{-3}).
+\]
+Using
+\[
+(1+u)^{-\omega}=1-\omega u+\frac{\omega(\omega+1)}{2}u^2+O(u^3),
+\qquad
+u^2=-\frac{(X^0)^2}{R^2}+O(R^{-3}),
+\]
+one gets
+\[
+Z^{-\omega}
+=
+R^{-\omega}\left[
+1-\frac{i\omega X^0}{R}
+-\frac{\omega r^2}{2R^2}
+-\frac{\omega^2(X^0)^2}{2R^2}
++O(R^{-3})
+\right].
+\]
+The $X^0$-dependent terms resum into
+\[
+e^{-i\omega X^0/R}
+=
+1-\frac{i\omega X^0}{R}-\frac{\omega^2(X^0)^2}{2R^2}+O(R^{-3}),
+\]
+which gives the displayed form.
+
+Acting with the Laplacian gives
+\begin{equation}
+\Box_{\rm AdS}c_\omega
+=
+\frac{\omega(\omega-4)}{R^2}c_\omega+O(R^{-3}),
+\end{equation}
+and the derivation is straightforward.  Write
+\[
+c_\omega(X)=R^{-\omega}e^{-i\omega X^0/R}f(r),
+\qquad
+f(r)=1-\frac{\omega r^2}{2R^2}+O(R^{-3}).
+\]
+To this order, the explicit curvature correction in $\Box_{\rm AdS}$ does not contribute:
+\[
+\frac{1}{R^2}\Big(X^aX^b\partial_a\partial_b+5X^a\partial_a\Big)c_\omega=O(R^{-3}),
+\]
+because every derivative acting on the leading mode brings at least one extra factor of $1/R$.
+So to order $R^{-2}$,
+\[
+\Box_{\rm AdS}c_\omega=\partial_a\partial^a c_\omega+O(R^{-3})
+=
+\left(-\partial_0^2+\sum_{m=1}^4\partial_m^2\right)c_\omega+O(R^{-3}).
+\]
+For the time derivative,
+\[
+-\partial_0^2 c_\omega
+=
+\frac{\omega^2}{R^2}c_\omega+O(R^{-3}),
+\]
+since only the exponential depends on $X^0$ at this order.  For the spatial derivatives,
+\[
+\sum_{m=1}^4\partial_m^2 c_\omega
+=
+R^{-\omega}e^{-i\omega X^0/R}\sum_{m=1}^4\partial_m^2
+\left(1-\frac{\omega r^2}{2R^2}\right)+O(R^{-3}).
+\]
+Using
+\[
+\sum_{m=1}^4\partial_m^2 r^2 = 2\times 4 = 8,
+\]
+this becomes
+\[
+\sum_{m=1}^4\partial_m^2 c_\omega
+=
+-\frac{4\omega}{R^2}c_\omega+O(R^{-3}).
+\]
+Adding time and space pieces,
+\[
+\Box_{\rm AdS}c_\omega
+=
+\left(\frac{\omega^2}{R^2}-\frac{4\omega}{R^2}\right)c_\omega+O(R^{-3})
+=
+\frac{\omega(\omega-4)}{R^2}c_\omega+O(R^{-3}),
+\]
+which is exactly the displayed equation.
+
+so the wave equation $\Box_{\rm AdS}c_\omega=0$ implies
+\begin{equation}
+\omega(\omega-4)=0.
+\end{equation}
+This is just the condition that the coefficient of the first nontrivial term in the large-$R$ expansion
+vanish.  So there are two branches,
+\[
+\omega=0,\qquad \omega=4.
+\]
+The $\omega=0$ solution is the non-normalizable/source branch, while the normalizable massless scalar is
+the $\omega=4$ branch.
+
+The normalizable branch is therefore
+\begin{equation}
+\omega=4.
+\end{equation}
+Thus the projective-coordinate derivation reproduces the standard massless-scalar result
+\begin{equation}
+\D=4.
+\end{equation}
+
 \section{First Excited String Level}
 
 The Konishi formula starts from a completely different input.  One is no longer talking about a
@@ -283,6 +476,11 @@ B.~C.~Vallilo and L.~Mazzucato,
 ``The Konishi multiplet at strong coupling,''
 JHEP {\bf 12} (2011) 029,
 \href{https://arxiv.org/abs/1102.1219}{arXiv:1102.1219}.
+
+\bibitem{SFT2507}
+R.~Pius, B.~T.~Stefa\'nski and A.~A.~Tseytlin,
+``Type IIB string field theory on $AdS_5\times S^5$ at large radius,''
+\href{https://arxiv.org/abs/2507.12921}{arXiv:2507.12921}.
 
 \end{thebibliography}
 
