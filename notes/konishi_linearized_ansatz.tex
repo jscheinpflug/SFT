@@ -771,33 +771,33 @@ mixing forced by the background.
 
 \section{Working Recommendation}
 
-There are two natural strategies, depending on whether one prioritises
-\emph{unique identification} by manifest quantum numbers or
-\emph{computational simplicity} of the perturbative expansion.
+\subsection{Where \texorpdfstring{$b_0$}{b0} comes from}
 
-\subsection{Strategy A: unique identification at \texorpdfstring{$\D_0=6$}{Delta0=6}}
+Since $H^{(1)}=0$ (the Hamiltonian has no first-order correction), the first-order
+perturbation matrix is trivially zero and $b_0$ cannot arise at first order.
+Moreover, $F^{(1)}$ is constant, so the first-order linearized EOM preserves the harmonic
+level $\ell$ of each state (\S\ref{sec:b0resolution}).
 
-Take $[2,0,2]_{(1,1)}$ at $\D_0=6$ as the primary target (\S\ref{sec:202_11}).
-\begin{itemize}
-\item The manifest label $\langle 4,0\rangle_{(1,1)}$ isolates a single Konishi state in the
-entire Table~1 --- no mixing ambiguity.
-\item The $\langle 4,0\rangle$ representation forces internal oscillators with Weyl-tensor
-symmetry, producing a nonvanishing NSNS--RR coupling at first order
-(contrast: all null-polarised highest-weight seeds have vanishing first-order source).
-\item The zeroth-order ansatz is a mixed NSNS+RR state; the constant correction $b_0=+2$
-is extracted from the off-diagonal first-order perturbation matrix.
-\item The vertex operator is more involved (tensor-valued profile, four $S^5$ oscillator
-indices, boundary spin in the $AdS$ profile), so the OPE/PCO technology is heavier.
-\end{itemize}
+Both $b_0=\D_0-4$ and $b_1$ must therefore emerge from the \emph{second-order} Hamiltonian
+$H^{(2)}$, which involves the NSNS background $\psi^{(2)}$ with quadratic $X$-dependence.
+The $X_iX_j$ part of $h^{(2)}_{\mu\nu}$ mixes harmonic levels $\ell$ and $\ell\pm 2$,
+coupling the $\D_0=6$ ($\ell=0$), $\D_0=5$ ($\ell=1$), and $\D_0=4$ ($\ell=2$) states.
 
-\subsection{Strategy B: simplest second-order computation at \texorpdfstring{$\D_0=4$}{Delta0=4}}
+Diagonalising $H^{(2)}$ in this combined space should simultaneously produce $b_0=+2,+1,0$
+for the three harmonic levels and determine $b_1$ for each. This is the computation already
+underway in \texttt{draftKonishi.tex}.
+
+\subsection{Recommended strategy: \texorpdfstring{$\D_0=4$}{Delta0=4} candidates}
+
+The $\D_0=4$ candidates do not have this problem: $b_0=\D_0-4=0$, and the first nontrivial
+coefficient is $b_1=2$ at second order.
 
 Take $[2,0,2]_{(0,0)}$ at $\D_0=4$ as the default computational target.
 \begin{itemize}
-\item It is a bona fide Konishi descendant, unique in Table 1
-at $\D_0=4$, spinless in $AdS$, and naturally carried by internal quantum numbers.
-\item The first-order source vanishes (null-polarisation identity),
-but this is consistent with $b_0=0$. No information is lost.
+\item It is a bona fide Konishi descendant, unique in Table~1 at $\D_0=4$,
+spinless in $AdS$, and naturally carried by internal quantum numbers.
+\item The first-order source vanishes (null-polarisation identity, \S\ref{sec:delta4_bracket}),
+which is consistent with $b_0=0$. No information is lost.
 \item The first nontrivial coefficient $b_1=2$ enters at second order, where the NSNS bracket
 $[\psi^{(2)}\otimes\varphi^{(0)}]'$ is nonvanishing and already worked out for the spin-4
 singlet in \texttt{draftKonishi.tex}.
@@ -810,16 +810,6 @@ family, not on manifest quantum numbers alone.
 
 Keep $[0,2,0]_{(1,1)}$ as the strongest alternative if external confidence in the identification
 matters more than ansatz economy.
-
-\subsection{Combined strategy}
-
-Both strategies can be pursued in parallel. Strategy~A provides an unambiguous identification
-anchor and a first-order test of $b_0=+2$; Strategy~B provides the most economical path to
-the second-order coefficient $b_1=2$. Success in either one validates the other.
-
-In both cases, do not insist on a pure NSNS truncation.
-If the NSNS seed sources an RR family at first order, those RR states should be included
-in the ansatz from the start.
 
 \section{The \texorpdfstring{$[2,0,2]_{(1,1)}$}{[2,0,2](1,1)} Candidate at \texorpdfstring{$\D_0=6$}{Delta0=6}}
 \label{sec:202_11}
@@ -911,271 +901,674 @@ of their respective complex planes. The profile $f$ then depends only on $X^+\eq
 and on the radial variable; concretely one expects $f\sim a(X^+)$ with $a$ satisfying the same
 mass-shell and transversality conditions as before.
 
-\subsection{RR states at mass level 1}
-\label{sec:RR_partner}
+\subsection{Full mass-level-1 spectrum in the \texorpdfstring{$\langle 4,0\rangle_{(1,1)}$}{<4,0>(1,1)} sector}
+\label{sec:spectrum}
 
-To extract $b_0\neq 0$ via the mechanism of the next subsection, the zeroth-order
-ansatz must include both the NSNS seed \eqref{202_11vertex} and RR partners at the same
-mass level with the same manifest quantum numbers $\langle 4,0\rangle_{(1,1)}$.
+To understand the first-order dynamics of this state we need the complete list of
+mass-level-1 states with quantum numbers $\langle 4,0\rangle_{(1,1)}$, in both the NSNS and
+RR sectors. This is a straightforward exercise in $SO(9)\to SO(4)\times SO(5)$
+representation theory.
 
-\paragraph{Excitations in the Ramond sector.}
-At mass level~1 in the R sector, each worldsheet side has two independent types of
-excitation above the spin-field ground state $S^\alpha$ (weight $\tfrac58$):
-\begin{enumerate}
-\item the bosonic oscillator $\alpha^\mu_{-1}$, giving the vertex operator field
-$S^\alpha\partial X^\mu$ (weight $\tfrac58+1=\tfrac{13}{8}$);
-\item the Ramond fermion oscillator $\psi^\mu_{-1}$, giving the \emph{excited spin field}
-$S^\mu_\alpha$ (weight $\tfrac{13}{8}$), which carries both a spinor and a vector index.
-\end{enumerate}
-These are independent conformal primaries at the same weight.
-The gamma-trace $(\Gamma_\mu)^\alpha{}_\beta S^{\mu\beta}$ is proportional to $\partial S^\alpha$
-(the derivative of the ground-state spin field), so the irreducible content of $S^\mu_\alpha$ is
-the gamma-traceless vector-spinor ($\mathbf{144}$ of $SO(9,1)$) plus the gamma-trace
-($\mathbf{16}$, which is not independent of $\partial S^\alpha$).
-
-\paragraph{General RR vertex at mass level~1.}
-In the $(-\tfrac12,-\tfrac12)$ picture, the most general RR vertex at mass level~1 is
-a linear combination of four structures, labelled by which type of excitation appears
-on each worldsheet side:
-\ie\label{RRgeneral}
-\varphi^{(0)}_{RR}
-&= g^{(1)}_{\alpha\beta}(X)\,
-c\bar c\,
-e^{-\frac{1}{2}\phi}S^\alpha\,\partial X^\mu\,
-e^{-\frac{1}{2}\bar\phi}\bar S^\beta\,\bar\partial X^\nu
-\quad&&\text{(bosonic--bosonic)}
-\nonumber\\
-&+ g^{(2)}_{\alpha\beta}(X)\,
-c\bar c\,
-e^{-\frac{1}{2}\phi}S^{\mu}_\alpha\,
-e^{-\frac{1}{2}\bar\phi}\bar S^{\nu}_\beta
-&&\text{(excited--excited)}
-\nonumber\\
-&+ g^{(3)}_{\alpha\beta}(X)\,
-c\bar c\,
-e^{-\frac{1}{2}\phi}S^{\mu}_\alpha\,
-e^{-\frac{1}{2}\bar\phi}\bar S^\beta\,\bar\partial X^\nu
-&&\text{(excited--bosonic)}
-\nonumber\\
-&+ g^{(4)}_{\alpha\beta}(X)\,
-c\bar c\,
-e^{-\frac{1}{2}\phi}S^\alpha\,\partial X^\mu\,
-e^{-\frac{1}{2}\bar\phi}\bar S^{\nu}_\beta,
-&&\text{(bosonic--excited)}
-\fe
-where $S^\alpha,\bar S^\beta$ are both of positive $\mathrm{Spin}(9,1)$ chirality (Type~IIB),
-the profiles $g^{(n)}_{\alpha\beta}$ carry the $AdS$ quantum numbers and mass-shell
-condition, and $\mu,\nu$ run over all 10 directions (restricted to $S^5$ indices
-$i,j\in\{5,\ldots,9\}$ for the $\langle 4,0\rangle$ quantum numbers of interest here).
-The physical state conditions (BRST closure, level matching) constrain the relative
-coefficients and profiles; in general the physical RR state at mass level~1 is a specific
-linear combination of all four types.
-
-\paragraph{SO(5) content.}
-Under $\mathrm{Spin}(1,4)\times\mathrm{Spin}(5)$ the 10d spin field decomposes as
-$\mathbf{16}_+\to(\mathbf{4},\mathbf{4})$,
-so each $S^\alpha$ contributes $\langle 1,0\rangle$ on the internal side. Each vector index
-$\mu$ in $S^5$ contributes $\langle 0,1\rangle$.
-For the structures in \eqref{RRgeneral} with $\mu,\nu\in S^5$, the internal content
-\emph{per worldsheet side} is the same for both the bosonic-oscillator and the
-excited-spin-field excitation:
-\be
-\langle 1,0\rangle\otimes\langle 0,1\rangle
-=\langle 1,1\rangle\oplus\langle 1,0\rangle
-\qquad(4\otimes 5=16\oplus 4),
-\ee
-where the $\langle 1,0\rangle$ piece is the gamma-trace and the $\langle 1,1\rangle$ piece is the
-gamma-traceless part. For $S^\alpha\partial X^i$ the gamma-trace is
-$(\Gamma_i)^\alpha{}_\beta S^\beta\partial X^i$; for $S^i_\alpha$ it is
-$(\Gamma_i)^\alpha{}_\beta S^{i\beta}=\partial S^\alpha$.
-In both cases the physical $\langle 1,1\rangle$ component is the gamma-traceless part.
-
-Taking $\langle 1,1\rangle$ on both sides, the product contains
-\be
-\langle 1,1\rangle\otimes\langle 1,1\rangle
-\;\supset\;\langle 4,0\rangle.
-\ee
-This is verified by the highest weights: $\langle 1,1\rangle$ has highest weight
-$(\tfrac32,\tfrac12)$, the weight $(\tfrac12,\tfrac32)$ is also present
-(obtained by subtracting $\alpha_2=e_1-e_2$), and
-$(\tfrac32,\tfrac12)+(\tfrac12,\tfrac32)=(2,2)$ is the highest weight of $\langle 4,0\rangle$.
-
-Since the SO(5) analysis is the same for all four structures in \eqref{RRgeneral},
-the $\langle 4,0\rangle_{(1,1)}$ projection can in principle draw on all of them.
-BRST closure determines the specific combination.
-
-\paragraph{Schematic form of the $\langle 4,0\rangle$ projection.}
-To make the representation content explicit, decompose the bispinor profile in 10d gamma matrices.
-The $\langle 2,0\rangle$ from the spinor bilinear (the adjoint of $SO(5)$, i.e.\ the symmetric
-part of the $\mathrm{Spin}(5)$ tensor product) is extracted by
-\be
-g_{\alpha\beta}(X)\supset g(X^a)\,(\Gamma^{mn})_{\alpha\beta},
-\qquad m,n\in\{5,\ldots,9\},
-\ee
-where $\Gamma^{mn}=\Gamma^{[m}\Gamma^{n]}$ acts as $\Gamma^{mn}_{S^5}$ on the internal spinor.
-Combined with the $\langle 2,0\rangle$ from the vector indices (the antisymmetric
-part $[ij]$), the $\langle 4,0\rangle$ projection uses the Weyl-tensor contraction
-$T_{[mn],[ij]}$ as before. Schematically, each of the four structures in
-\eqref{RRgeneral} contributes a term of the form
-\be\label{RR202vertex}
-g(X^a)\,T_{[mn],[ij]}\,(\Gamma^{mn})_{\alpha\beta}\,
-c\bar c\,
-e^{-\frac{1}{2}\phi}(\cdots)^{\alpha,i}\,
-e^{-\frac{1}{2}\bar\phi}(\cdots)^{\beta,j},
-\ee
-where $(\cdots)^{\alpha,i}$ stands for $S^\alpha\partial X^i$ or $S^i_\alpha$
-(and similarly on the anti-holomorphic side).
-
-\paragraph{Highest-weight form.}
-At the $\langle 4,0\rangle$ highest weight $(2,2)$, the left sector carries
-$(\tfrac32,\tfrac12)$ (spin field at $\mathrm{Spin}(5)$ highest weight $(\tfrac12,\tfrac12)$
-with the extra oscillator or excited spin field in the $U^+$ direction at vector weight $(1,0)$),
-and the right sector carries $(\tfrac12,\tfrac32)$ (spin field at $(\tfrac12,\tfrac12)$
-with excitation in the $V^+$ direction at $(0,1)$).
-The bispinor factor at the $\langle 2,0\rangle$ highest weight is
-$\Gamma^{U^+V^+}\equiv\Gamma^{U^+}\Gamma^{V^+}$.
-
-For the bosonic--bosonic type, the highest-weight vertex is
-\be
-g(X^+)\,(\Gamma^{U^+V^+})_{\alpha\beta}\,
-c\bar c\,
-e^{-\frac{1}{2}\phi}S^\alpha\,\partial U^+\,
-e^{-\frac{1}{2}\bar\phi}\bar S^\beta\,\bar\partial V^+.
-\ee
-The excited--excited type gives
-\be
-\tilde g(X^+)\,(\Gamma^{U^+V^+})_{\alpha\beta}\,
-c\bar c\,
-e^{-\frac{1}{2}\phi}S^{U^+}_\alpha\,
-e^{-\frac{1}{2}\bar\phi}\bar S^{V^+}_\beta,
-\ee
-and the two mixed types are analogous.
-The physical RR eigenstate at mass level~1 with $\langle 4,0\rangle_{(1,1)}$ is the specific
-linear combination of all four types determined by BRST closure.
-
-\paragraph{Comparison of the three sectors.}
-The $\langle 4,0\rangle_{(1,1)}$ Konishi state at $\D_0=6$ is a superposition of the NSNS
-seed \eqref{202_11vertex} and the RR partners \eqref{RR202vertex}, all
-sharing the same $\langle 4,0\rangle$ Weyl-tensor structure $T_{[mn],[ij]}$.
-On the NSNS side the internal charge is assembled from four vector indices
-($\psi^i\partial X^j\bar\psi^k\bar\partial X^l$);
-on the RR side it is assembled from two spinor-bilinear indices and two
-vector-or-excited-spin-field indices.
-The key difference is that the NSNS vertex uses the same Weyl-tensor directions on both
-worldsheet sectors (both are $S^5$ vectors), while the RR vertex distributes the quantum
-numbers between the spin field (spinorial) and the oscillators (vectorial), which is what
-creates a nontrivial off-diagonal coupling to the RR background $\psi^{(1)}$.
-
-\subsection{NSNS--RR coupling and the first-order eigenvalue shift}
-\label{sec:nsns_rr_coupling}
-
-The vertex \eqref{202_11vertex} is purely NSNS. The bracket
-$[\psi^{(1)}_{RR}\otimes\varphi^{(0)}_{NSNS}]'$ produces an RR source for
-$\varphi^{(1)}$. But the first-order eigenvalue shift cannot come from the
-diagonal matrix element
-$\langle\varphi^{(0)}_{NSNS}|[\psi^{(1)}\otimes\cdot]|\varphi^{(0)}_{NSNS}\rangle$,
-which vanishes by sector: the source is RR while the bra is NSNS.
-
-For $b_0\neq 0$ to arise at first order, the mechanism is necessarily \emph{off-diagonal}.
-At zeroth order (flat space), the mass-level-1 spectrum contains both NSNS and RR states
-at the same mass, degenerate by construction. Suppose there exists an RR state
-$\varphi^{(0)}_{RR}$ at mass level~1 with the same manifest quantum numbers
-$\langle 4,0\rangle_{(1,1)}$. In the degenerate subspace
-$\{\varphi^{(0)}_{NSNS},\,\varphi^{(0)}_{RR}\}$,
-the first-order perturbation matrix is
-\be\label{pertmat}
-M=\begin{pmatrix}
-0 & V \\ W & 0
-\end{pmatrix},
-\ee
-where
+\paragraph{Physical states at mass level~1.}
+The bosonic physical states of the Type~IIB closed superstring at the first massive level
+form:
 \ie
-V &= \langle\varphi^{(0)}_{NSNS}|[\psi^{(1)}_{RR}\otimes\varphi^{(0)}_{RR}]'\rangle,\\
-W &= \langle\varphi^{(0)}_{RR}|[\psi^{(1)}_{RR}\otimes\varphi^{(0)}_{NSNS}]'\rangle.
+\text{NSNS:}&\quad ({\bf 44}\oplus{\bf 84})_L\otimes({\bf 44}\oplus{\bf 84})_R,\\
+\text{RR:}&\quad {\bf 128}_L\otimes{\bf 128}_R,
 \fe
-The diagonal entries vanish by sector. The eigenvalues of $M$ are $\pm\sqrt{VW}$;
-if $VW\neq 0$, there is a first-order splitting, and the correct zeroth-order
-eigenstates are specific NSNS+RR superpositions.
+where ${\bf 44}$ is the symmetric traceless tensor (rank 2), ${\bf 84}$ is the 3-form, and
+${\bf 128}$ is the gamma-traceless vector-spinor, all of $SO(9)$.
 
-The gamma-matrix bilinear $\gamma^i\gamma^{01234}\gamma^k$ controls whether
-these off-diagonal entries are nonzero. For the vertex \eqref{202_11vertex},
-\be
-\gamma^i F^{(1)}\gamma^k
-= \frac{i}{R}\,\gamma^i\gamma^{01234}\gamma^k.
+\paragraph{Decomposition under $SO(4)\times SO(5)$.}
+The vector ${\bf 9}$ of $SO(9)$ decomposes as
+${\bf 9}\to\big((\tfrac12,\tfrac12),\langle 0,0\rangle\big)\oplus\big((0,0),\langle 0,1\rangle\big)$.
+
+For the ${\bf 44}=\mathrm{Sym}^2_0({\bf 9})$ (traceless symmetric square):
+\be\label{44decomp}
+{\bf 44}\to
+\big((0,0),\langle 0,0\rangle\big)
+\oplus\big((1,1),\langle 0,0\rangle\big)
+\oplus\big((\tfrac12,\tfrac12),\langle 0,1\rangle\big)
+\oplus\big((0,0),\langle 0,2\rangle\big).
 \ee
-Since $\gamma^i$ (with $i\in\{5,\ldots,9\}$) anticommutes with each of
-$\gamma^0,\ldots,\gamma^4$,
+For the ${\bf 84}=\Lambda^3({\bf 9})$:
+\ie\label{84decomp}
+{\bf 84}\to{}&
+\big((\tfrac12,\tfrac12),\langle 0,0\rangle\big)
+\oplus\big((1,0)\oplus(0,1),\langle 0,1\rangle\big)
+\nonumber\\
+&\oplus\big((\tfrac12,\tfrac12),\langle 2,0\rangle\big)
+\oplus\big((0,0),\langle 2,0\rangle\big).
+\fe
+Here $\langle 2,0\rangle$ in the ${\bf 84}$ arises from $\Lambda^1({\bf 4})\otimes\Lambda^2({\bf 5})$
+(one $AdS$ and two $S^5$ indices, spin $(\tfrac12,\tfrac12)$) and from $\Lambda^3({\bf 5})$
+(three $S^5$ indices, spin $(0,0)$).
+
+For the ${\bf 128}$ (gamma-traceless vector-spinor): the spinor ${\bf 16}$ of $SO(9)$ decomposes as
+${\bf 16}\to\big((\tfrac12,0),\langle 1,0\rangle\big)\oplus\big((0,\tfrac12),\langle 1,0\rangle\big)$,
+and the ${\bf 128}\subset{\bf 9}\otimes{\bf 16}$ has
+\ie\label{128decomp}
+{\bf 128}\to{}&
+\big((1,\tfrac12),\langle 1,0\rangle\big)
+\oplus\big((\tfrac12,1),\langle 1,0\rangle\big)
+\oplus\big((0,\tfrac12),\langle 1,0\rangle\big)
+\oplus\big((\tfrac12,0),\langle 1,0\rangle\big)
+\nonumber\\
+&\oplus\big((\tfrac12,0),\langle 1,1\rangle\big)
+\oplus\big((0,\tfrac12),\langle 1,1\rangle\big)
++\;\text{gamma-trace removal.}
+\fe
+The key point: the $\langle 1,1\rangle$ component of the ${\bf 128}$ only
+carries $AdS$ spins $(\tfrac12,0)$ and $(0,\tfrac12)$.
+
+\paragraph{NSNS states with $\langle 4,0\rangle_{(1,1)}$.}
+From \eqref{44decomp} and \eqref{84decomp}, the $SO(5)$ representations
+that can produce $\langle 4,0\rangle$ via the tensor product are
 \be
-\gamma^i\gamma^{01234}=(-1)^5\gamma^{01234}\gamma^i=-\gamma^{01234}\gamma^i,
+\langle 2,0\rangle\otimes\langle 2,0\rangle\supset\langle 4,0\rangle,
+\qquad
+\langle 0,2\rangle\otimes\langle 2,0\rangle\supset\langle 4,0\rangle,
+\qquad
+\langle 0,2\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle.
 \ee
-so that
-\be
-\gamma^i\gamma^{01234}\gamma^k
-=-\gamma^{01234}\gamma^i\gamma^k
-=-\gamma^{01234}\big(\delta^{ik}+\gamma^{ik}\big).
-\ee
-For $i\neq k$ (as required by the antisymmetry of $T$), the antisymmetric part
-$\gamma^{ik}$ is nonzero, and the full bilinear does not vanish.
-This means the off-diagonal entries $V,W$ in \eqref{pertmat} are generically nonzero,
-and the first-order eigenvalue split $\pm\sqrt{VW}$ is nontrivial.
+Checking the $SO(4)$ spin content for each possibility:
 
-Contrast this with the cases where the bilinear vanishes:
-\begin{itemize}
-\item spin-4 singlet: $\gamma^+\gamma^{01234}\gamma^+\propto(\gamma^+)^2=0$;
-\item sphere $J\!=\!4$: $\gamma^{U^+}\gamma^{01234}\gamma^{U^+}\propto(\gamma^{U^+})^2=0$;
-\item $[2,0,2]_{(0,0)}$ at $\D_0=4$:
-$\gamma^{V^+}\gamma^{01234}\gamma^{V^+}\propto(\gamma^{V^+})^2=0$.
-\end{itemize}
-These all use the \emph{same} complexified null direction on both worldsheet sectors,
-forcing a square of a null gamma matrix. The off-diagonal entries in \eqref{pertmat} then
-vanish, and there is no first-order splitting from this mechanism.
-
-For $\langle 4,0\rangle_{(1,1)}$ the Weyl-tensor structure forces the two antisymmetric pairs
-$(ij)$ and $(kl)$ to involve \emph{different} $S^5$ directions, so no null-square identity applies.
-
-\paragraph{Upshot.}
-The zeroth-order ansatz for the $[2,0,2]_{(1,1)}$ Konishi state should include
-\emph{both} the NSNS seed \eqref{202_11vertex} and an RR partner at mass level~1 with the same
-$\langle 4,0\rangle_{(1,1)}$ quantum numbers. The true zeroth-order eigenstate is the NSNS+RR
-superposition that diagonalises \eqref{pertmat}, and the first-order eigenvalue $b_0=+2$
-is the positive eigenvalue $+\sqrt{VW}$.
-
-\subsection{Summary and comparison}
-
-The situation for the explicitly checked unique $\D_0=6$ candidates is:
+\smallskip
 \begin{center}
-\begin{tabular}{|l|c|c|c|}
+\begin{tabular}{|l|l|l|c|}
 \hline
-Manifest label & Parent & NSNS--RR coupling & Internal structure \\
+Sector & $SO(5)$ product & Spin product & $(1,1)$? \\
 \hline
-$\langle 0,0\rangle_{(2,2)}$ & $[0,0,0]_{(2,2)}$ & vanishes ($(\gamma^+)^2\!=\!0$)
-& trivial \\
-$\langle 0,4\rangle_{(0,0)}$ & $[0,4,0]_{(0,0)}$ & vanishes ($(\gamma^{U^+})^2\!=\!0$)
-& quartic scalar \\
-$\langle 4,0\rangle_{(1,1)}$ & $[2,0,2]_{(1,1)}$ & \textbf{nonvanishing}
-& Weyl tensor $T_{[ij],[kl]}$ \\
+${\bf 84}\otimes{\bf 84}$ & $\langle 2,0\rangle\otimes\langle 2,0\rangle$ &
+$(\tfrac12,\tfrac12)\otimes(\tfrac12,\tfrac12)\supset(1,1)$ & \textbf{Yes} \\
+${\bf 84}\otimes{\bf 84}$ & $\langle 2,0\rangle\otimes\langle 2,0\rangle$ &
+$(\tfrac12,\tfrac12)\otimes(0,0)=(\tfrac12,\tfrac12)$ & No \\
+${\bf 84}\otimes{\bf 84}$ & $\langle 2,0\rangle\otimes\langle 2,0\rangle$ &
+$(0,0)\otimes(0,0)=(0,0)$ & No \\
+${\bf 44}\otimes{\bf 84}$ & $\langle 0,2\rangle\otimes\langle 2,0\rangle$ &
+$(0,0)\otimes(\tfrac12,\tfrac12)=(\tfrac12,\tfrac12)$ & No \\
+${\bf 84}\otimes{\bf 44}$ & $\langle 2,0\rangle\otimes\langle 0,2\rangle$ &
+same as above & No \\
+${\bf 44}\otimes{\bf 44}$ & $\langle 0,2\rangle\otimes\langle 0,2\rangle$ &
+$(0,0)\otimes(0,0)=(0,0)$ & No \\
+\hline
+\end{tabular}
+\end{center}
+\smallskip
+
+\noindent\textbf{NSNS total: 1 state}, from ${\bf 84}_L\otimes{\bf 84}_R$.
+
+In terms of $SO(9)$ tensors, this state descends from the component $C_{a,[ij]}$
+(one $AdS$ vector index, two antisymmetric $S^5$ indices) on each side. The
+$\langle 4,0\rangle$ is assembled from $\langle 2,0\rangle_L\otimes\langle 2,0\rangle_R$,
+and the spin $(1,1)$ from $(\tfrac12,\tfrac12)_L\otimes(\tfrac12,\tfrac12)_R$.
+
+Note that in terms of vertex operators, the $C_{a,[ij]}$ component of the ${\bf 84}$ involves
+both the two-oscillator structure $\psi^{[i}\partial X^{j]}$ and the three-fermion structure
+$\psi^a\psi^i\psi^j$ (they mix under BRST). The vertex \eqref{202_11vertex} as written
+includes only the former; the physical BRST-closed vertex will generically involve both.
+The $AdS$ vector index $a$ carried by the three-fermion piece is what produces the spin
+$(\tfrac12,\tfrac12)$ on each side.
+
+\paragraph{RR states with $\langle 4,0\rangle_{(1,1)}$.}
+From \eqref{128decomp}, the only $SO(5)$ representation in the ${\bf 128}$ whose tensor
+square contains $\langle 4,0\rangle$ is $\langle 1,1\rangle$:
+\be
+\langle 1,1\rangle\otimes\langle 1,1\rangle\supset\langle 4,0\rangle.
+\ee
+But the $\langle 1,1\rangle$ component of the ${\bf 128}$ only carries $AdS$ spins
+$(\tfrac12,0)$ and $(0,\tfrac12)$. The possible products are:
+
+\smallskip
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+Left spin & Right spin & $(1,1)$? \\
+\hline
+$(\tfrac12,0)\otimes(\tfrac12,0)=(0,0)\oplus(1,0)$ && No \\
+$(\tfrac12,0)\otimes(0,\tfrac12)=(\tfrac12,\tfrac12)$ && No \\
+$(0,\tfrac12)\otimes(\tfrac12,0)=(\tfrac12,\tfrac12)$ && No \\
+$(0,\tfrac12)\otimes(0,\tfrac12)=(0,0)\oplus(0,1)$ && No \\
+\hline
+\end{tabular}
+\end{center}
+\smallskip
+
+None of these reach spin $(1,1)$.
+
+\smallskip
+\noindent\textbf{RR total: 0 states.}
+
+\subsection{Higher-harmonic states and the resolution of $b_0$}
+\label{sec:b0resolution}
+
+The $\ell=0$ spectrum in \S\ref{sec:spectrum} is incomplete: the $\langle 4,0\rangle_{(1,1)}$
+sector at mass level~1 also contains states with \emph{higher $S^5$ harmonics}.
+A state with oscillator $SO(5)$ representation $R_{\rm osc}$ and harmonic $\ell$ has total
+$SO(5)$ equal to an irreducible component of $R_{\rm osc}\otimes\langle 0,\ell\rangle$.
+Since harmonic polynomials $(n\cdot X)^\ell$ with $n\cdot n=0$ are annihilated by the
+flat-space Laplacian, they satisfy the same zeroth-order mass-shell condition as $\ell=0$ states.
+All harmonics are therefore exactly degenerate at zeroth order.
+
+\paragraph{$\ell=2$ NSNS states with $\langle 4,0\rangle_{(1,1)}$.}
+The $\ell=2$ harmonic $Y_{(2)}\in\langle 0,2\rangle$ opens several new channels.
+For the total $SO(5)$ to contain $\langle 4,0\rangle$ one needs
+$R_{\rm osc}\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$.
+For spin $(1,1)$, the available oscillator pairs include:
+\begin{itemize}
+\item ${\bf 44}\big((1,1),\langle 0,0\rangle\big)\otimes{\bf 44}\big((0,0),\langle 0,2\rangle\big)$:
+spin $(1,1)\otimes(0,0)=(1,1)$. Osc.\ $SO(5)$: $\langle 0,2\rangle$.
+Then $\langle 0,2\rangle\otimes\langle 0,2\rangle_{\rm harm}\supset\langle 4,0\rangle$. \checkmark
+\item ${\bf 44}\big((1,1),\langle 0,0\rangle\big)\otimes{\bf 84}\big((0,0),\langle 2,0\rangle\big)$:
+spin $(1,1)$. Osc.\ $SO(5)$: $\langle 2,0\rangle$.
+Then $\langle 2,0\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$. \checkmark
+\item ${\bf 84}\big((1,0),\langle 0,1\rangle\big)\otimes{\bf 84}\big((0,1),\langle 0,1\rangle\big)$:
+spin $(1,0)\otimes(0,1)=(1,1)$. Osc.\ $SO(5)$:
+$\langle 0,1\rangle\otimes\langle 0,1\rangle\supset\langle 2,0\rangle$.
+Then $\langle 2,0\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$. \checkmark
+\end{itemize}
+Together with mirrors, this gives at least \textbf{6 additional NSNS states at $\ell=2$}.
+
+\paragraph{$\ell=2$ RR states with $\langle 4,0\rangle_{(1,1)}$.}
+This is the key difference from the $\ell=0$ analysis.
+At $\ell=0$, the only $SO(5)$ representation in the ${\bf 128}$ whose square contains
+$\langle 4,0\rangle$ is $\langle 1,1\rangle$, and its $AdS$ spins
+$(\tfrac12,0)$, $(0,\tfrac12)$ cannot reach $(1,1)$.
+
+At $\ell=2$, lower oscillator $SO(5)$ suffices because the harmonic makes up the difference.
+The $\langle 1,0\rangle$ component of the ${\bf 128}$ carries $AdS$ spins
+$(1,\tfrac12)$, $(\tfrac12,1)$, $(\tfrac12,0)$, $(0,\tfrac12)$
+(from eq.~\eqref{128decomp}). The products
+\be
+(1,\tfrac12)\otimes(0,\tfrac12)
+\supset(1,1),
+\qquad
+(\tfrac12,1)\otimes(\tfrac12,0)
+\supset(1,1)
+\ee
+\emph{do} contain spin $(1,1)$.
+The oscillator $SO(5)$ product $\langle 1,0\rangle\otimes\langle 1,0\rangle
+=\langle 2,0\rangle\oplus\langle 0,1\rangle\oplus\langle 0,0\rangle$
+contains $\langle 2,0\rangle$, and
+$\langle 2,0\rangle\otimes\langle 0,2\rangle_{\rm harm}\supset\langle 4,0\rangle$.
+
+\smallskip
+\noindent\textbf{At least 2 RR states at $\ell=2$ with $\langle 4,0\rangle_{(1,1)}$.}
+
+\paragraph{Corrected spectrum.}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& NSNS & RR \\
+\hline
+$\ell=0$ & 1 & 0 \\
+$\ell=2$ & $\geq 6$ & $\geq 2$ \\
+\hline
+Total & $\geq 7$ & $\geq 2$ \\
 \hline
 \end{tabular}
 \end{center}
 
-The state $[2,0,2]_{(1,1)}$ at $\D_0=6$ is therefore the natural primary target if one insists
-on a Konishi candidate that can be pinned down by $SO(1,4)\times SO(5)$ invariance alone:
-it is uniquely identified by its manifest quantum numbers and has a nonvanishing NSNS--RR
-coupling at first order, enabling the extraction of $b_0$.
-
-The expected scaling dimension is
+\paragraph{Resolution.}
+With both NSNS and RR states now present in the $\langle 4,0\rangle_{(1,1)}$ sector
+(at $\ell=2$), the off-diagonal first-order perturbation matrix is nontrivial.
+The structure is
 \be
-\D_{[2,0,2]_{(1,1)}}=2R+2+\frac{2}{R}+O(R^{-2}),
+M=\begin{pmatrix}
+0 & V \\ W & 0
+\end{pmatrix},
 \ee
-with the constant $+2$ accessible at first order through the off-diagonal
-mechanism \eqref{pertmat}, provided one includes the RR partner in the
-zeroth-order ansatz.
+where $V$ couples NSNS states to the bracket $[\psi^{(1)}_{RR}\otimes\text{RR}]'$
+(which is NSNS-valued) and $W$ couples RR states to
+$[\psi^{(1)}_{RR}\otimes\text{NSNS}]'$ (which is RR-valued).
+Diagonalising $M$ in the full sector
+(including $\ell=0$ and $\ell=2$ states simultaneously) produces eigenvalues that should
+reproduce $b_0=\D_0-4$ for each physical state.
 
-The trade-off relative to the $\D_0=4$ candidates is clear: the vertex operator
-\eqref{202_11vertex} is more complex (tensor-valued with Weyl-tensor internal
-indices and boundary spin carried by the $AdS$ profile), but the identification is
-unambiguous and the first-order source is nontrivial, giving access to the constant
-correction $b_0=+2$ already at the first perturbative order.
+The physical Konishi state with $[2,0,2]_{(1,1)}$ quantum numbers at $\D_0=6$ is therefore
+a specific superposition of the $\ell=0$ NSNS state \eqref{ell0_8484} and the $\ell=2$ NSNS
+and RR states listed above, with $b_0=+2$ emerging as an eigenvalue of $M$.
+
+\paragraph{Which harmonic levels contribute?}
+A mass-level-1 state with combined oscillator $SO(5)$ representation $R_{\rm osc}$ and
+harmonic $\ell$ contributes to total $\langle 4,0\rangle$ iff
+$\langle 4,0\rangle\subset R_{\rm osc}\otimes\langle 0,\ell\rangle$.
+By reciprocity this is the same as $R_{\rm osc}\subset\langle 4,0\rangle\otimes\langle 0,\ell\rangle$.
+The available combined oscillator reps at mass level~1 are finite, so the tower terminates at
+a finite $\ell_{\rm max}$.
+
+A key simplification: products of the form $\langle 0,a\rangle\otimes\langle 0,\ell\rangle$
+never produce $\langle 4,0\rangle$. This is because these products only contain irreps
+$\langle 2k,c\rangle$ with $k\leq\min(a,\ell)$, and reaching $k=2$ (i.e.\ first Dynkin label
+$\geq 4$) requires both $a\geq 2$ and $\ell\geq 2$.  For $\langle 0,0\rangle$ and
+$\langle 0,1\rangle$ oscillator content this condition is never met.
+
+The surviving combined oscillator reps and their minimum $\ell$ are:
+
+\begin{center}
+\begin{tabular}{|l|c|c|l|}
+\hline
+Combined osc.\ $R_{\rm osc}$ & Min $\ell$ & $\D_0$ & Source \\
+\hline
+$\langle 4,0\rangle$ & 0 & 6 &
+$\langle 0,2\rangle\!\otimes\!\langle 0,2\rangle$,
+$\langle 2,0\rangle\!\otimes\!\langle 2,0\rangle$,
+$\langle 0,2\rangle\!\otimes\!\langle 2,0\rangle$ \\
+$\langle 2,1\rangle$ & 1 & 5 &
+$\langle 0,1\rangle\!\otimes\!\langle 2,0\rangle$,
+$\langle 2,0\rangle\!\otimes\!\langle 2,0\rangle$, etc. \\
+$\langle 2,2\rangle$ & 1 & 5 &
+$\langle 0,2\rangle\!\otimes\!\langle 0,2\rangle$ \\
+$\langle 2,0\rangle$ & 2 & 4 &
+$\langle 0,1\rangle\!\otimes\!\langle 0,1\rangle$,
+$\langle 2,0\rangle\!\otimes\!\langle 0,0\rangle$, etc. \\
+$\langle 0,2\rangle$ & 2 & 4 &
+$\langle 0,2\rangle\!\otimes\!\langle 0,0\rangle$, etc. \\
+$\langle 0,4\rangle$ & 2 & 4 &
+$\langle 0,2\rangle\!\otimes\!\langle 0,2\rangle$ \\
+$\langle 0,0\rangle$ & --- & --- & never reaches $\langle 4,0\rangle$ \\
+$\langle 0,1\rangle$ & --- & --- & never reaches $\langle 4,0\rangle$ \\
+$\langle 0,3\rangle$ & --- & --- & not available at spin $(0,0)$ or $(1,1)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+The ``$\D_0$'' column indicates which Konishi multiplet level the corresponding
+harmonic is naturally associated with: $\D_0=2+\ell+(\text{osc.\ $S^5$ excitation number})$.
+
+The tower thus runs from $\ell=0$ (the $\D_0=6$ states) through $\ell=1$ ($\D_0=5$) to $\ell=2$
+($\D_0=4$). Higher harmonics $\ell\geq 3$ do not contribute to total $\langle 4,0\rangle$
+from the available mass-level-1 oscillator content, because the oscillator $SO(5)$ reps
+that remain ($\langle 0,0\rangle$, $\langle 0,1\rangle$) can never bridge the gap to
+$\langle 4,0\rangle$.
+
+\paragraph{Different $\ell$ do not mix at first order.}
+The first-order RR background profile is constant:
+$F^{(1)}_{\alpha\beta}=\frac{i}{R}(\gamma^{01234})_{\alpha\beta}$,
+with no spacetime dependence. The bracket $[\psi^{(1)}\otimes\varphi^{(0)}]'$ acts on
+the oscillator content through the OPE but carries the zero-mode profile through unchanged.
+A state with harmonic $Y_\ell(X^i)$ maps to a state with the same harmonic.
+
+The first-order perturbation matrix is therefore \emph{block-diagonal in $\ell$}:
+states at different harmonic levels do not mix.
+
+\paragraph{Consequence for $b_0$.}
+This means the $\ell=0$ block and the $\ell=2$ block are independent at first order.
+Each block has its own eigenvalues:
+\begin{itemize}
+\item $\ell=0$ block: 1 NSNS, 0 RR. The matrix is $1\times 1$ and vanishes by sector.
+Eigenvalue: $b_0=0$.
+\item $\ell=1$ block: some NSNS and possibly RR states. Eigenvalues: some set of $b_0$ values.
+\item $\ell=2$ block: $\geq 5$ NSNS $+$ $\geq 2$ RR. Nontrivial NSNS--RR mixing. Eigenvalues
+include the $\D_0=4$ value $b_0=0$, but there may be additional eigenvalues.
+\end{itemize}
+
+The $\ell=0$ state, which should be the $\D_0=6$ Konishi descendant with $b_0=+2$, gets
+$b_0=0$ from the first-order perturbation theory. The expected constant correction
+$b_0=\D_0-4$ is therefore \emph{not} produced by the first-order NSNS--RR mixing mechanism.
+
+\paragraph{Subleading order: $\ell$ mixing from $\psi^{(2)}$.}
+The second-order NSNS background has quadratic $X$-dependence:
+\be
+h^{(2)}_{\mu\nu}\sim -\frac{1}{R^2}(\delta^a_\mu\delta^b_\nu X_aX_b
+-\delta^i_\mu\delta^j_\nu X_iX_j).
+\ee
+The $X_iX_j$ piece multiplies the harmonic of the state and shifts it by $\pm 2$ via the
+Clebsch--Gordan decomposition $\langle 0,2\rangle\otimes\langle 0,\ell\rangle
+\to\langle 0,\ell\rangle\oplus\langle 0,\ell\pm 2\rangle\oplus\cdots$.
+So the bracket $[\psi^{(2)}\otimes\varphi^{(0)}]'$ mixes $\ell$ with $\ell\pm 2$, and the
+second-order Hamiltonian $H^{(2)}=[\psi^{(2)}\otimes H^{(0)}]'+\cdots$ acts across harmonic levels.
+
+Since $H^{(1)}=0$, the full spectrum --- both the constant $b_0=\D_0-4$ and the coefficient
+$b_1$ --- must emerge from $H^{(2)}$ acting on the combined $\ell=0,1,2$ space.
+The $\ell=0$ state ($\D_0=6$) communicates with the $\ell=2$ states ($\D_0=4$) through
+the NSNS coupling mediated by $h^{(2)}_{ij}\sim X_iX_j$, so no sector mismatch arises.
+
+Whether the eigenvalue of $H^{(2)}$ in this space is $O(1)$ (giving $b_0$) or
+$O(1/R)$ (giving $b_1/R$) depends on the $R$-dependent normalization of the states
+and the Hamiltonian, which is what the second-order computation in \texttt{draftKonishi.tex}
+is working out.
+
+\section{Mass-level-1 spectrum for the \texorpdfstring{$\D_0=4$}{Delta0=4} candidate}
+\label{sec:delta4_spectrum}
+
+We now perform for the $\D_0=4$ candidate $[2,0,2]_{(0,0)}$ the same type of spectrum
+survey as for the $\D_0=6$ candidate in \S\ref{sec:spectrum}, with one important
+complication: the $\D_0=4$ vertex \eqref{202vertex} carries an $S^5$ harmonic $Y_{(2)}(U)$,
+so the total $SO(5)$ quantum number of the state receives contributions from both the
+oscillator content and the harmonic profile.
+
+\subsection{Total \texorpdfstring{$SO(5)$}{SO(5)} of the vertex \eqref{202vertex}}
+
+Under $SO(5)$, the separate pieces of the vertex transform as:
+\begin{itemize}
+\item Profile $Y_{(2)}(U)=(U^+)^2/R^2$: a rank-2 harmonic, carrying
+$\langle 0,2\rangle$ with highest weight $2e_1=(2,0)$.
+\item Left oscillators $\psi^{V^+}\partial V^+$ (both in $S^5$): a symmetric tensor in $S^5$
+indices, sitting in the $\langle 0,2\rangle$ part of $\langle 0,1\rangle\otimes\langle 0,1\rangle$,
+with highest weight $2e_2=(0,2)$.
+\item Right oscillators $\bar\psi^{V^+}\bar\partial V^+$: same, weight $(0,2)$.
+\end{itemize}
+The total $SO(5)$ weight of the highest-weight component is
+\be
+(2,0)+(0,2)+(0,2)=(2,4).
+\ee
+This is \emph{not} a dominant weight of $SO(5)$ (in Dynkin labels it
+would require $b=2-4<0$). The resolution is that $\psi^{V^+}\partial V^+$
+is not purely in $\langle 0,2\rangle$: its $SO(5)$ decomposition
+$\langle 0,1\rangle\otimes\langle 0,1\rangle=\langle 0,0\rangle\oplus\langle 0,2\rangle\oplus\langle 2,0\rangle$
+also includes a trace $\langle 0,0\rangle$ and an antisymmetric part $\langle 2,0\rangle$.
+The physical vertex is the BRST-closed combination, which involves all three pieces
+(plus the three-fermion and $\partial\psi$ completions required by BRST closure).
+
+\paragraph{Identifying the total $SO(5)$ irrep.}
+The $[2,0,2]$ representation of $SO(6)$ branches as $\langle 4,0\rangle\oplus\langle 2,1\rangle
+\oplus\langle 0,2\rangle$ under $SO(5)$. The vertex \eqref{202vertex} is the
+$SO(5)$ highest-weight component of the Konishi state, and the top branch of
+$[2,0,2]$ is $\langle 4,0\rangle$ (highest weight $(2,2)$). The dominant weight $(2,2)$
+is reachable from the profile weight $(2,0)$ combined with the $\langle 2,0\rangle$
+antisymmetric part of each oscillator pair (weight $(1,1)$ on left, $(1,1)$ on right is
+too much; more precisely the $\langle 4,0\rangle$ is assembled from
+$\langle 0,2\rangle_{\rm profile}\otimes\langle 2,0\rangle_{\rm osc,L}
+\otimes\langle 2,0\rangle_{\rm osc,R}$, which does contain $\langle 4,0\rangle$
+via the chain $\langle 2,0\rangle\otimes\langle 2,0\rangle\supset\langle 4,0\rangle$
+and then $\langle 4,0\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$).
+
+The total $SO(5)$ representation of the $[2,0,2]_{(0,0)}$ Konishi state
+at $\D_0=4$ is thus $\langle 4,0\rangle$, with boundary spin $(0,0)$.
+
+\subsection{NSNS states in the \texorpdfstring{$\langle 4,0\rangle_{(0,0)}$}{<4,0>(0,0)} sector}
+
+A mass-level-1 NSNS state with total $SO(5)=\langle 4,0\rangle$ and spin $(0,0)$
+is built from an oscillator content (an $SO(9)$ representation on each side) together with
+an $S^5$ harmonic of level~$\ell$. The total $SO(5)$ is the irreducible component
+$\langle 4,0\rangle$ inside (oscillator $SO(5)$)$\,\otimes\,\langle 0,\ell\rangle$.
+
+From the decompositions \eqref{44decomp} and \eqref{84decomp}, the spin-$(0,0)$
+oscillator $SO(5)$ representations are
+\be
+{\bf 44}:\;\langle 0,0\rangle,\;\langle 0,2\rangle;
+\qquad
+{\bf 84}:\;\langle 2,0\rangle.
+\ee
+For the closed string we take left$\,\otimes\,$right, giving $3\times 3=9$ possible
+oscillator pairs. Denoting the oscillator product as $R_{\rm osc}$, we need
+$R_{\rm osc}\otimes\langle 0,\ell\rangle\supset\langle 4,0\rangle$.
+
+\paragraph{States with $\ell=0$ (constant profile on $S^5$).}
+The total $SO(5)$ equals the oscillator $SO(5)$. Using the results from the
+$\D_0=6$ analysis (\S\ref{sec:spectrum}):
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+Sector & Osc.\ $SO(5)$ product & $\langle 4,0\rangle$? \\
+\hline
+${\bf 44}\otimes{\bf 44}$ & $\langle 0,2\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$ & Yes \\
+${\bf 44}\otimes{\bf 84}$ & $\langle 0,2\rangle\otimes\langle 2,0\rangle\supset\langle 4,0\rangle$ & Yes \\
+${\bf 84}\otimes{\bf 44}$ & $\langle 2,0\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$ & Yes \\
+${\bf 84}\otimes{\bf 84}$ & $\langle 2,0\rangle\otimes\langle 2,0\rangle\supset\langle 4,0\rangle$ & Yes \\
+\hline
+\end{tabular}
+\end{center}
+\textbf{4 NSNS states at $\ell=0$.}
+
+\paragraph{States with $\ell=2$.}
+Now we need $R_{\rm osc}\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$.
+The additional oscillator products that work (those that did not already give
+$\langle 4,0\rangle$ at $\ell=0$):
+\begin{itemize}
+\item $\langle 0,0\rangle\otimes\langle 0,2\rangle=\langle 0,2\rangle$, then
+$\langle 0,2\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$. Sources:
+${\bf 44}(\langle 0,0\rangle)\otimes{\bf 44}(\langle 0,2\rangle)$, its mirror,
+${\bf 44}(\langle 0,0\rangle)\otimes{\bf 84}(\langle 2,0\rangle)$, its mirror.
+\item $\langle 0,2\rangle\otimes\langle 0,0\rangle$: same as above.
+\item $\langle 2,0\rangle\otimes\langle 0,0\rangle=\langle 2,0\rangle$, then
+$\langle 2,0\rangle\otimes\langle 0,2\rangle\supset\langle 4,0\rangle$.
+\item The 4 products from $\ell=0$ also produce $\langle 4,0\rangle$ at $\ell=2$
+through subleading components.
+\end{itemize}
+Counting carefully (each of $\langle 0,0\rangle$, $\langle 0,2\rangle$, $\langle 2,0\rangle$
+on each side, combined in pairs): at least \textbf{5 additional NSNS states at $\ell=2$}
+(the exact count depends on which tensor-product components are independent after
+BRST projection).
+
+Higher harmonics $\ell=4,6,\ldots$ contribute further states.
+
+\subsection{RR states in the \texorpdfstring{$\langle 4,0\rangle_{(0,0)}$}{<4,0>(0,0)} sector}
+
+This is the critical difference from the $\D_0=6$ analysis.
+
+From \eqref{128decomp}, the $\langle 1,1\rangle$ component of the ${\bf 128}$ carries
+$AdS$ spins $(\tfrac12,0)$ and $(0,\tfrac12)$. The product
+\be
+(\tfrac12,0)\otimes(\tfrac12,0)=(0,0)\oplus(1,0),
+\qquad
+(0,\tfrac12)\otimes(0,\tfrac12)=(0,0)\oplus(0,1)
+\ee
+\emph{does} contain spin $(0,0)$. (Contrast the $\D_0=6$ case: spin $(1,1)$ was
+unreachable from these half-integer spins.)
+
+The oscillator $SO(5)$ product $\langle 1,1\rangle\otimes\langle 1,1\rangle$ contains
+$\langle 4,0\rangle$ (as verified in \S\ref{sec:spectrum}). Combined with $\ell=0$ harmonic,
+this gives total $\langle 4,0\rangle$.
+
+\smallskip\noindent
+\textbf{RR states at $\ell=0$:}
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+Left ${\bf 128}$ & Right ${\bf 128}$ & spin $(0,0)$? \\
+\hline
+$(\tfrac12,0),\langle 1,1\rangle$ & $(\tfrac12,0),\langle 1,1\rangle$ & Yes \\
+$(0,\tfrac12),\langle 1,1\rangle$ & $(0,\tfrac12),\langle 1,1\rangle$ & Yes \\
+$(\tfrac12,0),\langle 1,1\rangle$ & $(0,\tfrac12),\langle 1,1\rangle$ & No (spin $(\tfrac12,\tfrac12)$)\\
+$(0,\tfrac12),\langle 1,1\rangle$ & $(\tfrac12,0),\langle 1,1\rangle$ & No \\
+\hline
+\end{tabular}
+\end{center}
+\textbf{2 RR states at $\ell=0$.}
+
+Higher harmonics contribute further RR states (e.g.\ $\langle 1,0\rangle\otimes\langle 1,0\rangle$
+oscillator content combined with $\ell\geq 4$ harmonic).
+
+\subsection{Explicit vertex operators}
+\label{sec:explicit_vertices}
+
+We list the highest-weight forms of all states in the $\langle 4,0\rangle_{(0,0)}$
+sector at mass level~1 with $\ell\leq 2$, using the complex coordinates
+$U^\pm=X^5\pm iX^6$, $V^\pm=X^7\pm iX^8$, and $X^9$ for the $S^5$ directions.
+Each vertex is written in the $(-1,-1)$ picture (NSNS) or $(-\tfrac12,-\tfrac12)$
+picture (RR); BRST completions (from $\partial\psi$, gamma-trace subtractions, etc.)
+are suppressed but required for the full physical state.
+
+\subsubsection*{$\ell=0$ NSNS (4 states)}
+
+These have constant $S^5$ profile. The $\langle 4,0\rangle$ at highest weight $(2,2)$
+is assembled entirely from oscillators; the two worldsheet sectors must use
+\emph{different} $S^5$ planes.
+
+\paragraph{${\bf 44}\otimes{\bf 44}$:}
+Left oscillator in $\langle 0,2\rangle$ at weight $(2,0)$, right at $(0,2)$:
+\be\label{ell0_4444}
+\varphi^{(\ell=0)}_{44\times 44}
+= a(X^a)\, c\bar c\,
+e^{-\phi}\psi^{U^+}\partial U^+\,
+e^{-\bar\phi}\bar\psi^{V^+}\bar\partial V^+
++\cdots
+\ee
+Note the left oscillator is in the $U$-plane and the right in the $V$-plane.
+
+\paragraph{${\bf 44}\otimes{\bf 84}$:}
+Left $\langle 0,2\rangle$ at weight $(1,1)$, right $\langle 2,0\rangle$ at weight $(1,1)$:
+\be\label{ell0_4484}
+\varphi^{(\ell=0)}_{44\times 84}
+= a(X^a)\, c\bar c\,
+e^{-\phi}\big(\psi^{U^+}\partial V^++\psi^{V^+}\partial U^+\big)\,
+e^{-\bar\phi}\bar\psi^{U^+}\bar\psi^{V^+}\bar\psi^9
++\cdots
+\ee
+The left side is the symmetric combination in the $U$--$V$ plane;
+the right side is the three-fermion $\Lambda^3(S^5)$ vertex.
+
+\paragraph{${\bf 84}\otimes{\bf 44}$:}
+Mirror of \eqref{ell0_4484}:
+\be\label{ell0_8444}
+\varphi^{(\ell=0)}_{84\times 44}
+= a(X^a)\, c\bar c\,
+e^{-\phi}\psi^{U^+}\psi^{V^+}\psi^9\,
+e^{-\bar\phi}\big(\bar\psi^{U^+}\bar\partial V^++\bar\psi^{V^+}\bar\partial U^+\big)
++\cdots
+\ee
+
+\paragraph{${\bf 84}\otimes{\bf 84}$:}
+Both sides three-fermion, $\langle 2,0\rangle\otimes\langle 2,0\rangle$ at weight $(1,1)+(1,1)=(2,2)$:
+\be\label{ell0_8484}
+\varphi^{(\ell=0)}_{84\times 84}
+= a(X^a)\, c\bar c\,
+e^{-\phi}\psi^{U^+}\psi^{V^+}\psi^9\,
+e^{-\bar\phi}\bar\psi^{U^+}\bar\psi^{V^+}\bar\psi^9
++\cdots
+\ee
+
+\subsubsection*{$\ell=0$ RR (2 states)}
+
+Both use the $\langle 1,1\rangle$ component of the ${\bf 128}$ (gamma-traceless
+combination of $S^\alpha\partial X^i$ and $S^i_\alpha$) on each side, at the $\langle 4,0\rangle$
+highest weight. The $\langle 1,1\rangle$ on the left carries the $(\tfrac12,\tfrac32)$
+weight of $\langle 1,1\rangle$ (spin field in $U^+$ with excitation in $V^+$),
+and the right carries $(\tfrac32,\tfrac12)$ (spin field in $V^+$ with excitation in $U^+$),
+or vice versa.
+
+\paragraph{RR, chirality $(+,+)$:}
+Both sides with $AdS$ spin $(\tfrac12,0)$:
+\be\label{ell0_RR1}
+\varphi^{(\ell=0)}_{RR,+}
+= g(X^a)\, c\bar c\,
+e^{-\frac{1}{2}\phi}\big(S^\alpha\partial V^+
+-\text{$\gamma$-tr.}\big)_{\langle 1,1\rangle}\,
+e^{-\frac{1}{2}\bar\phi}\big(\bar S^\beta\bar\partial U^+
+-\text{$\gamma$-tr.}\big)_{\langle 1,1\rangle}
++\cdots
+\ee
+where $\alpha,\beta$ are projected onto the $(\tfrac12,0)$ $AdS$ chirality, and the
+bispinor profile $g(X^a)$ contracts the spinor indices appropriately.
+
+\paragraph{RR, chirality $(-,-)$:}
+Both sides with $AdS$ spin $(0,\tfrac12)$:
+\be\label{ell0_RR2}
+\varphi^{(\ell=0)}_{RR,-}
+= \tilde g(X^a)\, c\bar c\,
+e^{-\frac{1}{2}\phi}\big(S^\alpha\partial V^+
+-\text{$\gamma$-tr.}\big)_{\langle 1,1\rangle}\,
+e^{-\frac{1}{2}\bar\phi}\big(\bar S^\beta\bar\partial U^+
+-\text{$\gamma$-tr.}\big)_{\langle 1,1\rangle}
++\cdots
+\ee
+with $\alpha,\beta$ in the $(0,\tfrac12)$ $AdS$ chirality.
+
+\subsubsection*{$\ell=2$ NSNS}
+
+These carry the harmonic $Y_{(2)}(U)=(U^+)^2/R^2\in\langle 0,2\rangle$.
+The $\langle 4,0\rangle$ is assembled from the harmonic's $\langle 0,2\rangle$
+combined with the oscillator content.
+
+\paragraph{${\bf 44}\otimes{\bf 44}$, both $\langle 0,2\rangle$ (the Konishi seed):}
+This is the original vertex \eqref{202vertex}:
+\be\label{ell2_4444a}
+\varphi^{(\ell=2)}_{44\times 44,\, a}
+= Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^{V^+}\partial V^+\,
+e^{-\bar\phi}\bar\psi^{V^+}\bar\partial V^+
++\cdots
+\ee
+Both oscillators are in the $V$-plane; the $U$-plane charge comes entirely from the harmonic.
+
+\paragraph{${\bf 44}\otimes{\bf 44}$, $\langle 0,2\rangle\otimes\langle 0,0\rangle$:}
+Right oscillator is the scalar piece of the ${\bf 44}$ (the traceless combination
+$\eta^{ij}\psi^i\partial X^j$ with trace subtracted against the $AdS$ piece):
+\be\label{ell2_4444b}
+\varphi^{(\ell=2)}_{44\times 44,\, b}
+= Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^{V^+}\partial V^+\,
+e^{-\bar\phi}\bar\psi^a\bar\partial X_a\big|_{\rm traceless}
++\cdots
+\ee
+
+\paragraph{${\bf 44}\otimes{\bf 44}$, $\langle 0,0\rangle\otimes\langle 0,2\rangle$:}
+Mirror of \eqref{ell2_4444b}.
+
+\paragraph{${\bf 44}\otimes{\bf 84}$, $\langle 0,0\rangle\otimes\langle 2,0\rangle$:}
+\be\label{ell2_4484}
+\varphi^{(\ell=2)}_{44\times 84}
+= Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^a\partial X_a\big|_{\rm traceless}\,
+e^{-\bar\phi}\bar\psi^{U^+}\bar\psi^{V^+}\bar\psi^9
++\cdots
+\ee
+and its mirror ${\bf 84}\otimes{\bf 44}$.
+
+\paragraph{${\bf 84}\otimes{\bf 84}$, $\langle 2,0\rangle\otimes\langle 2,0\rangle$ with $\ell=2$:}
+\be\label{ell2_8484}
+\varphi^{(\ell=2)}_{84\times 84}
+= Y_{(2)}(U)\, c\bar c\,
+e^{-\phi}\psi^{U^+}\psi^{V^+}\psi^9\,
+e^{-\bar\phi}\bar\psi^{U^+}\bar\psi^{V^+}\bar\psi^9
++\cdots
+\ee
+This is the $\ell=0$ state \eqref{ell0_8484} dressed with the $\ell=2$ harmonic;
+the $\langle 4,0\rangle$ projection differs from the $\ell=0$ case because
+the harmonic shifts the $SO(5)$ content.
+
+\paragraph{Remark.}
+The $\ell=2$ Konishi seed \eqref{ell2_4444a} is not a pure $\langle 4,0\rangle$ eigenstate.
+The component written has total $SO(5)$ weight
+$(2,0)+(0,2)+(0,2)=(2,4)$, which exceeds the highest weight $(2,2)$ of $\langle 4,0\rangle$.
+The full $\langle 4,0\rangle$ projection requires a specific linear combination of oscillator
+components --- including the $\langle 2,0\rangle$ (antisymmetric) and $\langle 0,0\rangle$
+(trace) parts of $\psi^i\partial X^j$ alongside the symmetric $\langle 0,2\rangle$ --- that
+is determined by BRST closure. The highest-weight forms above should therefore be understood
+as schematic leading components, not as complete physical vertices.
+
+\subsection{Summary for the \texorpdfstring{$\D_0=4$}{Delta0=4} sector}
+
+The $\langle 4,0\rangle_{(0,0)}$ sector at mass level~1 is much richer than the
+$\langle 4,0\rangle_{(1,1)}$ sector:
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& $\langle 4,0\rangle_{(1,1)}$ ($\D_0=6$) & $\langle 4,0\rangle_{(0,0)}$ ($\D_0=4$) \\
+\hline
+NSNS ($\ell=0$) & 1 & 4 \\
+NSNS ($\ell=2$) & --- & $\geq 5$ \\
+RR ($\ell=0$) & 0 & 2 \\
+\hline
+Total (low $\ell$) & \textbf{1} & $\geq\textbf{11}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+There are three important consequences.
+\begin{enumerate}
+\item \textbf{The zeroth-order state is pure NSNS.}
+In flat space the NSNS and RR sectors decouple.  The Konishi state at $\D_0=4$ starts life
+as a single NSNS state; RR admixtures are generated perturbatively
+by the first-order RR background.  Since $b_0=0$ there is no first-order splitting that
+would require a mixed zeroth-order ansatz.
+
+\item \textbf{The sector is degenerate.}
+Multiple NSNS and RR states share the quantum numbers $\langle 4,0\rangle_{(0,0)}$ at
+mass level~1. In the absence of a first-order splitting (since $H^{(1)}=0$), these
+states remain degenerate through first order. Their degeneracy is lifted at
+second order by the NSNS background $\psi^{(2)}$ and by the iterated first-order
+RR correction.
+
+\item \textbf{The second-order computation is a degenerate perturbation theory problem.}
+To extract $b_1=2$ one must diagonalise the second-order perturbation matrix in the full
+$\langle 4,0\rangle_{(0,0)}$ sector. The simple one-vertex ansatz \eqref{202vertex}
+is a good \emph{starting point} (it captures the leading oscillator and harmonic structure),
+but the physical Konishi eigenstate at second order will generically be a superposition of
+the states enumerated above.
+\end{enumerate}
 
 \appendix
 
