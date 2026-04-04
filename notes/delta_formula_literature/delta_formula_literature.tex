@@ -1,0 +1,289 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,booktabs,array,hyperref}
+\topmargin -.5cm
+\textheight 21cm
+\oddsidemargin -.125cm
+\textwidth 17cm
+
+\newcommand{\D}{\Delta}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\begin{document}
+\sloppy
+
+\begin{center}
+{\Large\bf Where the Formula for $\D$ Comes From}
+\end{center}
+
+\section{Purpose}
+
+This note summarizes the literature origin of two formulas that are easy to conflate but
+come from different physics:
+\begin{itemize}
+\item the exact $\D=4$ of the massless RR axion in $AdS_5\times S^5$;
+\item the strong-coupling expansion
+\begin{equation}
+\D = 2\lambda^{1/4} + (\D_0-4) + \frac{b_1}{\lambda^{1/4}} + \cdots
+\end{equation}
+for first-excited-string states identified with the Konishi multiplet.
+\end{itemize}
+
+Throughout I use
+\begin{equation}
+R^2/\alpha'=\sqrt{\lambda},\qquad \lambda^{1/4}=R
+\end{equation}
+in the same conventions as the current SFT notes.
+
+\section{Massless RR Axion}
+
+The RR axion is qualitatively different from a first-massive string mode.  It is already present in
+ten-dimensional type IIB supergravity as the massless scalar $C_0$.  Upon reduction on
+$AdS_5\times S^5$, the $S^5$ zero harmonic of $C_0$ is therefore a five-dimensional massless scalar.
+This is part of the standard Kaluza--Klein spectrum of type IIB supergravity on $S^5$
+\cite{KimRomansVN,GunaydinMarcus} and is reviewed from the AdS/CFT side in \cite{AharonyReview}.
+
+For a scalar in $AdS_5$, the standard mass-dimension dictionary is
+\begin{equation}
+m_5^2 R^2 = \D(\D-4),
+\end{equation}
+as explained in the original AdS/CFT papers \cite{GKP,Witten}.  For the axion zero mode,
+\begin{equation}
+m_5^2=0,
+\end{equation}
+so one gets
+\begin{equation}
+\D(\D-4)=0.
+\end{equation}
+The normalizable state in standard quantization is the $\D=4$ branch.  The $\D=0$ branch is the
+non-normalizable mode, i.e. changing the boundary value of the source rather than creating a normalizable
+bulk state.
+
+So the axion result is
+\begin{equation}
+\D_{\rm axion}=4.
+\end{equation}
+There is no $2R$ term because the axion is not a massive string excitation: it is a supergravity zero
+mode.  On the CFT side this matches the fact that the axion-dilaton couples to the exactly marginal
+complex gauge coupling $\tau$, so the corresponding dimension-four operators are protected
+\cite{AharonyReview}.
+
+\section{First Excited String Level}
+
+The Konishi formula starts from a completely different input.  One is no longer talking about a
+massless supergravity fluctuation, but about a short string on the first excited closed-string level.
+So there is no derivation parallel to the axion case where one solves a local AdS wave equation and reads
+off $\D$ from near-boundary falloff.  For the massive string state, the literature derivation is split:
+\begin{itemize}
+\item the universal leading $2\lambda^{1/4}$ is derived from the first-massive string mass;
+\item the constant term is fixed by the Konishi supermultiplet assignment and is tied to zero modes.
+\end{itemize}
+
+\subsection*{Leading term}
+
+The closed-string flat-space mass-shell condition is
+\begin{equation}
+\alpha' m^2 = 4(N-1),
+\end{equation}
+so for the first excited level, $N=2$ and thus
+\begin{equation}
+m^2_{\rm 1st\ excited}=\frac{4}{\alpha'}
+\end{equation}
+for the first massive closed-string level.  For a heavy state in AdS one then expects
+\begin{equation}
+\D \sim E \sim mR = \frac{2R}{\sqrt{\alpha'}} = 2\lambda^{1/4}.
+\end{equation}
+This is the same qualitative strong-coupling scaling emphasized already in the original AdS/CFT
+literature for massive string states \cite{GKP,AharonyReview}.
+
+\subsection*{Constant term}
+
+The more precise semiclassical short-string analysis of Roiban and Tseytlin writes the first-excited
+level energy as \cite{RT2011}
+\begin{equation}
+E = 2\lambda^{1/4}+b_0+\frac{b_1}{\lambda^{1/4}}+\frac{b_2}{\lambda^{1/2}}+\cdots .
+\end{equation}
+They also state that for the Konishi multiplet
+\begin{equation}
+b_0+4=\D_0,
+\end{equation}
+so
+\begin{equation}
+b_0=\D_0-4.
+\end{equation}
+
+The leading coefficient $2$ and the constant term $b_0$ have different origins:
+\begin{itemize}
+\item $2\lambda^{1/4}$ is the flat-space first-massive string energy written in AdS units;
+\item $b_0=\D_0-4$ is the multiplet-position or zero-mode offset that distinguishes different states
+inside the same long Konishi multiplet.
+\end{itemize}
+
+Roiban and Tseytlin are explicit that the constant term is not derived in the same direct way as the
+leading classical energy.  They say that a systematic derivation of this contribution requires
+zero-mode superparticle quantization \cite{RT2011}.  In other words, the literature does \emph{not}
+say that $(\D_0-4)$ is another flat-space oscillator mass.  It is an $O(1)$ term associated with the
+AdS supermultiplet structure of the state.
+
+So the precise status of the formula is:
+\begin{equation}
+\D = 2\lambda^{1/4}+O(1)
+\end{equation}
+is directly derived from the first-massive string mass, while
+\begin{equation}
+\D = 2\lambda^{1/4}+(\D_0-4)+\frac{b_1}{\lambda^{1/4}}+\cdots
+\end{equation}
+is the Konishi multiplet formula used in the short-string literature, with the constant term coming from
+the supermultiplet and zero-mode sector rather than from a solved local field equation.
+
+For example, on the first excited level:
+\begin{equation}
+\D_0=2 \Rightarrow \D = 2R-2+\cdots,\qquad
+\D_0=4 \Rightarrow \D = 2R+\cdots,\qquad
+\D_0=6 \Rightarrow \D = 2R+2+\cdots .
+\end{equation}
+
+The one-loop and pure-spinor literature then checks parts of this strong-coupling picture from
+independent angles.  In particular, Roiban and Tseytlin compute the semiclassical correction to $b_1$
+\cite{RT2009,RT2011}, while Vallilo and Mazzucato give an independent pure-spinor analysis of the
+Konishi multiplet at strong coupling \cite{ValliloMazzucato}.
+
+\section{Comparison Table}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{3.7cm} >{\raggedright\arraybackslash}p{3.4cm} >{\raggedright\arraybackslash}p{4.2cm}}
+\toprule
+state & bulk origin & formula for $\D$ & literature origin \\
+\midrule
+massless RR axion &
+supergravity zero mode of $C_0$ on $S^5$ &
+$m_5^2=0 \Rightarrow \D(\D-4)=0 \Rightarrow \D=4$ for the normalizable branch &
+IIB KK spectrum on $S^5$ plus the AdS scalar dictionary \cite{KimRomansVN,GunaydinMarcus,GKP,Witten,AharonyReview} \\
+\midrule
+first excited string state in Konishi &
+massive closed-string mode at the first excited level &
+$\D=2\lambda^{1/4}+(\D_0-4)+b_1/\lambda^{1/4}+\cdots$ &
+short-string semiclassics and Konishi multiplet assignment \cite{RT2009,RT2011}; pure-spinor cross-check \cite{ValliloMazzucato} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{What This Means for the Current Puzzle}
+
+The literature distinction is sharp.
+
+For the axion, the statement $\D=4$ is a direct consequence of being a massless supergravity scalar in
+$AdS_5$, together with the standard choice of normalizable branch.  This is why the axion is a clean
+normalization condition for the Hamiltonian: there is no competing $2R$ piece to begin with.
+
+For first-massive Konishi states, the story is different.  The leading $2R$ comes from the universal
+flat-space string mass, while the constant piece $\D_0-4$ is a separate $O(1)$ effect tied to the
+AdS supermultiplet structure.  The literature supports the existence of this term, but also says that a
+systematic worldsheet derivation of it requires the zero modes.  That is exactly the point where the
+current SFT contradiction is sharpest: the representation-theory scan says some $\D_0=6$ states have no
+obvious first-order mixing partner, while the Konishi formula still demands $b_0=2$.
+
+\appendix
+
+\section{What Is Actually Derived}
+
+The current note uses the following hierarchy of claims.
+
+\paragraph{A. Axion.}
+The precise chain is:
+\begin{equation}
+C_0\ \text{is a massless IIB field}
+\ \Longrightarrow \
+\text{$S^5$ zero harmonic gives }m_5^2=0
+\ \Longrightarrow \
+\D(\D-4)=0
+\ \Longrightarrow \
+\D=4
+\end{equation}
+for the normalizable state.  This is a direct supergravity plus AdS/CFT derivation.
+
+\paragraph{B. First excited level: leading term.}
+The precise chain is:
+\begin{equation}
+m^2_{\rm 1st\ excited}=\frac{4}{\alpha'}
+\ \Longrightarrow \
+\D\sim mR=2\lambda^{1/4}.
+\end{equation}
+This is the universal large-$\lambda$ piece for first-massive string states.
+
+\paragraph{C. First excited level: constant term.}
+The literature formula
+\begin{equation}
+b_0=\D_0-4
+\end{equation}
+is part of the Konishi multiplet assignment in the short-string analysis, but Roiban and Tseytlin
+explicitly note that a systematic derivation of this contribution requires zero-mode superparticle
+quantization.  So the existence of the term is part of the accepted strong-coupling picture, but its
+worldsheet derivation is subtler than the derivation of the leading $2\lambda^{1/4}$.
+
+\paragraph{D. Why the axion does not help derive $b_0$.}
+The axion and the first excited level probe different sectors:
+\begin{itemize}
+\item the axion is a protected supergravity mode with $\D=O(1)$ and a standard AdS wave equation;
+\item the Konishi state is a non-BPS short string with $\D\sim 2R$ and no comparable one-field wave
+equation derivation.
+\end{itemize}
+So the axion fixes the normalization of the Hamiltonian on the massless sector, but by itself it does
+not explain where the Konishi constant term $\D_0-4$ comes from.
+
+\begin{thebibliography}{99}
+
+\bibitem{GKP}
+S.~S.~Gubser, I.~R.~Klebanov and A.~M.~Polyakov,
+``Gauge theory correlators from non-critical string theory,''
+Phys.\ Lett.\ B {\bf 428} (1998) 105,
+\href{https://arxiv.org/abs/hep-th/9802109}{hep-th/9802109}.
+
+\bibitem{Witten}
+E.~Witten,
+``Anti-de Sitter space and holography,''
+Adv.\ Theor.\ Math.\ Phys.\ {\bf 2} (1998) 253,
+\href{https://arxiv.org/abs/hep-th/9802150}{hep-th/9802150}.
+
+\bibitem{KimRomansVN}
+H.~J.~Kim, L.~J.~Romans and P.~van Nieuwenhuizen,
+``The mass spectrum of chiral $N=2$, $D=10$ supergravity on $S^5$,''
+Phys.\ Rev.\ D {\bf 32} (1985) 389.
+
+\bibitem{GunaydinMarcus}
+M.~Gunaydin and N.~Marcus,
+``The spectrum of the $S^5$ compactification of the chiral $N=2$, $D=10$ supergravity and the
+unitary supermultiplets of $U(2,2/4)$,''
+Class.\ Quant.\ Grav.\ {\bf 2} (1985) L11.
+
+\bibitem{AharonyReview}
+O.~Aharony, S.~S.~Gubser, J.~M.~Maldacena, H.~Ooguri and Y.~Oz,
+``Large $N$ field theories, string theory and gravity,''
+Phys.\ Rept.\ {\bf 323} (2000) 183,
+\href{https://arxiv.org/abs/hep-th/9905111}{hep-th/9905111}.
+
+\bibitem{RT2009}
+R.~Roiban and A.~A.~Tseytlin,
+``Quantum strings in $AdS_5\times S^5$: strong-coupling corrections to dimension of Konishi operator,''
+\href{https://arxiv.org/abs/0906.4294}{arXiv:0906.4294}.
+
+\bibitem{RT2011}
+R.~Roiban and A.~A.~Tseytlin,
+``Semiclassical string computation of strong-coupling corrections to dimensions of operators in Konishi multiplet,''
+Nucl.\ Phys.\ B {\bf 848} (2011) 251,
+\href{https://arxiv.org/abs/1102.1209}{arXiv:1102.1209}.
+
+\bibitem{ValliloMazzucato}
+B.~C.~Vallilo and L.~Mazzucato,
+``The Konishi multiplet at strong coupling,''
+JHEP {\bf 12} (2011) 029,
+\href{https://arxiv.org/abs/1102.1219}{arXiv:1102.1219}.
+
+\end{thebibliography}
+
+\end{document}
