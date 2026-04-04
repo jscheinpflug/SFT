@@ -107,11 +107,11 @@ as written in \texttt{draftKonishi.tex}.
 
 So a mode of definite global frequency $\omega$ can be written as
 \begin{equation}
-c_\omega(X)=\Big(\sqrt{R^2+X_aX^a}+iX^0\Big)^{-\omega},
+c_\omega(X)=\Big(\sqrt{R^2+X_aX^a}-iX^0\Big)^{-\omega},
 \end{equation}
 because if we define
 \[
-Z(X)\equiv \sqrt{R^2+X_aX^a}+iX^0=X^{-1}+iX^0,
+Z(X)\equiv \sqrt{R^2+X_aX^a}-iX^0=X^{-1}-iX^0,
 \]
 then in global coordinates
 \[
@@ -119,11 +119,11 @@ X^{-1}=R\sin\tau\cosh\rho,\qquad X^0=R\cos\tau\cosh\rho,
 \]
 so
 \[
-Z=R\cosh\rho(\sin\tau+i\cos\tau)=iR\cosh\rho\,e^{-i\tau}.
+Z=R\cosh\rho(\sin\tau-i\cos\tau)=-iR\cosh\rho\,e^{i\tau}.
 \]
-Therefore $Z$ carries one unit of negative global-time frequency:
+Therefore $Z$ carries one unit of positive global-time frequency:
 \[
-\partial_\tau Z=-iZ.
+\partial_\tau Z=+iZ.
 \]
 Hence
 \begin{equation}
@@ -135,9 +135,7 @@ Indeed,
 =
 \partial_\tau(Z^{-\omega})
 =
-(-\omega)Z^{-\omega-1}\partial_\tau Z
-=
-(-\omega)Z^{-\omega-1}(-iZ)
+(-\omega)Z^{-\omega-1}(+iZ)
 =
 -i\omega\,c_\omega.
 \]
@@ -157,7 +155,7 @@ R+\frac{r^2-(X^0)^2}{2R}+O(R^{-3}),
 and hence
 \begin{equation}
 c_\omega(X)=
-R^{-\omega}e^{-i\omega X^0/R}
+R^{-\omega}e^{+i\omega X^0/R}
 \left[1-\frac{\omega r^2}{2R^2}+O(R^{-3})\right].
 \end{equation}
 This expansion is obtained as follows:
@@ -165,7 +163,7 @@ This expansion is obtained as follows:
 Z
 =
 R\left[
-1+\frac{iX^0}{R}+\frac{r^2-(X^0)^2}{2R^2}+O(R^{-3})
+1-\frac{iX^0}{R}+\frac{r^2-(X^0)^2}{2R^2}+O(R^{-3})
 \right].
 \]
 So
@@ -174,7 +172,7 @@ Z^{-\omega}
 =
 R^{-\omega}(1+u)^{-\omega},
 \qquad
-u=\frac{iX^0}{R}+\frac{r^2-(X^0)^2}{2R^2}+O(R^{-3}).
+u=-\frac{iX^0}{R}+\frac{r^2-(X^0)^2}{2R^2}+O(R^{-3}).
 \]
 Using
 \[
@@ -187,7 +185,7 @@ one gets
 Z^{-\omega}
 =
 R^{-\omega}\left[
-1-\frac{i\omega X^0}{R}
+1+\frac{i\omega X^0}{R}
 -\frac{\omega r^2}{2R^2}
 -\frac{\omega^2(X^0)^2}{2R^2}
 +O(R^{-3})
@@ -195,9 +193,9 @@ R^{-\omega}\left[
 \]
 The $X^0$-dependent terms resum into
 \[
-e^{-i\omega X^0/R}
+e^{+i\omega X^0/R}
 =
-1-\frac{i\omega X^0}{R}-\frac{\omega^2(X^0)^2}{2R^2}+O(R^{-3}),
+1+\frac{i\omega X^0}{R}-\frac{\omega^2(X^0)^2}{2R^2}+O(R^{-3}),
 \]
 which gives the displayed form.
 
@@ -209,7 +207,7 @@ Acting with the Laplacian gives
 \end{equation}
 and the derivation is straightforward.  Write
 \[
-c_\omega(X)=R^{-\omega}e^{-i\omega X^0/R}f(r),
+c_\omega(X)=R^{-\omega}e^{+i\omega X^0/R}f(r),
 \qquad
 f(r)=1-\frac{\omega r^2}{2R^2}+O(R^{-3}).
 \]
@@ -234,7 +232,7 @@ since only the exponential depends on $X^0$ at this order.  For the spatial deri
 \[
 \sum_{m=1}^4\partial_m^2 c_\omega
 =
-R^{-\omega}e^{-i\omega X^0/R}\sum_{m=1}^4\partial_m^2
+R^{-\omega}e^{+i\omega X^0/R}\sum_{m=1}^4\partial_m^2
 \left(1-\frac{\omega r^2}{2R^2}\right)+O(R^{-3}).
 \]
 Using
@@ -288,7 +286,7 @@ trivial $S^5$ dependence.  The equation of motion is now
 
 Take the same definite-frequency ansatz
 \begin{equation}
-\phi_\omega(X)=\Big(\sqrt{R^2+X_aX^a}+iX^0\Big)^{-\omega}.
+\phi_\omega(X)=\Big(\sqrt{R^2+X_aX^a}-iX^0\Big)^{-\omega}.
 \end{equation}
 Nothing changes about the time dependence: it is still true that
 \begin{equation}
@@ -297,7 +295,7 @@ Nothing changes about the time dependence: it is still true that
 And the large-$R$ expansion is the same as before,
 \begin{equation}
 \phi_\omega(X)=
-R^{-\omega}e^{-i\omega X^0/R}
+R^{-\omega}e^{+i\omega X^0/R}
 \left[1-\frac{\omega r^2}{2R^2}+O(R^{-3})\right].
 \end{equation}
 
@@ -343,11 +341,11 @@ depends on the position of the state inside the full supermultiplet.
 
 There is nevertheless one useful universal lesson from the scalar calculation.  Define
 \begin{equation}
-Z\equiv X^{-1}+iX^0=\sqrt{R^2+X_aX^a}+iX^0.
+Z\equiv X^{-1}-iX^0=\sqrt{R^2+X_aX^a}-iX^0.
 \end{equation}
 Since
 \begin{equation}
-\partial_\tau Z=-iZ,
+\partial_\tau Z=+iZ,
 \end{equation}
 the factor
 \begin{equation}
@@ -356,7 +354,7 @@ Z^{-\omega}
 is the universal projective-coordinate dressing of a mode with definite global energy $\omega$.  Near the
 center of AdS this becomes
 \begin{equation}
-Z^{-\omega}\sim R^{-\omega}e^{-i\omega X^0/R}.
+Z^{-\omega}\sim R^{-\omega}e^{+i\omega X^0/R}.
 \end{equation}
 
 So for a more general state, the natural projective-coordinate ansatz is not a pure scalar but rather
@@ -376,6 +374,323 @@ Equivalently, with a null polarization vector $n$, one may write the kinematic f
 What is universal here is only the $Z^{-\omega}$ time dependence.  The actual relation between $\omega$
 and the physical state data, as well as the mixing between different components, is dynamical and cannot be
 read off from this factor alone.
+
+\subsection*{Starting instead from \texorpdfstring{$e^{-i\omega\tau}f(\rho)$}{exp(-i omega tau) f(rho)}}
+
+If one prefers, one can start from the more primitive global-coordinate ansatz
+\begin{equation}
+\phi(\tau,\rho)=e^{-i\omega\tau}f(\rho)
+\end{equation}
+for an $S^3$-invariant scalar mode.  In global $AdS_5$ with metric
+\begin{equation}
+ds^2=R^2\left(-\cosh^2\rho\,d\tau^2+d\rho^2+\sinh^2\rho\,d\Omega_3^2\right),
+\end{equation}
+the massive scalar equation $(\Box_{\rm AdS}-m^2)\phi=0$ becomes
+\begin{equation}
+\frac{1}{\sinh^3\rho\,\cosh\rho}\partial_\rho
+\Big(\sinh^3\rho\,\cosh\rho\,\partial_\rho f\Big)
+\,+\,\frac{\omega^2}{\cosh^2\rho}f
+\,-\,m^2R^2 f
+=
+0.
+\end{equation}
+Now try
+\begin{equation}
+f(\rho)=(\cosh\rho)^{-\omega}.
+\end{equation}
+Then
+\[
+\partial_\rho f=-\omega\tanh\rho\,f,
+\]
+so
+\[
+\sinh^3\rho\,\cosh\rho\,\partial_\rho f
+=
+-\omega\sinh^4\rho\,f.
+\]
+Differentiating once more,
+\[
+\partial_\rho\Big(\sinh^3\rho\,\cosh\rho\,\partial_\rho f\Big)
+=
+-\omega\Big(4\sinh^3\rho\cosh\rho\,f+\sinh^4\rho\,\partial_\rho f\Big),
+\]
+which gives
+\[
+\frac{1}{\sinh^3\rho\,\cosh\rho}\partial_\rho
+\Big(\sinh^3\rho\,\cosh\rho\,\partial_\rho f\Big)
+=
+-4\omega f+\omega^2\tanh^2\rho\,f.
+\]
+Adding the time-derivative term,
+\[
+-4\omega f+\omega^2\tanh^2\rho\,f+\frac{\omega^2}{\cosh^2\rho}f
+=
+\omega(\omega-4)f,
+\]
+since $\tanh^2\rho+\cosh^{-2}\rho=1$.  So the equation is solved provided
+\begin{equation}
+\omega(\omega-4)=m^2R^2.
+\end{equation}
+
+Now rewrite the solution in projective coordinates.  From
+\begin{equation}
+X^{-1}=R\sin\tau\cosh\rho,\qquad X^0=R\cos\tau\cosh\rho,
+\end{equation}
+one gets
+\begin{equation}
+X^{-1}-iX^0=-iR\cosh\rho\,e^{i\tau}.
+\end{equation}
+Therefore
+\begin{equation}
+e^{-i\omega\tau}(\cosh\rho)^{-\omega}
+=
+(-iR)^\omega\,(X^{-1}-iX^0)^{-\omega},
+\end{equation}
+up to an overall constant phase.  So the projective-coordinate factor $Z^{-\omega}$ is not ad hoc:
+it is exactly the global-coordinate ansatz $e^{-i\omega\tau}f(\rho)$ with the lowest-weight radial
+profile $f(\rho)=(\cosh\rho)^{-\omega}$ rewritten in terms of the projective coordinates.
+
+\subsection*{The same ansatz, but entirely in projective coordinates}
+
+If one wants to avoid $(\tau,\rho)$ as independent coordinates altogether, one can still start from the
+same idea directly in the projective variables.  The global time is a function of the projective
+coordinates:
+\begin{equation}
+\tan\tau(X)=\frac{X^{-1}}{X^0}
+=
+\frac{\sqrt{R^2+X_aX^a}}{X^0},
+\end{equation}
+or, more usefully,
+\begin{equation}
+e^{-i\tau(X)}=\frac{X^0-iX^{-1}}{\sqrt{(X^{-1})^2+(X^0)^2}}
+=
+\frac{X^0-i\sqrt{R^2+X_aX^a}}{\sqrt{R^2+r^2}},
+\end{equation}
+where
+\begin{equation}
+r^2=\sum_{m=1}^4 (X^m)^2,
+\qquad
+(X^{-1})^2+(X^0)^2=R^2+r^2.
+\end{equation}
+
+The exact induced AdS$_5$ metric in these coordinates is
+\begin{equation}
+G_{ab}=\eta_{ab}-\frac{X_aX_b}{R^2+X_cX^c},
+\end{equation}
+with inverse and determinant
+\begin{equation}
+G^{ab}=\eta^{ab}+\frac{X^aX^b}{R^2},
+\qquad
+\sqrt{-G}=\frac{R}{\sqrt{R^2+X_cX^c}}.
+\end{equation}
+Therefore the exact scalar Laplacian is
+\begin{equation}
+\Box_{\rm AdS}
+=
+\frac{1}{\sqrt{-G}}\partial_a\!\left(\sqrt{-G}\,G^{ab}\partial_b\right)
+=
+\left(\eta^{ab}+\frac{X^aX^b}{R^2}\right)\partial_a\partial_b
++\frac{5X^a}{R^2}\partial_a .
+\end{equation}
+Expanding this exact expression reproduces the earlier large-$R$ form
+\[
+\Box_{\rm AdS}
+=
+\partial_a\partial^a
++\frac{1}{R^2}\Big(X^aX^b\partial_a\partial_b+5X^a\partial_a\Big)
++O(R^{-4}).
+\]
+
+Now keep the explicit time dependence and make a genuinely radial ansatz
+\begin{equation}
+\phi(X)=e^{-i\omega\tau(X)}\,f(s),
+\qquad
+s\equiv \frac{r^2}{R^2}.
+\end{equation}
+The needed derivatives in $X$ coordinates are straightforward.  Since
+\[
+s=\frac{1}{R^2}\sum_{m=1}^4 (X^m)^2,
+\]
+one has
+\begin{equation}
+\partial_0 s=0,
+\qquad
+\partial_m s=\frac{2X_m}{R^2}.
+\end{equation}
+For the global time, differentiating
+\[
+\tan\tau(X)=\frac{X^{-1}}{X^0},
+\qquad
+X^{-1}=\sqrt{R^2+X_aX^a},
+\]
+gives
+\begin{equation}
+\partial_0\tau=-\frac{1}{X^{-1}},
+\qquad
+\partial_m\tau=\frac{X^0X_m}{X^{-1}(R^2+r^2)}.
+\end{equation}
+
+Now contract these derivatives with the exact inverse metric.  A direct computation gives
+\begin{equation}
+G^{ab}\partial_a\tau\,\partial_b\tau
+=
+-\frac{1}{R^2+r^2}
+=
+-\frac{1}{R^2(1+s)},
+\end{equation}
+\begin{equation}
+G^{ab}\partial_a\tau\,\partial_b s=0,
+\end{equation}
+\begin{equation}
+G^{ab}\partial_a s\,\partial_b s
+=
+\frac{4r^2}{R^4}+\frac{4r^4}{R^6}
+=
+\frac{4s(1+s)}{R^2},
+\end{equation}
+and
+\begin{equation}
+\Box_{\rm AdS}\tau=0,
+\qquad
+\Box_{\rm AdS}s=\frac{4(2+3s)}{R^2}.
+\end{equation}
+
+With these ingredients, the chain rule gives
+\begin{align}
+\Box_{\rm AdS}\phi
+&=
+e^{-i\omega\tau}\Big[
+-\omega^2\,G^{ab}\partial_a\tau\,\partial_b\tau\, f
+-2i\omega\,G^{ab}\partial_a\tau\,\partial_b s\, f'
+-i\omega\,(\Box_{\rm AdS}\tau)\,f
+\notag\\
+&\hspace{3.8cm}
++\,G^{ab}\partial_a s\,\partial_b s\, f''
++(\Box_{\rm AdS}s)\,f'
+\Big].
+\end{align}
+Substituting the four scalar identities above, the mixed term drops out and one obtains the exact ODE
+\begin{equation}
+4s(1+s)f''(s)+4(2+3s)f'(s)+\frac{\omega^2}{1+s}f(s)=0.
+\end{equation}
+
+This is the differential equation for the radial profile, derived directly from the $X$-coordinate
+metric and Laplacian.  This is the reusable step: for a more complicated state, such as a Konishi
+fluctuation with additional tensor structure and component mixing, one would first derive the analogue
+of this radial operator and only then study its coupled system.  Only now does one make a
+lowest-weight ansatz for the scalar solution.  Trying
+\begin{equation}
+f(s)=(1+s)^{-\beta},
+\end{equation}
+one gets
+\begin{equation}
+\omega^2-8\beta=0,
+\qquad
+4\beta^2-8\beta=0.
+\end{equation}
+So
+\begin{equation}
+\beta=0\ \text{or}\ 2.
+\end{equation}
+The $\beta=0$ branch is the non-normalizable constant solution, which forces $\omega=0$.  The
+normalizable lowest-weight branch is
+\begin{equation}
+\beta=2,
+\qquad
+\omega=4.
+\end{equation}
+
+Therefore
+\begin{equation}
+\phi(X)=e^{-i4\tau(X)}\left(1+\frac{r^2}{R^2}\right)^{-2}.
+\end{equation}
+Using
+\begin{equation}
+X^{-1}-iX^0=-i\sqrt{R^2+r^2}\,e^{i\tau},
+\end{equation}
+this may be rewritten as
+\begin{equation}
+\phi(X)\propto \left(X^{-1}-iX^0\right)^{-4}.
+\end{equation}
+So the compact projective factor is not a guess: it is the solution of the exact $X$-coordinate radial
+equation for the lowest normalizable mode.
+
+\subsection*{Large-$R$ series solution of the radial equation}
+
+One can also solve the same radial equation locally, as a large-$R$ expansion, without guessing the
+closed-form answer.  Write
+\begin{equation}
+f(s)=\sum_{n=0}^\infty a_n s^n,
+\qquad
+s=\frac{r^2}{R^2}.
+\end{equation}
+Then
+\begin{equation}
+f'(s)=\sum_{n=1}^\infty n a_n s^{n-1},
+\qquad
+f''(s)=\sum_{n=2}^\infty n(n-1)a_n s^{n-2},
+\end{equation}
+and the exact radial equation
+\begin{equation}
+4s(1+s)f''(s)+4(2+3s)f'(s)+\frac{\omega^2}{1+s}f(s)=0
+\end{equation}
+may be expanded around $s=0$ using
+\begin{equation}
+\frac{1}{1+s}=1-s+s^2-\cdots.
+\end{equation}
+Keeping the first few powers of $s$ gives
+\begin{align}
+0
+&=
+8a_1+\omega^2 a_0 \notag\\
+&\quad
++\Big(24a_2+12a_1+\omega^2(a_1-a_0)\Big)s \notag\\
+&\quad
++\Big(48a_3+32a_2+\omega^2(a_2-a_1+a_0)\Big)s^2
++O(s^3).
+\end{align}
+So the first coefficients are fixed recursively in terms of $a_0$ and $\omega$:
+\begin{equation}
+a_1=-\frac{\omega^2}{8}a_0,
+\end{equation}
+\begin{equation}
+a_2=\frac{\omega^2(\omega^2+20)}{192}a_0,
+\end{equation}
+\begin{equation}
+a_3=-\frac{\omega^2(\omega^4+44\omega^2+384)}{9216}a_0.
+\end{equation}
+Therefore the local large-$R$ solution is
+\begin{equation}
+f\!\left(\frac{r^2}{R^2}\right)
+=
+a_0\left[
+1
+-\frac{\omega^2}{8}\frac{r^2}{R^2}
++\frac{\omega^2(\omega^2+20)}{192}\frac{r^4}{R^4}
++O(R^{-6})
+\right].
+\end{equation}
+Equivalently,
+\begin{equation}
+\phi(X)
+=
+e^{-i\omega\tau(X)}\,a_0\left[
+1
+-\frac{\omega^2}{8}\frac{r^2}{R^2}
++\frac{\omega^2(\omega^2+20)}{192}\frac{r^4}{R^4}
++O(R^{-6})
+\right].
+\end{equation}
+
+This expansion does \emph{not} quantize $\omega$.  For any chosen $\omega$, there is a regular local
+solution near the origin, with coefficients determined recursively by the equation.  The value
+$\omega=4$ is fixed only after imposing the global AdS boundary condition: one must select the
+normalizable lowest-weight mode on the full spacetime.  For that branch, the exact solution found above
+is
+\begin{equation}
+f(s)=(1+s)^{-2}=1-2s+3s^2-4s^3+\cdots,
+\end{equation}
+which is recovered from the recursion precisely when $\omega=4$.
 
 \section{First Excited String Level}
 
