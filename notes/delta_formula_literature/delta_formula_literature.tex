@@ -85,9 +85,23 @@ The same result can be derived directly in the projective coordinates used in
 \end{equation}
 where $a=0,\ldots,4$.  In the same coordinate frame, the global-time generator is
 \begin{equation}
-\partial_\tau=X^{-1}\partial_{X^0},
+\partial_\tau=X^{-1}\partial_{X^0}-X^0\partial_{X^{-1}},
 \qquad
 X^{-1}=\sqrt{R^2+X_aX^a},
+\end{equation}
+and when restricted to functions of the projective coordinates $X^a$ this becomes
+\begin{equation}
+\partial_\tau
+=
+\sqrt{R^2+X_aX^a}\,\partial_{X^0}.
+\end{equation}
+Its large-$R$ expansion is
+\begin{equation}
+\partial_\tau
+=
+\left(R+\frac{X_aX^a}{2R}+O(R^{-3})\right)\partial_{X^0}
+=
+R\partial_{X^0}+\frac{X_aX^a}{2R}\partial_{X^0}+O(R^{-3}),
 \end{equation}
 as written in \texttt{draftKonishi.tex}.
 
@@ -263,6 +277,67 @@ Thus the projective-coordinate derivation reproduces the standard massless-scala
 \begin{equation}
 \D=4.
 \end{equation}
+
+\section{The Same Calculation for a Massive Scalar}
+
+It is useful to repeat exactly the same projective-coordinate calculation for a single massive scalar with
+trivial $S^5$ dependence.  The equation of motion is now
+\begin{equation}
+(\Box_{\rm AdS}-m^2)\phi=0.
+\end{equation}
+
+Take the same definite-frequency ansatz
+\begin{equation}
+\phi_\omega(X)=\Big(\sqrt{R^2+X_aX^a}+iX^0\Big)^{-\omega}.
+\end{equation}
+Nothing changes about the time dependence: it is still true that
+\begin{equation}
+\partial_\tau\phi_\omega=-i\omega\,\phi_\omega.
+\end{equation}
+And the large-$R$ expansion is the same as before,
+\begin{equation}
+\phi_\omega(X)=
+R^{-\omega}e^{-i\omega X^0/R}
+\left[1-\frac{\omega r^2}{2R^2}+O(R^{-3})\right].
+\end{equation}
+
+Likewise, the Laplacian acts in the same way:
+\begin{equation}
+\Box_{\rm AdS}\phi_\omega
+=
+\frac{\omega(\omega-4)}{R^2}\phi_\omega+O(R^{-3}).
+\end{equation}
+Plugging this into the massive wave equation gives
+\begin{equation}
+\frac{\omega(\omega-4)}{R^2}\phi_\omega-m^2\phi_\omega+O(R^{-3})=0,
+\end{equation}
+so at leading nontrivial order one gets
+\begin{equation}
+\omega(\omega-4)=m^2R^2.
+\end{equation}
+This is the standard AdS$_5$ massive-scalar relation.  Solving the quadratic equation gives
+\begin{equation}
+\omega_\pm=2\pm \sqrt{4+m^2R^2}.
+\end{equation}
+The normalizable branch is therefore
+\begin{equation}
+\omega=\D=2+\sqrt{4+m^2R^2}.
+\end{equation}
+
+For large mass, one may expand
+\begin{equation}
+\D
+=
+2+\sqrt{4+m^2R^2}
+=
+mR+2+\frac{2}{mR}+O((mR)^{-3}).
+\end{equation}
+Thus a \emph{single} massive scalar field in AdS has a universal constant offset $+2$ at large mass.
+It does not produce a state-dependent offset of the form $\D_0-4$.
+
+This is precisely why a naive one-field massive-scalar wave equation is not enough to derive the Konishi
+formula.  Such a wave equation knows only about the bulk mass $m$, whereas the Konishi constant term
+depends on the position of the state inside the full supermultiplet.
 
 \section{First Excited String Level}
 
