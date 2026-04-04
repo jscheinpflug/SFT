@@ -1,0 +1,205 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,hyperref,booktabs}
+\topmargin -.5cm
+\textheight 21cm
+\oddsidemargin -.125cm
+\textwidth 17cm
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\ie{\begin{equation}\begin{aligned}}
+\def\fe{\end{aligned}\end{equation}}
+\newcommand{\D}{\Delta}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\begin{document}
+
+\begin{center}
+{\Large\bf A Sharpened Konishi Contradiction}
+\end{center}
+
+\section{Purpose}
+
+This note isolates a particularly sharp version of the puzzle described in
+\texttt{notes/contradiction.md}.  The point is to separate clearly:
+\begin{itemize}
+\item assumptions coming from the \texttt{2507.12921} background solution,
+\item assumptions coming from the representation theory of the first massive string level,
+\item the concrete conclusion that then appears to contradict the Konishi strong-coupling formula.
+\end{itemize}
+
+\section{The Setup}
+
+For a first-massive Konishi state, the expected strong-coupling expansion is
+\be
+\D = 2R + (\D_0-4) + \frac{2}{R} + O(R^{-2}).
+\ee
+So for a state with $\D_0=6$ one expects
+\be
+\D_{\D_0=6}=2R+2+\frac{2}{R}+O(R^{-2}).
+\ee
+The constant $+2$ is the point at issue.
+
+On the background side, the first-order RR solution of \texttt{2507.12921} is
+\be
+F^{(1)}_{\alpha\beta}=\frac{i}{R}(\gamma^{01234})_{\alpha\beta},
+\ee
+equivalently the constant self-dual five-form
+\be
+F^{(1)}_5\propto \omega_{AdS_5}+\omega_{S^5}.
+\ee
+This is a singlet under the manifest finite symmetry group,
+\be
+F^{(1)}\in \la 0,0\ra_{AdS}\otimes \la 0,0\ra_{S}.
+\ee
+
+\section{Assumptions}
+
+The contradiction uses the following four assumptions.
+
+\paragraph{A1.} The first-order background is a manifest
+$SO(1,4)\times SO(5)$ singlet.
+
+\paragraph{A2.} The bare Hamiltonian receives no odd-order correction.
+In particular,
+\be
+H^{(1)}=0,
+\ee
+because the Hamiltonian sits in the NSNS sector while the background at first order is RR.
+
+\paragraph{A3.} Therefore the first-order \emph{effective} Hamiltonian on fluctuations is built only
+from the singlet RR background inserted against the zeroth-order Hamiltonian:
+\be
+\widehat H^{(1)}\varphi=[\psi^{(1)}\otimes H^{(0)}\otimes\varphi]'.
+\ee
+Since $\psi^{(1)}$ is RR while both $H^{(0)}$ and the chosen level-1 seed are NSNS,
+this operator is sector-odd:
+\be
+\widehat H^{(1)}:\quad \text{NSNS}\leftrightarrow \text{RR}.
+\ee
+It preserves the manifest $SO(1,4)\times SO(5)$ quantum numbers, but it does \emph{not}
+act diagonally within a pure NSNS subsector.
+
+\paragraph{A4.} If a manifest irrep occurs with multiplicity one in the full first-massive flat-space
+spectrum, and that unique state lies in the NSNS sector, then a sector-odd first-order operator preserving
+the manifest symmetry has no RR state available to mix it with. Hence the entire first-order block vanishes
+on that irrep.
+
+\section{A Concrete Example}
+
+The flat-space/Konishi comparison already produced a concrete candidate:
+\be
+\la 0,2\ra_{(2,0)},
+\ee
+that is, spin $(2,0)$ with sphere irrep $\la 0,2\ra$.
+
+This label is special for two independent reasons.
+
+\paragraph{Branched Konishi side.}
+From the full branched Konishi table,
+\be
+(2,0)\times \la 0,2\ra
+\ee
+appears exactly once, and only at
+\be
+\D_0=6.
+\ee
+
+\paragraph{Flat-space side.}
+From the complete first-massive flat-space decomposition,
+\be
+(2,0)\times \la 0,2\ra
+\ee
+also appears exactly once, entirely in the NSNS sector.
+
+So within the full level-1 string spectrum there is exactly one state with these manifest quantum
+numbers, and the Konishi table identifies it as a $\D_0=6$ state.
+
+\section{The Contradiction}
+
+Under assumptions A1--A4, the state
+\be
+\la 0,2\ra_{(2,0)}
+\ee
+cannot mix at first order:
+\begin{itemize}
+\item the first-order operator $\widehat H^{(1)}$ preserves manifest
+$SO(1,4)\times SO(5)$ quantum numbers;
+\item it is sector-odd, so an NSNS state can only mix with an RR state;
+\item but there is no RR state with the same manifest label.
+\end{itemize}
+
+So the entire first-order block on this irrep vanishes.
+There is no diagonal NSNS matrix element to compute, and there is no opposite-sector partner
+state to generate an off-diagonal first-order splitting.
+
+The tension is that the explicit first-order computations done so far for similarly simple NSNS seeds
+tend to vanish by kinematics, especially for highest-weight null-polarized representatives.
+Here the contradiction is even sharper: by sector and representation theory alone one gets
+\be
+\text{uniqueness at fixed manifest quantum numbers}
+\quad + \quad
+\text{sector-odd singlet first-order source}
+\quad \Longrightarrow \quad
+\widehat H^{(1)}=0 \text{ on this state},
+\ee
+so there is no $O(1)$ correction, whereas Konishi requires
+\be
+b_0=2.
+\ee
+
+\section{Why This Is Sharper Than the Original Puzzle}
+
+The original $\D_0=6$ puzzle could always be softened by saying that perhaps the chosen seed was too
+special, or perhaps the true Konishi state mixes with other states of the same manifest quantum numbers.
+
+For the example
+\be
+\la 0,2\ra_{(2,0)},
+\ee
+that second escape route is absent at mass level~1:
+the complete flat-space scan finds only one such state.
+So if the first-order matrix element vanishes here as well, the problem is not a basis-choice issue
+inside a degenerate subspace. It becomes a genuine contradiction between:
+\begin{itemize}
+\item the Konishi formula $b_0=\D_0-4$,
+\item the singlet nature of the first-order RR background,
+\item and the multiplicity-one representation content of the first-massive string spectrum.
+\end{itemize}
+
+\section{Possible Ways Out}
+
+At present the contradiction can be avoided only if at least one assumption above fails.
+The main logical options are:
+\begin{itemize}
+\item The relevant first-order effective Hamiltonian is not exhausted by the manifestly singlet operator
+$[\psi^{(1)}\otimes H^{(0)}\otimes\varphi]'$.
+\item The state identified by the manifest label $\la 0,2\ra_{(2,0)}$ is not actually the physical
+Konishi eigenstate even though it is the only level-1 state with those manifest quantum numbers.
+\item The first-order effective Hamiltonian does not preserve the naive NSNS/RR grading in the way assumed
+above.
+\item The dictionary between the strong-coupling coefficient $b_0$ and the SFT Hamiltonian eigenvalue needs
+to be refined.
+\end{itemize}
+
+But absent one of these escape routes, the contradiction is sharp.
+
+\section{Concrete Next Check}
+
+The cleanest next calculation is not a diagonal matrix element: by sector grading that is absent from the
+start.  Instead one should do one of the following.
+\begin{itemize}
+\item Prove directly that the manifest irrep $\la 0,2\ra_{(2,0)}$ has no RR representative at mass level~1.
+\item Compute the full first-order operator on an explicit NSNS representative of
+$\la 0,2\ra_{(2,0)}$ and verify that the result vanishes identically because there is no RR target state with
+the same manifest quantum numbers.
+\item Identify the precise assumption above that fails if the Konishi value $b_0=2$ is nevertheless to be
+recovered.
+\end{itemize}
+
+If none of these steps reveals an escape route, the contradiction is immediate.
+
+\end{document}

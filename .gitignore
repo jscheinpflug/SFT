@@ -16,3 +16,6 @@ __pycache__/
 *.toc
 *-blx.bib
 *.pdf
+
+
+/archive

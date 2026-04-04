@@ -331,8 +331,9 @@ $\Tr([\Phi_1,\Phi_2]^2)$.
 It is the best default candidate for the present SFT setup for three reasons.
 \begin{itemize}
 \item It is a bona fide Konishi descendant, not merely a candidate dual.
-\item At $\D_0=4$ it appears as a single $[2,0,2]_{(0,0)}$ state in Table 1, unlike the
-$[0,2,0]$ and $[1,1,1]$ families which come with multiplicities.
+\item In Table 1 it appears as a single exact entry $[2,0,2]_{(0,0)}$ at $\D_0=4$, unlike the
+$[0,2,0]$ and $[1,1,1]$ families which come with multiplicities. This is \emph{not} a Table-C-style
+``unique manifest label'' statement after branching.
 \item It is spinless in the $AdS_5$ directions, so its nontrivial quantum numbers live entirely in
 $S^5$, which is closer to the manifest subgroup structure of the current SFT variables.
 \end{itemize}
@@ -773,19 +774,131 @@ mixing forced by the background.
 
 \subsection{Where \texorpdfstring{$b_0$}{b0} comes from}
 
-Since $H^{(1)}=0$ (the Hamiltonian has no first-order correction), the first-order
-perturbation matrix is trivially zero and $b_0$ cannot arise at first order.
-Moreover, $F^{(1)}$ is constant, so the first-order linearized EOM preserves the harmonic
+The previous version of this note was too quick here. By power counting alone,
+$b_0=\D_0-4$ is an $O(R^0)$ effect, so it cannot come \emph{solely} from an
+$R^{-1}$ operator that one would naturally call ``second order Hamiltonian''.
+What one really needs is the perturbative expansion of the \emph{full effective Hamiltonian}
+acting on fluctuations in the deformed background.
+
+Let $\varphi$ be a fluctuation and let $H$ denote the isometry string field that generates the
+AdS energy. The background-deformed Hamiltonian action is schematically
+\be
+\widehat{\mathcal H}_{\psi}\varphi
+=[H\otimes \varphi]'+[\psi\otimes H\otimes\varphi]'+\frac{1}{2}[\psi^{\otimes 2}\otimes H\otimes\varphi]'+\cdots,
+\ee
+with
+\be
+\psi=\frac{1}{R}\psi^{(1)}+\frac{1}{R^2}\psi^{(2)}+\cdots,
+\qquad
+H=R\,H^{(0)}+H^{(1)}+\frac{1}{R}H^{(2)}+\cdots .
+\ee
+Expanding in powers of $1/R$ gives
+\be
+\widehat{\mathcal H}_{\psi}
+=R\,\widehat H^{(0)}+\widehat H^{(1)}+\frac{1}{R}\widehat H^{(2)}+O(R^{-2}),
+\ee
+where
+\be
+\widehat H^{(0)}\varphi=[H^{(0)}\otimes\varphi]',
+\ee
+\be
+\widehat H^{(1)}\varphi
+= [H^{(1)}\otimes\varphi]'
+ + [\psi^{(1)}\otimes H^{(0)}\otimes\varphi]',
+\ee
+and
+\be
+\widehat H^{(2)}\varphi
+= [H^{(2)}\otimes\varphi]'
+ + [\psi^{(1)}\otimes H^{(1)}\otimes\varphi]'
+ + [\psi^{(2)}\otimes H^{(0)}\otimes\varphi]'
+ + \frac{1}{2}[(\psi^{(1)})^{\otimes 2}\otimes H^{(0)}\otimes\varphi]'.
+\ee
+
+So the correct bookkeeping is:
+\begin{itemize}
+\item the leading $2R$ term comes from $R\,\widehat H^{(0)}$;
+\item the constant term $b_0$ must come from the $R^0$ operator $\widehat H^{(1)}$;
+\item the coefficient $b_1$ is the natural target of the $R^{-1}$ operator $\widehat H^{(2)}$.
+\end{itemize}
+
+In the draft, the explicit flat piece is known:
+\be
+H^{(0)}_{0}= i\big(c\partial X^0-\bar c\,\bar\partial X^0\big),
+\ee
+or equivalently in the picture $(-1,-1)$ description,
+\be
+H^{(0)}_{-1}
+=-8i\,c\bar c\Big(e^{-\phi}\psi^{0}e^{-2\bar\phi}\bar\partial\bar\xi
++e^{-2\phi}\partial\xi e^{-\bar\phi}\bar\psi^{0}\Big).
+\ee
+If one assumes, as in your comment, that the \emph{bare} Hamiltonian string field stays purely NSNS
+and has no odd-order correction, then one simply sets
+\be
+H^{(1)}=0.
+\ee
+But this does \emph{not} make the $O(R^0)$ effective Hamiltonian vanish. In that case the formula above
+reduces to
+\be
+\widehat H^{(1)}\varphi=[\psi^{(1)}\otimes H^{(0)}\otimes\varphi]',
+\ee
+so the constant shift $b_0$ can still arise from the RR background insertion acting on the
+zeroth-order NSNS Hamiltonian.
+
+Moreover, $F^{(1)}$ is constant, so the first-order RR background insertion preserves the harmonic
 level $\ell$ of each state (\S\ref{sec:b0resolution}).
 
-Both $b_0=\D_0-4$ and $b_1$ must therefore emerge from the \emph{second-order} Hamiltonian
-$H^{(2)}$, which involves the NSNS background $\psi^{(2)}$ with quadratic $X$-dependence.
+\subsection{Representation of the first-order flux}
+
+The first-order RR background in \texttt{2507.12921} is
+\be
+F^{(1)}_{\alpha\beta}=\frac{i}{R}\,(\gamma^{01234})_{\alpha\beta},
+\ee
+equivalently the constant self-dual five-form
+\be
+F_5^{(1)}\propto \omega_{AdS_5}+\omega_{S^5}.
+\ee
+As a tensor on $AdS_5\times S^5$, this is an isometry invariant background:
+each five-dimensional volume form is invariant under the corresponding isometry group,
+and self-duality ties the two pieces together into a single mode.
+
+So under the finite bulk little group it sits in
+\be
+\langle 0,0\rangle_{AdS}\otimes \langle 0,0\rangle_{S},
+\ee
+and in the boundary-primary language used elsewhere in this note it is simply
+\be
+\langle 0,0\rangle_{(0,0)}.
+\ee
+It is important not to assign this background a Konishi-table ``$\D_0$'': it is not a
+normalizable first-massive fluctuation, but the massless RR flux supporting the background.
+
+The same singlet statement is visible directly in the bispinor form.
+The matrix $\gamma^{01234}$ is the five-dimensional chirality operator for the AdS tangent
+directions, so it commutes with the $\mathrm{Spin}(1,4)$ generators $\gamma^{ab}$.
+It also commutes with the $\mathrm{Spin}(5)$ generators $\gamma^{ij}$, since it anticommutes with
+each sphere gamma matrix $\gamma^i$ and therefore commutes with every even product
+$\gamma^{ij}$.
+Thus the first-order source carries no nontrivial spacetime or sphere quantum numbers.
+
+This is the representation-theory reason the first-order bracket cannot change the harmonic
+profile of a fluctuation: multiplying by a constant singlet background leaves the orbital
+$SO(5)$ harmonic $Y_\ell$ untouched. At odd order the equations can mix NSNS and RR sectors,
+and they can reshuffle oscillator polarizations inside a fixed $(s_L,s_R)\times SO(5)$ block,
+but they cannot by themselves connect the $\ell=0$ candidates to the $\ell=2$ candidates.
+That connection first appears at second order through $\psi^{(2)}\sim X_iX_j$.
+
+The second-order NSNS background $\psi^{(2)}$ is still important, but for a different reason:
+it contributes to $\widehat H^{(2)}$ and is the first place where the harmonic level can change.
 The $X_iX_j$ part of $h^{(2)}_{\mu\nu}$ mixes harmonic levels $\ell$ and $\ell\pm 2$,
 coupling the $\D_0=6$ ($\ell=0$), $\D_0=5$ ($\ell=1$), and $\D_0=4$ ($\ell=2$) states.
 
-Diagonalising $H^{(2)}$ in this combined space should simultaneously produce $b_0=+2,+1,0$
-for the three harmonic levels and determine $b_1$ for each. This is the computation already
-underway in \texttt{draftKonishi.tex}.
+So the current picture is:
+\begin{itemize}
+\item $\widehat H^{(1)}$ is where an $O(1)$ shift such as $b_0$ must live;
+\item $\widehat H^{(2)}$ is where the universal $b_1$ term and the $\ell\leftrightarrow \ell\pm2$
+mixing should be extracted.
+\end{itemize}
 
 \subsection{Recommended strategy: \texorpdfstring{$\D_0=4$}{Delta0=4} candidates}
 
@@ -794,8 +907,9 @@ coefficient is $b_1=2$ at second order.
 
 Take $[2,0,2]_{(0,0)}$ at $\D_0=4$ as the default computational target.
 \begin{itemize}
-\item It is a bona fide Konishi descendant, unique in Table~1 at $\D_0=4$,
-spinless in $AdS$, and naturally carried by internal quantum numbers.
+\item It is a bona fide Konishi descendant, represented by a single exact Table-1 entry
+$[2,0,2]_{(0,0)}$ at $\D_0=4$; but in the Table-C sense there is no isolated $4\!:\!1$
+manifest branched label. It is spinless in $AdS$ and naturally carried by internal quantum numbers.
 \item The first-order source vanishes (null-polarisation identity, \S\ref{sec:delta4_bracket}),
 which is consistent with $b_0=0$. No information is lost.
 \item The first nontrivial coefficient $b_1=2$ enters at second order, where the NSNS bracket
@@ -1204,8 +1318,9 @@ include the $\D_0=4$ value $b_0=0$, but there may be additional eigenvalues.
 \end{itemize}
 
 The $\ell=0$ state, which should be the $\D_0=6$ Konishi descendant with $b_0=+2$, gets
-$b_0=0$ from the first-order perturbation theory. The expected constant correction
-$b_0=\D_0-4$ is therefore \emph{not} produced by the first-order NSNS--RR mixing mechanism.
+no contribution from the specific first-order NSNS--RR mixing mechanism considered above.
+That only shows that this particular piece of $\widehat H^{(1)}$ vanishes on the chosen seed;
+it does \emph{not} show that the full $O(1)$ Hamiltonian correction is absent.
 
 \paragraph{Subleading order: $\ell$ mixing from $\psi^{(2)}$.}
 The second-order NSNS background has quadratic $X$-dependence:
@@ -1219,15 +1334,17 @@ Clebsch--Gordan decomposition $\langle 0,2\rangle\otimes\langle 0,\ell\rangle
 So the bracket $[\psi^{(2)}\otimes\varphi^{(0)}]'$ mixes $\ell$ with $\ell\pm 2$, and the
 second-order Hamiltonian $H^{(2)}=[\psi^{(2)}\otimes H^{(0)}]'+\cdots$ acts across harmonic levels.
 
-Since $H^{(1)}=0$, the full spectrum --- both the constant $b_0=\D_0-4$ and the coefficient
-$b_1$ --- must emerge from $H^{(2)}$ acting on the combined $\ell=0,1,2$ space.
 The $\ell=0$ state ($\D_0=6$) communicates with the $\ell=2$ states ($\D_0=4$) through
-the NSNS coupling mediated by $h^{(2)}_{ij}\sim X_iX_j$, so no sector mismatch arises.
+the NSNS coupling mediated by $h^{(2)}_{ij}\sim X_iX_j$, so no sector mismatch arises
+at the level of $\widehat H^{(2)}$.
 
-Whether the eigenvalue of $H^{(2)}$ in this space is $O(1)$ (giving $b_0$) or
-$O(1/R)$ (giving $b_1/R$) depends on the $R$-dependent normalization of the states
-and the Hamiltonian, which is what the second-order computation in \texttt{draftKonishi.tex}
-is working out.
+But the power counting is clear:
+\begin{itemize}
+\item $b_0$ must be encoded in $\widehat H^{(1)}$;
+\item $\widehat H^{(2)}$ is the right place to extract the $b_1/R$ term and the higher-harmonic mixing.
+\end{itemize}
+So the real open problem is to construct the complete $R^0$ Hamiltonian correction
+$H^{(1)}$ for the AdS energy generator and evaluate its action on the relevant level-1 states.
 
 \section{Mass-level-1 spectrum for the \texorpdfstring{$\D_0=4$}{Delta0=4} candidate}
 \label{sec:delta4_spectrum}

@@ -1,0 +1,393 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,booktabs,longtable,array,hyperref}
+\topmargin -.5cm
+\textheight 21cm
+\oddsidemargin -.125cm
+\textwidth 17cm
+
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\D}{\Delta}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bb}{\mathbf}
+\newcommand{\half}{\frac{1}{2}}
+
+\begin{document}
+\sloppy
+
+\begin{center}
+{\Large\bf Mass-Level-1 Primary States and the Konishi Table}
+\end{center}
+
+\section{Goal}
+
+The purpose of this note is to compare, at the level of \emph{primary-state labels},
+the full first-massive flat-space Type IIB spectrum with the states listed in Table~1 of
+\texttt{references/1102.1209/1102.1209.tex}.
+
+The comparison is performed with the following rules.
+\begin{itemize}
+\item On the AdS side, I keep the primary labels $(s_L,s_R)$ exactly as they are shown in Table~1.
+\item On the sphere side, I branch every $\SO(6)$ irrep in Table~1 to $\SO(5)$.
+\item On the flat-space side, I decompose the first-massive physical representations under
+$\SO(1,4)\times \SO(5)$ and then keep the corresponding compact $\SO(4)$ spin labels
+$(s_L,s_R)$.
+\item The comparison key is therefore
+\begin{equation}
+\big((s_L,s_R),\,\la a,b\ra\big),
+\end{equation}
+with multiplicities retained.
+\end{itemize}
+
+The independent computation is implemented in
+\texttt{scripts/primary\_branching\_scan.py}. Existing notes were used only \emph{after}
+the derivation as a validation check.
+
+\section{Independent Branching Data}
+
+\subsection{Left-moving first-massive building blocks}
+
+Write the vector of the little group as
+\begin{equation}
+\bb 9 \to \Big(\half,\half;\la 0,0\ra\Big)\oplus \Big(0,0;\la 0,1\ra\Big),
+\end{equation}
+where $\la a,b\ra$ denotes a $\SO(5)$ irrep in $B_2$ Dynkin notation.
+
+The first-massive physical left-moving representations are
+\begin{equation}
+\bb{44}=\mathrm{Sym}^2_0(\bb 9),\qquad
+\bb{84}=\Lambda^3(\bb 9),\qquad
+\bb{128}\subset \bb 9\otimes \bb{16}.
+\end{equation}
+Their independent decomposition is:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{>{$\displaystyle}c<{$} >{$\displaystyle}l<{$}}
+\toprule
+\text{rep} & \SO(4)\times \SO(5)\text{ decomposition} \\
+\midrule
+\bb{44} &
+(0,0;\la 0,0\ra)\oplus (0,0;\la 0,2\ra)\oplus (\half,\half;\la 0,1\ra)\oplus (1,1;\la 0,0\ra)
+\\[2mm]
+\bb{84} &
+(\half,\half;\la 0,0\ra)\oplus (1,0;\la 0,1\ra)\oplus (0,1;\la 0,1\ra)\oplus
+(\half,\half;\la 2,0\ra)\oplus (0,0;\la 2,0\ra)
+\\[2mm]
+\bb{128} &
+(1,\half;\la 1,0\ra)\oplus (\half,1;\la 1,0\ra)\oplus (\half,0;\la 1,0\ra)\oplus
+(0,\half;\la 1,0\ra)
+\\ &
+\oplus (\half,0;\la 1,1\ra)\oplus (0,\half;\la 1,1\ra)
+\\
+\bottomrule
+\end{tabular}
+\caption{Independent decomposition of the left-moving first-massive building blocks.}
+\end{table}
+
+The closed-string sectors are then formed as
+\begin{equation}
+\text{NSNS}=(\bb{44}\oplus \bb{84})_L\otimes (\bb{44}\oplus \bb{84})_R,\qquad
+\text{RR}=\bb{128}_L\otimes \bb{128}_R,
+\end{equation}
+and similarly for the mixed sectors NSR and RNS.
+
+\subsection{Overall multiplicity counts}
+
+After tensoring left and right movers and decomposing all $\SO(5)$ products independently,
+the total primary-state multiplicity counts are:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\text{sector} & \text{total multiplicity} \\
+\midrule
+\text{NSNS} & 306 \\
+\text{RR} & 298 \\
+\text{NSR} & 242 \\
+\text{RNS} & 242 \\
+\midrule
+\text{Total flat-space multiplicity} & 1088 \\
+\bottomrule
+\end{tabular}
+\caption{Multiplicity counts for the full first-massive flat-space primary spectrum.}
+\end{table}
+
+\section{Comparison with the Konishi Table}
+
+Every $\SO(6)$ irrep in Table~1 was independently branched to $\SO(5)$, while the displayed
+primary spin labels $(s_L,s_R)$ were kept unchanged.
+
+The global comparison is:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\text{quantity} & \text{value} \\
+\midrule
+\text{Distinct flat-space irreps} & 109 \\
+\text{Distinct branched Konishi irreps} & 109 \\
+\text{Set-level intersection} & 109 \\
+\text{Flat-only distinct irreps} & 2 \\
+\text{Konishi-only distinct irreps} & 0 \\
+\midrule
+\text{Total flat-space multiplicity} & 1088 \\
+\text{Total branched Konishi multiplicity} & 1086 \\
+\bottomrule
+\end{tabular}
+\caption{Global comparison of primary-state labels $\big((s_L,s_R),\la a,b\ra\big)$.}
+\end{table}
+
+So the answer is:
+\begin{itemize}
+\item At the level of \emph{distinct irreps}, every flat-space mass-level-1 primary irrep appears in the
+branched Konishi table.
+\item The only failure is at the level of multiplicities.
+\end{itemize}
+
+The complete mismatch is:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+\toprule
+\text{irrep} & \text{flat multiplicity} & \text{Konishi multiplicity} \\
+\midrule
+$(0,\half;\la 1,0\ra)$ & 32 & 31 \\
+$(\half,0;\la 1,0\ra)$ & 32 & 31 \\
+\bottomrule
+\end{tabular}
+\caption{The only multiplicity mismatch in the comparison.}
+\end{table}
+
+There are no irreps that appear on the Konishi side but fail to appear on the flat-space side.
+
+\subsection{Explanation of the result}
+
+The comparison is surprisingly tight:
+\begin{equation}
+\text{all 109 distinct flat-space irreps occur in the branched Konishi table.}
+\end{equation}
+Thus the branched Konishi table is large enough to cover the entire first-massive primary-state
+content at the level of representation \emph{types}.
+
+The only discrepancy is that the two chiral spinor-vector sphere-spinor labels
+\begin{equation}
+(0,\half;\la 1,0\ra),\qquad (\half,0;\la 1,0\ra)
+\end{equation}
+appear once fewer on the Konishi side than in the full flat-space count. In other words,
+the mismatch is not structural. It does not remove an entire representation family.
+It is a very small multiplicity deficit in precisely two fermionic channels.
+
+For the present primary-state question, the clean summary is therefore:
+\begin{equation}
+\text{set-level match: yes, \qquad multiplicity-level match: no, but only by }2.
+\end{equation}
+
+\subsection{Source of the mismatch}
+
+The mismatch can be localized very sharply.
+\begin{itemize}
+\item It is \emph{not} caused by the $\SO(6)\to \SO(5)$ branching. That part agrees exactly with the
+independent check against the existing note.
+\item It is \emph{not} caused by the decomposition of the $\bb{44}$, $\bb{84}$, or $\bb{128}$ under
+$\SO(4)\times \SO(5)$. Those also agree with the existing note.
+\item The two excess copies on the flat-space side live entirely in the mixed fermionic sectors NSR and RNS.
+\end{itemize}
+
+More concretely, each of the problematic irreps receives
+\begin{equation}
+16\ \text{copies from NSR} \qquad\text{and}\qquad 16\ \text{copies from RNS},
+\end{equation}
+so the flat-space total is $32$, whereas the branched Konishi table contains only $31$.
+
+This points to the actual cause: on the flat-space side I counted \emph{all} compact
+$\SO(4)$ pieces obtained from the first-massive mixed sectors, while on the Konishi side
+Table~1 counts only superconformal primaries. For the two irreps
+\begin{equation}
+(0,\half;\la 1,0\ra),\qquad (\half,0;\la 1,0\ra),
+\end{equation}
+the naive flat-space compact reduction appears to overcount by one linear combination in each
+chirality. The present script does \emph{not} implement the full AdS primary projection, so this
+should be read as an interpretation of the data rather than as a separate theorem.
+
+What \emph{is} established directly by the computation is that the phenomenon is isolated.
+Among all mixed-sector irreps with sphere label $\la 1,0\ra$, the complete tower is
+\begin{equation}
+\begin{aligned}
+&(0,\half),(0,\tfrac32),(\half,0),(\half,1),(\half,2),(1,\half),\\
+&(1,\tfrac32),(\tfrac32,0),(\tfrac32,1),(\tfrac32,2),(2,\half),(2,\tfrac32),
+\end{aligned}
+\end{equation}
+and every entry in this tower matches the Konishi multiplicity exactly except the two bottom
+states $(0,\half;\la 1,0\ra)$ and $(\half,0;\la 1,0\ra)$.
+They are also the only mixed $\la 1,0\ra$ states whose lowest conformal weight is
+$\Delta_0=\frac52$; all higher-spin states in the same family start at $\Delta_0\ge \frac72$ and
+agree perfectly with Konishi.
+
+So this pair is special because it sits at the very bottom of the mixed fermionic
+$\la 1,0\ra$ tower: minimal $\SO(4)$ spin and minimal $\Delta_0$.
+That is exactly where one expects a naive compact-state count to be most sensitive to the
+difference between ``all compact components'' and ``actual AdS primaries''.
+
+Equivalently, if one corrects the flat-space primary count by subtracting one copy of
+\begin{equation}
+(0,\half;\la 1,0\ra)\qquad\text{and}\qquad (\half,0;\la 1,0\ra),
+\end{equation}
+then the multiplicities match \emph{exactly}:
+\begin{equation}
+1088-2=1086.
+\end{equation}
+
+So the mismatch is best understood not as a genuine disagreement in representation content,
+but as the residual effect of using a coarse flat-space compact-spin projection as a proxy
+for the actual AdS primary-state condition. The important point for the present comparison is that
+no analogous hidden mismatch shows up anywhere else in the spectrum: every other irrep already
+matches before any such correction.
+
+\section{Check Against the Existing Note}
+
+After the independent derivation, I compared the results against
+\texttt{notes/konishi\_linearized\_ansatz.tex}. The overlap agrees exactly:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\text{check} & \text{mismatches} \\
+\midrule
+$\SO(6)\to \SO(5)$ branching table & 0 \\
+flat $\bb{44},\bb{84},\bb{128}$ decompositions & 0 \\
+\bottomrule
+\end{tabular}
+\caption{Validation against the existing note after the independent derivation.}
+\end{table}
+
+\appendix
+
+\section{Independent Group-Theory Algorithm}
+
+\subsection{Branching \texorpdfstring{$\SO(6)\to \SO(5)$}{SO(6)->SO(5)}}
+
+I treat $\SO(6)$ as $D_3$ and $\SO(5)$ as $B_2$.
+For an $\SO(6)\simeq \SU(4)$ irrep with Dynkin labels
+\begin{equation}
+[a,b,c],
+\end{equation}
+I convert to the scaled orthogonal highest weight
+\begin{equation}
+(\lambda_1,\lambda_2,\lambda_3)=(a+c+2b,\ a+c,\ c-a).
+\end{equation}
+
+The $D_3\to B_2$ branching is then obtained from the orthogonal interlacing rule:
+\begin{equation}
+\lambda_1\ge m_1\ge \lambda_2\ge m_2\ge |\lambda_3|,
+\end{equation}
+with $m_1,m_2$ of the same parity as the $\lambda_i$ in the present scaled convention.
+Each admissible pair $(m_1,m_2)$ contributes one $\SO(5)$ irrep with Dynkin labels
+\begin{equation}
+\la a,b\ra=\la m_2,\ \tfrac{m_1-m_2}{2}\ra.
+\end{equation}
+This directly produces the full $\SO(6)\to \SO(5)$ branching table used in the note.
+
+\subsection{Tensor products in \texorpdfstring{$\SO(5)$}{SO(5)}}
+
+To multiply $\SO(5)$ irreps, I compute the full weight system of a highest weight
+\begin{equation}
+\la a,b\ra
+\end{equation}
+using Freudenthal recursion for the $B_2$ root system. In scaled orthogonal coordinates,
+the positive roots are
+\begin{equation}
+(2,-2),\qquad (0,2),\qquad (2,0),\qquad (2,2),
+\end{equation}
+and the Weyl vector is
+\begin{equation}
+\rho=(3,1).
+\end{equation}
+
+Starting from the highest weight, I generate lower weights by subtracting simple roots and
+determine their multiplicities recursively from the Freudenthal formula. After that, tensor
+products are computed in two steps:
+\begin{enumerate}
+\item add left and right weights with multiplicities;
+\item repeatedly subtract irreducible $B_2$ characters, starting from the dominant highest weight
+still present.
+\end{enumerate}
+This yields the complete $\SO(5)$ tensor-product decomposition with multiplicities.
+
+\subsection{Flat-space first-massive spectrum}
+
+The flat-space side is constructed from the physical first-massive little-group representations.
+
+\paragraph{The bosons.}
+Decompose the vector as
+\begin{equation}
+\bb 9\to \Big(\half,\half;\la 0,0\ra\Big)\oplus \Big(0,0;\la 0,1\ra\Big).
+\end{equation}
+Then compute
+\begin{equation}
+\bb{44}=\mathrm{Sym}^2_0(\bb 9),\qquad \bb{84}=\Lambda^3(\bb 9)
+\end{equation}
+by standard tensor algebra.
+
+\paragraph{The fermions.}
+The spinor branches as
+\begin{equation}
+\bb{16}\to \Big(\half,0;\la 1,0\ra\Big)\oplus \Big(0,\half;\la 1,0\ra\Big).
+\end{equation}
+The vector-spinor is obtained from
+\begin{equation}
+\bb 9\otimes \bb{16}
+\end{equation}
+and then the gamma-trace $\bb{16}$ is removed, leaving the gamma-traceless
+representation $\bb{128}$.
+
+\paragraph{Closed-string sectors.}
+Finally, I tensor left and right movers to obtain the NSNS, RR, NSR, and RNS sectors, and
+collect the resulting primary-state labels
+\begin{equation}
+\big((s_L,s_R),\la a,b\ra\big)
+\end{equation}
+with multiplicity.
+
+\subsection{Comparison stage}
+
+Each Table-1 entry is parsed as
+\begin{equation}
+(\D_0,\ [p,q,r],\ (s_L,s_R),\ \text{multiplicity}),
+\end{equation}
+branched independently on the $\SO(6)$ side, and accumulated into the same key
+\begin{equation}
+\big((s_L,s_R),\la a,b\ra\big).
+\end{equation}
+The final output compares the flat-space and Konishi multisets directly, so both set-level
+and multiplicity-level statements follow immediately from the same data.
+
+\clearpage
+\section{Complete Flat-Space Irrep Table}
+
+For completeness, I include the full list of primary-state irreps obtained from reducing the
+first-massive flat-space spectrum. The table is grouped by compact spin label $(s_L,s_R)$ and
+also shows the sector split into NSNS, RR, and mixed NSR/RNS contributions.
+
+\begingroup
+\input{generated_flat_space_irreps.tex}
+\endgroup
+
+\clearpage
+\section{Complete Konishi Irrep Table}
+
+This appendix contains the full list of primary-state irreps obtained from the Konishi table
+after branching $\SO(6)\to \SO(5)$. The table is again grouped by compact spin label and each
+row is graded by the corresponding values of $\D_0$.
+
+\begingroup
+\input{generated_konishi_irreps.tex}
+\endgroup
+
+\end{document}
