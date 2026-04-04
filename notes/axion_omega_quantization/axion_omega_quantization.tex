@@ -1,0 +1,256 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,booktabs,array,hyperref}
+\topmargin -.5cm
+\textheight 21cm
+\oddsidemargin -.125cm
+\textwidth 17cm
+
+\newcommand{\D}{\Delta}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\cC}{\mathcal{C}}
+
+\begin{document}
+\sloppy
+
+\begin{center}
+{\Large\bf How \texttt{2504.12290} Could Quantize the Axion Frequency}
+\end{center}
+
+\section{Purpose}
+
+This note investigates how the mechanism of
+\href{https://arxiv.org/abs/2504.12290}{arXiv:2504.12290},
+which recovers quantized fluctuation data in a compact flux background, could be adapted to the
+massless RR axion mode on $AdS_5\times S^5$.
+
+The point is not to claim a complete derivation of the axion frequency from the current superstring SFT
+setup.  The point is narrower: isolate the exact place where the local large-$R$ analysis fails to fix
+$\omega$, and explain why the extended-BV/global-isometry method of \texttt{2504.12290} is the natural
+mechanism that could restore the missing quantization condition.
+
+\section{The Current Gap in the Projective-Patch Analysis}
+
+For the axion zero mode we have been using the projective-coordinate ansatz
+\begin{equation}
+\phi(X)=e^{-i\omega\tau(X)}\,f(s),
+\qquad
+s=\frac{r^2}{R^2},
+\qquad
+r^2=\sum_{m=1}^4 (X^m)^2.
+\end{equation}
+The exact $X$-coordinate scalar equation gives the radial ODE
+\begin{equation}
+4s(1+s)f''(s)+4(2+3s)f'(s)+\frac{\omega^2}{1+s}f(s)=0.
+\label{radialode}
+\end{equation}
+Expanding around the center of AdS,
+\begin{equation}
+f(s)=\sum_{n=0}^{\infty} a_n s^n,
+\end{equation}
+one finds a perfectly regular local solution for every chosen $\omega$.  The coefficients are fixed
+recursively by \eqref{radialode}, but $\omega$ itself is not quantized by this inner expansion.
+
+This is not an accident.  The expansion at fixed $X^a$ probes only the region
+\begin{equation}
+s=\frac{r^2}{R^2}\ll 1,
+\end{equation}
+i.e.\ a local patch near the center of AdS.  The actual quantization condition sits at the other end of
+the radial problem, namely the AdS boundary $s\to\infty$, where one must require the absence of the
+non-normalizable branch.
+
+So the missing ingredient is global information, not another local recursion relation.
+
+\section{What \texttt{2504.12290} Adds}
+
+The essential lesson of \texttt{2504.12290} is that one should not study only one perturbative patch.
+Instead, one introduces a family of Riemann normal coordinates centered at different target-space points,
+together with a corresponding family of string fields related by diffeomorphism gauge transformations.
+The background equation and these transport equations are then unified into an extended BV system.
+
+The conceptual payoff is exactly the one we need here:
+\begin{itemize}
+\item the local weak-curvature expansion still controls each individual patch;
+\item but the extended system transports the solution over the whole target space;
+\item therefore the fluctuation problem can be organized globally under the target-space isometries.
+\end{itemize}
+
+Section 4.4 of \texttt{2504.12290} is the key point.  There the fluctuation string fields are required
+to satisfy both:
+\begin{itemize}
+\item an on-shell equation,
+\item and a covariance condition under the global isometry generators.
+\end{itemize}
+The fluctuations are organized into definite isometry representations.  Applying the covariance condition
+twice identifies the target-space Laplacian with the quadratic Casimir of the isometry group, to the
+relevant order in the weak-curvature expansion.  Matching to the target-space Laplacian spectrum then
+recovers the allowed fluctuation representations.
+
+The paper emphasizes that this works only because the extended fields know about the \emph{entire target
+space}, not just the patch seen by expanding in $x/R$.
+
+\section{\texorpdfstring{The AdS$_5$ Axion Analogue}{The AdS5 Axion Analogue}}
+
+For the axion zero mode on $S^5$, the sphere representation is trivial.  So the only nontrivial
+quantization problem is on the AdS side.
+
+The analogue of the compact-space angular momentum label is now the lowest-weight representation of
+$SO(2,4)$.  For a scalar primary one has the module
+\begin{equation}
+D(\D;0,0),
+\end{equation}
+whose quadratic Casimir is
+\begin{equation}
+\cC_2\big(D(\D;0,0)\big)=\D(\D-4).
+\label{casimir}
+\end{equation}
+For the massless axion zero mode, the five-dimensional mass is
+\begin{equation}
+m_5^2=0.
+\end{equation}
+The standard AdS scalar equation is therefore
+\begin{equation}
+\left(\Box_{AdS}-m_5^2\right)\phi=0
+\qquad \Longrightarrow \qquad
+\D(\D-4)=0.
+\label{massdim}
+\end{equation}
+So the two algebraic possibilities are
+\begin{equation}
+\D=0,\qquad \D=4.
+\end{equation}
+
+At the level of the local projective patch, both branches are visible.  This is exactly what the local
+series solution of \eqref{radialode} is telling us: regularity near the center does not yet choose one
+module over the other.
+
+The global AdS state condition is what removes the ambiguity.  A physical bulk state must sit in the
+normalizable lowest-weight module, not in the source branch.  For a massless scalar this means
+\begin{equation}
+\text{choose } D(4;0,0)\ \text{rather than}\ D(0;0,0).
+\end{equation}
+For the primary, the global time dependence is
+\begin{equation}
+e^{-i\omega\tau},
+\qquad
+\omega=\D,
+\end{equation}
+so the physical choice is
+\begin{equation}
+\omega=4.
+\end{equation}
+
+In this form the logic is parallel to the compact example of \texttt{2504.12290}:
+\begin{itemize}
+\item local perturbation theory gives differential equations but not the full discrete spectrum;
+\item global covariance under the isometry group upgrades the fluctuation problem to a Casimir problem;
+\item the physical spectrum is then obtained by selecting the appropriate global representation.
+\end{itemize}
+
+\section{Why the AdS Case Is Not Identical to the Sphere Case}
+
+There is one important difference.  On a compact space the isometry representations are finite-dimensional,
+and the quantization problem is directly the quantization of angular momentum or KK level.  In AdS the
+relevant group is noncompact, so the representation data are lowest-weight modules rather than
+finite-dimensional multiplets.
+
+So the AdS analogue of the compact KK quantization condition is:
+\begin{equation}
+\text{normalizable lowest-weight } SO(2,4)\text{ module}.
+\end{equation}
+This is not enforced by the local $x/R$ expansion.  It is a global statement, exactly of the type that
+the extended-BV formalism is designed to capture.
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}}
+\toprule
+ & \texttt{2504.12290} compact example & AdS$_5$ axion analogue \\
+\midrule
+Local patch data &
+weak-curvature expansion in one Riemann normal patch &
+large-$R$ projective expansion near the AdS center \\
+Global symmetry input &
+compact isometry representation / KK angular momentum &
+$SO(2,4)$ lowest-weight module $D(\D;0,0)$ \\
+Casimir relation &
+target-space Laplacian matches compact-space Casimir &
+$\Box_{AdS}$ matches $\cC_2=\D(\D-4)$ \\
+What gets quantized &
+allowed KK representation &
+allowed normalizable global-energy branch \\
+Physical selection rule &
+representation appears in BRST cohomology globally &
+choose the normalizable module, hence $\D=\omega=4$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{What This Suggests for the Current SFT Program}
+
+The immediate lesson is not a new local calculation.  It is a change in what one should expect from the
+existing local calculation.
+
+The projective large-$R$ analysis around one origin should \emph{not} be expected to quantize $\omega$ by
+itself.  Its role is to provide the inner solution.  The missing quantization condition must come from the
+global completion of the fluctuation problem.
+
+For the axion, that global completion is simple enough that one already knows the answer:
+\begin{equation}
+m_5^2=0,\qquad \cC_2=\D(\D-4),\qquad \text{normalizable branch } \Rightarrow \omega=\D=4.
+\end{equation}
+So the main value of the \texttt{2504.12290} perspective is not to discover a new number, but to explain
+where that number should come from in SFT: from a globally covariant fluctuation problem, not from the
+inner weak-curvature patch alone.
+
+For Konishi the same mechanism should be harder but structurally similar.  One would need:
+\begin{itemize}
+\item the superstring analogue of the extended BV transport system on $AdS_5\times S^5$,
+\item a globally covariant fluctuation equation for the relevant first-massive fields,
+\item and a match between that equation and the appropriate $SO(2,4)\times SO(6)$ Casimirs.
+\end{itemize}
+Only at that stage should one expect a genuine quantization condition on the $O(1)$ part of the energy.
+
+\section{Bottom Line}
+
+The technique of \texttt{2504.12290} suggests the following resolution of the present puzzle.
+
+\begin{equation}
+\text{local large-}R\text{ patch} \neq \text{full frequency quantization problem}.
+\end{equation}
+The local patch determines the inner expansion of the axion mode, but the frequency is selected only when
+the fluctuation problem is promoted to a global isometry/Casimir problem.  For the massless scalar axion,
+that global statement is precisely the choice of the normalizable lowest-weight $SO(2,4)$ module
+$D(4;0,0)$, which yields
+\begin{equation}
+\omega=4.
+\end{equation}
+
+\begin{thebibliography}{99}
+
+\bibitem{Diff2504}
+M.~Cho, S.~Collier, J.~Sandor and X.~Yin,
+``Diffeomorphism in Closed String Field Theory,''
+\href{https://arxiv.org/abs/2504.12290}{arXiv:2504.12290}.
+
+\bibitem{SFT2507}
+R.~Pius, B.~T.~Stefa\'nski and A.~A.~Tseytlin,
+``Type IIB string field theory on $AdS_5\times S^5$ at large radius,''
+\href{https://arxiv.org/abs/2507.12921}{arXiv:2507.12921}.
+
+\bibitem{Witten}
+E.~Witten,
+``Anti-de Sitter space and holography,''
+Adv.\ Theor.\ Math.\ Phys.\ {\bf 2} (1998) 253,
+\href{https://arxiv.org/abs/hep-th/9802150}{hep-th/9802150}.
+
+\bibitem{AharonyReview}
+O.~Aharony, S.~S.~Gubser, J.~M.~Maldacena, H.~Ooguri and Y.~Oz,
+``Large $N$ field theories, string theory and gravity,''
+Phys.\ Rept.\ {\bf 323} (2000) 183,
+\href{https://arxiv.org/abs/hep-th/9905111}{hep-th/9905111}.
+
+\end{thebibliography}
+
+\end{document}

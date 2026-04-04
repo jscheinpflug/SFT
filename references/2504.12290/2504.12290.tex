@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,hyperref}
+\topmargin -.5cm
+\textheight 21cm
+\oddsidemargin -.125cm
+\textwidth 17cm
+
+\begin{document}
+
+\begin{center}
+{\Large\bf Local TeX Transcription for arXiv:2504.12290}
+
+\vspace{0.3cm}
+{\large Diffeomorphism in Closed String Field Theory}
+\end{center}
+
+\noindent
+This file is a local TeX transcription of the portions of
+\href{https://arxiv.org/abs/2504.12290}{arXiv:2504.12290}
+used in the SFT notes.  The sandbox in this environment cannot resolve
+\texttt{arxiv.org}, so the original source archive could not be downloaded directly into
+\texttt{/references}.  The text below records the key statements from the ar5iv rendering that are
+used in the note
+\texttt{notes/axion\_omega\_quantization/axion\_omega\_quantization.tex}.
+
+\section*{Bibliographic data}
+
+M.~Cho, S.~Collier, J.~Sandor and X.~Yin,
+``Diffeomorphism in Closed String Field Theory,''
+\href{https://arxiv.org/abs/2504.12290}{arXiv:2504.12290}.
+
+\section*{Key statements from Sections 4.1--4.4}
+
+\paragraph{Riemann-normal-coordinate family.}
+The paper introduces, for each point on the target manifold, a Riemann normal coordinate system and a
+corresponding family of string fields related by diffeomorphism gauge transformations.  The basic point is
+that one should keep track simultaneously of the solution in many local coordinate patches rather than
+around a single origin.
+
+\paragraph{Extended BV system.}
+The equations of motion for the background string field and the gauge-transport equations that move
+between nearby Riemann normal coordinates are combined into a single extended BV system.  In the text this
+is described as an enlarged string field valued in differential forms on the target manifold together with
+an extended BRST operator.  The resulting equation simultaneously encodes:
+\begin{itemize}
+\item the ordinary SFT equation of motion,
+\item the covariance of the family of fields under infinitesimal diffeomorphisms,
+\item and the integrability condition for transporting between different coordinate origins.
+\end{itemize}
+
+\paragraph{Flux background.}
+For the compact flux example analyzed in Section 4.3, the paper emphasizes that one can choose a global
+orthonormal frame adapted to the isometries, so that the relevant background fields become independent of
+the base point on the target manifold.  The ghost-number-one string fields then realize the global
+isometry algebra.
+
+\paragraph{Spectrum of fluctuations (Section 4.4).}
+The fluctuation problem is formulated so that the fluctuation string fields satisfy both an on-shell
+condition and a covariance condition under the global isometries.  The fluctuations are organized into
+isometry representations.  Applying the representation condition twice shows that the target-space
+Laplacian agrees with the quadratic Casimir, to the relevant order in the weak-curvature expansion.
+Matching to the target-space Laplacian spectrum then implies that the allowed representations appear in the
+BRST cohomology with the expected multiplicities.
+
+\paragraph{Crucial conceptual statement.}
+The paper stresses that this spectral result relies crucially on the fact that the extended fields know
+about the \emph{entire target space}, not only the local patch visible in an expansion in $x/R$.  This is
+presented as the main advantage of the extended BV system for recovering global information such as KK
+quantization.
+
+\section*{Conclusion statements used in the notes}
+
+The conclusion makes two points that are directly relevant for the current AdS application:
+\begin{itemize}
+\item the perturbative SFT description around a single coordinate origin only sees a local patch and does
+      not detect the full topology or global isometries of the target space;
+\item the extended BV system remedies this by transporting the solution along the manifold and by making
+      the fluctuation problem globally covariant with respect to the isometries.
+\end{itemize}
+The paper explicitly says that quantization was not visible in the straightforward perturbative analysis,
+and that understanding how the extended formalism imposes the expected restrictions on the spectrum is one
+of its main uses.
+
+\end{document}
