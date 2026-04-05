@@ -1,0 +1,430 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,booktabs,longtable,array,hyperref}
+\topmargin -.5cm
+\textheight 21cm
+\oddsidemargin -.125cm
+\textwidth 17cm
+
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\D}{\Delta}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\half}{\frac{1}{2}}
+
+\begin{document}
+\sloppy
+
+\begin{center}
+{\Large\bf Unique Exact Labels in Konishi Table 1}
+\end{center}
+
+\section{Goal and Counting Convention}
+
+Take Table~1 as reproduced in
+\texttt{notes/konishi\_linearized\_ansatz/konishi\_linearized\_ansatz.tex}
+and parse it at the level of \emph{exact displayed labels}
+\begin{equation}
+[a,b,c]_{(s_L,s_R)}.
+\end{equation}
+If a term appears with an explicit coefficient, such as
+\begin{equation}
+2(s_L,s_R),
+\end{equation}
+that contributes multiplicity two to the corresponding exact label.
+
+So for each displayed pair $\big([a,b,c],(s_L,s_R)\big)$ I define the total Table-1 multiplicity
+\begin{equation}
+N\big([a,b,c]_{(s_L,s_R)}\big)
+=\sum_{\D_0} N_{\D_0}\big([a,b,c]_{(s_L,s_R)}\big).
+\end{equation}
+The phrase ``appears only once in the entire table'' will mean
+\begin{equation}
+N\big([a,b,c]_{(s_L,s_R)}\big)=1.
+\end{equation}
+
+This is slightly stronger than the weaker statement ``supported at a single weight''.
+I record below the four labels that are supported at only one weight but with coefficient two.
+
+The branching convention is the same bookkeeping convention used in
+\texttt{notes/level1\_primary\_comparison/level1\_primary\_comparison.tex}:
+\begin{itemize}
+\item keep the compact $\SO(4)\subset \SO(1,4)$ spin label $(s_L,s_R)$ exactly as displayed in Table~1;
+\item branch only the $\SO(6)$ irrep to $\SO(5)$.
+\end{itemize}
+So the ``$\SO(1,4)\times \SO(5)$ decomposition'' below should be read as the compact-label bookkeeping
+\begin{equation}
+[a,b,c]_{(s_L,s_R)}
+\rightsquigarrow
+\bigoplus_{\mu\in [a,b,c]\downarrow \SO(5)} (s_L,s_R;\mu),
+\end{equation}
+not as a claim that Table~1 by itself determines the full noncompact highest weight of the
+$\SO(1,4)$ representation.
+
+\paragraph{Quadratic Casimir conventions.}
+For an $\SO(2,4)\times \SO(6)$ highest-weight label
+\begin{equation}
+[j_1,j_2,j_3]_{(s_1,s_2)}
+\qquad\text{with conformal weight}\qquad \D,
+\end{equation}
+the quadratic Casimir is
+\begin{equation}
+C_2^{\SO(2,4)\times \SO(6)}
+=
+C_2^{\SO(2,4)}+C_2^{\SO(6)},
+\end{equation}
+with
+\begin{equation}
+C_2^{\SO(2,4)}
+=
+\D(\D-4)+2s_1(s_1+1)+2s_2(s_2+1),
+\end{equation}
+and
+\begin{equation}
+C_2^{\SO(6)}
+=
+\frac18\Big(
+3j_1^2+4j_2^2+3j_3^2
++4j_1j_2+2j_1j_3+4j_2j_3
++12j_1+16j_2+12j_3
+\Big).
+\end{equation}
+
+\section{Summary}
+
+The exact scan gives:
+\begin{itemize}
+\item $201$ distinct exact labels $[a,b,c]_{(s_L,s_R)}$ in Table~1.
+\item $88$ of them have total multiplicity one.
+\item These $88$ labels occur only at
+\begin{equation}
+\D_0=\frac{9}{2},\ 5,\ \frac{11}{2},\ 6,\ \frac{13}{2},\ 7,\ \frac{15}{2}.
+\end{equation}
+\end{itemize}
+
+The weight distribution is:
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+\toprule
+$\D_0$ & number of exact labels with total multiplicity $1$ \\
+\midrule
+$\frac{9}{2}$ & $4$ \\
+$5$ & $8$ \\
+$\frac{11}{2}$ & $20$ \\
+$6$ & $24$ \\
+$\frac{13}{2}$ & $20$ \\
+$7$ & $8$ \\
+$\frac{15}{2}$ & $4$ \\
+\bottomrule
+\end{tabular}
+\caption{Weight distribution of the exact labels that appear only once in the full table.}
+\label{tab:summary}
+\end{table}
+
+The motivating example
+\begin{equation}
+[2,0,2]_{(0,0)}
+\end{equation}
+is \emph{not} unique in this sense: it occurs once at $\D_0=4$ and once at $\D_0=8$, hence
+\begin{equation}
+N\big([2,0,2]_{(0,0)}\big)=2.
+\end{equation}
+
+\section{Unique Exact Labels and Their \texorpdfstring{$\SO(1,4)\times \SO(5)$}{SO(1,4)xSO(5)} Bookkeeping Decomposition}
+
+\small
+\begin{longtable}{c p{0.23\textwidth} >{\raggedright\arraybackslash}p{0.60\textwidth}}
+\caption{All exact Table-1 labels with total multiplicity one, grouped by $\D_0$. The right column keeps the compact $\SO(4)$ spin label fixed and branches only the $\SO(6)$ irrep to $\SO(5)$.}
+\label{tab:unique-exact-labels}\\
+\toprule
+$\D_0$ & Table 1 label & bookkeeping $\SO(1,4)\times \SO(5)$ decomposition \\
+\midrule
+\endfirsthead
+\toprule
+$\D_0$ & Table 1 label & bookkeeping $\SO(1,4)\times \SO(5)$ decomposition \\
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\input{generated_unique_exact_labels_rows.tex}
+\end{longtable}
+\normalsize
+
+\section{Single-Weight But Non-Unique Labels}
+
+If one weakens the criterion and asks only for support at a single weight, four additional labels appear.
+Each of them lives only at $\D_0=6$, but with coefficient two rather than one:
+\begin{itemize}
+\item $[0,1,0]_{(\frac{3}{2},\frac{3}{2})}$:
+\begin{equation}
+((\tfrac{3}{2},\tfrac{3}{2});\la 0,0\ra)\oplus ((\tfrac{3}{2},\tfrac{3}{2});\la 0,1\ra).
+\end{equation}
+\item $[0,3,0]_{(\frac{1}{2},\frac{1}{2})}$:
+\begin{equation}
+((\tfrac{1}{2},\tfrac{1}{2});\la 0,0\ra)\oplus ((\tfrac{1}{2},\tfrac{1}{2});\la 0,1\ra)\oplus
+((\tfrac{1}{2},\tfrac{1}{2});\la 0,2\ra)\oplus ((\tfrac{1}{2},\tfrac{1}{2});\la 0,3\ra).
+\end{equation}
+\item $[1,1,1]_{(\frac{1}{2},\frac{3}{2})}$:
+\begin{equation}
+((\tfrac{1}{2},\tfrac{3}{2});\la 0,1\ra)\oplus ((\tfrac{1}{2},\tfrac{3}{2});\la 2,0\ra)\oplus
+((\tfrac{1}{2},\tfrac{3}{2});\la 0,2\ra)\oplus ((\tfrac{1}{2},\tfrac{3}{2});\la 2,1\ra).
+\end{equation}
+\item $[1,1,1]_{(\frac{3}{2},\frac{1}{2})}$:
+\begin{equation}
+((\tfrac{3}{2},\tfrac{1}{2});\la 0,1\ra)\oplus ((\tfrac{3}{2},\tfrac{1}{2});\la 2,0\ra)\oplus
+((\tfrac{3}{2},\tfrac{1}{2});\la 0,2\ra)\oplus ((\tfrac{3}{2},\tfrac{1}{2});\la 2,1\ra).
+\end{equation}
+\end{itemize}
+
+\section{Bookkeeping-Isolated \texorpdfstring{$\SO(1,4)\times \SO(5)$}{SO(1,4)xSO(5)} Labels}
+
+One can ask a stronger question than simple exact-label uniqueness. For each exact Table-1 label
+\begin{equation}
+[a,b,c]_{(s_L,s_R)},
+\end{equation}
+branch it to the bookkeeping set of labels
+\begin{equation}
+(s_L,s_R;\mu),\qquad \mu\in [a,b,c]\downarrow \SO(5),
+\end{equation}
+and ask whether any of these bookkeeping $\SO(1,4)\times \SO(5)$ labels are produced by
+some \emph{other} exact Table-1 label.
+
+With this convention there is exactly one \emph{fully isolated} exact label:
+\begin{equation}
+[0,0,0]_{(2,2)}\qquad \text{at}\qquad \D_0=6,
+\end{equation}
+because it branches only to
+\begin{equation}
+((2,2);\la 0,0\ra),
+\end{equation}
+and no other exact Table-1 label contributes this bookkeeping rep.
+
+There are also ten \emph{partially isolated} exact labels: they do share some bookkeeping reps
+with other labels, but each of them has at least one bookkeeping component that is unique in the
+full Konishi table. They are:
+\begin{itemize}
+\item $[0,1,0]_{(1,2)}$ at $\D_0=5,7$, with unique component
+\begin{equation}
+((1,2);\la 0,0\ra).
+\end{equation}
+\item $[0,1,0]_{(2,1)}$ at $\D_0=5,7$, with unique component
+\begin{equation}
+((2,1);\la 0,0\ra).
+\end{equation}
+\item $[0,2,0]_{(0,2)}$ at $\D_0=6$, with unique components
+\begin{equation}
+((0,2);\la 0,1\ra),\qquad ((0,2);\la 0,2\ra).
+\end{equation}
+\item $[0,2,0]_{(2,0)}$ at $\D_0=6$, with unique components
+\begin{equation}
+((2,0);\la 0,1\ra),\qquad ((2,0);\la 0,2\ra).
+\end{equation}
+\item $[0,4,0]_{(0,0)}$ at $\D_0=6$, with unique component
+\begin{equation}
+((0,0);\la 0,4\ra).
+\end{equation}
+\item $[1,0,1]_{(1,2)}$ at $\D_0=6$, with unique component
+\begin{equation}
+((1,2);\la 2,0\ra).
+\end{equation}
+\item $[1,0,1]_{(2,1)}$ at $\D_0=6$, with unique component
+\begin{equation}
+((2,1);\la 2,0\ra).
+\end{equation}
+\item $[1,2,1]_{(0,1)}$ at $\D_0=6$, with unique component
+\begin{equation}
+((0,1);\la 2,2\ra).
+\end{equation}
+\item $[1,2,1]_{(1,0)}$ at $\D_0=6$, with unique component
+\begin{equation}
+((1,0);\la 2,2\ra).
+\end{equation}
+\item $[2,0,2]_{(1,1)}$ at $\D_0=6$, with unique component
+\begin{equation}
+((1,1);\la 4,0\ra).
+\end{equation}
+\end{itemize}
+
+So the answer to the stronger question is:
+\begin{itemize}
+\item exactly one exact Table-1 label is completely isolated after branching,
+namely $[0,0,0]_{(2,2)}$;
+\item ten further exact labels are only partially isolated, in the sense that they each carry
+at least one bookkeeping $\SO(1,4)\times \SO(5)$ label that no other exact Table-1 label carries.
+\end{itemize}
+
+\section{NSNS Vertex Operator for the Fully Isolated Mode}
+
+For the fully isolated mode
+\begin{equation}
+[0,0,0]_{(2,2)}\qquad \text{at}\qquad \D_0=6,
+\end{equation}
+the natural highest-weight NSNS representative is the same spin-4 singlet seed used in
+\texttt{notes/konishi\_linearized\_ansatz/konishi\_linearized\_ansatz.tex}.
+Introduce
+\begin{equation}
+X^\pm=X^1\pm iX^2,
+\end{equation}
+and write the massive NSNS vertex in the form
+\begin{equation}
+V^{(-1,-1)}=
+H_{\mu\nu;\rho\sigma}(X)\,
+c\bar c\,
+e^{-\phi}\psi^\mu\partial X^\nu\,
+e^{-\bar\phi}\bar\psi^\rho\bar\partial X^\sigma,
+\end{equation}
+with $H_{\mu\nu;\rho\sigma}$ in the symmetric-traceless spin-4 representation, i.e.
+\begin{equation}
+H_{\mu\nu;\rho\sigma}
+=H_{(\mu\nu);(\rho\sigma)},\qquad
+\eta^{\mu\nu}H_{\mu\nu;\rho\sigma}=0,\qquad
+\eta^{\rho\sigma}H_{\mu\nu;\rho\sigma}=0,
+\end{equation}
+and with the left and right index pairs projected to the highest-weight $(2,2)$ component.
+
+An explicit highest-weight tensor structure is obtained from a null polarization vector in the chosen
+$AdS_5$ complex plane,
+\begin{equation}
+n^\mu=(1,i,0,0,0),\qquad n_\mu n^\mu=0,
+\end{equation}
+for which one may write
+\begin{equation}
+H_{\mu\nu;\rho\sigma}(X)=h(X)\,n_\mu n_\nu n_\rho n_\sigma.
+\end{equation}
+Because $n^2=0$, this tensor is automatically symmetric and traceless in each index pair, so it is
+the null-polarization representative of the spin-4 highest weight.
+
+The explicit highest-weight representative is therefore
+\begin{equation}
+V^{(-1,-1)}_{[0,0,0]_{(2,2)}}
+=H_{++;++}(X)\,
+c\bar c\,
+e^{-\phi}\psi^+\partial X^+\,
+e^{-\bar\phi}\bar\psi^+\bar\partial X^+.
+\end{equation}
+
+Here the spin quantum number is carried by the polarization tensor component $H_{++;++}$:
+the coefficient function is \emph{not} itself a spin-4 harmonic. Equivalently, $H_{++;++}(X)$
+is just one highest-weight component of the full spin-4 field $H_{\mu\nu;\rho\sigma}(X)$.
+With the null-polarization choice above, this component is simply
+\begin{equation}
+H_{++;++}(X)=h(X).
+\end{equation}
+No explicit coordinate ansatz for $h(X)$ is needed here. In particular, one should \emph{not}
+identify $h(X)$ with a non-scalar monomial such as $(X^+)^4$ when the goal is only to specify the
+representation content of the vertex. The point of the present notation is just that $h(X)$ is the
+coefficient function multiplying the chosen highest-weight tensor component of the full spin-$4$ field.
+
+\paragraph{Why this final vertex is spin $4$.}
+The spin is not inferred from any particular coordinate ansatz for $h(X)$. Rather, the relevant
+$AdS_5$ generators split as
+\begin{equation}
+J_{AB}=L_{AB}+\Sigma_{AB},
+\end{equation}
+where $L_{AB}$ acts on the coordinate dependence $H(X)$ and $\Sigma_{AB}$ acts on the tensor
+indices carried by the NSNS oscillator structure. The local worldsheet factor
+\begin{equation}
+\psi^+\partial X^+\;\bar\psi^+\bar\partial X^+
+\end{equation}
+is precisely the highest-weight component of the closed-string NSNS tensor polarization.
+This does \emph{not} mean that the whole state ``spins only in one plane.'' The label
+\begin{equation}
+(2,2)
+\end{equation}
+is an irrep of
+\begin{equation}
+\SO(4)\simeq SU(2)_L\times SU(2)_R,
+\end{equation}
+so the full spin-$4$ field contains all components generated from the highest-weight vector by the
+lowering operators of $SU(2)_L\times SU(2)_R$. Writing only the $++++$ component is therefore a
+basis choice for the highest-weight representative, not a statement that the full irrep is supported
+only in the single complex plane used to define $X^\pm$.
+
+It is also important that the symbol `$+$' here is \emph{not} ``one of the two spins.'' Rather, it is a
+highest-weight vector of the $SO(4)$ vector representation itself. Under
+\begin{equation}
+\mathbf 4 \cong \left(\tfrac12,\tfrac12\right),
+\end{equation}
+a single vector index already carries weight in both $SU(2)$ factors at once. Concretely, if one chooses
+\begin{equation}
+J_L^3=\frac12(M_{12}+M_{34}),\qquad
+J_R^3=\frac12(M_{12}-M_{34}),
+\end{equation}
+and takes
+\begin{equation}
+e_+=e_1+i e_2,
+\end{equation}
+then
+\begin{equation}
+M_{12}e_+=e_+,\qquad M_{34}e_+=0,
+\end{equation}
+so
+\begin{equation}
+J_L^3 e_+=\frac12 e_+,\qquad
+J_R^3 e_+=\frac12 e_+.
+\end{equation}
+Thus one `$+$' index already has weight
+\begin{equation}
+\left(\tfrac12,\tfrac12\right).
+\end{equation}
+Therefore
+\begin{equation}
+\psi^+\partial X^+
+\end{equation}
+has highest weight
+\begin{equation}
+(1,1),
+\end{equation}
+and the closed-string product
+\begin{equation}
+\psi^+\partial X^+\;\bar\psi^+\bar\partial X^+
+\end{equation}
+is the highest-weight component of the spin label
+\begin{equation}
+(2,2).
+\end{equation}
+If one wanted to make this completely manifest, one should really use $SO(4)$ bispinor notation
+$X^{\alpha\dot\alpha}$ and write the highest-weight vector as $X^{+\dot +}$; the present `$+$' notation is
+just a compressed shorthand for that choice.
+
+In the flat-space first-massive decomposition, the relevant left-moving NS representation is
+\begin{equation}
+\mathbf{44}\supset (1,1;\la 0,0\ra),
+\end{equation}
+while the three-form representation $\mathbf{84}$ contains no $(1,1;\la 0,0\ra)$ piece. Thus the
+closed-string spin-$4$ singlet comes uniquely from
+\begin{equation}
+(1,1;\la 0,0\ra)_L\otimes (1,1;\la 0,0\ra)_R
+\subset \mathbf{44}_L\otimes \mathbf{44}_R,
+\end{equation}
+which is exactly the unique flat-space NSNS contribution to
+\begin{equation}
+((2,2);\la 0,0\ra).
+\end{equation}
+So the vertex is spin $4$ because its oscillator/tensor structure lies in the
+$\mathbf{44}_L\otimes \mathbf{44}_R$ spin-$(2,2)$ channel. The spin assignment is therefore a statement
+about the tensor/oscillator representation content of the vertex, not about any particular non-scalar
+coordinate ansatz for the coefficient function $h(X)$.
+
+This is in the NSNS sector, carries the highest-weight $(2,2)$ polarization in the chosen
+$AdS_5$ complex plane, and has trivial sphere profile
+\begin{equation}
+Y_{(0)}=1,
+\end{equation}
+so its bookkeeping $\SO(1,4)\times \SO(5)$ label is precisely
+\begin{equation}
+((2,2);\la 0,0\ra).
+\end{equation}
+
+In other words, among the isolated modes found above, the completely isolated one is represented
+at leading order by a pure-$AdS$ NSNS spin-4 vertex with no extra $S^5$ harmonic turned on.
+The profile is scalar under $\SO(5)$; the $(2,2)$ label comes from the $AdS$ highest-weight tensor
+structure.
+
+The scan underlying this note uses the same parser and $\SO(6)\to \SO(5)$ branching code as
+\texttt{scripts/primary\_branching\_scan.py}.
+
+\end{document}
