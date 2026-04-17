@@ -1,20 +1,18 @@
 \documentclass[11pt]{article}
-\usepackage{amsmath,amssymb,amsthm,bm,hyperref,physics,cleveref}
+\usepackage{amsmath,amssymb,bm,hyperref,physics,cleveref}
 \usepackage[margin=1in]{geometry}
 
 \newcommand{\AdS}{\mathrm{AdS}_5}
+\newcommand{\bdy}{\partial}
+\renewcommand{\Box}{\square}
+\newcommand{\Dims}[1]{\Delta_{#1}}
+\newcommand{\Ypt}[1]{Y_{#1}}
 \newcommand{\SO}{\mathrm{SO}(4,2)}
+\newcommand{\PSU}{\mathrm{PSU}(2,2|4)}
 \newcommand{\OO}{\mathcal{O}}
-\newcommand{\cH}{\mathcal{H}}
-\newcommand{\cV}{\mathcal{V}}
-\newcommand{\bbR}{\mathbb{R}}
-\newcommand{\Y}[1]{Y_{#1}}
-\newcommand{\D}[1]{\Delta_{#1}}
-\newcommand{\wt}[1]{\widetilde{#1}}
-\newcommand{\mcJ}{\mathcal{J}}
 
 \title{Three-point boundary data from a patch:\\
-\texorpdfstring{$L_\infty$}{Linfty} brackets in embedding coordinates}
+derivative reconstruction by extension}
 \author{}
 \date{\today}
 
@@ -22,293 +20,653 @@
 \maketitle
 
 \begin{abstract}
-The correct patch-local formulation of the boundary-correlator problem is algebraic, not asymptotic. Starting from the massless effective $L_\infty$ structure around the $\mathrm{AdS}_5\times S^5$ background of arXiv:2507.12921, we formulate boundary-labeled fluctuations directly in embedding coordinates. A boundary primary of weight $\Delta$ is represented by a cohomology class $\Phi_\Delta(Y)$, with $Y^2=0$, obeying the linearized equation and intertwining the bulk super-isometry brackets with the standard conformal action on the null cone. The nonlinear field sourced by two such primaries is determined by the quadratic shifted bracket $\ell_2^\psi(\Phi_1,\Phi_2)$, and the three-point coefficient is extracted by pairing this source with a dual outgoing cohomology representative at the patch center. This formulation never invokes a global radial coordinate or a boundary condition at $\rho\to\infty$. We also spell out the exact brackets that must be computed to obtain the correlator order by order in the large-radius expansion, and present the scalar toy model as the simplest instance of the same $L_\infty$ pattern.
+We rewrite the patch-to-boundary problem in derivative-first form. The primitive data are not boundary conditions at large radius, but exact derivatives along symmetry generators. In the scalar toy model these derivatives are the $SO(4,2)$ transport equations on the bulk and boundary orbits; in string field theory they are realized by the massless effective brackets of the extended system. From a center-patch seed, repeated symmetry derivatives determine the full infinite jet, and flat transport extends that jet to the full boundary leg. The boundary two-point kernel, its inverse amputation map, the transported quadratic source, and the boundary three-point function are all defined this way. In the scalar theory the resulting transported objects can be evaluated explicitly in embedding coordinates, recovering the standard bulk-to-boundary kernel and conformal three-point structure. The only local dynamical datum left after symmetry reconstruction is the overall coefficient, which we compute by the explicit scalar contact integral. We then state the exact bracket data that would realize the same reconstruction in the $\mathrm{AdS}_5\times S^5$ extended system.
 \end{abstract}
 
-\section{Motivation}
+\section{Setup}
 
-The central issue in \texttt{task.md} is not how to solve a linear wave equation in the patch around the center of $\AdS$, but how to turn that patch data into a boundary observable. The previous version of this note still appealed to a global radial coordinate and an asymptotic decomposition at $\rho\to\infty$. That is precisely what the patch formalism does not provide.
+\subsection{Bulk action}
 
-The right replacement is to work entirely in embedding coordinates and to phrase the problem in the shifted $L_\infty$ algebra around the background. Then the basic objects are:
-\begin{enumerate}
-\item the background string field $\psi$,
-\item the super-isometry generators $\lambda^A$,
-\item the boundary-labeled linearized fluctuation $\Phi_\Delta(Y)$,
-\item the quadratic source $\ell_2^\psi(\Phi_1,\Phi_2)$,
-\item the cyclic pairing with a dual outgoing cohomology representative.
-\end{enumerate}
-This is already enough to define the three-point coefficient at the level of the patch.
-
-The role of arXiv:2504.12290 in what follows is conceptual: it explains why an extended system of fields and gauge generators is the correct language for extracting global data from patch expansions. But for the present note the operative formulation will be entirely in the embedding-space $L_\infty$ brackets of the $\AdS$ background, not in a global coordinate transport problem.
-
-\section{Shifted \texorpdfstring{$L_\infty$}{Linfty} algebra around the background}
-
-\subsection{Background and shifted brackets}
-
-Let $\psi$ denote the massless effective string field describing the $\mathrm{AdS}_5\times S^5$ background in the flat-vertex frame of arXiv:2507.12921. The massless effective equations are
+To avoid unnecessary combinatorics, we first take three scalar species $\phi_i$ with masses $m_i$ and cubic interaction
 \begin{equation}
-Q\psi+\sum_{n=2}^\infty \frac1{n!}[\psi^{\otimes n}]'=0.
-\label{eq:background}
-\end{equation}
-It is convenient to package the background dependence into shifted brackets
-\begin{equation}
-\ell_n^\psi(a_1,\dots,a_n)\equiv \sum_{m=0}^\infty \frac1{m!}
-[\psi^{\otimes m}\otimes a_1\otimes\cdots\otimes a_n]'.
-\label{eq:shifted}
-\end{equation}
-Then \cref{eq:background} is simply $\ell_0^\psi=0$. The linearized differential is $\ell_1^\psi$, the quadratic interaction/source bracket is $\ell_2^\psi$, and so on.
-
-\subsection{Super-isometry generators}
-
-Let $\lambda^A$ be the ghost-number-1 generators of $PSU(2,2|4)$ super-isometry. In the shifted language, the conditions quoted in arXiv:2507.12921 become
-\begin{align}
-\ell_1^\psi(\lambda^A)&=0,
-\label{eq:isom1}\\
-\ell_2^\psi(\lambda^A,\lambda^B)
-&=f^{AB}{}_C\,\lambda^C+\ell_1^\psi(\omega^{AB}),
-\label{eq:isom2}
-\end{align}
-where $\omega^{AB}$ is the usual homotopy correction coming from the $L_\infty$ gauge algebra.
-
-These two equations are the patch-level substitute for ``having access to the full geometry''. The background isometry is encoded directly in brackets, not in a global metric chart.
-
-\section{Boundary-labeled states in embedding coordinates}
-
-\subsection{Embedding-space labels}
-
-The boundary point is represented by a projective null vector
-\begin{equation}
-Y^M\in \bbR^{2,4},\qquad Y^2=0,\qquad Y\sim \alpha Y.
-\end{equation}
-The conformal generators act on such labels by the standard embedding-space differential operators
-\begin{equation}
-\mcJ^{(Y)}_{MN}=Y_M\frac{\partial}{\partial Y^N}-Y_N\frac{\partial}{\partial Y^M}.
-\label{eq:JY}
-\end{equation}
-
-\subsection{Boundary primary as a patch cohomology class}
-
-A boundary primary of weight $\Delta$ is represented by a ghost-number-2 cohomology class $\Phi_\Delta(Y)$ obeying:
-\begin{align}
-\ell_1^\psi(\Phi_\Delta(Y))&=0,
-\label{eq:PhiLin}\\
-\ell_2^\psi(\lambda_{MN},\Phi_\Delta(Y))
-&=\mcJ^{(Y)}_{MN}\Phi_\Delta(Y)+\ell_1^\psi(\chi_{MN}(Y)),
-\label{eq:PhiCov}\\
-\left(Y\cdot \partial_Y+\Delta\right)\Phi_\Delta(Y)&=0.
-\label{eq:PhiHom}
-\end{align}
-
-\Cref{eq:PhiCov} says that the action of bulk super-isometry on the patch fluctuation intertwines, up to $\ell_1^\psi$-exact terms, with the standard conformal action on the boundary label. This is the precise bracket-level version of ``the patch field knows where the boundary point is''.
-
-Nothing in \cref{eq:PhiLin,eq:PhiCov,eq:PhiHom} refers to a global radial coordinate or to an asymptotic region. The entire construction lives in the patch and in the null-cone label $Y$.
-
-\section{Quadratic source and three-point coefficient}
-
-\subsection{The sourced fluctuation}
-
-Given two boundary-labeled linearized states $\Phi_1(\Y{1})$ and $\Phi_2(\Y{2})$, define the sourced nonlinear fluctuation $\Phi_{12}(\Y{1},\Y{2})$ by
-\begin{equation}
-\ell_1^\psi\bigl(\Phi_{12}(\Y{1},\Y{2})\bigr)
-\;+\;
-\ell_2^\psi\bigl(\Phi_1(\Y{1}),\Phi_2(\Y{2})\bigr)
-\;=\;0.
-\label{eq:Phi12}
-\end{equation}
-This is just the $O(J_1J_2)$ term in the expansion of the full Maurer--Cartan equation around the background. The source is the exact quadratic shifted bracket
-\begin{equation}
-\ell_2^\psi\bigl(\Phi_1(\Y{1}),\Phi_2(\Y{2})\bigr)
+S[\phi_i]
 =
-\sum_{m=0}^\infty \frac1{m!}
-[\psi^{\otimes m}\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]'.
-\label{eq:source}
+\int_{\AdS}\! d^5X\,\sqrt{G}\,
+\left[
+\sum_{i=1}^3 \frac12\left(G^{ab}\bdy_a\phi_i\,\bdy_b\phi_i+m_i^2\phi_i^2\right)
++ g\,\phi_1\phi_2\phi_3
+\right].
+\label{eq:action}
+\end{equation}
+The equal-field interaction $\frac{g}{3!}\phi^3$ is recovered by setting $\phi_1=\phi_2=\phi_3$ at the end. The AdS/CFT relation is
+\begin{equation}
+m_i^2R^2=\Dims{i}(\Dims{i}-4).
+\label{eq:massrel}
 \end{equation}
 
-The $L_\infty$ identities together with \cref{eq:isom1,eq:isom2,eq:PhiLin,eq:PhiCov} imply that $\Phi_{12}$ transforms, again up to $\ell_1^\psi$-exact terms, as
+We describe Euclidean $\AdS$ as the upper sheet of the hyperboloid
 \begin{equation}
-\ell_2^\psi(\lambda_{MN},\Phi_{12})
-\;=\;
-\left(\mcJ^{(\Y{1})}_{MN}+\mcJ^{(\Y{2})}_{MN}\right)\Phi_{12}
-\;+\;\ell_1^\psi(\chi_{MN;12}).
-\label{eq:Phi12Cov}
+-(X^{-1})^2+X^aX_a=-R^2,\qquad a=0,\dots,4,
+\label{eq:hyper}
 \end{equation}
-Thus the two-source object carries the tensor-product conformal representation of the two boundary labels.
-
-\subsection{Outgoing channel and cyclic pairing}
-
-To extract the contribution in the channel of operator $3$, choose a dual outgoing cohomology representative $\wt\Phi_3(\Y{3})$ normalized by the two-point function. The patch-local trilinear observable is
+embedded in $\mathbb{R}^{1,5}$. The center patch uses the independent coordinates $X^a$ with
 \begin{equation}
-\mathcal{A}_3(\Y{1},\Y{2},\Y{3})
+X^{-1}=\sqrt{R^2+X^2}
+=
+R+\frac{X^2}{2R}-\frac{(X^2)^2}{8R^3}+O(R^{-5}),
+\qquad X^2\equiv X^aX_a.
+\label{eq:xminus}
+\end{equation}
+This is the only local input from the patch we will use.
+
+\subsection{Boundary source on the null cone}
+
+The conformal boundary is the projective null cone
+\begin{equation}
+Y^M\in\mathbb{R}^{1,5},
+\qquad
+Y^2=0,
+\qquad
+Y\sim \alpha Y.
+\end{equation}
+A scalar primary of dimension $\Delta$ is represented by a homogeneous operator
+\begin{equation}
+\OO_\Delta(\alpha Y)=\alpha^{-\Delta}\OO_\Delta(Y).
+\end{equation}
+The source must therefore have homogeneity
+\begin{equation}
+J_\Delta(\alpha Y)=\alpha^{\Delta-4}J_\Delta(Y),
+\label{eq:Jhom}
+\end{equation}
+so that the boundary coupling
+\begin{equation}
+S_{\rm src}[J]
+=
+\int D^4Y\,J_\Delta(Y)\OO_\Delta(Y)
+\label{eq:src}
+\end{equation}
+is projectively well-defined.
+
+Concretely, choose any affine section $Y(y)$ of the null cone such that
+\begin{equation}
+-2Y(y_1)\cdot Y(y_2)=|y_{12}|^2.
+\label{eq:affine}
+\end{equation}
+In that gauge,
+\begin{equation}
+\int D^4Y\,f(Y)=\int_{\mathbb{R}^4}\! d^4y\,f(Y(y)),
+\qquad
+J_\Delta(Y(y))\equiv j_\Delta(y),
+\qquad
+\OO_\Delta(Y(y))\equiv O_\Delta(y),
+\end{equation}
+and \cref{eq:src} reduces to the standard $\int d^4y\,j_\Delta(y)O_\Delta(y)$.
+
+\section{Derivative reconstruction from a patch}
+
+\subsection{Scalar symmetry derivatives}
+
+The primitive data are derivatives along the $SO(4,2)$ generators. Let $T_A$ be a basis of $\mathfrak{so}(4,2)$, let $L_A$ be the corresponding left-invariant derivatives on the AdS orbit, and let $\rho_A^{(\Delta)}$ be the induced first-order differential operators on homogeneous boundary functions of weight $\Delta$. In embedding coordinates this representation is
+\begin{equation}
+\rho_{MN}^{(\Delta)}=J_{MN}^{(Y)},
+\qquad
+\left(Y\cdot\bdy_Y+\Delta\right)f(Y)=0.
+\label{eq:rhoY}
+\end{equation}
+The bulk-boundary leg is defined as the solution of the transport system
+\begin{equation}
+D_A^{(\Delta)}K_\Delta(X,Y)\equiv \left(L_A+\rho_A^{(\Delta)}\right)K_\Delta(X,Y)=0,
+\label{eq:transportScalar}
+\end{equation}
+together with the scalar equation of motion
+\begin{equation}
+(\Box_{\AdS}-m^2)K_\Delta(X,Y)=0.
+\label{eq:Keom}
+\end{equation}
+In embedding space \cref{eq:transportScalar} is exactly
+\begin{equation}
+\left(J^{(X)}_{MN}+J^{(Y)}_{MN}\right)K_\Delta(X,Y)=0.
+\label{eq:Jcov}
+\end{equation}
+
+Choose the center point $X_\star=(R,0,\dots,0)$ and the formal center jet
+\begin{equation}
+K_\Delta(x,Y)
+=
+\sum_{n\ge 0}\frac{1}{n!}
+K_{a_1\cdots a_n}(Y)x^{a_1}\cdots x^{a_n}.
+\label{eq:Kjet}
+\end{equation}
+The tangent directions at the center are generated by the coset generators, so every coefficient in \cref{eq:Kjet} is obtained by repeated symmetry derivatives. If $P_a$ are the tangent generators at the center, then
+\begin{equation}
+K_{a_1\cdots a_n}(Y)
+=
+(-1)^n
+\rho_{P_{a_1}}^{(\Delta)}\cdots \rho_{P_{a_n}}^{(\Delta)}K_\Delta(X_\star,Y).
+\label{eq:jetfromder}
+\end{equation}
+This is the exact all-orders statement available from the patch: the local data are the center seed and the exact derivative algebra.
+
+Flatness of the $SO(4,2)$ action then extends the seed to the full orbit. If $\omega^A$ are the left-invariant one-forms on $SO(4,2)/SO(5,1)$, the transported leg is
+\begin{equation}
+K_\Delta(X,Y)
+=
+\mathrm{Pexp}\!\left[-\int_{X_\star}^{X}\omega^A \rho_A^{(\Delta)}\right]
+K_\Delta(X_\star,Y).
+\label{eq:Ktransport}
+\end{equation}
+This is the precise sense in which a patch calculation reaches the boundary: it computes the seed and all symmetry derivatives at the center, and extension transports that data to every bulk point.
+
+\subsection{Scalar evaluation of the transported leg}
+
+For scalars, diagonal $SO(4,2)$ invariance leaves only one invariant, $-2X\cdot Y$. The transported solution must therefore have the form
+\begin{equation}
+K_\Delta(X,Y)=c_\Delta\,(-2X\cdot Y)^{-\Delta}.
+\label{eq:Kansatz}
+\end{equation}
+This is not guessed from a global boundary-value problem. It is the unique scalar function whose full symmetry derivatives agree with the transported center jet.
+
+The ambient verification is immediate. Since $Y^2=0$,
+\begin{equation}
+\bdy_M\bdy^M(-2X\cdot Y)^{-\Delta}=0.
+\end{equation}
+For a function homogeneous of degree $s$ in $X$ one has
+\begin{equation}
+\bdy_M\bdy^M f
+=
+\Box_{\AdS}f+\frac{s(s+4)}{R^2}f
+\qquad\text{on }X^2=-R^2.
+\end{equation}
+With $s=-\Delta$ this gives
+\begin{equation}
+\Box_{\AdS}K_\Delta
+=
+\frac{\Delta(\Delta-4)}{R^2}K_\Delta,
+\end{equation}
+which is \cref{eq:Keom} by \cref{eq:massrel}.
+
+The normalization is fixed by requiring the source-to-bulk map
+\begin{equation}
+\phi_J^{[0]}(X)=\int D^4Y\,K_\Delta(X,Y)J_\Delta(Y)
+\label{eq:phi0J}
+\end{equation}
+to reproduce the source in an affine section. There,
+\begin{equation}
+-2X(z,x)\cdot Y(y)=\frac{z^2+|x-y|^2}{z},
+\end{equation}
+so
+\begin{equation}
+K_\Delta(z,x;y)=c_\Delta\left(\frac{z}{z^2+|x-y|^2}\right)^\Delta.
+\label{eq:Kpoincare}
+\end{equation}
+For $\Delta>2$ the choice
+\begin{equation}
+c_\Delta=\frac{\Gamma(\Delta)}{\pi^2\Gamma(\Delta-2)}
+\label{eq:cDelta}
+\end{equation}
+ensures $\phi_J^{[0]}(z,x)\to j_\Delta(x)$.
+
+Returning to the center patch and substituting \cref{eq:xminus} into \cref{eq:Kansatz} gives the explicit Taylor series generated by repeated symmetry derivatives:
+\begin{equation}
+K_\Delta(X,Y)
+=
+\frac{c_\Delta}{(2RY^{-1})^\Delta}
+\left[
+1+\frac{\Delta\,X\cdot y}{RY^{-1}}
+-\frac{\Delta\,X^2}{2R^2}
++\frac{\Delta(\Delta+1)}{2}\frac{(X\cdot y)^2}{R^2(Y^{-1})^2}
++\cdots
+\right].
+\label{eq:Kpatch}
+\end{equation}
+
+\section{Boundary pairings and exact amputation}
+
+\subsection{Transported dual leg and two-point kernel}
+
+The outgoing object is a dual transported state. Let $\Xi_\Delta(Y)$ obey the dual transport equation
+\begin{equation}
+D_A^{(\Delta),\vee}\Xi_\Delta(Y)
 \equiv
-\Omega\!\left(\wt\Phi_3(\Y{3}),
-\ell_2^\psi(\Phi_1(\Y{1}),\Phi_2(\Y{2}))\right),
-\label{eq:A3}
+L_A \Xi_\Delta(Y)-\Xi_\Delta(Y)\rho_A^{(\Delta)}=0.
+\label{eq:dualtransport}
 \end{equation}
-where $\Omega$ is the BPZ/symplectic pairing of the massless effective SFT. Equivalently, this is the background-dressed cubic vertex
+The boundary two-point kernel is the invariant pairing
 \begin{equation}
-\mathcal{A}_3(\Y{1},\Y{2},\Y{3})
-\sim
-\sum_{m=0}^\infty \frac1{m!}\,
-\Bigl\{\psi^{\otimes m},\wt\Phi_3(\Y{3}),\Phi_1(\Y{1}),\Phi_2(\Y{2})\Bigr\}.
-\label{eq:vertex}
+\mathbb{K}_{2,\Delta}(Y_1,Y_2)
+\equiv
+\left\langle
+\Xi_\Delta(Y_1),\Phi_\Delta(Y_2)
+\right\rangle,
+\label{eq:K2def}
+\end{equation}
+where $\Phi_\Delta(Y_2)$ denotes the transported incoming leg. Because the pairing is preserved by transport,
+\begin{equation}
+\left(\rho_A^{(\Delta),\vee}+\rho_A^{(\Delta)}\right)\mathbb{K}_{2,\Delta}(Y_1,Y_2)=0.
+\label{eq:K2inv}
+\end{equation}
+For scalars this fixes the form uniquely to
+\begin{equation}
+\mathbb{K}_{2,\Delta}(Y_1,Y_2)
+=
+\frac{B_\Delta}{(-2Y_1\cdot Y_2)^\Delta},
+\qquad
+B_\Delta=(2\Delta-4)c_\Delta.
+\label{eq:GDelta}
+\end{equation}
+In the affine section this becomes
+\begin{equation}
+\mathbb{K}_{2,\Delta}(y_1,y_2)=\frac{B_\Delta}{|y_{12}|^{2\Delta}}.
+\label{eq:Gaffine}
 \end{equation}
 
-This is the patch-level replacement for ``solve the equation globally and read the normalizable coefficient at the boundary''. The outgoing projection is performed by the dual cohomology representative and the cyclic pairing, not by a boundary condition at $\rho\to\infty$.
+\subsection{Exact amputation}
 
-By $\SO$-covariance and homogeneity in the null-cone variables, \cref{eq:A3} must take the standard form
+If one computes a true source derivative of the generating functional, no amputation is needed. Amputation appears when one works with the universal outgoing response
 \begin{equation}
-\mathcal{A}_3(\Y{1},\Y{2},\Y{3})
+A_\Delta(y)=\int d^4y'\,\mathbb{K}_{2,\Delta}(y,y')j_\Delta(y').
+\label{eq:response}
+\end{equation}
+The exact amputator is the inverse of \cref{eq:Gaffine}. In momentum space,
+\begin{equation}
+\widetilde{\mathbb{K}}_{2,\Delta}(p)
+=
+B_\Delta\,\pi^2\,2^{4-2\Delta}
+\frac{\Gamma(2-\Delta)}{\Gamma(\Delta)}
+|p|^{2\Delta-4},
+\label{eq:Gmom}
+\end{equation}
+defined by analytic continuation, so
+\begin{equation}
+\widetilde{j}_\Delta(p)
+=
+\widetilde{\mathbb{K}}_{2,\Delta}(p)^{-1}\widetilde{A}_\Delta(p)
+\label{eq:amputmom}
+\end{equation}
+is the precise momentum-space amputation.
+
+Equivalently,
+\begin{equation}
+j_\Delta(y)
+=
+\int d^4y'\,\mathbb{K}_{2,\Delta}^{-1}(y,y')A_\Delta(y'),
+\label{eq:amputpos}
+\end{equation}
+with inverse shadow kernel
+\begin{equation}
+\mathbb{K}_{2,\Delta}^{-1}(y,y')
+=
+\beta_\Delta\frac{1}{|y-y'|^{2(4-\Delta)}},
+\qquad
+\beta_\Delta
+=
+\left[
+B_\Delta \pi^4
+\frac{\Gamma(2-\Delta)\Gamma(\Delta-2)}
+{\Gamma(\Delta)\Gamma(4-\Delta)}
+\right]^{-1}.
+\label{eq:shadowinv}
+\end{equation}
+The massless case is again defined by first keeping generic $\Delta$ and only then taking the limit $\Delta\to 4$.
+
+\section{Transported quadratic source and the boundary three-point function}
+
+\subsection{The source is a transported bracket}
+
+For three fields, the local quadratic source is the outgoing component of the cubic bracket. In the scalar theory,
+\begin{equation}
+\mathcal{J}^{\rm sc}_{12}(X;Y_1,Y_2)
+=
+g\,K_{\Dims1}(X,Y_1)K_{\Dims2}(X,Y_2).
+\label{eq:sourceScalar}
+\end{equation}
+Because each incoming leg satisfies \cref{eq:transportScalar}, the quadratic source satisfies the diagonal transport equation
+\begin{equation}
+\left(
+L_A+\rho_A^{(\Dims1)}+\rho_A^{(\Dims2)}
+\right)\mathcal{J}^{\rm sc}_{12}=0.
+\label{eq:sourceTransScalar}
+\end{equation}
+The outgoing boundary observable is the pairing with the dual leg of type $3$,
+\begin{equation}
+\mathcal{A}_{123}(Y_1,Y_2,Y_3)
+=
+\left\langle
+\Xi_{\Dims3}(Y_3),\mathcal{J}_{12}(Y_1,Y_2)
+\right\rangle.
+\label{eq:A123def}
+\end{equation}
+Combining \cref{eq:dualtransport,eq:sourceTransScalar}, one finds
+\begin{equation}
+\left(
+\rho_A^{(\Dims1)}+\rho_A^{(\Dims2)}+\rho_A^{(\Dims3),\vee}
+\right)\mathcal{A}_{123}=0.
+\label{eq:A123inv}
+\end{equation}
+Thus symmetry transport fixes the full boundary-point dependence. For scalars the unique solution is
+\begin{equation}
+\mathcal{A}_{123}(\Ypt1,\Ypt2,\Ypt3)
 =
 \frac{C_{123}}
-{(-2\Y{1}\!\cdot\!\Y{2})^{\frac{\D{1}+\D{2}-\D{3}}2}
- (-2\Y{2}\!\cdot\!\Y{3})^{\frac{\D{2}+\D{3}-\D{1}}2}
- (-2\Y{3}\!\cdot\!\Y{1})^{\frac{\D{3}+\D{1}-\D{2}}2}}.
+{(-2\Ypt1\!\cdot\!\Ypt2)^{\delta_{12}}
+ (-2\Ypt2\!\cdot\!\Ypt3)^{\delta_{23}}
+ (-2\Ypt3\!\cdot\!\Ypt1)^{\delta_{31}}},
 \label{eq:3pt}
 \end{equation}
-The single reduced coefficient $C_{123}$ is therefore the coefficient of the unique intertwiner from $\cV_{\D1}\otimes \cV_{\D2}$ to $\cV_{\D3}$ inside the bracket \cref{eq:source}.
-
-\section{Exact brackets that need to be computed}
-
-\subsection{Generic order in the large-radius expansion}
-
-Suppose the large-radius expansion parameter is $\mu\sim R^{-1}$ and one wants the correlator through order $\mu^k$. Then the exact massless effective brackets needed are:
-
-\paragraph{Background.}
-To determine $\psi$ itself through order $\mu^k$, one needs
+where
 \begin{equation}
-[\psi^{\otimes n}]',
-\qquad 2\le n\le k+1.
-\end{equation}
-
-\paragraph{Super-isometry.}
-To determine the generators and their closure through order $\mu^k$, one needs
-\begin{equation}
-[\psi^{\otimes n}\otimes \lambda^A]',
+\delta_{12}=\frac{\Dims1+\Dims2-\Dims3}{2},
 \qquad
-[\psi^{\otimes n}\otimes \lambda^A\otimes \lambda^B]',
-\qquad 0\le n\le k.
-\end{equation}
-
-\paragraph{Boundary-labeled linearized state.}
-To determine $\Phi_\Delta(Y)$ and verify that it is an intertwiner, one needs
-\begin{equation}
-[\psi^{\otimes n}\otimes \Phi_\Delta(Y)]',
+\delta_{23}=\frac{\Dims2+\Dims3-\Dims1}{2},
 \qquad
-[\psi^{\otimes n}\otimes \lambda^A\otimes \Phi_\Delta(Y)]',
-\qquad 0\le n\le k.
+\delta_{31}=\frac{\Dims3+\Dims1-\Dims2}{2}.
+\label{eq:deltas}
 \end{equation}
+The only remaining dynamical datum is the local coefficient $C_{123}$.
 
-\paragraph{Quadratic source / OPE channel.}
-To determine the source in \cref{eq:Phi12}, one needs
+\subsection{Scalar evaluation of the local coefficient}
+
+In the scalar toy model the dual leg is represented by the same kernel, so
 \begin{equation}
-[\psi^{\otimes n}\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]',
-\qquad 0\le n\le k.
-\label{eq:needsource}
-\end{equation}
-
-\paragraph{Observable.}
-Once \cref{eq:needsource} is known, the only additional input is the cyclic pairing with the dual outgoing state, i.e. \cref{eq:A3} or equivalently \cref{eq:vertex}. No further global solution is required.
-
-\subsection{Concrete bracket list with the currently available background}
-
-The background of arXiv:2507.12921 is currently explicit through third order in $\mu$. If one works consistently to that level, the concrete nontrivial brackets are:
-\begin{align}
-&[\psi^{\otimes 2}]',\qquad [\psi^{\otimes 3}]',
-\notag\\
-&[\psi\otimes \lambda^A]',\qquad [\psi^{\otimes 2}\otimes \lambda^A]',
-\notag\\
-&[\lambda^A\otimes \lambda^B]',\qquad [\psi\otimes \lambda^A\otimes \lambda^B]',
-\notag\\
-&[\psi\otimes \Phi_\Delta(Y)]',\qquad [\psi^{\otimes 2}\otimes \Phi_\Delta(Y)]',
-\notag\\
-&[\lambda^A\otimes \Phi_\Delta(Y)]',\qquad [\psi\otimes \lambda^A\otimes \Phi_\Delta(Y)]',
-\notag\\
-&[\Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]',
-\qquad
-[\psi\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]',
-\notag\\
-&[\psi^{\otimes 2}\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]'.
-\label{eq:concrete}
-\end{align}
-This is the finite list of brackets that a concrete third-order implementation would actually have to compute.
-
-\section{Scalar toy model in the same language}
-
-\subsection{Toy \texorpdfstring{$L_\infty$}{Linfty} structure}
-
-For the scalar toy model in embedding coordinates, the shifted $L_\infty$ structure is especially simple. Let $\varphi(X)$ be a formal field on the $\AdS$ hyperboloid in embedding coordinates. Then
-\begin{align}
-\ell_1^{\rm toy}(\varphi)&=(\Box_{\AdS}-m^2)\varphi,
-\label{eq:toy1}\\
-\ell_2^{\rm toy}(\varphi_1,\varphi_2)&=-g\,\varphi_1\varphi_2,
-\label{eq:toy2}\\
-\ell_n^{\rm toy}&=0,\qquad n\ge 3.
-\end{align}
-All $1/R$ corrections are contained in $\Box_{\AdS}$ as a formal differential operator in the center patch. No global coordinate system is introduced.
-
-\subsection{Boundary-labeled scalar state}
-
-The scalar bulk-to-boundary state $K_\Delta(X,Y)$ is defined entirely by patch equations:
-\begin{align}
-\ell_1^{\rm toy}(K_\Delta(X,Y))&=0,
-\label{eq:toyK1}\\
-\left(\mcJ^{(X)}_{MN}+\mcJ^{(Y)}_{MN}\right)K_\Delta(X,Y)&=0,
-\label{eq:toyK2}\\
-\left(Y\cdot \partial_Y+\Delta\right)K_\Delta(X,Y)&=0.
-\label{eq:toyK3}
-\end{align}
-These conditions determine the formal patch series of
-\begin{equation}
-K_\Delta(X,Y)=\frac{c_\Delta}{(-2X\cdot Y)^\Delta}
-\end{equation}
-without ever invoking a boundary limit.
-
-\subsection{Three-point coefficient in the toy model}
-
-The two-source scalar fluctuation is defined by
-\begin{equation}
-\ell_1^{\rm toy}\bigl(\varphi_{12}(\Y{1},\Y{2})\bigr)
-\;+\;
-\ell_2^{\rm toy}\bigl(K_{\D1}(\cdot,\Y{1}),K_{\D2}(\cdot,\Y{2})\bigr)
-\;=\;0.
-\label{eq:toy12}
-\end{equation}
-The coefficient in the $\D3$ channel is extracted by the toy analogue of \cref{eq:A3},
-\begin{equation}
-\mathcal{A}^{\rm toy}_3(\Y{1},\Y{2},\Y{3})
+\mathcal{A}_{123}
 =
-\Omega_{\rm toy}\!\left(\wt K_{\D3}(\cdot,\Y{3}),
-\ell_2^{\rm toy}\bigl(K_{\D1}(\cdot,\Y{1}),K_{\D2}(\cdot,\Y{2})\bigr)\right),
-\label{eq:toyA3}
+g\int_{\AdS}\! d^5X\,\sqrt{G}\,
+K_{\Dims1}(X,\Ypt1)K_{\Dims2}(X,\Ypt2)K_{\Dims3}(X,\Ypt3).
+\label{eq:K123def}
 \end{equation}
-with $\Omega_{\rm toy}$ fixed by the two-point normalization. This reproduces \cref{eq:3pt} with the scalar $C_{123}$, again without leaving the patch.
+Transport has already fixed the $(Y_1,Y_2,Y_3)$ dependence in \cref{eq:3pt}; the integral is only needed to determine $C_{123}$. Choosing an affine section and using \cref{eq:Kpoincare},
+\begin{equation}
+\mathcal{A}_{123}
+=
+g\,c_{\Dims1}c_{\Dims2}c_{\Dims3}
+\int_0^\infty\!\frac{dz}{z^5}\int d^4x\,
+\prod_{i=1}^3
+\left(\frac{z}{z^2+|x-y_i|^2}\right)^{\Dims{i}}.
+\label{eq:contactint}
+\end{equation}
+Introduce Schwinger parameters for each denominator. After the Gaussian $x$ integral and the $z$ integral one gets
+\begin{align}
+\mathcal{A}_{123}
+=\;&
+\frac{g\pi^2}{2}\,
+\frac{c_{\Dims1}c_{\Dims2}c_{\Dims3}}
+{\Gamma(\Dims1)\Gamma(\Dims2)\Gamma(\Dims3)}
+\Gamma\!\left(\frac{\Dims1+\Dims2+\Dims3-4}{2}\right)
+\notag\\
+&\times
+\int_0^\infty \prod_{i=1}^3 d\alpha_i\,
+\alpha_i^{\Dims{i}-1}\,
+s^{-\frac{\Dims1+\Dims2+\Dims3}{2}}
+\exp\!\left[
+-\frac{1}{s}\sum_{i<j}\alpha_i\alpha_j |y_{ij}|^2
+\right],
+\label{eq:schwinger}
+\end{align}
+where $s=\alpha_1+\alpha_2+\alpha_3$. The Symanzik simplex integral then yields
+\begin{equation}
+C_{123}
+=
+\frac{g}{2\pi^4}\,
+\frac{\Gamma\!\left(\frac{\Dims1+\Dims2+\Dims3-4}{2}\right)
+\Gamma(\delta_{12})\Gamma(\delta_{23})\Gamma(\delta_{31})}
+{\Gamma(\Dims1-2)\Gamma(\Dims2-2)\Gamma(\Dims3-2)}.
+\label{eq:C123}
+\end{equation}
 
-\section{Discussion}
+\subsection{Massless equal-weight limit}
 
-The patch-only statement is therefore:
-\begin{quote}
-Boundary three-point data are encoded in the shifted quadratic bracket $\ell_2^\psi$ between boundary-labeled linearized cohomology classes, together with the cyclic pairing against a dual outgoing class.
-\end{quote}
-This is the exact sense in which one can ``turn data around a patch into a calculation that sees the boundary'' while staying in embedding coordinates and never referring to $\rho\to\infty$.
+For $\Dims1=\Dims2=\Dims3=4$ one has
+\begin{equation}
+\delta_{12}=\delta_{23}=\delta_{31}=2,
+\qquad
+C_{444}=\frac{3g}{\pi^4}.
+\label{eq:C444raw}
+\end{equation}
+Hence
+\begin{equation}
+\mathcal{A}_{444}(\Ypt1,\Ypt2,\Ypt3)
+=
+\frac{3g/\pi^4}
+{(-2\Ypt1\!\cdot\!\Ypt2)^2(-2\Ypt2\!\cdot\!\Ypt3)^2(-2\Ypt3\!\cdot\!\Ypt1)^2}.
+\label{eq:C444}
+\end{equation}
+If one computes instead the outgoing response variable propagated by the universal two-point kernel, the exact amputation is still \cref{eq:amputmom,eq:amputpos}.
 
-For the full $\mathrm{AdS}_5\times S^5$ problem, the real task is now sharply posed. One must compute the bracket list \cref{eq:concrete} for the relevant BPS boundary-labeled fluctuations and verify the intertwining condition \cref{eq:PhiCov}. Once this is done, the three-point coefficient is a patch observable in the sense of \cref{eq:A3}, not a global Witten-diagram integral.
+\section{Extension turns all required data into string brackets}
+
+\subsection{Massless effective symmetry derivatives}
+
+The extended system already tells us how to convert derivatives into massless effective brackets. For the background $\psi$ and a massless effective gauge parameter $\lambda$, \cite{CGSY} gives
+\begin{equation}
+\delta_\lambda \psi
+=
+Q\lambda+\sum_{n=1}^\infty \frac{1}{n!}[\psi^{\otimes n}\otimes \lambda]'.
+\label{eq:variationMasslessNote}
+\end{equation}
+Background super-isometries are generated by $\lambda_A$ satisfying
+\begin{align}
+Q\lambda_A+\sum_{n=1}^\infty \frac{1}{n!}[\psi^{\otimes n}\otimes \lambda_A]'&=0,
+\label{eq:superiso1note}\\
+\sum_{n=0}^\infty \frac{1}{n!}[\psi^{\otimes n}\otimes \lambda_A\otimes \lambda_B]'
+&=
+f_{AB}{}^C\lambda_C
++Q\omega_{AB}
++\sum_{n=1}^\infty \frac{1}{n!}[\psi^{\otimes n}\otimes \omega_{AB}]'.
+\label{eq:superiso2note}
+\end{align}
+These are the exact statements that derivatives along symmetry generators are realized by string brackets, up to the usual $L_\infty$ homotopy correction $\omega_{AB}$.
+
+The effective covariant derivative on a physical fluctuation is therefore
+\begin{equation}
+D_A^\psi \Phi
+\equiv
+L_A\Phi
++\sum_{n\ge 0}\frac{1}{n!}
+[\psi^{\otimes n}\otimes \lambda_A\otimes \Phi]'
+=0.
+\label{eq:transportSFT}
+\end{equation}
+The dual outgoing object obeys
+\begin{equation}
+D_A^{\psi,\vee}\Xi
+\equiv
+L_A\Xi-\Xi\circ
+\left(
+\sum_{n\ge 0}\frac{1}{n!}
+[\psi^{\otimes n}\otimes \lambda_A\otimes \,\cdot\,]'
+\right)
+=0.
+\label{eq:transportDualSFT}
+\end{equation}
+Flatness of transport follows from \cref{eq:superiso2note}. This is the direct string-field-theory analogue of the scalar transport system \cref{eq:transportScalar}.
+
+\subsection{Every observable as an extended derivative problem}
+
+Once derivatives are the primitive data, every ingredient in the boundary computation is an extension problem whose coefficients are string brackets:
+\begin{itemize}
+\item Incoming leg: choose a center seed $\Phi_{\star,i}$ in the physical cohomology and solve \cref{eq:transportSFT}. Repeated derivatives of the transported leg are generated recursively by repeated insertions of $\lambda_A$ brackets, exactly as in \cref{eq:jetfromder}.
+\item Outgoing dual leg: choose a center dual seed $\Xi_{\star,i}$ and solve \cref{eq:transportDualSFT}. The boundary two-point pairing is the transported invariant pairing
+\begin{equation}
+\mathbb{K}^{\rm SFT}_{2,i}(Y_1,Y_2)
+\equiv
+\langle \Xi_i(Y_1),\Phi_i(Y_2)\rangle.
+\label{eq:K2SFT}
+\end{equation}
+Its inverse is the exact outgoing amputator.
+\item Quadratic source: define the outgoing component
+\begin{equation}
+\mathcal{J}_{12}^{(3)}(Y_1,Y_2)
+\equiv
+\sum_{n\ge 0}\frac{1}{n!}
+[\psi^{\otimes n}\otimes \Phi_1(Y_1)\otimes \Phi_2(Y_2)]'_3.
+\label{eq:sourceSFT}
+\end{equation}
+Because $D_A^\psi$ is represented by brackets, the $L_\infty$ identities imply that $\mathcal{J}_{12}^{(3)}$ obeys the transported derivative equation obtained by differentiating the bracket and using \cref{eq:transportSFT}.
+\item Boundary observable: pair the transported source with the outgoing dual,
+\begin{equation}
+\mathcal{A}_{123}^{\rm SFT}
+=
+\left\langle
+\Xi_3(Y_3),\mathcal{J}_{12}^{(3)}(Y_1,Y_2)
+\right\rangle.
+\label{eq:ampSFT}
+\end{equation}
+Its full boundary dependence is fixed by the transport equations. The only local dynamical data are the center seeds, the local quadratic bracket, and the inverse two-point pairing.
+\end{itemize}
+
+\subsection{Exact extraction from the nonlinear extended-system solution}
+
+Suppose the extended system is solved for the nonlinear fluctuation sourced by two incoming legs. Then the three-point coefficient is obtained directly from that solution by projection and amputation.
+
+Let $\Phi_1(Y_1)$ and $\Phi_2(Y_2)$ be the transported incoming legs and let $\Phi_{12}(Y_1,Y_2)$ be the second-order fluctuation solving the shifted equation of motion
+\begin{equation}
+Q\Phi_{12}
++\sum_{n=1}^\infty \frac{1}{n!}[\psi^{\otimes n}\otimes \Phi_{12}]'
++\sum_{n=0}^\infty \frac{1}{n!}[\psi^{\otimes n}\otimes \Phi_1(Y_1)\otimes \Phi_2(Y_2)]'
+=0.
+\label{eq:Phi12eq}
+\end{equation}
+This is the precise extended-system version of saying that the nonlinear field is sourced by the quadratic bracket of the two incoming legs.
+
+Next choose a canonical outgoing dual $\Xi_3^{\rm can}(Y_3)$ solving \cref{eq:transportDualSFT}. Pairing it with the nonlinear solution gives the outgoing response with one external leg still attached,
+\begin{equation}
+A_{12\to 3}(Y_1,Y_2;Y_3)
+\equiv
+\left\langle
+\Xi_3^{\rm can}(Y_3),\Phi_{12}(Y_1,Y_2)
+\right\rangle.
+\label{eq:responseSFT}
+\end{equation}
+The remaining leg is removed by the inverse transported two-point kernel
+\begin{equation}
+\mathbb{K}^{\rm SFT}_{2,3}(Y,Y')
+\equiv
+\left\langle
+\Xi_3^{\rm can}(Y),\Phi_3(Y')
+\right\rangle,
+\label{eq:K2SFT3}
+\end{equation}
+namely by defining the amputated outgoing dual
+\begin{equation}
+\Xi_3^{\rm amp}(Y)
+\equiv
+\int D^4Y'\,
+\big(\mathbb{K}^{\rm SFT}_{2,3}\big)^{-1}(Y,Y')\,
+\Xi_3^{\rm can}(Y').
+\label{eq:Xiamp}
+\end{equation}
+The amputated boundary observable is therefore
+\begin{equation}
+\mathcal{A}_{123}^{\rm amp}(Y_1,Y_2,Y_3)
+\equiv
+\left\langle
+\Xi_3^{\rm amp}(Y_3),\Phi_{12}(Y_1,Y_2)
+\right\rangle.
+\label{eq:AampSFT}
+\end{equation}
+
+If the three external states admit a unique conformal tensor structure, symmetry transport fixes
+\begin{equation}
+\mathcal{A}_{123}^{\rm amp}(Y_1,Y_2,Y_3)
+=
+C_{123}\,
+\frac{1}
+{(-2Y_1\!\cdot\!Y_2)^{\delta_{12}}
+ (-2Y_2\!\cdot\!Y_3)^{\delta_{23}}
+ (-2Y_3\!\cdot\!Y_1)^{\delta_{31}}},
+\label{eq:AampStruct}
+\end{equation}
+with the same $\delta_{ij}$ as in \cref{eq:deltas}. Hence the coefficient is extracted from the nonlinear solution by
+\begin{equation}
+C_{123}
+=
+\frac{
+\left\langle
+\Xi_3^{\rm amp}(Y_3),\Phi_{12}(Y_1,Y_2)
+\right\rangle
+}
+{(-2Y_1\!\cdot\!Y_2)^{-\delta_{12}}
+ (-2Y_2\!\cdot\!Y_3)^{-\delta_{23}}
+ (-2Y_3\!\cdot\!Y_1)^{-\delta_{31}}},
+\label{eq:Cextract}
+\end{equation}
+evaluated at any convenient triple $(Y_1,Y_2,Y_3)$.
+
+If only the $1/R$ expansion of the extended system is known, then each ingredient is expanded recursively:
+\begin{equation}
+\psi=\sum_{r\ge 0}R^{-r}\psi^{(r)},
+\qquad
+\Phi_i=\sum_{r\ge 0}R^{-r}\Phi_i^{(r)},
+\qquad
+\Xi_3^{\rm amp}=\sum_{r\ge 0}R^{-r}\Xi_3^{\rm amp,(r)},
+\qquad
+\Phi_{12}=\sum_{r\ge 0}R^{-r}\Phi_{12}^{(r)}.
+\label{eq:Rexpansion}
+\end{equation}
+Then
+\begin{equation}
+C_{123}(R)=\sum_{n\ge 0}R^{-n}C_{123}^{(n)},
+\label{eq:Cexpansion}
+\end{equation}
+with
+\begin{equation}
+C_{123}^{(n)}
+=
+\text{coeff}_{R^{-n}}
+\left[
+\frac{
+\sum_{a+b=n}
+\left\langle
+\Xi_3^{\rm amp,(a)}(Y_3),\Phi_{12}^{(b)}(Y_1,Y_2)
+\right\rangle
+}
+{(-2Y_1\!\cdot\!Y_2)^{-\delta_{12}}
+ (-2Y_2\!\cdot\!Y_3)^{-\delta_{23}}
+ (-2Y_3\!\cdot\!Y_1)^{-\delta_{31}}}
+\right].
+\label{eq:Cnextract}
+\end{equation}
+Thus the truncated extended system determines the truncated three-point coefficient by three steps only: solve the transport equations for the external legs, solve the nonlinear equation \cref{eq:Phi12eq} for the sourced fluctuation, and then project with the amputated outgoing dual as in \cref{eq:Cextract}.
+
+\subsection{Exact bracket data to compute}
+
+Under the assumption that the full extended system realizes exact flat $\PSU$ transport, the boundary three-point problem is reduced to the following explicit bracket data:
+\begin{itemize}
+\item the background brackets $[\psi^{\otimes n}]'$,
+\item the super-isometry brackets $[\psi^{\otimes n}\otimes \lambda_A]'$,
+\item the symmetry-closure brackets $[\psi^{\otimes n}\otimes \lambda_A\otimes \lambda_B]'$,
+\item the action of symmetry derivatives on physical seeds, namely $[\psi^{\otimes n}\otimes \lambda_A\otimes \Phi]'$,
+\item the quadratic source brackets $[\psi^{\otimes n}\otimes \Phi_1\otimes \Phi_2]'$,
+\item the cyclic two-point pairing on the transported boundary module and its inverse.
+\end{itemize}
+No further spacetime derivatives are independent inputs. Extension converts every higher derivative needed for the boundary observable into repeated insertions of the symmetry generators through these brackets.
 
 \begin{thebibliography}{99}
-
-\bibitem{Mazel:2025}
-B.~Mazel, C.~Wang and X.~Yin,
-``Diffeomorphism in Closed String Field Theory,''
-arXiv:2504.12290.
 
 \bibitem{CGSY}
 M.~Cho, J.~Gomide, J.~Scheinpflug and X.~Yin,
 ``On the $\mathrm{AdS}_5\times S^5$ Solution of Superstring Field Theory,''
 arXiv:2507.12921.
 
+\bibitem{DiffeoSFT}
+J.~Gomide and X.~Yin,
+``String field theory in large curved background via an extended BV system,''
+arXiv:2504.12290.
+
 \bibitem{Freedman:1998tz}
 D.~Z.~Freedman, S.~D.~Mathur, A.~Matusis and L.~Rastelli,
 ``Correlation functions in the CFT($d$)/AdS($d{+}1$) correspondence,''
 Nucl.\ Phys.\ B {\bf 546}, 96 (1999), arXiv:hep-th/9804058.
+
+\bibitem{Costa:2014kfa}
+M.~S.~Costa, V.~Gon\c{c}alves and J.~Penedones,
+``Spinning AdS Propagators,''
+JHEP {\bf 09}, 064 (2014), arXiv:1404.5625.
+
+\bibitem{SimmonsDuffin:2012}
+D.~Simmons-Duffin,
+``Projectors, Shadows, and Conformal Blocks,''
+JHEP {\bf 04}, 146 (2014), arXiv:1204.3894.
 
 \end{thebibliography}
 
