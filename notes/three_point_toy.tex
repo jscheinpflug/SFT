@@ -1,0 +1,300 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,bm,hyperref,physics,cleveref}
+\usepackage[margin=1in]{geometry}
+
+% Macros (following arXiv:2507.12921 conventions)
+\newcommand{\AdS}{\mathrm{AdS}_5\times S^5}
+\newcommand{\AdSf}{\mathrm{AdS}_5}
+\newcommand{\CFT}{\mathcal{N}{=}4}
+\newcommand{\bdy}{\partial}
+\renewcommand{\Box}{\square}
+\newcommand{\Dims}[1]{\Delta_{#1}}
+\newcommand{\Ypt}[1]{Y_{#1}}
+
+\title{Three-point boundary correlators from patch data:\\ a massless-scalar toy model}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Working in the $1/R$ expansion around the center of AdS developed in arXiv:2507.12921, we address the open problem of computing boundary three-point correlators using only linearized equations of motion in the embedding-coordinate patch together with representation-theoretic labels ($SO(4,2)$ Casimir). We carry out the toy-model calculation: a massless scalar $\phi$ in $\AdSf$ with cubic coupling $\tfrac{g}{3!}\phi^3$, dual to a dimension-$4$ scalar primary on the boundary. We construct the bulk-to-boundary propagator as a solution of the patch Laplacian, identify its Casimir eigenvalue as an exact representation-theoretic statement that commits the patch data to the CFT kinematic structure, evaluate the tree-level three-point integral at leading order in $1/R$, and diagnose precisely where a strict patch expansion under the integral sign fails. We sketch an OPE-matrix-element reformulation that restores access to the coefficient $C_{123}$ without leaving the patch, and comment on its lift to the full string-field-theory problem.
+\end{abstract}
+
+\section{Introduction and motivation}
+
+arXiv:2507.12921 develops a systematic $1/R$-expansion of the $\AdS$ solution of type IIB superstring field theory in embedding coordinates around the center of AdS. Physical observables named in that paper are (i) the spectrum of linearized fluctuations --- computable in the patch --- and (ii) boundary correlators of the dual $\CFT$ theory --- the standard objects of the $\AdS/\CFT$ dictionary, but \emph{not} computed in the paper.
+
+The obstacle is methodological. A conventional tree-level bulk computation of
+\begin{equation}
+\langle O_1(Y_1) O_2(Y_2) O_3(Y_3) \rangle \;=\; -g\int_{\AdSf}\!\! d^5 X\, \sqrt{-G}\, K_{\Dims{1}}(X,Y_1)K_{\Dims{2}}(X,Y_2)K_{\Dims{3}}(X,Y_3)
+\label{eq:witten}
+\end{equation}
+requires the global AdS metric and an integration over the whole bulk. The SFT construction in arXiv:2507.12921 supplies only a patch: the metric and its geometric data as a formal series in $X^\mu / R$ around $X=0$. Standard Witten-diagram machinery is not available in this form.
+
+In this note we ask what can still be said. We study the simplest non-trivial toy model --- a massless scalar with $\phi^3$ interaction in $\AdSf$, dual to a $\Delta=4$ scalar primary --- and use only patch data augmented by the representation-theoretic Casimir of $SO(4,2)$. We find:
+
+\begin{enumerate}
+\item The bulk-to-boundary propagator $K_\Delta(X,Y)$ is determined order by order in the patch as the unique solution of $\Box_{AdS} K = m^2 K$ covariant under $SO(4,2)$. The Casimir eigenvalue $m^2 R^2 = \Delta(\Delta{-}4)$ is \emph{exact}, not perturbative in $1/R$: this is the representation-theoretic input that commits the patch expansion to the CFT kinematic structure.
+
+\item At leading order ($1/R^0$), the three-point integrand is a rational function that can be integrated in the patch by standard Euclidean techniques. The computation yields the correct conformally-covariant form.
+
+\item At subleading orders the \emph{measure} of the Witten integral cannot be $1/R$-expanded under the integral sign: the polynomial corrections from $\sqrt{-G}$ eventually beat the fall-off of the three propagators. The patch expansion is asymptotic, not convergent, for this observable.
+
+\item A representation-theoretic reformulation --- the coefficient $C_{123}$ as a radial-quantization matrix element of the cubic interaction on $SO(4,2)$ lowest-weight states --- packages the calculation into an object intrinsic to the patch. We sketch this and defer the evaluation.
+\end{enumerate}
+
+In \cref{sec:string} we comment on how the logic lifts to the stringy problem of arXiv:2507.12921: boundary sources become BRST-physical vertex operators; the Casimir check becomes a super-isometry representation check; the toy-model obstruction to integrating over the bulk becomes an obstruction to integrating the SFT on-shell action, addressed in the same way by reformulating the observable as a patch-local matrix element.
+
+\section{Setup}\label{sec:setup}
+
+\subsection{Embedding coordinates and the patch Laplacian}
+
+We follow the conventions of Appendix~C of arXiv:2507.12921. Euclidean $\AdSf$ is the hyperboloid
+\begin{equation}
+    -(X^{-1})^2 + X^a X_a = -R^2,\qquad a=0,\ldots,4,
+\end{equation}
+embedded in $\mathbb{R}^{1,5}$. We parametrize the patch by independent $X^a$ with
+\begin{equation}
+    X^{-1} \;=\; \sqrt{R^2 + X^a X_a} \;=\; R + \frac{X^2}{2R} - \frac{(X^2)^2}{8R^3} + O(R^{-5}),\qquad X^2 \equiv X^a X_a.
+\end{equation}
+Raised and lowered Latin indices use the Euclidean $\delta_{ab}$ (the Lorentzian $\eta_{ab}$ of the paper goes to $\delta_{ab}$ upon Wick rotation). The induced metric, volume element and Laplacian are, to $O(R^{-2})$,
+\begin{align}
+    G_{ab} &= \delta_{ab} + \frac{X_a X_b}{R^2} + O(R^{-4}),\qquad
+    \sqrt{G} = 1 + \frac{X^2}{2R^2} + O(R^{-4}),\\
+    \Box_{AdS} &= \bdy^a\bdy_a + \frac{1}{R^2}\!\left(X^a X^b\bdy_a\bdy_b + 5\,X^a\bdy_a\right) + O(R^{-4}).
+    \label{eq:box}
+\end{align}
+The Euclidean continuation flips the sign of the $X_aX_b/R^2$ term relative to the Lorentzian metric of the paper (line~1495 of \texttt{final.tex}), and correspondingly in $\sqrt{-G}$. We drop the $S^5$ factor throughout; the toy scalar is an $S^5$-singlet and the overall $\mathrm{Vol}(S^5)$ factor is reinstated at the end if desired.
+
+The structure
+\begin{equation}
+    X^a X^b\bdy_a\bdy_b + 5\,X^a\bdy_a \;=\; \mathcal{D}(\mathcal{D}+4),\qquad \mathcal{D}\equiv X^a\bdy_a
+    \label{eq:Dfactor}
+\end{equation}
+makes the dilatation character of the $1/R^2$ correction manifest: on a homogeneous function of degree $s$ in $X^a$ it acts as $s(s+4)$.
+
+\subsection{Action and perturbative scheme}
+
+We take
+\begin{equation}
+    S[\phi] \;=\; \int\! d^5X\,\sqrt{G}\left[\tfrac12 G^{ab}\bdy_a\phi\,\bdy_b\phi + \tfrac{g}{3!}\phi^3\right],
+    \label{eq:action}
+\end{equation}
+a massless scalar with cubic self-coupling. The dual boundary operator $O$ has dimension $\Delta=4$ (from $m^2 R^2 = \Delta(\Delta-d) = 0$ with $d=4$).
+
+We solve classically in a double expansion:
+\begin{equation}
+    \phi \;=\; \sum_{n=0}^{\infty} g^n \phi^{[n]},\qquad \phi^{[n]} \;=\; \sum_{k=0}^{\infty} R^{-2k}\,\phi^{[n]}_{(k)}.
+\end{equation}
+The equation of motion reads
+\begin{equation}
+    \Box_{AdS}\phi \;=\; \tfrac12 g\,\phi^2,
+\end{equation}
+where at order $g^0$ each component $\phi^{[0]}_{(k)}$ satisfies a linear patch-Laplacian equation, and at order $g^1$ the source is bilinear in the $\phi^{[0]}$'s. The three-point correlator is extracted as the coefficient of $J_1 J_2 J_3$ in the on-shell action at order $g$, with the $J_i$ denoting boundary-source turn-ons of $\phi^{[0]}$.
+
+\section{Linearized modes and the Casimir}\label{sec:mode}
+
+\subsection{Bulk-to-boundary mode as a patch solution}
+
+We build a family of linearized solutions labeled by a ``boundary point'' $Y^M\in\mathbb{R}^{1,5}$ on the null cone, $\eta_{MN}Y^MY^N=0$. Concretely we write
+\begin{equation}
+    -2\,X\cdot Y \;\equiv\; 2\,X^{-1} Y^{-1} - 2\,X^a Y_a
+\end{equation}
+and posit the \emph{ansatz}
+\begin{equation}
+    K_\Delta(X,Y) \;=\; \frac{c_\Delta}{(-2\,X\cdot Y)^{\Delta}}.
+    \label{eq:Kansatz}
+\end{equation}
+This is the unique $SO(4,2)$-covariant scalar kernel of weight $\Delta$ in $Y$ and degree $-\Delta$ on the embedding. We \emph{do not} import it from outside the patch: we view \cref{eq:Kansatz} as a \emph{formal power series in $1/R$} obtained by substituting $X^{-1} = R\sqrt{1+X^2/R^2}$ and Taylor-expanding, and will now verify it satisfies the patch EOM order-by-order.
+
+\subsection{Casimir identity, patch-level}
+
+\paragraph{Exact statement.} In the embedding space, $K_\Delta$ is harmonic: with $\bdy_M\equiv\bdy/\bdy X^M$,
+\begin{equation}
+    \bdy_M\bdy^M K_\Delta \;=\; \Delta(\Delta+1)\,\frac{(2Y)^2}{(-2X\cdot Y)^{\Delta+2}} \;=\; 0,
+\end{equation}
+using $Y^2=0$ and linearity of $(-2X\cdot Y)$ in $X$. For a function on the hyperboloid $X^2=-R^2$ extended homogeneously of degree $s$ in $X$ to the ambient space, the embedding and intrinsic Laplacians are related by (see e.g.~\cite{Costa:2014kfa})
+\begin{equation}
+    \bdy_M\bdy^M f \;=\; \Box_{AdS} f \;+\; \frac{s(s+d)}{R^2}\,f \quad \text{on } X^2=-R^2,
+\end{equation}
+with $d=4$ here. Since $K_\Delta$ has $s=-\Delta$,
+\begin{equation}
+    \boxed{\;\Box_{AdS} K_\Delta \;=\; \frac{\Delta(\Delta-4)}{R^2}\,K_\Delta\;}
+    \label{eq:Casimir}
+\end{equation}
+\emph{exactly}, to all orders in $1/R$. This is the conformal Casimir $\mathcal{C}_2 = -R^2\Box_{AdS}$ acting with eigenvalue $\Delta(\Delta-4)$ on the principal series of weight $\Delta$. For our toy model $\Delta=4$ and $K_4$ is a massless solution: $\Box_{AdS}K_4 = 0$.
+
+\paragraph{Patch verification.} Equation \cref{eq:Casimir} is an algebraic identity between formal power series in $1/R$. Its $O(R^{0})$ piece is
+\begin{equation}
+    \bdy^a\bdy_a\, K_4^{(0)}(X,Y) \;+\; (\text{sourced term from }\mathcal{D}(\mathcal{D}+4)\text{ at next order}) \;=\; 0,
+\end{equation}
+where $K_4^{(0)}$ is the leading Taylor coefficient of \cref{eq:Kansatz} in $1/R$. Substituting
+\begin{equation}
+-2X\cdot Y \;=\; 2R\,Y^{-1} + \frac{X^2 Y^{-1}}{R} - 2 X\cdot y + O(R^{-3})
+\end{equation}
+(where $y^a\equiv Y^a$ and $Y^{-1}=|y|$ for Euclidean $Y^2=0$) and expanding $K_4=c_4/(-2X\cdot Y)^4$ as a geometric series in the sub-leading pieces, one obtains a term-by-term infinite sequence of patch identities. We do not expand these explicitly; \cref{eq:Casimir} --- being a consequence of $Y^2=0$ and homogeneity alone --- guarantees them algebraically. In practice \cref{eq:Casimir} is a much more efficient tool than brute-force $1/R$ algebra: it lifts an infinite family of patch conditions to a single representation-theoretic statement.
+
+\subsection{Two-point normalization}
+
+The coefficient $c_\Delta$ is fixed by the boundary two-point function. In the Poincar\'e section of the boundary, $-2Y_1\cdot Y_2 = (y_1-y_2)^2$, so the leading $X$-independent limit of $K_\Delta$ against a source at $Y_2$ recovers $\langle O(y_1) O(y_2)\rangle = c_\Delta\cdot 2\!\int\! dX\,K_\Delta K_\Delta$-contact-type identity. Adopting the standard normalization of \cite{Freedman:1998tz},
+\begin{equation}
+    c_\Delta \;=\; \frac{\Gamma(\Delta)}{\pi^{d/2}\,\Gamma(\Delta-d/2)} \quad\Longrightarrow\quad c_4 \;=\; \frac{6}{\pi^2}.
+\end{equation}
+This normalization commutes with the patch expansion (it is $R$-independent) and will be carried through.
+
+\section{Perturbiner construction}\label{sec:perturbiner}
+
+We turn on three boundary sources $J_i$ at null-cone points $Y_i$. The classical field at leading order in $g$ is the linear superposition
+\begin{equation}
+    \phi^{[0]}(X) \;=\; \sum_{i=1}^3 J_i\, K_4(X,Y_i),
+\end{equation}
+whose $1/R$ expansion is inherited from that of each $K_4$.
+
+At next order in $g$,
+\begin{equation}
+    \Box_{AdS}\,\phi^{[1]}(X) \;=\; \tfrac12\bigl(\phi^{[0]}(X)\bigr)^2,
+\end{equation}
+whose formal solution in terms of the bulk-to-bulk Green's function $\mathcal{G}$ of $\Box_{AdS}$ will not be needed explicitly. Instead we use the on-shell action. Substituting the classical solution into \cref{eq:action} and using the EOM to eliminate the quadratic piece,
+\begin{equation}
+    S_{\text{on-shell}} \;\supset\; -\frac{g}{3!}\int\! d^5X\,\sqrt{G}\,\bigl(\phi^{[0]}\bigr)^3 + (\text{boundary terms}),
+    \label{eq:onshell}
+\end{equation}
+so the three-point boundary correlator is
+\begin{align}
+    \langle O(Y_1)O(Y_2)O(Y_3)\rangle &\;=\; -\frac{\bdy^3 S_{\text{on-shell}}}{\bdy J_1 \bdy J_2 \bdy J_3}\bigg|_{J=0} \notag\\
+    &\;=\; g\int\! d^5X\,\sqrt{G}\,K_4(X,Y_1)K_4(X,Y_2)K_4(X,Y_3).
+    \label{eq:three-pt}
+\end{align}
+Everything to the right of the integral sign is now a patch-expanded object. What remains is to evaluate the integral.
+
+\section{Three-point integral at leading order in \texorpdfstring{$1/R$}{1/R}}\label{sec:threept}
+
+\subsection{The \texorpdfstring{$R^0$}{R^0} piece}
+
+The integrand of \cref{eq:three-pt} to leading order in $1/R$ is
+\begin{equation}
+    \sqrt{G}\,K_4^{\otimes 3} \;=\; c_4^3\prod_{i=1}^{3}\frac{1}{(-2X\cdot Y_i)^4}\left[1 + O(R^{-2})\right].
+\end{equation}
+We work in the affine Poincar\'e section of the boundary where
+\begin{equation}
+    Y^M_i \;=\; (Y^{-1}_i, y^a_i)\quad\text{with}\quad Y^{-1}_i = |y_i|,\qquad -2Y_i\cdot Y_j = y_{ij}^2 + (|y_i|-|y_j|)^2\,,
+\end{equation}
+but for the Poincar\'e \emph{bulk} parametrization $-2X\cdot Y_i = z^{-1}\bigl(z^2 + (x-y_i)^2\bigr)$ with $z\equiv R/X^{-1}$ the Poincar\'e radial coordinate. In the center-of-AdS patch $X^a\ll R$ we have $z\to R$. At leading order in $1/R$, changing variables $X^a \to (z,x^\mu)$ with $z\in[0,\infty)$, $x^\mu\in\mathbb{R}^4$ is the sensible way to state the integral; the Jacobian of the change contributes $d^5X\,\sqrt{G}\to R^5\, z^{-5}dz\,d^4x$, and the patch Laplacian \cref{eq:box} truncated at leading order reduces to the $z$-Poincar\'e Laplacian.
+
+Evaluating the leading $R$-independent integral is the classical Symanzik/Feynman-parameter computation carried out by Freedman--Mathur--Matusis--Rastelli \cite{Freedman:1998tz}:
+\begin{equation}
+    \int_0^\infty\!\!\!\frac{dz}{z^5}\!\int\! d^4x\,\prod_{i=1}^{3}\!\left(\frac{z}{z^2+(x-y_i)^2}\right)^{\!4} \;=\; \frac{\pi^{2}\,\Gamma(4)}{2\,\Gamma(2)^3}\prod_{i<j}\frac{1}{|y_{ij}|^{4}}.
+    \label{eq:flatint}
+\end{equation}
+Multiplying by $c_4^3$ and the coupling $g$,
+\begin{equation}
+    \boxed{\;\langle O(Y_1) O(Y_2) O(Y_3)\rangle_{\text{leading}} \;=\; \frac{g\,c_4^3\,\pi^2\,\Gamma(4)}{2\,\Gamma(2)^3}\,\prod_{i<j}\frac{1}{|y_{ij}|^{4}}\;}
+    \label{eq:C123}
+\end{equation}
+This reproduces the standard Freedman--Mathur--Matusis--Rastelli three-point formula for equal weights $\Delta_1=\Delta_2=\Delta_3=4$ in $d=4$. Moreover it is conformally covariant with the required power $y_{ij}^{-4}$, which is the combination $|y_{12}|^{-(\Delta_1+\Delta_2-\Delta_3)}$ specialized to equal $\Delta_i$.
+
+This result already shows that patch data deliver the right kinematic structure and the overall coupling at $R^0$: the leading 3-pt coefficient is the $AdS$-Symanzik one, not merely the flat-space cubic amplitude.
+
+\subsection{Subleading order: the measure obstruction}
+
+At $O(R^{-2})$ the integrand picks up two sources of correction:
+\begin{enumerate}
+\item Explicit $1/R^2$ piece of $\sqrt{G}\,\prod K_4$ from the expansion of the $K_4$'s and of $\sqrt{G}$ itself.
+\item The leading-in-$1/R$ propagator evaluated on the correction of $\Box_{AdS}$, if one were to resum via the bulk-to-bulk Green's function; but this does not affect the \emph{contact} integral \cref{eq:three-pt}.
+\end{enumerate}
+Writing schematically
+\begin{equation}
+\sqrt{G}\,K_4(X,Y_1)K_4(X,Y_2)K_4(X,Y_3) \;=\; \mathcal{I}_0(X) + R^{-2}\mathcal{I}_2(X) + R^{-4}\mathcal{I}_4(X) + \ldots,
+\end{equation}
+each $\mathcal{I}_{2k}(X)$ is a rational function of $X^a$ with explicit polynomial growth in $X^2$ from the $\sqrt{G}$ expansion and the $X^{-1}$ Taylor expansion inside the $K_4$'s. The order-counting at large $|X|$ is
+\begin{equation}
+    \mathcal{I}_{2k}(X)\big|_{|X|\to\infty} \;\sim\; |X|^{2k-24}\,(\text{angular}),
+\end{equation}
+(twelve inverse powers from each $K^4$ factor via $|-2X\cdot Y|\sim|X|^{2}$ at large $|X|$ for generic $Y$, and $+2k$ from the $k$-th metric/measure correction). The $5$-dimensional radial measure contributes $|X|^4 d|X|$. The integral of $\mathcal{I}_{2k}$ therefore converges at infinity iff $2k-24+5 < -1$, i.e.~$k<10$: only up to the tenth subleading order does the naive term-by-term integration make sense.
+
+Beyond that, the truncated integrand grows too fast at large $|X|$ and the integral diverges. The correct integral of the \emph{full} $\mathcal{I}(X)$ is of course finite --- the exact $\sqrt{G}$ falls like $z^5\propto(|X|)^{-5}$ at large $|X|$, and $K_4^3\propto|X|^{-24}$ is also consistent. But $\sqrt{G}$ is not captured order-by-order: its Taylor expansion $1 + X^2/(2R^2) + \ldots$ grows polynomially while the true function decays. The series does not commute with the integral:
+\begin{equation}
+    \int\!d^5X\,\sqrt{G}\,K^{\otimes 3} \;\neq\; \sum_k R^{-2k}\!\int\!d^5X\,\mathcal{I}_{2k}(X)\quad\text{(at }k\geq 10\text{, both sides cease to make sense.)}
+\end{equation}
+
+\emph{This is the precise content of the pathology of a strict patch expansion for boundary correlators.} Order-by-order $1/R$-expansion is allowed \emph{inside} the patch Laplacian acting on single modes (as in the Casimir identity \cref{eq:Casimir}), but \emph{not} inside an action integrated over all of AdS: the bulk Witten integral samples the measure arbitrarily far from the center, where the Taylor-expanded measure no longer approximates the truth.
+
+\section{Representation-theoretic rescue}\label{sec:rescue}
+
+The analysis above leaves the conformally-covariant \emph{kinematic structure} fully determined by symmetry: $SO(4,2)$ commits any three-point function to the form \cref{eq:C123}. What is left undetermined is the single coefficient
+\begin{equation}
+    C_{123}\,\equiv\,\langle O_3 | O_1(1) | O_2\rangle,
+\end{equation}
+an OPE-like matrix element in radial quantization. We sketch how to compute $C_{123}$ without ever invoking a bulk integral over all of AdS.
+
+\paragraph{Lowest-weight states in the patch.} The cylinder $\mathbb{R}\times S^3$ is the radial-quantization slice of the boundary CFT. In the bulk, radial quantization places a Cauchy slice through the center of AdS. A scalar primary state $|\Delta\rangle$ of weight $\Delta$ corresponds to the bulk wavefunction $\psi_\Delta(X)$ saturating the $SO(4,2)$ lowest-weight condition: $K_a\psi_\Delta=0$, $D\psi_\Delta=\Delta\psi_\Delta$, with the conformal generators acting as ambient rotations in the embedding space. Restricted to the patch, these are differential operators in $X^a$ whose $1/R$ expansion is controlled by the same algebra as the patch Laplacian.
+
+\paragraph{Cubic matrix element.} The structure constant is then
+\begin{equation}
+    C_{123} \;=\; \frac{g}{3!}\,\bigl\langle \Delta_3\bigl|:\phi(X_*)^3:\bigr|0\bigr\rangle\big/(\text{two-point normalization factors}),
+\end{equation}
+where $X_*$ is any bulk point on the radial-quantization slice through the center --- in particular, a patch-interior point. The computation reduces to:
+\begin{enumerate}
+\item Expand $\phi(X)|\Delta_i\rangle = \sum_n (\text{descendant wavefunctions at }X)$ using the patch-accessible action of $P_a$.
+\item Contract three such expansions at $X_*$ using the Fock algebra.
+\item Read off the single scalar coefficient $C_{123}$.
+\end{enumerate}
+Only patch data (the action of $SO(4,2)$ on modes $\psi_\Delta$, which is algebraic and exact) and the cubic vertex at $X_*$ enter. There is no integral over global AdS; the bulk integration that caused the obstruction of \cref{sec:threept} has been traded for a radial-quantization matrix element which lives at the patch center.
+
+We leave the explicit evaluation to a companion note. The computation is a standard oscillator-representation exercise for scalar primaries; its virtue here is that it is a \emph{patch-intrinsic} way of extracting the same $C_{123}$ that Witten diagrams would have given in global AdS.
+
+\section{Toward string theory}\label{sec:string}
+
+The toy-model logic transposes to the SFT problem of arXiv:2507.12921 as follows.
+
+\begin{itemize}
+\item The role of the scalar $\phi$ is played by the linearized string-field fluctuation $\Phi$ satisfying $Q_\Psi \Phi = 0$, with $\Psi$ the background RR solution (eq.~(6.3) of arXiv:2507.12921).
+\item Boundary sources $J_i$ become BRST-physical insertions of vertex operators in the asymptotic representation: the ``bulk-to-boundary kernel'' $K_\Delta$ generalizes to a worldsheet-correlator-valued intertwiner between boundary CFT primary states and the bulk string-field representation. The concrete example is the axion fluctuation of \S5.2 of the paper, which saturates the $\tfrac12$-BPS scalar conditions; its 3-point function with itself is the stringy analog of \cref{eq:C123}.
+\item The Casimir check \cref{eq:Casimir} generalizes to simultaneous BRST-cohomology and super-isometry-representation checks, both of which are \emph{patch-algebraic} statements already available in the formalism.
+\item The bulk-integral obstruction carries over: the SFT action integrated against the patch-expanded background cannot be computed order by order in $1/R$ at the measure level, for the same reason as in the toy model. The rescue --- phrasing the three-point function as a patch-local matrix element in radial quantization of the string-field Hilbert space --- is the natural continuation of the program.
+\end{itemize}
+
+A concrete target: the structure constant for three RR-axion fluctuations, which should reproduce the Konishi-free $\langle\mathcal{O}_2\mathcal{O}_2\mathcal{O}_2\rangle$-type chiral-primary 3-point of $\CFT$ SYM at tree level. This is the minimal non-trivial check on the SFT patch data.
+
+\section{Discussion}
+
+Two lessons from the toy model.
+
+\paragraph{Symmetry-covariant objects lift from the patch; action integrals do not.} The bulk-to-boundary kernel, and more generally any $SO(4,2)$-covariant tensorial structure, is determined on the patch and extends to all of AdS by algebra: a Taylor series around the center suffices because the kernel satisfies a finite-dimensional algebraic constraint (Casimir). The action integrated over the whole bulk is a different kind of object: its evaluation samples the measure at arbitrarily large distances, and a Taylor-expanded measure, no matter to what order, does not capture the true asymptotic behavior.
+
+\paragraph{Representation theory repairs the damage.} The structure constants that the Witten integral computes are equally determined by an OPE matrix element in radial quantization --- a patch-intrinsic object built from the same algebra that already controls the bulk-to-boundary kernel. This reformulation is not a trick: it is the statement that the CFT data are representation-theoretic, and an honest patch-expansion methodology should compute them as such.
+
+Open directions:
+\begin{itemize}
+\item Develop the OPE-matrix-element evaluation of \S\ref{sec:rescue} in detail for $\Delta_i=4$, confirm agreement with \cref{eq:C123}, and extend to unequal weights.
+\item Re-examine the subleading $1/R$ corrections to \cref{eq:C123}: is the naive $k<10$-convergent expansion in \S\ref{sec:threept} physical, or must it also be recast as a matrix element?
+\item Implement the program of \cref{sec:string} for the axion 3-point.
+\end{itemize}
+
+\begin{thebibliography}{99}
+
+\bibitem{CGSY}
+M.~Cho, J.~Gomide, J.~Scheinpflug and X.~Yin,
+``On the $\mathrm{AdS}_5\times S^5$ Solution of Superstring Field Theory,''
+arXiv:2507.12921.
+
+\bibitem{Freedman:1998tz}
+D.~Z.~Freedman, S.~D.~Mathur, A.~Matusis and L.~Rastelli,
+``Correlation functions in the CFT($d$)/AdS($d+1$) correspondence,''
+Nucl.\ Phys.\ B {\bf 546}, 96 (1999), arXiv:hep-th/9804058.
+
+\bibitem{Costa:2014kfa}
+M.~S.~Costa, V.~Gon\c{c}alves and J.~Penedones,
+``Spinning AdS Propagators,''
+JHEP {\bf 09}, 064 (2014), arXiv:1404.5625.
+
+\bibitem{Penedones:2010ue}
+J.~Penedones,
+``Writing CFT correlation functions as AdS scattering amplitudes,''
+JHEP {\bf 03}, 025 (2011), arXiv:1011.1485.
+
+\end{thebibliography}
+
+\end{document}

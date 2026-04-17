@@ -1,0 +1,11 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "diffeoSFT.tex"
+      }
+   ],
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

@@ -1,0 +1,11 @@
+{
+   "sources" : [
+      {
+         "usage" : "toplevel",
+         "filename" : "final.tex"
+      }
+   ],
+   "process" : {
+      "compiler" : "pdflatex"
+   }
+}

@@ -1,0 +1,315 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,bm,hyperref,physics,cleveref}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\AdS}{\mathrm{AdS}_5}
+\newcommand{\SO}{\mathrm{SO}(4,2)}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\Y}[1]{Y_{#1}}
+\newcommand{\D}[1]{\Delta_{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\mcJ}{\mathcal{J}}
+
+\title{Three-point boundary data from a patch:\\
+\texorpdfstring{$L_\infty$}{Linfty} brackets in embedding coordinates}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The correct patch-local formulation of the boundary-correlator problem is algebraic, not asymptotic. Starting from the massless effective $L_\infty$ structure around the $\mathrm{AdS}_5\times S^5$ background of arXiv:2507.12921, we formulate boundary-labeled fluctuations directly in embedding coordinates. A boundary primary of weight $\Delta$ is represented by a cohomology class $\Phi_\Delta(Y)$, with $Y^2=0$, obeying the linearized equation and intertwining the bulk super-isometry brackets with the standard conformal action on the null cone. The nonlinear field sourced by two such primaries is determined by the quadratic shifted bracket $\ell_2^\psi(\Phi_1,\Phi_2)$, and the three-point coefficient is extracted by pairing this source with a dual outgoing cohomology representative at the patch center. This formulation never invokes a global radial coordinate or a boundary condition at $\rho\to\infty$. We also spell out the exact brackets that must be computed to obtain the correlator order by order in the large-radius expansion, and present the scalar toy model as the simplest instance of the same $L_\infty$ pattern.
+\end{abstract}
+
+\section{Motivation}
+
+The central issue in \texttt{task.md} is not how to solve a linear wave equation in the patch around the center of $\AdS$, but how to turn that patch data into a boundary observable. The previous version of this note still appealed to a global radial coordinate and an asymptotic decomposition at $\rho\to\infty$. That is precisely what the patch formalism does not provide.
+
+The right replacement is to work entirely in embedding coordinates and to phrase the problem in the shifted $L_\infty$ algebra around the background. Then the basic objects are:
+\begin{enumerate}
+\item the background string field $\psi$,
+\item the super-isometry generators $\lambda^A$,
+\item the boundary-labeled linearized fluctuation $\Phi_\Delta(Y)$,
+\item the quadratic source $\ell_2^\psi(\Phi_1,\Phi_2)$,
+\item the cyclic pairing with a dual outgoing cohomology representative.
+\end{enumerate}
+This is already enough to define the three-point coefficient at the level of the patch.
+
+The role of arXiv:2504.12290 in what follows is conceptual: it explains why an extended system of fields and gauge generators is the correct language for extracting global data from patch expansions. But for the present note the operative formulation will be entirely in the embedding-space $L_\infty$ brackets of the $\AdS$ background, not in a global coordinate transport problem.
+
+\section{Shifted \texorpdfstring{$L_\infty$}{Linfty} algebra around the background}
+
+\subsection{Background and shifted brackets}
+
+Let $\psi$ denote the massless effective string field describing the $\mathrm{AdS}_5\times S^5$ background in the flat-vertex frame of arXiv:2507.12921. The massless effective equations are
+\begin{equation}
+Q\psi+\sum_{n=2}^\infty \frac1{n!}[\psi^{\otimes n}]'=0.
+\label{eq:background}
+\end{equation}
+It is convenient to package the background dependence into shifted brackets
+\begin{equation}
+\ell_n^\psi(a_1,\dots,a_n)\equiv \sum_{m=0}^\infty \frac1{m!}
+[\psi^{\otimes m}\otimes a_1\otimes\cdots\otimes a_n]'.
+\label{eq:shifted}
+\end{equation}
+Then \cref{eq:background} is simply $\ell_0^\psi=0$. The linearized differential is $\ell_1^\psi$, the quadratic interaction/source bracket is $\ell_2^\psi$, and so on.
+
+\subsection{Super-isometry generators}
+
+Let $\lambda^A$ be the ghost-number-1 generators of $PSU(2,2|4)$ super-isometry. In the shifted language, the conditions quoted in arXiv:2507.12921 become
+\begin{align}
+\ell_1^\psi(\lambda^A)&=0,
+\label{eq:isom1}\\
+\ell_2^\psi(\lambda^A,\lambda^B)
+&=f^{AB}{}_C\,\lambda^C+\ell_1^\psi(\omega^{AB}),
+\label{eq:isom2}
+\end{align}
+where $\omega^{AB}$ is the usual homotopy correction coming from the $L_\infty$ gauge algebra.
+
+These two equations are the patch-level substitute for ``having access to the full geometry''. The background isometry is encoded directly in brackets, not in a global metric chart.
+
+\section{Boundary-labeled states in embedding coordinates}
+
+\subsection{Embedding-space labels}
+
+The boundary point is represented by a projective null vector
+\begin{equation}
+Y^M\in \bbR^{2,4},\qquad Y^2=0,\qquad Y\sim \alpha Y.
+\end{equation}
+The conformal generators act on such labels by the standard embedding-space differential operators
+\begin{equation}
+\mcJ^{(Y)}_{MN}=Y_M\frac{\partial}{\partial Y^N}-Y_N\frac{\partial}{\partial Y^M}.
+\label{eq:JY}
+\end{equation}
+
+\subsection{Boundary primary as a patch cohomology class}
+
+A boundary primary of weight $\Delta$ is represented by a ghost-number-2 cohomology class $\Phi_\Delta(Y)$ obeying:
+\begin{align}
+\ell_1^\psi(\Phi_\Delta(Y))&=0,
+\label{eq:PhiLin}\\
+\ell_2^\psi(\lambda_{MN},\Phi_\Delta(Y))
+&=\mcJ^{(Y)}_{MN}\Phi_\Delta(Y)+\ell_1^\psi(\chi_{MN}(Y)),
+\label{eq:PhiCov}\\
+\left(Y\cdot \partial_Y+\Delta\right)\Phi_\Delta(Y)&=0.
+\label{eq:PhiHom}
+\end{align}
+
+\Cref{eq:PhiCov} says that the action of bulk super-isometry on the patch fluctuation intertwines, up to $\ell_1^\psi$-exact terms, with the standard conformal action on the boundary label. This is the precise bracket-level version of ``the patch field knows where the boundary point is''.
+
+Nothing in \cref{eq:PhiLin,eq:PhiCov,eq:PhiHom} refers to a global radial coordinate or to an asymptotic region. The entire construction lives in the patch and in the null-cone label $Y$.
+
+\section{Quadratic source and three-point coefficient}
+
+\subsection{The sourced fluctuation}
+
+Given two boundary-labeled linearized states $\Phi_1(\Y{1})$ and $\Phi_2(\Y{2})$, define the sourced nonlinear fluctuation $\Phi_{12}(\Y{1},\Y{2})$ by
+\begin{equation}
+\ell_1^\psi\bigl(\Phi_{12}(\Y{1},\Y{2})\bigr)
+\;+\;
+\ell_2^\psi\bigl(\Phi_1(\Y{1}),\Phi_2(\Y{2})\bigr)
+\;=\;0.
+\label{eq:Phi12}
+\end{equation}
+This is just the $O(J_1J_2)$ term in the expansion of the full Maurer--Cartan equation around the background. The source is the exact quadratic shifted bracket
+\begin{equation}
+\ell_2^\psi\bigl(\Phi_1(\Y{1}),\Phi_2(\Y{2})\bigr)
+=
+\sum_{m=0}^\infty \frac1{m!}
+[\psi^{\otimes m}\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]'.
+\label{eq:source}
+\end{equation}
+
+The $L_\infty$ identities together with \cref{eq:isom1,eq:isom2,eq:PhiLin,eq:PhiCov} imply that $\Phi_{12}$ transforms, again up to $\ell_1^\psi$-exact terms, as
+\begin{equation}
+\ell_2^\psi(\lambda_{MN},\Phi_{12})
+\;=\;
+\left(\mcJ^{(\Y{1})}_{MN}+\mcJ^{(\Y{2})}_{MN}\right)\Phi_{12}
+\;+\;\ell_1^\psi(\chi_{MN;12}).
+\label{eq:Phi12Cov}
+\end{equation}
+Thus the two-source object carries the tensor-product conformal representation of the two boundary labels.
+
+\subsection{Outgoing channel and cyclic pairing}
+
+To extract the contribution in the channel of operator $3$, choose a dual outgoing cohomology representative $\wt\Phi_3(\Y{3})$ normalized by the two-point function. The patch-local trilinear observable is
+\begin{equation}
+\mathcal{A}_3(\Y{1},\Y{2},\Y{3})
+\equiv
+\Omega\!\left(\wt\Phi_3(\Y{3}),
+\ell_2^\psi(\Phi_1(\Y{1}),\Phi_2(\Y{2}))\right),
+\label{eq:A3}
+\end{equation}
+where $\Omega$ is the BPZ/symplectic pairing of the massless effective SFT. Equivalently, this is the background-dressed cubic vertex
+\begin{equation}
+\mathcal{A}_3(\Y{1},\Y{2},\Y{3})
+\sim
+\sum_{m=0}^\infty \frac1{m!}\,
+\Bigl\{\psi^{\otimes m},\wt\Phi_3(\Y{3}),\Phi_1(\Y{1}),\Phi_2(\Y{2})\Bigr\}.
+\label{eq:vertex}
+\end{equation}
+
+This is the patch-level replacement for ``solve the equation globally and read the normalizable coefficient at the boundary''. The outgoing projection is performed by the dual cohomology representative and the cyclic pairing, not by a boundary condition at $\rho\to\infty$.
+
+By $\SO$-covariance and homogeneity in the null-cone variables, \cref{eq:A3} must take the standard form
+\begin{equation}
+\mathcal{A}_3(\Y{1},\Y{2},\Y{3})
+=
+\frac{C_{123}}
+{(-2\Y{1}\!\cdot\!\Y{2})^{\frac{\D{1}+\D{2}-\D{3}}2}
+ (-2\Y{2}\!\cdot\!\Y{3})^{\frac{\D{2}+\D{3}-\D{1}}2}
+ (-2\Y{3}\!\cdot\!\Y{1})^{\frac{\D{3}+\D{1}-\D{2}}2}}.
+\label{eq:3pt}
+\end{equation}
+The single reduced coefficient $C_{123}$ is therefore the coefficient of the unique intertwiner from $\cV_{\D1}\otimes \cV_{\D2}$ to $\cV_{\D3}$ inside the bracket \cref{eq:source}.
+
+\section{Exact brackets that need to be computed}
+
+\subsection{Generic order in the large-radius expansion}
+
+Suppose the large-radius expansion parameter is $\mu\sim R^{-1}$ and one wants the correlator through order $\mu^k$. Then the exact massless effective brackets needed are:
+
+\paragraph{Background.}
+To determine $\psi$ itself through order $\mu^k$, one needs
+\begin{equation}
+[\psi^{\otimes n}]',
+\qquad 2\le n\le k+1.
+\end{equation}
+
+\paragraph{Super-isometry.}
+To determine the generators and their closure through order $\mu^k$, one needs
+\begin{equation}
+[\psi^{\otimes n}\otimes \lambda^A]',
+\qquad
+[\psi^{\otimes n}\otimes \lambda^A\otimes \lambda^B]',
+\qquad 0\le n\le k.
+\end{equation}
+
+\paragraph{Boundary-labeled linearized state.}
+To determine $\Phi_\Delta(Y)$ and verify that it is an intertwiner, one needs
+\begin{equation}
+[\psi^{\otimes n}\otimes \Phi_\Delta(Y)]',
+\qquad
+[\psi^{\otimes n}\otimes \lambda^A\otimes \Phi_\Delta(Y)]',
+\qquad 0\le n\le k.
+\end{equation}
+
+\paragraph{Quadratic source / OPE channel.}
+To determine the source in \cref{eq:Phi12}, one needs
+\begin{equation}
+[\psi^{\otimes n}\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]',
+\qquad 0\le n\le k.
+\label{eq:needsource}
+\end{equation}
+
+\paragraph{Observable.}
+Once \cref{eq:needsource} is known, the only additional input is the cyclic pairing with the dual outgoing state, i.e. \cref{eq:A3} or equivalently \cref{eq:vertex}. No further global solution is required.
+
+\subsection{Concrete bracket list with the currently available background}
+
+The background of arXiv:2507.12921 is currently explicit through third order in $\mu$. If one works consistently to that level, the concrete nontrivial brackets are:
+\begin{align}
+&[\psi^{\otimes 2}]',\qquad [\psi^{\otimes 3}]',
+\notag\\
+&[\psi\otimes \lambda^A]',\qquad [\psi^{\otimes 2}\otimes \lambda^A]',
+\notag\\
+&[\lambda^A\otimes \lambda^B]',\qquad [\psi\otimes \lambda^A\otimes \lambda^B]',
+\notag\\
+&[\psi\otimes \Phi_\Delta(Y)]',\qquad [\psi^{\otimes 2}\otimes \Phi_\Delta(Y)]',
+\notag\\
+&[\lambda^A\otimes \Phi_\Delta(Y)]',\qquad [\psi\otimes \lambda^A\otimes \Phi_\Delta(Y)]',
+\notag\\
+&[\Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]',
+\qquad
+[\psi\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]',
+\notag\\
+&[\psi^{\otimes 2}\otimes \Phi_1(\Y{1})\otimes \Phi_2(\Y{2})]'.
+\label{eq:concrete}
+\end{align}
+This is the finite list of brackets that a concrete third-order implementation would actually have to compute.
+
+\section{Scalar toy model in the same language}
+
+\subsection{Toy \texorpdfstring{$L_\infty$}{Linfty} structure}
+
+For the scalar toy model in embedding coordinates, the shifted $L_\infty$ structure is especially simple. Let $\varphi(X)$ be a formal field on the $\AdS$ hyperboloid in embedding coordinates. Then
+\begin{align}
+\ell_1^{\rm toy}(\varphi)&=(\Box_{\AdS}-m^2)\varphi,
+\label{eq:toy1}\\
+\ell_2^{\rm toy}(\varphi_1,\varphi_2)&=-g\,\varphi_1\varphi_2,
+\label{eq:toy2}\\
+\ell_n^{\rm toy}&=0,\qquad n\ge 3.
+\end{align}
+All $1/R$ corrections are contained in $\Box_{\AdS}$ as a formal differential operator in the center patch. No global coordinate system is introduced.
+
+\subsection{Boundary-labeled scalar state}
+
+The scalar bulk-to-boundary state $K_\Delta(X,Y)$ is defined entirely by patch equations:
+\begin{align}
+\ell_1^{\rm toy}(K_\Delta(X,Y))&=0,
+\label{eq:toyK1}\\
+\left(\mcJ^{(X)}_{MN}+\mcJ^{(Y)}_{MN}\right)K_\Delta(X,Y)&=0,
+\label{eq:toyK2}\\
+\left(Y\cdot \partial_Y+\Delta\right)K_\Delta(X,Y)&=0.
+\label{eq:toyK3}
+\end{align}
+These conditions determine the formal patch series of
+\begin{equation}
+K_\Delta(X,Y)=\frac{c_\Delta}{(-2X\cdot Y)^\Delta}
+\end{equation}
+without ever invoking a boundary limit.
+
+\subsection{Three-point coefficient in the toy model}
+
+The two-source scalar fluctuation is defined by
+\begin{equation}
+\ell_1^{\rm toy}\bigl(\varphi_{12}(\Y{1},\Y{2})\bigr)
+\;+\;
+\ell_2^{\rm toy}\bigl(K_{\D1}(\cdot,\Y{1}),K_{\D2}(\cdot,\Y{2})\bigr)
+\;=\;0.
+\label{eq:toy12}
+\end{equation}
+The coefficient in the $\D3$ channel is extracted by the toy analogue of \cref{eq:A3},
+\begin{equation}
+\mathcal{A}^{\rm toy}_3(\Y{1},\Y{2},\Y{3})
+=
+\Omega_{\rm toy}\!\left(\wt K_{\D3}(\cdot,\Y{3}),
+\ell_2^{\rm toy}\bigl(K_{\D1}(\cdot,\Y{1}),K_{\D2}(\cdot,\Y{2})\bigr)\right),
+\label{eq:toyA3}
+\end{equation}
+with $\Omega_{\rm toy}$ fixed by the two-point normalization. This reproduces \cref{eq:3pt} with the scalar $C_{123}$, again without leaving the patch.
+
+\section{Discussion}
+
+The patch-only statement is therefore:
+\begin{quote}
+Boundary three-point data are encoded in the shifted quadratic bracket $\ell_2^\psi$ between boundary-labeled linearized cohomology classes, together with the cyclic pairing against a dual outgoing class.
+\end{quote}
+This is the exact sense in which one can ``turn data around a patch into a calculation that sees the boundary'' while staying in embedding coordinates and never referring to $\rho\to\infty$.
+
+For the full $\mathrm{AdS}_5\times S^5$ problem, the real task is now sharply posed. One must compute the bracket list \cref{eq:concrete} for the relevant BPS boundary-labeled fluctuations and verify the intertwining condition \cref{eq:PhiCov}. Once this is done, the three-point coefficient is a patch observable in the sense of \cref{eq:A3}, not a global Witten-diagram integral.
+
+\begin{thebibliography}{99}
+
+\bibitem{Mazel:2025}
+B.~Mazel, C.~Wang and X.~Yin,
+``Diffeomorphism in Closed String Field Theory,''
+arXiv:2504.12290.
+
+\bibitem{CGSY}
+M.~Cho, J.~Gomide, J.~Scheinpflug and X.~Yin,
+``On the $\mathrm{AdS}_5\times S^5$ Solution of Superstring Field Theory,''
+arXiv:2507.12921.
+
+\bibitem{Freedman:1998tz}
+D.~Z.~Freedman, S.~D.~Mathur, A.~Matusis and L.~Rastelli,
+``Correlation functions in the CFT($d$)/AdS($d{+}1$) correspondence,''
+Nucl.\ Phys.\ B {\bf 546}, 96 (1999), arXiv:hep-th/9804058.
+
+\end{thebibliography}
+
+\end{document}
