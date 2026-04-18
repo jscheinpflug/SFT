@@ -7,12 +7,17 @@
 \topmargin -.5cm \textheight 21cm \oddsidemargin -.125cm
 \textwidth 17cm
 
+\usepackage{inconsolata} % Courier-style monospace
+\usepackage{xcolor}
+
+\definecolor{scpurple}{RGB}{124, 92, 252}
+
 \usepackage[]{todonotes}
 \hypersetup{
     colorlinks=true,
-    citecolor=violet,
-    linkcolor=violet, % optional: color of internal links (sections, etc.)
-    urlcolor=violet    % optional: color of URL links
+    citecolor=scpurple,
+    linkcolor=scpurple, % optional: color of internal links (sections, etc.)
+    urlcolor=scpurple    % optional: color of URL links
 }
 \usepackage[weather, alpine]{ifsym}
 
@@ -37,7 +42,7 @@
 \newcommand{\WT}[1]{\widetilde{#1}}
 \newcommand{\HH}[1]{\widehat{#1}}
 \newcommand{\m}[1]{\mathcal{#1}}
-\newcommand{\StringCode}{\texttt{StringCode}}
+\newcommand{\StringCode}{\textbf{\textit{String}}{\color{scpurple}\textbf{\texttt{Code}}}}
 
 
 \newcommand{\fixme}[1]{{\bf {\color{red}[#1]}}}
@@ -111,10 +116,10 @@ To identify the string fields which correspond to magnons on the worldsheet, we 
 \begin{equation}
     H^{(0)}=N_H c\WT{c}\left( e^{-\phi}\psi^-e^{-2\WT{\phi}}\B{\partial}\WT{\xi}+e^{-2\phi}\partial\xi e^{-\WT{\phi}}\WT{\psi}^- \right).
 \end{equation}
-The Hamiltonian does not get corrected at first order in perturbation theory because the order $\mu$ string field describing the pp-wave background is constant. It also does not get corrected at second order because the profile for the metric only depends on the perpendicular coordinates. \textcolor{violet}{JG: checked by current lightcone module in \texttt{StringCode}, still being tested.} Consequently, we are led to consider a ghost-number two string field that is $X^+$-independent. Furthermore, it should also be invariant under half of the supersymmetry generators.
+The Hamiltonian does not get corrected at first order in perturbation theory because the order $\mu$ string field describing the pp-wave background is constant... \textcolor{scpurple}{JG: second order under investigation using \StringCode.}
 
 \subsection{pp-wave supersymmetry: under construction}
-\textcolor{violet}{JG: this subsection has been copied from the old Konishi draft. Pending verification from \StringCode}
+\textcolor{scpurple}{JG: this subsection has been copied from the old Konishi draft. Pending verification from \StringCode}
 
 The zeroth order supersymmetry algebra analysis is general for string field solutions built on top of the flat space CFT. As in the case of the $AdS_5\times S^5$ solution, the 32 generators can be written in terms of two string fields, which are themselves linear combinations of string fields in the RNS and NSR sectors. These two string fields have opposite worldsheet parity and are given by
 \be
@@ -164,7 +169,7 @@ which is $Q_B$-closed
 \subsection{Identifying the states}
 We start by considering the vacuum state $\mathrm{tr}(Z^J)$. As stated in the original paper \cite{Berenstein:2002jq}, it is dual to a supergraviton with very large momentum $p_-$ and $p_+=0$. In the SFT framework, it should be described by a ghost number two string field in the NSNS whose zeroth-order component is given by the ansatz
 \begin{equation}
-    \phi^{(0)}=c\WT{c}h_{\mu\nu}(X)e^{-\phi}\psi^{\mu}e^{-\WT{\phi}}\WT{\psi}^{\nu}
+    \varphi^{(0)}=c\WT{c}h_{\mu\nu}(X)e^{-\phi}\psi^{\mu}e^{-\WT{\phi}}\WT{\psi}^{\nu}
 \end{equation}
 satisfying
 \begin{equation}
@@ -180,9 +185,9 @@ These conditions can be trivially solved by taking the ansatz
 \end{equation}
 where $\alpha_{--},\alpha_{ij}$ and $\alpha_{-i}$ are constants. Our vacuum is therefore
 \begin{equation} \label{Grav0}
-    \phi^{(0)}=c\WT{c}e^{ip_-X^-}\left( \alpha_{--} e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^-+\alpha_{ij}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^j+\alpha_{-i}e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^i+\alpha_{-i}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^-\right).
+    \varphi^{(0)}=c\WT{c}e^{ip_-X^-}\left( \alpha_{--} e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^-+\alpha_{ij}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^j+\alpha_{-i}e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^i+\alpha_{-i}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^-\right).
 \end{equation}
-It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonian computed by $\left[H^{(0)}\otimes\phi^{(0)}\right]$ is indeed zero. Furthermore, it is also easy to see that this field is not corrected at first order in perturbation theory by the bracket $\left[\psi^{(1)}\otimes \phi^{(0)}\right]$ due to $(\gamma^-)^2=0$. However, it does get corrected at second order. Computing the $\left[\psi^{(2)}\otimes\phi^{(0)}\right]$ one finds \textcolor{violet}{JG: checking with \StringCode.}
+It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonian computed by $\left[H^{(0)}\otimes\phi^{(0)}\right]$ is indeed zero. Furthermore, it is also easy to see that this field is not corrected at first order in perturbation theory by the bracket $\left[\psi^{(1)}\otimes \phi^{(0)}\right]$ due to $(\gamma^-)^2=0$. The correction at second order...
 
 Now that we have a good description of the vacuum state up to second order in perturbation theory, we move on to the excited states which correspond to the addition of magnons in the spin chain. The lore \cite{Berenstein:2002jq} states that these correspond to the action of oscillators on the supergraviton mode. We will therefore consider the following zeroth order ansatz
 \begin{equation}
@@ -193,17 +198,19 @@ The zeroth order equation of motion for this linearized perturbation $Q_B\varphi
     \Box\left(e^{ip_-X^-}m(X)\right)-1=0\ldots
 \end{equation}
 
-\section{Magnon scattering: pair of pants}
-Now that we have nailed down the states, we can formulate the computation we expect to match with the pair of pants diagram. We start with the simplest possible case which is that of three vacuum operators scattering. This is just 3-graviton scattering in the pp-wave background. Let us investigate this order by order in the $\mu$-expansion. \textcolor{violet}{JG: work out nonzero polarizations?}
+\section{Magnon scattering: pairs of pants}
+Now that we have nailed down the states, we can formulate the computation we expect to match with the pair of pants diagram. We start with the simplest possible case which is that of three vacuum operators scattering. This is just 3-graviton scattering in the pp-wave background. Let us investigate this order by order in the $\mu$-expansion.
+
+Before we begin, we recall some of the conditions the correlators should satisfy in order for them to be non-zero. First, we have the usual conditions on total ghost number (+3) and background $\phi$-charge ($-2$). Second, and most importantly, we also note that the total charge associated with the holomorphic current $J=X^+\partial X^--X^-\partial X^++2\psi^+\psi^-$ (as well as its anti-holomorphic counterpart) should be zero, such that all the non-zero conformal weight fields are properly contracted.
 
 \subsection{$\mu^0$ order}
-This is just on-shell scattering of three gravitons in flat space. As stated above, we consider the pp-wave ansatz (\ref{Grav0}) and, since this is an on-shell computation, we can choose one of the vacua to be picture-raised. For this particular profile, picture-raising yields
+This is just on-shell scattering of three gravitons in flat space. As stated above, we consider the pp-wave ansatz (\ref{Grav0}) and, since this is an on-shell computation, we can choose one of the vacua to be picture-raised. Furthermore, due to the condition on the $J$-carge of the correlator, we can focus solely on the $ij$ component of the insertions. For the particular chosen to be acted upon by $\mathcal{X}_0\B{\mathcal{X}}_0$, picture-raising yields
 \begin{equation}
-    \mathcal{X}_0\cdot\phi^{(0)}=e^{ip_-X^-}\left(-\frac{1}{2}c\partial X^--\frac{1}{4}\eta e^{\phi}\psi^-\right)\left(-\frac{1}{2}\WT{c}\B{\partial}X^--\frac{1}{4}\WT{\eta}e^{\WT{\phi}}\WT{\psi}^-\right).
+    \mathcal{X}_0\B{\mathcal{X}}_0\cdot\varphi^{(0)}=e^{ip_-X^-}\left(-\frac{1}{2}c\partial X^i-\frac{1}{4}\eta e^{\phi}\psi^i\right)\left(-\frac{1}{2}\WT{c}\B{\partial}X^j-\frac{1}{4}\WT{\eta}e^{\WT{\phi}}\WT{\psi}^j\right).
 \end{equation}
-However, since the wave-function only depends on the lightcone coordinate $X^-$, it is easy to see that this particular arrangement of wavefunctions leads to a correlation function that is identically zero
+However, since the transverse momenta $p^i=0$, it is easy to see that this particular arrangement of wavefunctions leads to a correlation function that is identically zero
 \begin{equation}
-    \left\langle\phi_{p_1}^{(0)}(z_1)\phi_{p_2}^{(0)}(z_2)\left(\mathcal{X}_0\WT{\mathcal{X}}_0\cdot\phi_{p_3}^{(0)}\right)(z_3)\right\rangle=0.
+    \left\langle\varphi_{p_1}^{(0)}(z_1)\varphi_{p_2}^{(0)}(z_2)\left(\mathcal{X}_0\WT{\mathcal{X}}_0\cdot\varphi_{p_3}^{(0)}\right)(z_3)\right\rangle=0.
 \end{equation}
 
 \subsection{$\mu^1$ order}
@@ -212,13 +219,25 @@ The contribution to the correlation function at order $\mu^1$ involves, in princ
 \subsection{$\mu^2$ order}
 There are two correlators which contribute at this order. The first one is
 \begin{equation}
-    \left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \phi_{p_1}^{(0)}(z_1)\phi_{p_2}^{(0)}(z_2)\phi_{p_3}^{(0)}(z_3)\psi^{(2)}(w)\right\rangle.
+    \mathcal{C}_{h^{(2)}}=\left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \varphi_{p_1}^{(0)}(z_1)\varphi_{p_2}^{(0)}(z_2)\varphi_{p_3}^{(0)}(z_3)\psi^{(2)}(w)\right\rangle.
 \end{equation}
-Let us investigate the different PCO arrangements. The first arrangement we can consider is one pair of PCO's on the first graviton, and another pair on the second. However, this arrangement yields zero because there are two $\partial X^-$ and $\B{\partial}X^-$ modes which cannot be contracted because none of the profiles have $X^+$-dependence. The other arrangement we have to consider is one pair of PCO's on one graviton, and the other pair on the background insertion. We would be again be left with uncontracted $\psi^i$, $\psi^-$, $\partial X^-$ or $\eta$, leading to a zero contribution once again.
+Let us now investigate some of the different PCO arrangements to check whether this contribution is identically zero. We start by looking at one pair of PCO's $\mathcal{X}_o\B{\mathcal{X}}_0$ on top of the background insertion $\psi^{(2)}$, and another pair on top of one of the vacuum states, for example $\varphi_{p_3}^{(0)}$. Fortunately, this configuration is already possibly non-zero. Indeed, the $h_{\mu\nu}^{(2)}$ profile dependence on the transverse coordinates soaks up the $\partial X^i \B{\partial}X^j$ factors of the picture-raised $\varphi_{p_i}^{(0)}$, while the $p^+\neq0$ takes care of the $\partial X^+\B{\partial}X^+$ factors from the background insertion. More precisely, the correlator amounts to
+\begin{equation}
+\begin{split}
+    \bigg\langle \alpha_{i_1j_1}^1 e^{ip_1^+X^-}c\WT{c}e^{-\phi}\psi^{i_1}e^{-\WT{\phi}}\WT{\psi}^{j_1}(z_1)&\alpha_{i_2j_2}^2 e^{ip_2^+X^-}c\WT{c}e^{-\phi}\psi^{i_2}e^{-\WT{\phi}}\WT{\psi}^{j_2}(z_2)\alpha_{i_3j_3}^3 e^{ip_3^+X^-}c\WT{c}\partial X^{i_3}\B{\partial}X^{j_3}(z_3)\times\\
+    &\times\frac{\mu^2}{4}\int d^2w\ (X^{\perp})^2\partial X^+\B{\partial}X^+\bigg\rangle
+\end{split}
+\end{equation}
+which can be computed easily
+\begin{equation*}
+    =\frac{\mu^2}{64}\delta\left(\sum_{i=1}^3p_i^+\right) \int d^2w\ \alpha_1^{jk} \alpha_{jk}^2 \alpha^3_{ii} \frac{|z_{23}z_{31}|^2}{|z_{12}|^2|z_3-w|^2}\sum_{k=1}^3\frac{p_k^+}{z_k-w}\sum_{l=1}^3\frac{p_l^+}{\B{z}_l-\B{w}}.
+\end{equation*}
+The $\delta$-function factor is certainly expected from the gauge-theory/spin-chain description ($J_1+J_2=J_3$). It remains to connect the rest of the result to the
+
 
 Next, we consider
 \begin{equation}
-    \left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \phi_{p_1}^{(0)}(z_1)\phi_{p_2}^{(0)}(z_2)\phi_{p_3}^{(0)}(z_3)\psi^{(1)}(w_1)\psi^{(1)}(w_2)\right\rangle.
+    \left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \varphi_{p_1}^{(0)}(z_1)\varphi_{p_2}^{(0)}(z_2)\varphi_{p_3}^{(0)}(z_3)\psi^{(1)}(w_1)\psi^{(1)}(w_2)\right\rangle.
 \end{equation}
 Again, this is zero for all the PCO arrangements because there are always uncontracted $\partial X^{\pm}$, $\psi^-$ or $\eta$ modes.
 
