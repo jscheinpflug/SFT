@@ -116,7 +116,7 @@ To identify the string fields which correspond to magnons on the worldsheet, we 
 \begin{equation}
     H^{(0)}=N_H c\WT{c}\left( e^{-\phi}\psi^-e^{-2\WT{\phi}}\B{\partial}\WT{\xi}+e^{-2\phi}\partial\xi e^{-\WT{\phi}}\WT{\psi}^- \right).
 \end{equation}
-The Hamiltonian does not get corrected at first order in perturbation theory because the order $\mu$ string field describing the pp-wave background is constant... \textcolor{scpurple}{JG: second order under investigation using \StringCode.}
+The Hamiltonian does not get corrected at first order in perturbation theory because the order $\mu$ string field describing the pp-wave background is constant. However, it seems to get corrected at second order. Indeed, using \StringCode, one can verify that the source to the second order equation of motion $\left[\psi^{(2)}\otimes H^{(0)}\right]$ is non-zero.
 
 \subsection{pp-wave supersymmetry: under construction}
 \textcolor{scpurple}{JG: this subsection has been copied from the old Konishi draft. Pending verification from \StringCode}
@@ -167,7 +167,8 @@ which is $Q_B$-closed
 
 
 \subsection{Identifying the states}
-We start by considering the vacuum state $\mathrm{tr}(Z^J)$. As stated in the original paper \cite{Berenstein:2002jq}, it is dual to a supergraviton with very large momentum $p_-$ and $p_+=0$. In the SFT framework, it should be described by a ghost number two string field in the NSNS whose zeroth-order component is given by the ansatz
+\subsubsection{Vacuum $\tr(Z^J)$}
+We start by considering the vacuum state $\mathrm{tr}(Z^J)$. As stated in the original paper \cite{Berenstein:2002jq}, it is dual to a supergraviton with very large momentum $p^+$ and $p^-=0$. In the SFT framework, it should be described by a ghost number two string field in the NSNS whose zeroth-order component is given by the ansatz
 \begin{equation}
     \varphi^{(0)}=c\WT{c}h_{\mu\nu}(X)e^{-\phi}\psi^{\mu}e^{-\WT{\phi}}\WT{\psi}^{\nu}
 \end{equation}
@@ -181,13 +182,45 @@ since the EOM for the linear perturbation at zeroth order is $Q_B\phi^{(0)}=0$. 
 \end{equation}
 These conditions can be trivially solved by taking the ansatz
 \begin{equation}
-    h_{\mu\nu}(X)=e^{ip_-X^-}\left(\alpha_{--}\delta_{\mu}^{-}\delta_{\nu}^{-}+\alpha_{ij}\delta_{\mu}^i\delta_{\nu}^j+\alpha_{-i}\delta_{(\mu}^-\delta_{\nu)}^i\right)
+    h_{\mu\nu}(X)=e^{ip^+X^-}\left(A_{--}\delta_{\mu}^{-}\delta_{\nu}^{-}+A_{ij}\delta_{\mu}^i\delta_{\nu}^j+A_{-i}\delta_{(\mu}^-\delta_{\nu)}^i\right)
 \end{equation}
-where $\alpha_{--},\alpha_{ij}$ and $\alpha_{-i}$ are constants. Our vacuum is therefore
+where $A_{--},A_{ij}$ and $A_{-i}$ are constants. Our vacuum is therefore
 \begin{equation} \label{Grav0}
-    \varphi^{(0)}=c\WT{c}e^{ip_-X^-}\left( \alpha_{--} e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^-+\alpha_{ij}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^j+\alpha_{-i}e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^i+\alpha_{-i}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^-\right).
+    \varphi^{(0)}=c\WT{c}e^{ip^+X^-}\left( A_{--} e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^-+A_{ij}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^j+A_{-i}e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^i+\alpha_{-i}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^-\right).
 \end{equation}
-It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonian computed by $\left[H^{(0)}\otimes\phi^{(0)}\right]$ is indeed zero. Furthermore, it is also easy to see that this field is not corrected at first order in perturbation theory by the bracket $\left[\psi^{(1)}\otimes \phi^{(0)}\right]$ due to $(\gamma^-)^2=0$. The correction at second order...
+It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonian computed by $\left[H^{(0)}\otimes\phi^{(0)}\right]$ is indeed zero. Furthermore, it is also easy to see that this field is not corrected at first order in perturbation theory by the bracket $\left[\psi^{(1)}\otimes \phi^{(0)}\right]$ due to $(\gamma^-)^2=0$. The correction at second order is non-zero, as one can verify with \StringCode. We compute
+\begin{equation}
+\begin{split}
+    \left[\psi^{(2)}\otimes\varphi^{(0)}\right] =&\ -\frac{\alpha'}{16}A_{ij}\partial^i\partial^j (X^{\perp})^2 e^{ip^+X^-}c_0^+ c\WT{c}e^{-\phi}\psi^+e^{-\WT{\phi}}\WT{\psi}^+\\
+    &-\frac{\alpha'}{32}A_{-i}\eta^{-+}\partial^i\partial_{j}(X^{\perp})^2e^{ip^+X^-}c_0^+c\WT{c}\left(e^{-\phi}\psi^+e^{-\WT{\phi}}\WT{\psi}^j+e^{-\phi}\psi^je^{-\WT{\phi}}\WT{\psi}^+\right)\\
+    &-i\frac{\alpha'}{32}A_{-i}\eta^{-+}\partial^i(X^{\perp})^2p^+e^{ip^+X^-}c_0^+c\WT{c}\left(e^{-\phi}\psi^+e^{-\WT{\phi}}\WT{\psi}^-+e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^+\right)\\
+    &+\frac{\alpha'}{64}A_{--}\eta^{+-}\eta^{+-}\partial_{i}\partial_j(X^{\perp})^2e^{ip^+X^-}c_0^+c\WT{c}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^j\\
+    &-i\frac{\alpha'}{64}A_{--}\eta^{+-}\eta^{+-}\partial_j(X^{\perp})^2p^+e^{ip^+X^-}c_0^+c\WT{c}\left(e^{-\phi}\psi^je^{-\WT{\phi}}\WT{\psi}^-+e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^j\right)\\
+    &-\frac{\alpha'}{64}A_{--}\eta^{+-}\eta^{+-}(X^{\perp})^2p^{+2}e^{ip^+X^-}c_0^+c\WT{c}e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^-.
+\end{split}
+\end{equation}
+All of these terms can be traced to the contribution $\Box \varphi_{\mu\nu}^{(2)}$ in the $Q_B$-action due to the $c_0^+$ factor. Note that all the components of $\varphi_{\mu\nu}^{(2)}$ are sourced. The absence of terms with $c\eta/\WT{c}\WT{\eta}$ factors, which source $\partial^{\nu}\varphi_{\mu\nu}^{(2)}$, is a consequence of choosing the flat vertex frame (where string fields are inserted at $\pm z_0$ when computing 2-brackets).
+
+Now, we must solve the equations
+\begin{equation} \label{2ndVacEOM}
+    -\frac{1}{2}\Box\varphi_{\mu\nu}^{(0)}=e_{\mu\nu},\quad \partial^{\nu}\varphi_{\mu\nu}^{(2)}=0.
+\end{equation}
+Furthermore, the consistency condition
+\begin{equation} \label{ConsVac2nd}
+    \partial^{\mu}e_{\mu\nu}=0
+\end{equation}
+must hold (where $e_{\mu\nu}$ denotes the coefficient of the source with string field factor $c_0^+c\WT{c}e^{-\phi}\psi^{\mu}e^{-\WT{\phi}}\WT{\psi}^{\nu}$, as in the notation of Section 3 of \cite{Cho:2025coy}). The second set of equations in (\ref{2ndVacEOM}) implies the conditions
+\begin{gather}
+    i A_{jj}(X^{\perp})^2p^+ + A^+\,_{j}X^j = 0,\\
+    iA^+\,_j(X^{\perp})^2p^+-A^{++}X_j = 0,\\
+    5iA^{++}-A^+\,_jX^jp^+ = 0.
+\end{gather}
+The simplest solution to these equations is $A_{jj}=A_{-j}=A_{--}=0$. This turns out to be the unique solution to the consistency condition (\ref{ConsVac2nd}), which determines
+\begin{gather}
+    A_{jj}=0,\quad A^+\,_{j}=0,\quad 4iA^{++}-A^+\,_jX^jp^+=0.
+\end{gather}
+\textcolor{scpurple}{JG: what is the correct logic here? Does this mean that the solution has polarization solely along the $(ij)$ directions with $A_{jj}=0$? This would imply the solution is not corrected at second order (good!), but would imply that the 3pt. function is zero at second order (bad!)\dots Perhaps susy analysis will provide some guidance.}
+
 
 Now that we have a good description of the vacuum state up to second order in perturbation theory, we move on to the excited states which correspond to the addition of magnons in the spin chain. The lore \cite{Berenstein:2002jq} states that these correspond to the action of oscillators on the supergraviton mode. We will therefore consider the following zeroth order ansatz
 \begin{equation}
@@ -221,18 +254,18 @@ There are two correlators which contribute at this order. The first one is
 \begin{equation}
     \mathcal{C}_{h^{(2)}}=\left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \varphi_{p_1}^{(0)}(z_1)\varphi_{p_2}^{(0)}(z_2)\varphi_{p_3}^{(0)}(z_3)\psi^{(2)}(w)\right\rangle.
 \end{equation}
-Let us now investigate some of the different PCO arrangements to check whether this contribution is identically zero. We start by looking at one pair of PCO's $\mathcal{X}_o\B{\mathcal{X}}_0$ on top of the background insertion $\psi^{(2)}$, and another pair on top of one of the vacuum states, for example $\varphi_{p_3}^{(0)}$. Fortunately, this configuration is already possibly non-zero. Indeed, the $h_{\mu\nu}^{(2)}$ profile dependence on the transverse coordinates soaks up the $\partial X^i \B{\partial}X^j$ factors of the picture-raised $\varphi_{p_i}^{(0)}$, while the $p^+\neq0$ takes care of the $\partial X^+\B{\partial}X^+$ factors from the background insertion. More precisely, the correlator amounts to
+Let us now investigate some of the different PCO arrangements to check whether this contribution is identically zero. We start by looking at one pair of PCO's $\mathcal{X}_0\B{\mathcal{X}}_0$ on top of the background insertion $\psi^{(2)}$, and another pair on top of one of the vacuum states, for example $\varphi_{p_3}^{(0)}$. Fortunately, this configuration is already possibly non-zero. Indeed, the $h_{\mu\nu}^{(2)}$ profile dependence on the transverse coordinates soaks up the $\partial X^i \B{\partial}X^j$ factors of the picture-raised $\varphi_{p_i}^{(0)}$, while the $p^+\neq0$ takes care of the $\partial X^+\B{\partial}X^+$ factors from the background insertion. More precisely, the correlator amounts to
 \begin{equation}
 \begin{split}
-    \bigg\langle \alpha_{i_1j_1}^1 e^{ip_1^+X^-}c\WT{c}e^{-\phi}\psi^{i_1}e^{-\WT{\phi}}\WT{\psi}^{j_1}(z_1)&\alpha_{i_2j_2}^2 e^{ip_2^+X^-}c\WT{c}e^{-\phi}\psi^{i_2}e^{-\WT{\phi}}\WT{\psi}^{j_2}(z_2)\alpha_{i_3j_3}^3 e^{ip_3^+X^-}c\WT{c}\partial X^{i_3}\B{\partial}X^{j_3}(z_3)\times\\
+    \bigg\langle A_{i_1j_1}^1 e^{ip_1^+X^-}c\WT{c}e^{-\phi}\psi^{i_1}e^{-\WT{\phi}}\WT{\psi}^{j_1}(z_1)&A_{i_2j_2}^2 e^{ip_2^+X^-}c\WT{c}e^{-\phi}\psi^{i_2}e^{-\WT{\phi}}\WT{\psi}^{j_2}(z_2)A_{i_3j_3}^3 e^{ip_3^+X^-}c\WT{c}\partial X^{i_3}\B{\partial}X^{j_3}(z_3)\times\\
     &\times\frac{\mu^2}{4}\int d^2w\ (X^{\perp})^2\partial X^+\B{\partial}X^+\bigg\rangle
 \end{split}
 \end{equation}
 which can be computed easily
 \begin{equation*}
-    =\frac{\mu^2}{64}\delta\left(\sum_{i=1}^3p_i^+\right) \int d^2w\ \alpha_1^{jk} \alpha_{jk}^2 \alpha^3_{ii} \frac{|z_{23}z_{31}|^2}{|z_{12}|^2|z_3-w|^2}\sum_{k=1}^3\frac{p_k^+}{z_k-w}\sum_{l=1}^3\frac{p_l^+}{\B{z}_l-\B{w}}.
+    =\frac{\mu^2}{64}\delta\left(\sum_{i=1}^3p_i^+\right) \int d^2w\ A_1^{jk} A_{jk}^2 A^3_{ii} \frac{|z_{23}z_{31}|^2}{|z_{12}|^2|z_3-w|^2}\sum_{k=1}^3\frac{p_k^+}{z_k-w}\sum_{l=1}^3\frac{p_l^+}{\B{z}_l-\B{w}}.
 \end{equation*}
-The $\delta$-function factor is certainly expected from the gauge-theory/spin-chain description ($J_1+J_2=J_3$). It remains to connect the rest of the result to the
+The $\delta$-function factor is certainly expected from the gauge-theory/spin-chain description ($J_1+J_2=J_3$). \textcolor{scpurple}{JG: unfortunately, this contribution seems to vanish since it is proportional to $A_{ii}$, which is zero by the 2nd order correction to the vacuum profile. This is in some sense the correlator $\langle \varphi^{(0)}_1 \varphi^{(0)}_2 \varphi^{(2)}_3\rangle$\dots}
 
 
 Next, we consider
