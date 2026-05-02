@@ -90,6 +90,9 @@
 \hypersetup{linkcolor=black}
 
 \endgroup
+
+\tableofcontents
+
 \section{Introduction}
 
 In the pioneering paper \cite{Cho:2018nfn}, the authors were able to determine the string field solution which describes the pp-wave background to second order in the RR-charge, and were also able to reproduce the dispersion relation for the maximally spinning string state. In \cite{Cho:2025coy}, the pp-wave solution was reproduced by solving the extended system that takes into account the global symmetries of the background, and was also shown to truncate at second order. Here, we will try to use both ingredients to understand how integrability is realized in the SFT framework. In particular, we would like to start building intuition on how the spin chain structure can be described in SFT language and, if we are successful, understand magnon scattering in this formalism.
@@ -114,9 +117,20 @@ The SFT framework allows the determination of the spectrum in general background
 \subsection{pp-wave Hamiltonian}
 To identify the string fields which correspond to magnons on the worldsheet, we start from the bottom. The original reference \cite{Berenstein:2002jq} suggests that, in order to determine the string field dual to $\mathrm{tr}(Z^J)$ we must find the vacuum state with $p_+=0$. We should therefore characterize string fields which are annihilated by the Hamiltonian. The order zero string field Hamiltonian in a pp-wave background reads
 \begin{equation}
-    H^{(0)}=N_H c\WT{c}\left( e^{-\phi}\psi^-e^{-2\WT{\phi}}\B{\partial}\WT{\xi}+e^{-2\phi}\partial\xi e^{-\WT{\phi}}\WT{\psi}^- \right).
+    \m{H}^{(0)}=N_{\m{H}} c\WT{c}\left( e^{-\phi}\psi^-e^{-2\WT{\phi}}\B{\partial}\WT{\xi}+e^{-2\phi}\partial\xi e^{-\WT{\phi}}\WT{\psi}^- \right).
 \end{equation}
-The Hamiltonian does not get corrected at first order in perturbation theory because the order $\mu$ string field describing the pp-wave background is constant. However, it seems to get corrected at second order. Indeed, using \StringCode, one can verify that the source to the second order equation of motion $\left[\psi^{(2)}\otimes H^{(0)}\right]$ is non-zero.
+The Hamiltonian does not get corrected at first order in perturbation theory because the order $\mu$ string field describing the pp-wave background is constant. 
+
+However, it seems to get corrected at second order. Indeed, using \StringCode one can verify that the source to the second order equation of motion $\left[\psi^{(2)}\otimes \m{H}^{(0)}\right]$ is non-zero. We compute
+\begin{equation}
+    \left[\psi^{(2)}\otimes \m{H}^{(0)}\right] = -\mu^2\frac{\sqrt{\alpha'}}{16}X_i\eta^{+-}c\WT{c}\left(e^{-\phi}\psi^i e^{-\WT{\phi}}\WT{\psi}^++e^{-\phi}\psi^+ e^{-\WT{\phi}}\psi^i\right).
+\end{equation}
+A possible solution for $\m{H}^{(2)}$ that is partially consistent with this source is
+\begin{equation}
+    \m{H}^{(2)} = \mu^2\frac{1}{8}(X^{\perp})^2\eta^{+-} c\WT{c}\left(e^{-\phi}\psi^+ e^{-2\WT{\phi}}\B{\partial}\WT{\xi} + e^{-2\phi}\partial\xi e^{-\WT{\phi}}\WT{\psi}^+\right).
+\end{equation}
+However, $\Box H^{(2)}(X)\neq0$ as the absence of a term proportional to the string field  $c_0^+c\WT{c}\big(e^{-\phi}\psi^+ e^{-2\WT{\phi}}\B{\partial}\WT{\xi} + c.c.\big)$ would require. \textcolor{scpurple}{How do we fix this contradiction? Adding terms with $e^{-\phi}\psi^+e^{-2\WT{\phi}}\B{\partial}\WT{\xi}$ or $e^{-\phi}\psi^i e^{-2\WT{\phi}}\B{\partial}\WT{\xi}$ doesn't help: the first one doesn't source anything, whereas the second one sources only $c\WT{c}e^{-\phi}\psi^+ e^{-\WT{\phi}}\WT{\psi}^+$.} We must also consider the 3-bracket $\left[(\psi^{(1)})^{\otimes 2}\otimes \m{H}^{(0)}\right]$. However, using \StringCode, we find that it is zero.
+
 
 \subsection{pp-wave supersymmetry: under construction}
 \textcolor{scpurple}{JG: this subsection has been copied from the old Konishi draft. Pending verification from \StringCode}
@@ -166,8 +180,9 @@ which is $Q_B$-closed
 \fe
 
 
-\subsection{Identifying the states}
-\subsubsection{Vacuum $\tr(Z^J)$}
+\section{Identifying the spin-chain}
+\subsection{Vacuum $\tr(Z^J)$}
+\subsubsection{Zeroth order}
 We start by considering the vacuum state $\mathrm{tr}(Z^J)$. As stated in the original paper \cite{Berenstein:2002jq}, it is dual to a supergraviton with very large momentum $p^+$ and $p^-=0$. In the SFT framework, it should be described by a ghost number two string field in the NSNS whose zeroth-order component is given by the ansatz
 \begin{equation}
     \varphi^{(0)}=c\WT{c}h_{\mu\nu}(X)e^{-\phi}\psi^{\mu}e^{-\WT{\phi}}\WT{\psi}^{\nu}
@@ -188,7 +203,10 @@ where $A_{--},A_{ij}$ and $A_{-i}$ are constants. Our vacuum is therefore
 \begin{equation} \label{Grav0}
     \varphi^{(0)}=c\WT{c}e^{ip^+X^-}\left( A_{--} e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^-+A_{ij}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^j+A_{-i}e^{-\phi}\psi^-e^{-\WT{\phi}}\WT{\psi}^i+\alpha_{-i}e^{-\phi}\psi^ie^{-\WT{\phi}}\WT{\psi}^-\right).
 \end{equation}
-It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonian computed by $\left[H^{(0)}\otimes\phi^{(0)}\right]$ is indeed zero. Furthermore, it is also easy to see that this field is not corrected at first order in perturbation theory by the bracket $\left[\psi^{(1)}\otimes \phi^{(0)}\right]$ due to $(\gamma^-)^2=0$. The correction at second order is non-zero, as one can verify with \StringCode. We compute
+It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonian computed by $\left[H^{(0)}\otimes\phi^{(0)}\right]$ is indeed zero. 
+
+\subsubsection{Second order}
+It is also easy to see that this field is not corrected at first order in perturbation theory by the bracket $\left[\psi^{(1)}\otimes \phi^{(0)}\right]$ due to $(\gamma^-)^2=0$. The correction at second order is non-zero though, as one can verify with \StringCode. We start with the simplest contribution to compute, the one associated with the two-bracket
 \begin{equation}
 \begin{split}
     \left[\psi^{(2)}\otimes\varphi^{(0)}\right] =&\ -\frac{\alpha'}{16}A_{ij}\partial^i\partial^j (X^{\perp})^2 e^{ip^+X^-}c_0^+ c\WT{c}e^{-\phi}\psi^+e^{-\WT{\phi}}\WT{\psi}^+\\
@@ -200,6 +218,8 @@ It is easy to see that the eigenvalue of this state under the pp-wave Hamiltonia
 \end{split}
 \end{equation}
 All of these terms can be traced to the contribution $\Box \varphi_{\mu\nu}^{(2)}$ in the $Q_B$-action due to the $c_0^+$ factor. Note that all the components of $\varphi_{\mu\nu}^{(2)}$ are sourced. The absence of terms with $c\eta/\WT{c}\WT{\eta}$ factors, which source $\partial^{\nu}\varphi_{\mu\nu}^{(2)}$, is a consequence of choosing the flat vertex frame (where string fields are inserted at $\pm z_0$ when computing 2-brackets).
+
+We must also consider the more complicated three-bracket $\left[(\psi^{(1)})^{\otimes 2}\otimes \varphi^{(0)}\right]$, which is currently being computed using \StringCode.
 
 Now, we must solve the equations
 \begin{equation} \label{2ndVacEOM}
@@ -262,9 +282,9 @@ Let us now investigate some of the different PCO arrangements to check whether t
 \end{split}
 \end{equation}
 which can be computed easily
-\begin{equation*}
+\begin{equation}
     =\frac{\mu^2}{64}\delta\left(\sum_{i=1}^3p_i^+\right) \int d^2w\ A_1^{jk} A_{jk}^2 A^3_{ii} \frac{|z_{23}z_{31}|^2}{|z_{12}|^2|z_3-w|^2}\sum_{k=1}^3\frac{p_k^+}{z_k-w}\sum_{l=1}^3\frac{p_l^+}{\B{z}_l-\B{w}}.
-\end{equation*}
+\end{equation}
 The $\delta$-function factor is certainly expected from the gauge-theory/spin-chain description ($J_1+J_2=J_3$). \textcolor{scpurple}{JG: unfortunately, this contribution seems to vanish since it is proportional to $A_{ii}$, which is zero by the 2nd order correction to the vacuum profile. This is in some sense the correlator $\langle \varphi^{(0)}_1 \varphi^{(0)}_2 \varphi^{(2)}_3\rangle$\dots}
 
 
@@ -272,7 +292,16 @@ Next, we consider
 \begin{equation}
     \left\langle \mathcal{X}_0\mathcal{X}_0\WT{\mathcal{X}}_0\WT{\mathcal{X}}_0 \varphi_{p_1}^{(0)}(z_1)\varphi_{p_2}^{(0)}(z_2)\varphi_{p_3}^{(0)}(z_3)\psi^{(1)}(w_1)\psi^{(1)}(w_2)\right\rangle.
 \end{equation}
-Again, this is zero for all the PCO arrangements because there are always uncontracted $\partial X^{\pm}$, $\psi^-$ or $\eta$ modes.
+Since this is an on-shell computation (recall that all the insertions are $Q_B$-closed), it is sufficient to choose a single PCO arrangement to compute the correlator. We will take this to be one pair of PCO's on top both the second and third vacuum state insertions. Furthermore, take the polarizations to be $A^1_{--}, A^2_{i_2j_2}, A^3_{i_3j_3}$ We get
+\begin{equation}
+\begin{split}
+    \Big\langle & A^1_{--} e^{ip_1^+ X^-} c\WT{c} e^{-\phi}\psi^{-} e^{-\WT{\phi}}\WT{\psi}^{-}(z_1) A^2_{i_2 j_2} e^{ip_2^+ X^-} c\WT{c} \Big(\frac{1}{2}\partial X^{i_2}+\frac{i}{2}p_2^+\psi^-\psi^{i_2}\Big)\Big(\frac{1}{2}\B{\partial} X^{j_2}+\frac{i}{2}p_2^+\WT{\psi}^-\WT{\psi}^{j_2}\Big)\\
+    &\times\ A^3_{i_3 j_3} e^{ip_3^+ X^-} c\WT{c} \Big(\frac{1}{2}\partial X^{i_3}+\frac{i}{2}p_3^+\psi^-\psi^{i_3}\Big)\Big(\frac{1}{2}\B{\partial} X^{j_3}+\frac{i}{2}p_3^+\WT{\psi}^-\WT{\psi}^{j_3}\Big)\\
+    &\times \int d^2w_1 (\gamma^{+1234})e^{-\frac{\phi}{2}}Se^{-\frac{\WT{\phi}}{2}}\WT{S}(w_1) \int d^2w_2 (\gamma^{+1234})e^{-\frac{\phi}{2}}Se^{-\frac{\WT{\phi}}{2}}\WT{S}(w_2)\Big\rangle
+\end{split}
+\end{equation}
+
+
 
 
 
