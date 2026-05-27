@@ -1,6 +1,7 @@
 .vscode
 __pycache__/
 *.pyc
+.DS_Store
 
 # LaTeX build artifacts (recursive)
 *.aux
